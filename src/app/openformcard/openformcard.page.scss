@@ -1,0 +1,80 @@
+ion-header ion-title{
+   border-bottom-left-radius: 10px;
+     border-bottom-right-radius: 10px;
+     padding: 0px !important;
+     --background: #48C9B0;
+     --color: black;
+ }
+ ion-header ion-toolbar,
+ ion-buttons {
+    --background: #48C9B0;
+    --color:black;
+    text-align: center;
+   
+ }
+ .top-toolbar{
+   --background: #48C9B0;
+     --color: black;
+     text-align: center;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+padding: 10px !important;
+}
+.card
+{
+ height: 165px;
+ width: 95%;
+ font-size: 16px;
+ padding-left: 10px;
+ padding-top: 10px;
+ border-radius: 10px;
+}
+button
+{
+ width: 70px;
+ height: 40px;
+ background-color: #48C9B0;
+ margin-left: 36px;
+}
+.Card
+{
+ height:140;
+ width: 95%;
+ font-size: 16px;
+ border: 1px solid;
+ margin-left: 3px;
+ padding-left: 10px;
+ padding-top: 10px;
+ margin-top: 10px;
+ border-radius: 10px;
+ 
+}
+.Card1
+{
+  height:140;
+  width: 95%;
+  font-size: 16px;
+  border: 1px solid;
+  margin-left: 3px;
+  padding-left: 10px;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: lightgrey;
+ }
+
+ .button-group {
+  position: absolute;
+  right: 0;
+  top: 0
+}
+.button-group button {
+  display: inline;
+}
+span {
+  position: relative;
+}
+input {
+  position: absolute;
+  left: 0;
+}

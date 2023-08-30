@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ip Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [formGroup]="ipform">
+  <img
+  class="company-img"
+  text-center
+  src="../../assets/icon/ws3.png"
+/>
+<input
+type="text"
+formControlName="ipaddress"
+placeholder="Enter IP Address"
+autocorrect="on"
+autocapitalize="none"
+autocomplete=“true”
+spellcheck=“true”
+/>
+ 
+<!-- <input
+type="text"
+placeholder="Enter IP Address"> -->
+ <button (click)="Click()">Submit</button>
+</div>
+</ion-content>

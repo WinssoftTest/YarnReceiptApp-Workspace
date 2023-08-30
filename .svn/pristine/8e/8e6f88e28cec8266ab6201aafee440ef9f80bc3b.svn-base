@@ -1,0 +1,202 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from '../abi/common.service';
+
+@Component({
+  selector: 'app-yarnrecipt',
+  templateUrl: './yarnrecipt.page.html',
+  styleUrls: ['./yarnrecipt.page.scss'],
+})
+export class YarnreciptPage implements OnInit {
+ companyArr: any;
+  username: any;
+  HomeForm: any;
+  WarehouseNameArr: unknown;
+ Company=localStorage.getItem("Company");
+ Branch=localStorage.getItem("Branch");
+  year = localStorage.getItem("Year")
+  WorkOrderNumberArr: unknown;
+  PartyNameArr: unknown;
+  OrderNumberArr: unknown;
+  WorkOrderNo: any;
+  WorkOrder:any;
+
+  YarnReceiptForm: any;
+  GatepassNumLoad: unknown;
+  OrderNumber:any
+  save: unknown;
+  CurDate: any;
+  DcNo: any;
+  Warehouse: any;
+  GridDetailsLoad: unknown;
+
+  constructor(
+    private commonprovider: CommonService,
+    private _ho: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {
+    this.YarnReceiptForm = this._ho.group({
+      Warehouse: ["", [Validators.required]],
+      WorkOrder:["",[Validators.required]],
+      GatePass:["",[Validators.required]],
+      OrderNumber:["",[Validators.required]],
+      CurDate:["",[Validators.required]],
+      DcNo:["",[Validators.required]]
+     });
+     this.WareHouseNameLoad ();
+     this.PartyNameLoad ();
+     this.WorkOrderNumberLoad();
+  }
+  onchangeOrderNumber(event)
+  {
+    console.log("Order",this.OrderNumber)
+    this.GatePassNumberLoad()
+  }
+ WareHouseNameLoad ()
+  {
+   var req = {
+    company:this.Company,
+    Branch_Name:this.Branch,
+    statement:"Receipt"
+    };
+    this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
+      this.WarehouseNameArr = result;
+      console.log("BranchName", this.WarehouseNameArr)
+      return true;
+    });
+  }
+  onchangeWorkorder(event)
+  {
+    console.log("wrk",this.WorkOrder)
+this.OrderNumberLoad() 
+  }
+  PartyNameLoad ()
+  {
+   var req = {
+    Company:this.Company,
+    Branch_Name:this.Branch,
+    statement:"Receipt",
+    Years:this.year
+    };
+    this.commonprovider.GetPartyNameLoad(req).then((result) => {
+      this.PartyNameArr = result;
+      console.log("PartyNameArr", this.PartyNameArr)
+      return true;
+    });
+  }
+  WorkOrderNumberLoad ()
+  {
+   var req = {
+    Company:this.Company,
+    Years:"22-23",
+    statement:"Receipt",
+    
+    };
+    this.commonprovider.GetWorkOrderNumberLoad(req).then((result) => {
+      this.WorkOrderNumberArr = result;
+      console.log("WorkOrderNumber", this.WorkOrderNumberArr)
+      return true;
+    });
+  }
+ OrderNumberLoad()
+  {
+   var req = {
+    Company:this.Company,
+    Years: this.year,
+    Supplier:"",
+    Workorderno:this.WorkOrder,
+
+    };
+      this.commonprovider.GetOrderNumberLoad(req).then((result) => {
+      this.OrderNumberArr = result;
+      console.log("OrderNumber", this.OrderNumberArr)
+      return true;
+    });
+  }
+  GatePassNumberLoad()
+  {
+   var req = {
+    Company:this.Company,
+    Years: this.year,
+    Order_No:this.OrderNumber,
+    Party_Name:"",
+    Workorderno:this.WorkOrder,
+    Y_Rec_Date  : this.CurDate,
+    statement:"Receipt",
+   
+    Supplier_DC_No:this.DcNo,
+    Supplier_DC_Date:this.CurDate
+
+
+    };
+      this.commonprovider.GetGatepassNo(req).then((result) => {
+      this.GatepassNumLoad = result;
+      console.log("GatepassNumLoad", this.GatepassNumLoad)
+      return true;
+    });
+  }
+  ReceiptGridDetailsLoad()
+  {
+   var req = {
+    Company:this.Company,
+    Years: this.year,
+    Y_Rec_No:this.OrderNumber,
+    
+   };
+      this.commonprovider.ReceiptGridDetailsLoad(req).then((result) => {
+      this.GridDetailsLoad = result;
+      console.log("GridDetailsLoad", this.GridDetailsLoad)
+      return true;
+    });
+  }
+  onchangeDate(event)
+  {
+   this.ReceiptGridDetailsLoad()
+   // this.Save();
+  }
+  Save()
+  {
+   var req = {
+    Company:this.Company,
+    years: this.year,
+    y_Rec_No:this.OrderNumber,
+    Yarn_Po_No:"",
+    Supplier_Name:"",
+    Supplier_Code:"",
+    Workorderno:this.WorkOrder,
+    Supplier_DC_No:this.DcNo,
+    branch:this.Branch,
+    warehouse_name:this.Warehouse,
+    Supplier_DC_Date:this.CurDate,
+    Color_Name:"",
+    Mill_Name:"",
+    UOM:"",
+    Cones:"",
+    Cone_UOM:"",
+    Cone_Wt:"",
+    Cones_Per_Bag:"",
+    Bag_Wt:"",
+    Remarks:"",
+    Ex_Per:"",
+    Y_Ord_Id:"",
+    Y_Ord_Det_Id:"",
+    };
+      this.commonprovider.YarnReceiptSave(req).then((result) => {
+      this.save = result;
+      console.log("Save", this.save)
+      return true;
+    });
+  }
+  
+  yarnreceipt()
+  {
+    this.router.navigate(["yarnrecipt"])
+  }
+ 
+
+  ngOnInit() {
+  }
+
+}

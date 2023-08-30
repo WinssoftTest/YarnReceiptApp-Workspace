@@ -1,0 +1,199 @@
+ion-header ion-toolbar,
+ion-buttons {
+   --background: #48C9B0;
+   --color:black;
+   text-align: center;
+  
+}
+.top-toolbar {
+   --background: #48C9B0;
+   --color: black;
+   text-align: center;
+   border-bottom-left-radius: 10px;
+   border-bottom-right-radius: 10px;
+   --border-width: 0px !important;
+   padding: 2px 0px;
+}
+.btncard{
+   width: 100%;
+   padding: 15px;
+}
+.divcard{
+ 
+   border-radius: 18px;
+   width: 100%;
+   // padding-left: 10px;
+   // padding-bottom: 10px;
+   margin-top: -10px;
+   font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+   font-stretch: expanded;
+   font-size: bold;
+   background-color: white;
+
+}
+.label-font .sp{
+   color: black !important;
+
+}
+.Cardd
+{
+   
+   padding-bottom: 10px;
+}
+.ion-chip
+{
+   font-size: 10px;
+   margin-left: 30px;
+   width: 30px;
+   height: 10px;
+}
+// .card-content-md {
+//    padding-left: 16px;
+//    padding-right: 16px;
+//    margin-top: 6px;
+//    padding-top: 7px;
+//    margin-left: -6px;
+//    margin-bottom: 4px;
+//    margin-right: 10px;
+//    padding-bottom: -14px;
+//    font-size: 14px;
+//    line-height: normal;
+// }
+.card
+{
+   height: 100%;
+   font-size: 16px;
+   color: black;
+   padding-left: 19px;
+   text-align: left;
+   border-radius: 15px;
+   margin: 0;
+   box-shadow: none; 
+   background-color:rgb(233 233 233);
+}
+.Cardbox
+{
+width: 50px;
+height: 50px;
+border: 2px solid;
+}
+.smallheader{
+display: grid;
+   grid-template-columns: auto auto;
+   align-items: center;
+   justify-content: space-between;
+}
+ 
+.headingdiv{
+   display: grid;
+   grid-template-columns: max-content auto;
+}
+// .label-font-value
+// {
+//    max-width: 100%;
+//    min-width: 70%;
+// }
+// .Button
+// {
+//    //width: 60px;
+//    // height: 30px;
+//    border-radius: 8px;
+//    text-transform: capitalize;
+//    letter-spacing: 1px;
+//    padding: 10px 15px;
+//    margin-left: 45PX;
+//    margin-right: 10px !important;
+//    margin-top: 10px;
+ 
+//    background-color: #48C9B0;
+// }
+// .Button1
+// {
+//  //  width: 60px;
+//   // height: 30px;
+//    border-radius: 8px;
+//    text-transform: capitalize;
+//    letter-spacing: 1px;
+//    padding: 10px 15px;
+//    background-color: #48C9B0;
+//    margin-top: -7px !important;
+//    margin-left: -8px;
+// }
+ionic-selectable {
+   display: block;
+   max-width:  max-content;
+}
+.label-font
+{
+     font-family: -apple-system, BlinkMacSystemFont, segoe ui,
+Roboto, helvetica neue, Arial, noto sans, sans-serif,
+apple color emoji, segoe ui emoji, segoe ui symbol,
+noto color emoji;
+font-size: 16px !important;
+font-weight: 500;
+ 
+}
+card-content-ios {
+   padding-left: 20px;
+   padding-right: 20px;
+   padding-top: 35px !important;
+   padding-bottom: 3px;
+   font-size: 16px;
+   line-height: 1.4;
+}
+.card-content-md {
+   padding-left: 16px;
+   padding-right: 16px;
+   padding-top: 28px;
+   padding-bottom: 13px;
+   font-size: 14px;
+   line-height: 1.5;
+}
+ion-card{
+   box-shadow:  rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+ }
+         
+         
+ .Button1 {
+   background-image: linear-gradient(to right, #af6e71 0%, #f10808 51%, #1fffac 100%);
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+   margin-left: -45px;
+   margin-top: 4px;
+   margin-bottom: -19px
+
+ }
+
+ .Button {
+   background-image: linear-gradient(to right, #af6e71 0%, #f10808 51%, #1fffac 100%);
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+   margin-left: 22px;
+   margin-top: 5px;
+   margin-bottom: -18px;
+ }
+
+ .Imp
+ 
+ {
+   color: red;
+ }
+.grid_set{
+   color: black;
+}

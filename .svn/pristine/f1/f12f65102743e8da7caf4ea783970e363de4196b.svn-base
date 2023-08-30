@@ -1,0 +1,48 @@
+export class appsettings {
+//public static API_ENDPOINT = "http://localhost:7362";
+	//-------------------Atlas IP--------------------------
+//  public static API_ENDPOINT = "http://45.123.1.108:17935/";
+//  public static IMG_ENDPOINT = "http://45.123.1.108:17935/public/";
+	//------------------Atlas IP End---------------------------
+  public static API_ENDPOINT = "http://103.207.13.211:8091/";
+  public static IMG_ENDPOINT = "http://103.207.13.211:8091/public/";
+ 
+	public static LoginAuthentication =
+		"/Service1.svc/Mobile_LoginAuthentication";
+
+		public static CompanyNameLoad1 =
+		"/Service1.svc/WsYarnReceiptCompanyNameLoad";
+		public static BranchNameLoad =
+		"/Service1.svc/WsYarnReceiptBranchNameLoad";
+		 public static UserNameLoad =
+		 "/Service1.svc/WsYarnReceiptUserNameLoad";
+		 public static FinYearLoad =
+		 "/Service1.svc/WsYarnReceiptFiancialYearLoad";
+		 public static  WarehouseNameLoad =
+		 "/Service1.svc/WsYarnReceiptWarehouseNameLoad";
+		 public static  PartyNameLoad =
+		 "/Service1.svc/WsYarnReceiptPartyNameLoad";
+		 public static   WorkOrderNumberLoad =
+		 "/Service1.svc/WsYarnReceiptWorkOrderNumberLoad";
+		 public static  OrderNumberLoad =
+		 "/Service1.svc/WsYarnReceiptOrderNumberLoad";
+		 public static  OpenFormCardLoad =
+		 "/Service1.svc/WsYarnOpenFormGridLoad";
+		 public static  GatePassNoLoad =
+		 "/Service1.svc/WsYarnReceiptGatePassNoLoad";
+		 public static  ReceiptSaveLoad =
+		 "/Service1.svc/WsYarnReceiptSaveLoad";
+		 public static  ReceiptGridDetailsLoad =
+		 "/Service1.svc/WsYarnGridDetailsLoad";
+		 public static   SpaceBarApplyLoad =
+		 "/Service1.svc/WsSpaceBarApplyLoad";
+		 public static  YarnReceiptEditLoad =
+		 "/Service1.svc/WsYarnReceiptEditLoad";
+		 public static  ReceiptDeleteLoad =
+		 "/Service1.svc/WsYarnReceiptDeleteLoad";
+
+         //ReturnReceipt
+		 public static  WsYarnReturnReceiptinsertLoad =
+		 "/Service1.svc/WsYarnReturnReceiptinsertLoad";
+
+}

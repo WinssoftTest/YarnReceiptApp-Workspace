@@ -1,0 +1,133 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>JW RECEIPT - SAVE</ion-title>
+  </ion-toolbar>
+</ion-header>
+ <div class="card1">
+  <ion-row>
+    <ion-col size="6"><b style="color: red;"> Order Qty : {{this.ordQty
+
+    }} </b></ion-col>
+    <ion-col size="6"><b style="color: red;"> Del Qty : {{this.delivery
+
+
+    }} </b></ion-col>
+    </ion-row>
+  <ion-row>
+    <ion-col size="12"><b style="color: red;"> Rec -  {{this.recqty 
+    }}  </b> <b style="color: red;"> | Bal {{this.delivery - this.recqty  }} </b>
+   
+       <b style="color: red;"> Ex Per % : {{ this.Exper
+  }} </b></ion-col>
+  </ion-row>
+  <!-- <ion-row>
+    <ion-col size="6"><b style="color: red;"> Bal : {{this.delivery - this.RecQty}} </b></ion-col>
+    </ion-row> -->
+ </div>
+<ion-content>
+  <form [formGroup]="  this.jwreceiptsav "> 
+  <div *ngFor="let JWR of  jwSpaceBarGrid" class="card">  
+    WorkOrder No - {{JWR.WorkOrderNo
+    }}<br>
+  Order No -  {{JWR.Order_No
+    }}<br>
+  
+  {{JWR.F_Count
+    }}  <b style="color: red;"> | </b> {{JWR.Reed_Pick}}<b style="color: red;">| </b> {{JWR.F_Size}}<b style="color: red;"> | </b> {{JWR.Color}} <b style="color: red;"> | </b>  <b>{{JWR.Design_Name
+    }}</b>
+    <br>
+ 
+<ion-row> 
+  <ion-col size="12">
+  <ion-item style="margin-left: -10px;">
+    <ion-label class="label-font">Order Wgt:  <sup> * </sup> </ion-label> 
+    <ion-input type="number"
+    [(ngModel)]="OrderWgt"
+    formControlName="OrderWgt"
+ >
+ 
+    </ion-input>
+  </ion-item>
+  </ion-col>
+  </ion-row>
+  <ion-row> 
+    <ion-col size="6">
+    <ion-item style="margin-left: -10px;">
+      <ion-label class="label-font">Width:  <sup> * </sup> </ion-label> 
+      <ion-input type="number"
+      [(ngModel)]="width"
+      formControlName="width"
+   >
+      </ion-input>
+    </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item style="margin-left: -10px;">
+        <ion-label class="label-font">Length:  <sup> * </sup> </ion-label> 
+        <ion-input type="number"
+        [(ngModel)]="Length"
+        formControlName="Length"
+     >
+        </ion-input>
+      </ion-item>
+      </ion-col>
+    </ion-row>
+ 
+  <ion-row> 
+    <ion-col size="6">
+    <ion-item style="margin-left: -10px;">
+      <ion-label class="label-font">Now Rec:  <sup> * </sup> </ion-label> 
+      <ion-input type="number"
+      [(ngModel)]="NowRec"
+      formControlName="NowRec"
+   >
+      </ion-input>
+    </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item style="margin-left: -10px;">
+        <ion-label class="label-font">Now Rec Wt:  <sup> * </sup> </ion-label> 
+        <ion-input type="number"
+        [(ngModel)]="NowRecwt"
+        formControlName="NowRecwt"
+     >
+        </ion-input>
+      </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row> 
+      <ion-col size="6">
+      <ion-item style="margin-left: -10px;">
+        <ion-label class="label-font">Pcs Bundle:  <sup> * </sup> </ion-label> 
+        <ion-input type="number"
+        [(ngModel)]="PcsBundle"
+        formControlName="PcsBundle"
+     >
+        </ion-input>
+      </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item style="margin-left: -10px;">
+          <ion-label class="label-font">No Of Bundle:  <sup> * </sup> </ion-label> 
+          <ion-input type="number"
+          [(ngModel)]="NoOfBundle"
+          formControlName="NoOfBundle"
+       >
+          </ion-input>
+        </ion-item>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row> 
+        <ion-col size="6">        
+          <button class="Button2"  (click)="itemClic(JWR, index)">Apply</button>
+          </ion-col>
+     
+          <ion-col size="6">        
+            <button class="Button2" (click)="jwreceiptsave()"    >Save</button>
+            </ion-col>
+          
+          </ion-row>
+  </div>  
+  </form>
+</ion-content>

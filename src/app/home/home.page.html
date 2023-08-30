@@ -1,0 +1,205 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="ion-no-padding ion-no-margin" class="top-toolbar">
+    <div class="title-container">
+      <div class="title-set1">
+        <!-- <button
+          style="
+            background-color: rgb(237, 210, 33);
+            border-radius: 8px;
+            margin-left: 50px;
+            margin-top: 10px !important;
+          "
+        >
+          Logout
+        </button> -->
+        <ion-title class="title" style="text-align: center !important">RECEIPT CATEGORY</ion-title>
+      </div>
+      <div class="title-set2" (click)="Back()">
+        <div class="title-img-container">
+          <img class="title-img" src="../../assets/icon/logout2.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+      <ion-row>
+          <ion-col size = "6">
+      <div class="item" (click)="yarnreceipt()">
+        <div class="img-container extras">
+          <img class="img" src="../../assets/icon/receipt2.png" alt="" />
+        </div>
+        <p class="item-title">
+          YARN  RECEIPT<br />
+         
+        </p>
+      </div>
+    </ion-col>
+      <ion-col size = "6">
+      <div (click)="yarnreceiptOpenForm()" class="item">
+        <div class="img-container">
+          <img class="img" src="../../assets/icon/return2.png" alt="" />
+        </div>
+        <p class="item-title">  RECEIPT  VIEW</p>
+      </div>
+      </ion-col> 
+      </ion-row> 
+      <ion-row>
+     <ion-col size = "6">
+      <div (click)="weaving()" class="item"  >
+        <div class="img-container">
+          <img class="img" src="../../assets/icon/return2.png" alt="" />
+        </div>
+        <p class="item-title">WEAVING RECEIPT <br /></p>
+      </div>
+      </ion-col>  
+      <ion-col size = "6">
+        <div (click)="jobworkreceipt()" class="item"  >
+          <div class="img-container">
+            <img class="img" src="../../assets/icon/return2.png" alt="" />
+          </div>
+          <p class="item-title">JOBWORK  RECEIPT </p>
+        </div>
+        </ion-col> 
+    </ion-row>
+    <ion-row>  
+      <ion-col size = "6">
+      <div (click)="storesreceipt()" class="item"  >
+        <div class="img-container">
+          <img class="img" src="../../assets/icon/return2.png" alt="" />
+        </div>
+        <p class="item-title">STORES  RECEIPT </p>
+      </div>
+      </ion-col>
+        <ion-col size = "6">
+        <div (click)="fgpurchasereceipt()" class="item"  >
+          <div class="img-container">
+            <img class="img" src="../../assets/icon/return2.png" alt="" />
+          </div>
+          <p class="item-title">FG RECEIPT </p>
+        </div>
+        </ion-col> 
+        </ion-row>
+      <!-- <div class="item" (click)="yarnreceiptOpenForm()">
+        <div class="img-container extras">
+          <img class="img" src="../../assets/icon/receipt2.png" alt="" />
+        </div>
+        <p class="item-title">
+          purchase<br />
+          receipt Open
+        </p>
+      </div> -->
+  
+  <!-- <form [formGroup]="HomeForm">
+<ion-item>
+  <ion-label>
+    Warehouse
+  </ion-label>
+  <ion-select
+  class="label-font-value"
+  class="formControl"
+  formControlName="Warehouse"
+ (ionChange)="onchangeWarehouse($event)">
+   <ion-select-option
+    
+    *ngFor="let WAR of WarehouseNameArr"
+    >{{WAR.WarehouseName
+    }}
+  </ion-select-option> 
+</ion-select>
+</ion-item>
+<ion-item>
+  <ion-label>
+  PartyName
+  </ion-label>
+  <ion-select
+  class="label-font-value"
+  class="formControl"
+  formControlName="Warehouse"
+  interface="action-sheet"
+  
+ >
+  <ion-select-option
+   *ngFor="let PAN of PartyNameArr"
+    >{{PAN.Name}}
+  </ion-select-option>    
+</ion-select>
+</ion-item>
+<ion-item>
+  <ion-label>
+   WorkOrder No
+  </ion-label>
+  <ion-select
+  class="label-font-value"
+  class="formControl"
+  formControlName="WorkOrder"
+  [(ngModel)]="WorkOrder"
+  (ionChange)="onchangeWorkorder($event)"
+  interface="action-sheet"
+  >
+  <ion-select-option
+    *ngFor="let WNO of WorkOrderNumberArr"
+    >{{WNO.WorkOrderNo}}
+  </ion-select-option>   
+</ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-label>
+  OrderNumber
+  </ion-label>
+  <ion-select
+
+  class="label-font-value"
+  class="formControl"
+  formControlName="Warehouse"
+ (ionChange)="onchangeWarehouse($event)"
+ interface="popup" 
+ interface="action-sheet" >
+  <ion-select-option
+ 
+    *ngFor="let ONA of OrderNumberArr"
+    >{{ONA. Yarn_Po_No}}
+  </ion-select-option> 
+</ion-select>
+</ion-item>
+<ion-row>
+  <ion-col size="12">
+    <ion-item class="label-font" style="margin-top: 7px">
+      <ion-label style="color: black"> From : </ion-label>
+      <ion-input
+        slot=""
+        type="date"
+        placeholder="Select Date"
+        formControlName="FormDate"
+        [(ngModel)]="FormDate"
+        (ionChange)="onchangeDate($event)"
+      >
+      </ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size="12">
+    <ion-item class="label-font" style="margin-top: 7px">
+      <ion-label style="color: black"> To : </ion-label>
+      <ion-input
+        slot=""
+        type="date"
+        placeholder="Select Date"
+        formControlName="Todate"
+        [(ngModel)]="Todate"
+        (ionChange)="onchangeToDate($event)"
+      >
+      </ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+</form> -->
+  <!-- <button ">Proceed</button> -->
+</ion-content>
+<ion-footer>
+  <div class="footer"></div>
+</ion-footer>

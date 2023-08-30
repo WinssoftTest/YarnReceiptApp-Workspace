@@ -1,0 +1,551 @@
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { appsettings } from "src/app/appsettings";
+import { ToastController, LoadingController } from "@ionic/angular";
+ 
+const httpOptions = {
+  headers: {
+    "Content-Type": "application/json; charset=utf-8",
+  },
+  params: new HttpParams(),
+};
+@Injectable({
+  providedIn: "root",
+})
+export class CommonService {
+  IP:any
+  
+  constructor(
+    public httpClient: HttpClient,
+    private toastCtrl: ToastController
+  ) {
+    this.IP=localStorage.getItem("ipaddress");
+    console.log("this.IP",this.IP)
+  }
+  GetCompanyNameLoad(reqLogin) {
+    console.log('Work')
+
+    let ip;
+    let postData = JSON.stringify(reqLogin);
+    console.log('Data', postData)
+    return new Promise((resolve, reject) => {
+      this.httpClient
+        .post(
+         this.IP +  appsettings.CompanyNameLoad1,
+          postData,
+          httpOptions
+        )
+        .subscribe(
+          (data) => {
+            resolve(data);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  }
+  GetBranchNameLoad(reqLogin) {
+    console.log('Work')
+
+  //  let ip="http://localhost:7362";
+    let postData = JSON.stringify(reqLogin);
+    console.log('Data', postData)
+    return new Promise((resolve, reject) => {
+      this.httpClient
+        .post(
+          this.IP +  appsettings.BranchNameLoad,
+          postData,
+          httpOptions
+        )
+        .subscribe(
+          (data) => {
+            resolve(data);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  }
+  GetUserName(reqLogin) {
+
+   console.log('Work',reqLogin)
+
+ let  postData= JSON.stringify(reqLogin)
+;
+   console.log("Data",postData)
+   return new Promise((resolve, reject) => {
+      this.httpClient
+        .post(
+          this.IP +  appsettings.UserNameLoad,
+          postData,
+          httpOptions
+        )
+     
+        .subscribe(
+         
+          (data) => {
+            resolve(data);
+          },
+          (error) => {
+            reject(error);
+          }
+         
+        );
+       
+    });
+   
+  }
+  GetFinalYearLoad(reqLogin) {
+    
+    let postData = JSON.stringify(reqLogin);
+    return new Promise((resolve, reject) => {
+      this.httpClient
+        .post(
+          this.IP + appsettings.FinYearLoad,
+          postData,
+          httpOptions
+        )
+        .subscribe(
+          (data) => {
+            resolve(data);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  }
+ PasswordLoad(reqLogin) {
+    
+    let postData = JSON.stringify(reqLogin);
+    return new Promise((resolve, reject) => {
+      this.httpClient
+        .post(
+          this.IP + appsettings.LoginAuthentication,
+          postData,
+          httpOptions
+        )
+        .subscribe(
+          (data) => {
+            resolve(data);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  }
+  GetWareHouseNameLoad(reqLogin) {
+   let postData = JSON.stringify(reqLogin);
+    return new Promise((resolve, reject) => {
+      this.httpClient
+        .post(
+          this.IP + appsettings.WarehouseNameLoad,
+          postData,
+          httpOptions
+        )
+        .subscribe(
+          (data) => {
+            resolve(data);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  }
+  GetPartyNameLoad(reqLogin) {
+    let postData = JSON.stringify(reqLogin);
+     return new Promise((resolve, reject) => {
+       this.httpClient
+         .post(
+           this.IP + appsettings.PartyNameLoad,
+           postData,
+           httpOptions
+         )
+         .subscribe(
+           (data) => {
+             resolve(data);
+           },
+           (error) => {
+             reject(error);
+           }
+         );
+     });
+   }
+  GetWorkOrderNumberLoad(reqLogin) {
+    let postData = JSON.stringify(reqLogin);
+     return new Promise((resolve, reject) => {
+       this.httpClient
+         .post(
+           this.IP + appsettings.WorkOrderNumberLoad,
+           postData,
+           httpOptions
+         )
+         .subscribe(
+           (data) => {
+             resolve(data);
+           },
+           (error) => {
+             reject(error);
+           }
+         );
+     });
+   }
+GetOrderNumberLoad   (reqLogin) {
+    let postData = JSON.stringify(reqLogin);
+     return new Promise((resolve, reject) => {
+       this.httpClient
+         .post(
+           this.IP + appsettings.OrderNumberLoad,
+           postData,
+           httpOptions
+         )
+         .subscribe(
+           (data) => {
+             resolve(data);
+           },
+           (error) => {
+             reject(error);
+           }
+         );
+     });
+   }
+  GetOpenFormLoad (reqLogin) {
+    let postData = JSON.stringify(reqLogin);
+     return new Promise((resolve, reject) => {
+       this.httpClient
+         .post(
+           this.IP + appsettings.OpenFormCardLoad,
+           postData,
+           httpOptions
+         )
+         .subscribe(
+           (data) => {
+             resolve(data);
+           },
+           (error) => {
+             reject(error);
+           }
+         );
+     });
+   }
+   GetGatepassNo(reqLogin) {
+    let postData = JSON.stringify(reqLogin);
+     return new Promise((resolve, reject) => {
+       this.httpClient
+         .post(
+           this.IP + appsettings.GatePassNoLoad,
+           postData,
+           httpOptions
+         )
+         .subscribe(
+           (data) => {
+             resolve(data);
+           },
+           (error) => {
+             reject(error);
+           }
+         );
+     });
+   }
+   YarnReceiptSave(reqLogin) {
+    let postData = JSON.stringify(reqLogin);
+     return new Promise((resolve, reject) => {
+       this.httpClient
+         .post(
+           this.IP + appsettings.ReceiptSaveLoad,
+           postData,
+           httpOptions
+         )
+         .subscribe(
+           (data) => {
+             resolve(data);
+           },
+           (error) => {
+             reject(error);
+           }
+         );
+     });
+   }
+  ReceiptGridDetailsLoad (reqLogin) {
+    let postData = JSON.stringify(reqLogin);
+     return new Promise((resolve, reject) => {
+       this.httpClient
+         .post(
+           this.IP + appsettings.ReceiptGridDetailsLoad,
+           postData,
+           httpOptions
+         )
+         .subscribe(
+           (data) => {
+             resolve(data);
+           },
+           (error) => {
+             reject(error);
+           }
+         );
+     });
+   }
+  SpaceBarDetailsLoad (reqLogin) {
+    let postData = JSON.stringify(reqLogin);
+     return new Promise((resolve, reject) => {
+       this.httpClient
+         .post(
+           this.IP + appsettings.SpaceBarApplyLoad,
+           postData,
+           httpOptions
+         )
+         .subscribe(
+           (data) => {
+             resolve(data);
+           },
+           (error) => {
+             reject(error);
+           }
+         );
+     });
+   }
+   YarnReceiptEditLoad (reqLogin) {
+    let postData = JSON.stringify(reqLogin);
+     return new Promise((resolve, reject) => {
+       this.httpClient
+         .post(
+           this.IP + appsettings.YarnReceiptEditLoad,
+           postData,
+           httpOptions
+         )
+         .subscribe(
+           (data) => {
+             resolve(data);
+           },
+           (error) => {
+             reject(error);
+           }
+         );
+     });
+   }
+   YarnReturnReceiptInsert (reqLogin) {
+    let postData = JSON.stringify(reqLogin);
+     return new Promise((resolve, reject) => {
+       this.httpClient
+         .post(
+           this.IP + appsettings.WsYarnReturnReceiptinsertLoad,
+           postData,
+           httpOptions
+         )
+         .subscribe(
+           (data) => {
+             resolve(data);
+           },
+           (error) => {
+             reject(error);
+           }
+         );
+     });
+   }
+   YarnReceiptdeleteLoad (reqLogin) {
+    let postData = JSON.stringify(reqLogin);
+     return new Promise((resolve, reject) => {
+       this.httpClient
+         .post(
+           this.IP + appsettings.ReceiptDeleteLoad,
+           postData,
+           httpOptions
+         )
+         .subscribe(
+           (data) => {
+             resolve(data);
+           },
+           (error) => {
+             reject(error);
+           }
+         );
+     });
+    }
+     WsYarnY_REC_NOLoad (reqLogin) {
+      let postData = JSON.stringify(reqLogin);
+       return new Promise((resolve, reject) => {
+         this.httpClient
+           .post(
+             this.IP + appsettings.WsYarnReturnReceiptinsertLoad,
+             postData,
+             httpOptions
+           )
+           .subscribe(
+             (data) => {
+               resolve(data);
+             },
+             (error) => {
+               reject(error);
+             }
+           );
+       });
+   }
+   WsYarnReceiptGridDetails (reqLogin) {
+    let postData = JSON.stringify(reqLogin);
+     return new Promise((resolve, reject) => {
+       this.httpClient
+         .post(
+           this.IP + appsettings.WsYarnReceiptGridDetailsLoad,
+           postData,
+           httpOptions
+         )
+         .subscribe(
+           (data) => {
+             resolve(data);
+           },
+           (error) => {
+             reject(error);
+           }
+         );
+     });
+ }
+
+WsYarnReceiptPackNoLoad (reqLogin) {
+  let postData = JSON.stringify(reqLogin);
+   return new Promise((resolve, reject) => {
+     this.httpClient
+       .post(
+         this.IP + appsettings.WsCurrentPackNoLoad,
+         postData,
+         httpOptions
+       )
+       .subscribe(
+         (data) => {
+           resolve(data);
+         },
+         (error) => {
+           reject(error);
+         }
+       );
+   });
+}
+ 
+WsReceiptYarnBagDetailsSaveLoad (reqLogin) {
+  let postData = JSON.stringify(reqLogin);
+   return new Promise((resolve, reject) => {
+     this.httpClient
+       .post(
+         this.IP + appsettings.WsReceiptYarnBagDetailsSaveLoad,
+         postData,
+         httpOptions
+       )
+       .subscribe(
+         (data) => {
+           resolve(data);
+         },
+         (error) => {
+           reject(error);
+         }
+       );
+   });
+}
+WsYarnOpenFormGridLoad(reqLogin) {
+  console.log('Work')
+
+//  let ip="http://localhost:7362";
+  let postData = JSON.stringify(reqLogin);
+  console.log('Data', postData)
+  return new Promise((resolve, reject) => {
+    this.httpClient
+      .post(
+        this.IP +  appsettings.WsYarnOpenFormGridLoad,
+        postData,
+        httpOptions
+      )
+      .subscribe(
+        (data) => {
+          resolve(data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+  });
+}
+WsYarnReceiptBagDetailsEditLoad (reqLogin) {
+  let postData = JSON.stringify(reqLogin);
+   return new Promise((resolve, reject) => {
+     this.httpClient
+       .post(
+         this.IP + appsettings.WsYarnReceiptBagDetailsEditLoad,
+         postData,
+         httpOptions
+       )
+       .subscribe(
+         (data) => {
+           resolve(data);
+         },
+         (error) => {
+           reject(error);
+         }
+       );
+   });
+}
+
+YarnReceiptDeleteLoad(reqLogin) {
+  console.log('Work')
+
+//  let ip="http://localhost:7362";
+  let postData = JSON.stringify(reqLogin);
+  console.log('Data', postData)
+  return new Promise((resolve, reject) => {
+    this.httpClient
+      .post(
+        this.IP +  appsettings.YarnReceiptDeleteLoad,
+        postData,
+        httpOptions
+      )
+      .subscribe(
+        (data) => {
+          resolve(data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+  });
+}
+   async presentToast(message) {
+    const toast = await this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      cssClass: 'customToast',
+    });
+    toast.present();
+  }
+  async FailedToast(message) {
+    const toast = await this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      cssClass: 'FailedToast',
+    });
+    toast.present();
+  }
+  // GetUserNameLoad(reqLogin) {
+  //   console.log('Work')
+
+  //      let ip="http://localhost:7362";
+  //   let postData = JSON.stringify(reqLogin);
+   
+  //   return new Promise((resolve, reject) => {
+  //     this.httpClient
+  //       .post(
+  //        ip +  appsettings.UserNameLoad,
+  //         postData,
+  //         httpOptions
+  //       )
+  //       .subscribe(
+  //         (data) => {
+  //           resolve(data);
+  //         },
+  //         (error) => {
+  //           reject(error);
+  //         }
+  //       );
+  //   });
+  // }
+}

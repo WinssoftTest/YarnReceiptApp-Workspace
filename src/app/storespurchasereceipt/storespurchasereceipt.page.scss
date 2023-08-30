@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Roboto&display=swap');
+ion-header ion-toolbar,
+ion-buttons {
+   --background:	#607D8B;
+   --color:rgb(255, 255, 255);
+   text-align: center;
+   font-family: 'Manrope', sans-serif;
+   font-size: 16px !important;
+   font-weight: 500;
+
+  
+}
+.Button {
+   background-color:#556f7c;
+   margin: 16px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   border-radius: 10px;
+   display: block;
+   margin-top: 9px;
+   margin-bottom: -11px;
+   font-family: 'Manrope', sans-serif;
+   font-size: 16px !important;
+   font-weight: 500;
+
+ }
+ .Button2 {
+   background-color: #a3b18a;
+   margin: 72px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: black;            
+   border-radius: 10px;
+   display: block;
+   margin-top: 9px;
+   margin-bottom: 3px;
+   font-family: 'Manrope', sans-serif;
+     font-size: 16px !important;
+     font-weight: 500;
+ }
+ .label-font-value{
+   max-width: 100%;
+   font-family: 'Manrope', sans-serif;
+font-size: 16px !important;
+font-weight: 500;
+ }
+ .card
+ {
+    height: 100%;
+    font-size: 16px;
+    color: black;
+    padding-left: 19px;
+    text-align: left;
+    border-radius: 15px;
+    margin: 0;
+    box-shadow: none; 
+   // background-color:aliceblue;
+    margin-bottom: 34px;
+    margin-top: 20px !important;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px !important;
+    font-weight: 500;
+    width: 93%;
+     margin-left: 15px;
+     padding-top: 13px;
+     padding-bottom: 10px;
+     border: 1px solid;
+     
+ }
+ .label-font
+{
+font-family: 'Manrope', sans-serif;
+font-size: 16px !important;
+font-weight: 500;
+}

@@ -1,0 +1,217 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon style="height: 25px;width: 25px;margin-left: 5px; " name="arrow-back-outline" (click)="BACK()"></ion-icon> 
+    <ion-title>STORES RECEIPT SAVE</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="StoreReceiptsave"> 
+  <ion-grid>
+    <ion-row>
+    <ion-col  size="6"  size-md="6" size-lg="3">
+      <ion-item>
+        <ion-label class="label-font" >Qty<sup> * </sup> : </ion-label> 
+          <ion-input
+          class="label-font-value"
+          formControlName="RecQty"
+          [(ngModel)]="RecQty"
+          (ionChange)="QtyChange()"
+           >
+         </ion-input>
+      </ion-item>
+      </ion-col> 
+    <ion-col    size="6"    size-md="6" size-lg="3">
+      <ion-item>
+        <ion-label class="label-font" >Location<sup> * </sup>   </ion-label> 
+          <ion-select
+          class="label-font-value"
+          formControlName="RackLocation"
+          [(ngModel)]="RackLocation"
+          interface="action-sheet"
+          (ionChange)="Rackk()"
+         >
+          <ion-select-option
+        style="max-width: max-content"
+   
+        *ngFor="let WAR of   this.location "
+        >{{WAR.Location }}
+      </ion-select-option> 
+        </ion-select>
+      </ion-item>
+      </ion-col> 
+
+      <ion-col   size="6"    size-md="6" size-lg="3">
+        <ion-item>
+          <ion-label class="label-font"  > Rack <sup> * </sup>  </ion-label> 
+            <ion-select
+            class="label-font-value"
+            formControlName="Rack"
+            [(ngModel)]="Rack"
+            interface="action-sheet"
+            (ionChange)="Rackchange()"
+           >
+            <ion-select-option
+          style="max-width: max-content"
+     
+          *ngFor="let WAR of   this.RackLOAD"
+          >{{WAR.Rack_Name }}
+        </ion-select-option> 
+          </ion-select>
+        </ion-item>
+        </ion-col> 
+        <ion-col   size="6"    size-md="6" size-lg="3">
+          <ion-item>
+            <ion-label class="label-font"  > Bin <sup> * </sup>  </ion-label> 
+              <ion-select
+              class="label-font-value"
+              formControlName="Bin"
+              [(ngModel)]="Bin"
+              interface="action-sheet"
+              >
+              <ion-select-option
+            style="max-width: max-content"
+       
+            *ngFor="let WAR of   this.binLOAD"
+            >{{WAR.Bin }}
+          </ion-select-option> 
+            </ion-select>
+          </ion-item>
+          </ion-col> 
+          <ion-col   size="6"    size-md="6" size-lg="3">
+            <ion-item>
+              <ion-label class="label-font" > LotNo <sup> * </sup> :  </ion-label> 
+                <ion-input
+                class="label-font-value"
+                formControlName="LotNo"
+                [(ngModel)]="LotNo"
+                interface="action-sheet"
+                >
+                  </ion-input>
+            </ion-item>
+            </ion-col> 
+            <ion-col   size="6"    size-md="6" size-lg="3">
+              <ion-item>
+                <ion-label class="label-font"  > BaleNo <sup> * </sup> :  </ion-label> 
+                  <ion-input
+                  class="label-font-value"
+                  formControlName="BaleNo"
+                  [(ngModel)]="BaleNo"
+                  interface="action-sheet"
+                  >
+                    </ion-input>
+              </ion-item>
+              </ion-col> 
+              
+                <ion-col   size="12"    size-md="6" size-lg="3">
+                  <ion-item>
+                    <ion-label class="label-font"  > No Of Pcs <sup> * </sup>:  </ion-label> 
+                      <ion-input
+                      type="number"
+                      class="label-font-value"
+                      formControlName="NoofPcs"
+                      [(ngModel)]="NoofPcs"
+                      interface="action-sheet"
+                      >
+                        </ion-input>
+                  </ion-item>
+                  </ion-col> 
+             
+                  <ion-row> 
+                    <ion-col  size="6">
+                     <button  class="label-font" class="Button" (click)="AddButoon()">Add</button>
+                   </ion-col>
+                  
+                   <ion-col size="6">
+                    <button  class="label-font" class="Button"  (click)="Clear()" >Clear</button>
+                  </ion-col>
+                  </ion-row>
+                  <div *ngFor="let card of openedCards ; let optionindex = index" class="card">
+                    <ion-row>
+                      <ion-col size="1">
+                    <img
+                    *ngIf="card.selected == true"
+                    class="avt-prod"
+                    src="../../assets/icon/checked.png"
+                    style="margin-left: 10px;"
+                  />  
+                </ion-col>
+                <ion-col size="11">
+                <ion-card-title style="text-align: center;color: red;"> {{this.RackLocation}} | {{this.Rack}} | {{this.Bin}}</ion-card-title>   
+             </ion-col>
+              </ion-row>
+                 <ion-row>
+             
+                  <ion-col   size="6"  size-md="6" size-lg="3">
+                    <ion-item>
+                      <ion-label class="label-font" >  Ok : </ion-label>
+                     <ion-input
+                    type="number"
+                    class="label-font-value"
+                     formControlName="Ok"
+                     interface="action-sheet"
+                    style="background-color: white;"
+                    (ionChange)="QtyChanges()"
+                    >
+                </ion-input>
+                  </ion-item>
+                  </ion-col>
+                  <ion-col   size-sm="6"    size-md="6" size-lg="3">
+                    <ion-item>
+                      <ion-label class="label-font"  > Defect :</ion-label> 
+                      <ion-input
+                      
+                    type="number"
+                      class="label-font-value"
+                      formControlName="Defect"
+                       interface="action-sheet"
+                      style="background-color: white;"
+                      (ionChange)="QtyChanges()"
+                      >
+                        </ion-input>
+                       </ion-item>
+                    </ion-col>
+                    <ion-col   size="6"    size-md="6" size-lg="3">
+                      <ion-item>
+                        <ion-label class="label-font"  > Reject :   </ion-label> 
+                        <ion-input
+                        
+                    type="number"
+                        class="label-font-value"
+                        formControlName="Reject"
+                         
+                        interface="action-sheet"
+                        style="background-color: white;"
+                        (ionChange)="QtyChanges()"
+                        >
+                          </ion-input>
+                    </ion-item>
+                    </ion-col>
+                    <ion-col   size="6"    size-md="6" size-lg="3">
+                      <ion-item>
+                          <ion-label class="label-font"  > Shortage :  </ion-label> 
+                          <ion-input
+                           type="number"
+                          class="label-font-value"
+                          formControlName="Shortage"
+                           interface="action-sheet"
+                          style="background-color: white;"
+                          (ionChange)="QtyChanges()"
+                          >
+                            </ion-input>
+                            </ion-item>
+                            </ion-col>
+                              <button  size-md="6" size-lg="1" size-xs="12" class="label-font" class="Button2"    (click)="itemClick(card, optionindex)">Apply</button>
+                              </ion-row>
+                         </div>   
+                  <div *ngIf="this.selectedArr !='' ">
+                  <ion-col size="6">        
+                    <button class="Button1" [disabled]="isButton" (click)="Save()">Save</button>
+                    </ion-col>
+                    </div>
+                    </ion-row>
+      </ion-grid>
+      </form>
+</ion-content>

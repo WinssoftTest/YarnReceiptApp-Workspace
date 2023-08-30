@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Yarn Receipt Entry</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="YarnReceiptForm">
+    <ion-item>
+      <ion-label>
+        Warehouse :
+      </ion-label>
+      <ion-select
+      class="label-font-value"
+      class="formControl"
+      formControlName="Warehouse"
+     (ionChange)="onchangeWarehouse($event)">
+       <ion-select-option
+        
+        *ngFor="let WAR of WarehouseNameArr"
+        >{{WAR.WarehouseName
+        }}
+      </ion-select-option> 
+    </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+      PartyName :
+      </ion-label>
+      <ion-select
+      class="label-font-value"
+      class="formControl"
+      formControlName="Warehouse"
+      interface="action-sheet"
+      
+     >
+      <ion-select-option
+       *ngFor="let PAN of PartyNameArr"
+        >{{PAN.Name}}
+      </ion-select-option>    
+    </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+       WorkOrder No :
+      </ion-label>
+      <ion-select
+      class="label-font-value"
+      class="formControl"
+      formControlName="WorkOrder"
+      [(ngModel)]="WorkOrder"
+      (ionChange)="onchangeWorkorder($event)"
+      interface="action-sheet"
+      >
+      <ion-select-option
+        *ngFor="let WNO of WorkOrderNumberArr"
+        >{{WNO.WorkOrderNo}}
+      </ion-select-option>   
+    </ion-select>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>
+      OrderNumber :
+      </ion-label>
+      <ion-select
+    
+      class="label-font-value"
+      class="formControl"
+      formControlName="OrderNumber"
+      [(ngModel)]="OrderNumber"
+     (ionChange)="onchangeOrderNumber($event)"
+     interface="popup" 
+     interface="action-sheet" >
+      <ion-select-option
+     
+        *ngFor="let ONA of OrderNumberArr"
+        >{{ONA. Yarn_Po_No}}
+      </ion-select-option> 
+    </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+    GatePass No :
+      </ion-label>
+      <ion-select
+    
+      class="label-font-value"
+      class="formControl"
+      formControlName="GatePass"
+      [(ngModel)]="GatePass"
+     (ionChange)="onchangeGatePass($event)"
+     interface="popup" 
+     interface="action-sheet" >
+      <ion-select-option
+     
+        *ngFor="let ONA of OrderNumberArr"
+        >{{ONA. Yarn_Po_No}}
+      </ion-select-option> 
+    </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+      Dc No :
+      </ion-label>
+      <ion-input
+      class="label-font-value"
+      class="formControl"
+      formControlName="DcNo"
+      [(ngModel)]="DcNo"
+     interface="popup" 
+     interface="action-sheet">
+     </ion-input>
+      </ion-item>
+       
+        <ion-item class="label-font" style="margin-top: 7px">
+          <ion-label style="color: black"> Date : </ion-label>
+          <ion-input
+            slot=""
+            type="date"
+            placeholder="Select Date"
+            formControlName="CurDate"
+            [(ngModel)]="CurDate"
+            (ionChange)="onchangeDate($event)"
+          >
+          </ion-input>
+        </ion-item>
+       <div *ngFor="let GRI of GridDetailsLoad"
+       >
+       <ion-card class="card">
+       <h6>{{GRI.WorkOrderNo}}</h6>
+      </ion-card>
+      </div>
+      </form>
+</ion-content>

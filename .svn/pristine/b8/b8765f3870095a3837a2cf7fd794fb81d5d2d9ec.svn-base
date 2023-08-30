@@ -1,0 +1,168 @@
+<ion-header>
+  <ion-toolbar class="ion-no-padding ion-no-margin" class="top-toolbar">
+    <ion-title class="title">LOGIN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-icon class="icon" name="settings" (click)="Settings()"></ion-icon>
+  <!-- <button (click)="Settings()">Setting</button> -->
+  <div class="title-img-container">
+    <img class="company-img" text-center src="../../assets/icon/ws3.png" />
+  </div>
+  <div class="content-body">
+    <form [formGroup]="loginForm">
+      <div class="login-container form-group common-padding">
+        <div class="div-container">
+          <label for="label"
+            >Company Name
+            <sup>*</sup>
+          </label>
+          <select
+            formControlName="CompanyName"
+           
+            (change)="onchangeCompany($event)"
+          >
+            <option value="" disabled selected></option>
+            <option  value = "{{c.CompanyId}}#{{c.Company_Name}}#{{c.Company_code}}"
+              *ngFor="let c of companyArr; 
+              let optionindex = index"
+            
+            >
+              {{ c.Company_Name }}
+            </option>
+          </select>
+          <div
+          *ngIf="
+          loginForm.controls.CompanyName.hasError('required') &&
+          loginForm.controls.CompanyName.touched
+          "
+          class="alert alert-danger"
+        >
+          You must select CompanyName.
+        </div>
+        </div>
+        <div class="div-container">
+          <label for="label"
+            >Branch Name
+            <sup>*</sup>
+          </label>
+          <select
+            (change)="onchangeBranch($event)"
+            class="form-control"
+            formControlName="BranchName"
+            [(ngModel)]="BranchName"
+          >
+            <option value="" selected disabled>Select UserName</option>
+            <option
+              *ngFor="let BR of BranchNameArr ; let optionindex = index"
+              [ngValue]="BR"
+              style="font-size: 13px;"
+            >
+              {{ BR.Branch_Name }}
+            </option>
+          </select>
+          <div
+          *ngIf="
+          loginForm.controls.BranchName.hasError('required') &&
+          loginForm.controls.BranchName.touched
+          "
+          class="alert"
+        >
+           select Branch Name.
+        </div>
+        </div>
+        <label for="label"
+        >User Name
+        <sup>*</sup>
+      </label>
+      <select
+            class="form-control"
+            formControlName="UserName1"
+           > 
+            <option value = "{{Us.UserId}}#{{Us.Usercode}}#{{Us.UserName}}"
+            *ngFor="let Us of Usernamearr1 ; let optionindex = index"
+        
+            style="font-size: 13px;"
+          >
+            {{  Us.UserName }}
+          </option>
+         
+            </select>
+            <div
+          *ngIf="
+          loginForm.controls.UserName1.hasError('required') &&
+          loginForm.controls.UserName1.touched
+          "
+          class="alert"
+        >
+           select UserName
+        </div>
+        <!-- <div class="div-container">
+          <label for="label"
+            >User Name
+            <sup>*</sup>
+          </label>
+         <select
+            class="form-control"
+            formControlName="UserName1"
+            [(ngModel)]="UserName">
+          <option value="" selected disabled>Select UserName</option>
+            <option
+              *ngFor="let Us of Usernamearr1"
+              style="font-size: 13px;"
+            >
+            {{ Us.UserName }}
+            </option>
+          </select>
+        </div> -->
+        <div class="div-container">
+          <label for="label"
+            >Password
+            <sup>*</sup>
+          </label>
+          <input type="password"
+          formControlName="Password"
+          [(ngModel)]="Password"
+            class="form-control" />
+        </div>
+        <div
+          *ngIf="
+          loginForm.controls.Password.hasError('required') &&
+          loginForm.controls.Password.touched
+          "
+          class="alert"
+        >
+         Enter Password
+        </div>
+        <div class="div-container">
+          <label for="label"
+            >Year
+            <sup>*</sup>
+          </label>
+          <select
+            formControlName="year"
+            [(ngModel)]="year"
+            class="form-control" >
+            <option
+              *ngFor="let FI of Finyear; let optionindex = index"
+              [ngValue]="FI"
+              style="font-size: 13px;"
+            >
+              {{ FI. Year }}
+            </option>
+          </select>
+        </div>
+        <div class="loginbtn">
+          <button (click)="Login()">Login</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="footer">
+    <p>Copy Right@</p>
+    <p>Wins Soft Innovations Private Limited</p>
+  </div>
+</ion-footer>

@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Roboto&display=swap');
+ion-header ion-toolbar,
+ion-buttons {
+   --background:	#F24C3D;
+   --color:rgb(255, 255, 255);
+   text-align: center;
+  
+}
+.label-font
+{
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px !important;
+    font-weight: 500;
+}
+.Button {
+    background-color:#ff8f8f;
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: black;            
+    border-radius: 10px;
+    display: block;
+    margin-top: 9px;
+    margin-bottom: -11px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px !important;
+    font-weight: 500;
+ 
+  }
+  .Button2 {
+    background-color:#ff8f8f;
+    margin: 98px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: black;            
+    border-radius: 10px;
+    display: block;
+    margin-top: 9px;
+    margin-bottom: -11px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px !important;
+    font-weight: 500;
+  }
+  .Button1 {
+    
+      padding: 15px 45px;
+      text-align: center;
+      text-transform: uppercase;
+      transition: 0.5s;
+      background-size: 200% auto;
+      color:black;            
+      box-shadow: 0 0 20px #eee;
+      border-radius: 10px;
+      display: block;
+ 
+      margin-top: 9px;
+      margin-bottom: 11px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 16px !important;
+      font-weight: 500;
+    }
+    select{
+        margin-top: 10px;
+        margin-left: 20px;
+        width: 90%;
+        font-family: "Manrope", sans-serif !important;
+        font-size: 16px !important;
+        font-weight: 550 !important;
+        color: gray;
+        height: 40px;
+       }
+       label
+{
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px !important;
+  font-weight: 550;
+  color: black;
+  margin-top: -21px;
+}
+.ionic-selectable {
+  display: block;
+  max-width: 100%;
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px !important;
+  font-weight: 500;
+}
+.card
+{
+   height: 100%;
+   font-size: 16px;
+   color: black;
+   padding-left: 19px;
+   text-align: left;
+   border-radius: 15px;
+   margin: 0;
+   box-shadow: none; 
+   background-color:aliceblue;
+   margin-bottom: 34px;
+   margin-top: 20px !important;
+   font-family: 'Manrope', sans-serif;
+   font-size: 16px !important;
+   font-weight: 500;
+   width: 93%;
+    margin-left: 15px;
+    padding-top: 13px;
+    padding-bottom: 10px;
+    
+}

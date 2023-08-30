@@ -1,0 +1,91 @@
+ion-header ion-title{
+    border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      padding: 0px !important;
+      --background: #48C9B0;
+      --color: black;
+  }
+  ion-header ion-toolbar,
+  ion-buttons {
+     --background: #48C9B0;
+     --color:black;
+     text-align: center;
+    
+  }
+  .top-toolbar{
+    --background: #48C9B0;
+      --color: black;
+      text-align: center;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+padding: 10px !important;
+}
+.card
+{
+  height: 196px;
+  background-color: white;
+  font-size: 16px;
+  padding-left: 10px;
+  padding-top: 10px;
+  border-radius: 10px;
+}
+button
+{
+   
+  background-image: linear-gradient(to right, #af6e71 0%, #f10808 51%, #1fffac 100%);
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  margin-left: 22px;
+  margin-top: -5px;
+  margin-bottom: 15px;
+}
+.label-font
+{
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui,
+  Roboto, helvetica neue, Arial, noto sans, sans-serif,
+  apple color emoji, segoe ui emoji, segoe ui symbol,
+  noto color emoji;
+  font-size: 16px !important;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.Card
+{
+  height:140;
+  font-size: 16px;
+  border: 1px solid;
+  margin-left: 9px;
+  padding-left: 9px;
+  padding-top: 10px;
+  margin-top: 7px;
+  border-radius: 10px;
+  margin-right: 9px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  color: black !important;
+  font-size: 16px !important;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background-color: white;
+}
+.Cardd
+{
+  background-color:rgb(233 233 233);
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui,
+  Roboto, helvetica neue, Arial, noto sans, sans-serif,
+  apple color emoji, segoe ui emoji, segoe ui symbol,
+  noto color emoji;
+  font-size: 16px !important;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}

@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar class="ion-no-padding" class="top-toolbar">
+    <ion-title>YARN RECEIPT APP</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-icon class="icon" name="settings" (click)="Settings()"></ion-icon>
+<ion-content>
+  <!-- <button (click)="Settings()">Setting</button> -->
+  <div class="title-img-container">
+    <img class="company-img" text-center src="../../assets/icon/ws3.png" />
+  </div>
+
+  <form [formGroup]="loginForm">
+    <div class="login-container form-group common-padding">
+      <div class="div-container">
+        <label for="label"
+          >Company Name
+          <sup>*</sup>
+        </label>
+        <select
+          formControlName="CompanyName"
+          [(ngModel)]="CompanyName"
+          (change)="onchangeCompany($event)"
+        >
+          <option value="" disabled selected>Choose your color</option>
+          <option
+            *ngFor="let c of companyArr; 
+        let optionindex = index"
+            [ngValue]="c"
+          >
+            {{ c.Company_Name }}
+          </option>
+        </select>
+      </div>
+      <div class="div-container">
+        <label for="label"
+          >Branch Name
+          <sup>*</sup>
+        </label>
+        <select
+          (change)="onchangeBranch($event)"
+          class="form-control"
+          formControlName="BranchName"
+          [(ngModel)]="BranchName"
+        >
+          <option value="" selected disabled>Select UserName</option>
+          <option
+            *ngFor="let BR of BranchNameArr ; let optionindex = index"
+            [ngValue]="BR"
+            style="font-size: 13px; color: black"
+          >
+            {{ BR.Branch_Name }}
+          </option>
+        </select>
+      </div>
+      <div class="div-container">
+        <label for="label"
+          >User Name
+          <sup>*</sup>
+        </label>
+        <!-- (change)="onchangeUser($event)" -->
+        <select
+          class="form-control"
+          formControlName="UserName1"
+          [(ngModel)]="UserName1"
+          style="font-size: 15px; color: navy"
+        >
+          <option
+            *ngFor="let Us of Usernamearr1"
+            style="font-size: 13px; color: navy"
+          >
+            {{ Us.UserName }}
+          </option>
+        </select>
+      </div>
+      <div class="div-container">
+        <label for="label"
+          >Password
+          <sup>*</sup>
+        </label>
+        <input type="password" class="form-control" />
+      </div>
+      <div class="div-container">
+        <label for="label"
+          >Year
+          <sup>*</sup>
+        </label>
+        <select
+          formControlName="year"
+          [(ngModel)]="year"
+          class="form-control"
+          placeholder="Select CompanyName"
+        >
+          <option
+            *ngFor="let FI of Finyear"
+            style="font-size: 13px; color: navy"
+          >
+            {{ FI. Year }}
+          </option>
+        </select>
+      </div>
+      <div class="loginbtn">
+        <button (click)="Login()">Login</button>
+      </div>
+    </div>
+  </form>
+</ion-content>
+<ion-footer>
+  <div class="footer">
+    <p>Copy Right@</p>
+    <p>Wins Soft Innovations Private Limited</p>
+  </div>
+</ion-footer>

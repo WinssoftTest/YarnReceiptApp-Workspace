@@ -1,0 +1,198 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>JOBWORK - RECEIPT</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+    <form [formGroup]="jwReceipt"> 
+      <ion-item>
+        <ion-label class="label-font" style="padding-top: 13px;margin-left: 7px;"> WH <sup> * </sup>  </ion-label> 
+        <ion-select
+        formControlName="Warehouse"
+      [(ngModel)]="Warehouse"
+      interface="action-sheet"
+    
+      style="margin-left: 20px; font-family: Manrope, sans-serif !important;
+      font-size: 16px !important;
+      font-weight: 550 !important; color: black;   max-width: -webkit-max-content;
+      max-width: -moz-max-content;
+      max-width: max-content;">
+              <ion-select-option
+              style="max-width: max-content"
+              *ngFor="let WAR of WH"
+              >{{WAR.WarehouseName }}
+            </ion-select-option>
+    </ion-select>
+    </ion-item>
+
+    <ion-row>
+      <ion-col size="12">
+      <label   style="padding-top: 13px;margin-left: 15px;"> Job Work <sup> * </sup>  </label> 
+        <select
+        
+        formControlName="JobWork"
+        [(ngModel)]="JobWork"
+        (change)="JobWorks()"
+        style="margin-left: 4.5%;background: white !important"
+      > 
+       <b style="color: gray;"></b> 
+    <option value="Fabric">Fabric</option>
+    <option value="madeups">Madeups</option>
+ 
+     </select> 
+    </ion-col><ion-col size="12">
+      <label style="padding-top: 13px;margin-left: 15px;"> Process <sup> * </sup>  </label> 
+       <select
+       formControlName="Process"
+     [(ngModel)]="Process"
+     (change)="ProcessChange()"
+     style="margin-left: 4.5%;background: white !important">
+     <option 
+     *ngFor="let PROS of  ProcessName ; let optionindex = index"
+       [ngValue]="PROS"  >
+       {{ PROS.process }}
+     </option>
+     </select>
+        </ion-col>
+      </ion-row>
+ 
+         
+      <ion-item style="margin-top: 7px">
+        <ion-label class="label-font">Party <sup> * </sup></ion-label>
+      <ionic-selectable
+          [items]="PartyNameIns"
+        itemValueField="id"
+        itemTextField="PartyName"
+        [canSearch]="true"
+        formControlName="PartyName"
+        [(ngModel)]="PartyNamew"
+        (onChange)="portChange($event)"
+        
+         >
+        </ionic-selectable>
+        </ion-item>
+        <ion-item> 
+          <ion-label  class="label-font"> Wo No <sup> * </sup>  </ion-label>
+        <ionic-selectable
+          [items]="Workordr"
+          itemValueField="id"
+          itemTextField="WorkOrder"
+          [canSearch]="true"
+          formControlName="WorkOrder"
+          [(ngModel)]="WorkOrder"
+          (onChange)="WorkOrders($event)"
+           
+         >
+        </ionic-selectable>  
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-font">Order No <sup> * </sup></ion-label>
+           <ionic-selectable
+            [items]="Orde"
+            itemValueField="id"
+            itemTextField="Orde"
+            [canSearch]="true"
+            formControlName="OrderNumber"
+            [(ngModel)]="OrderNumber"
+            (onChange)="portChangeOrdNo($event)"
+           
+          >
+          </ionic-selectable>
+        </ion-item>
+        <ion-row>
+      <ion-col size="6">
+       <ion-item>
+        <ion-label class="label-font" style="padding-top: 13px;"> Slip No : <sup> * </sup>  </ion-label> 
+        <ion-input
+        type="text"
+        formControlName="SlipNo"
+        [(ngModel)]="SlipNo"
+        Change="SlipNo()"
+        >
+      </ion-input>
+      </ion-item>
+      </ion-col>
+      <ion-col size="6">
+      <ion-item>
+  
+         <ion-input
+          type="Date"
+          class="label-font-value"
+          formControlName="Date"
+          [(ngModel)]="Date"
+          max="{{Date | date:'yyyy-MM-dd'}}"
+          style="margin-top: 9px;"
+        >
+       
+        </ion-input>
+      </ion-item>
+    </ion-col>
+    </ion-row>
+    <ion-item>
+      <ion-label class="label-font" style="padding-top: 13px;"> GatePass <sup> * </sup>  </ion-label> 
+     
+   <ion-input type="text"
+   class="label-font-value"
+   formControlName="GatePass"
+   [(ngModel)]="GatePass"
+   
+   ></ion-input>
+    </ion-item>
+    <ion-row> 
+      <ion-col  size="6">
+       <button  class="label-font" class="Button" (click)="AddButoon()">Add</button>
+     </ion-col>
+    
+     <ion-col size="6">
+      <button  class="label-font" class="Button"  (click)="Clear()" >Clear</button>
+    </ion-col>
+    </ion-row>
+    <div *ngFor="let GRD of   jwreceipt let optionindex = index" 
+
+class="card">
+WorkOrder No - {{GRD.WorkOrderNo
+  }}<br>
+Order No -  {{GRD.Order_No
+  }}<br>
+  <ion-card-title>Ord -  {{GRD.ordered
+  }} <b style="color: red;"> | </b>Del {{GRD.delivery}}<br>
+  Rec -  {{GRD.recqty 
+  }}  <b style="color: red;"> | </b>Bal {{GRD.delivery - GRD.recqty  }}
+ <br>
+</ion-card-title>
+
+ 
+{{GRD.F_Count
+  }}  <b style="color: red;"> | </b> {{GRD.Reed_Pick}}<b style="color: red;">| </b> {{GRD.F_Size}}<b style="color: red;"> | </b> {{GRD.Color}} <b style="color: red;"> | </b>  <b>{{GRD.Design_Name
+  }}</b>
+  <br>
+ <!-- <ion-row>
+  <ion-col size="6">
+    <label class="labe">Total Mtr : <br>
+      <b style="color: red;">    {{ GRD.ordered
+
+
+    }} </b></label> 
+  </ion-col> -->
+  <!-- <ion-col size="6">
+    <label class="labe">Received Mtr : 50 <b  style="color: red;"> {{ GRD.Received
+    }} </b> </label> 
+    </ion-col>
+    <ion-col size="12"> 
+      <label class="labe"> Bal :  50 <b  style="color: red;"> {{ GRD.ordered
+        - GRD.Received | number : '1.2-2'  }}  </b>  </label>
+     </ion-col> -->
+    <!-- </ion-row>
+   -->
+          <ion-row> 
+            <ion-col size="6">        
+              <button class="Button2"    (click)="itemClick(GRD, optionindex)">Apply</button>
+              </ion-col>
+            
+            </ion-row>
+         
+ </div>
+ </form>
+ </ion-content>

@@ -1,0 +1,81 @@
+ion-header ion-title{
+   border-bottom-left-radius: 10px;
+     border-bottom-right-radius: 10px;
+     padding: 0px !important;
+     --background: #48C9B0;
+     --color: black;
+ }
+ ion-header ion-toolbar,
+ ion-buttons {
+    --background: #48C9B0;
+    --color:black;
+    text-align: center;
+   
+ }
+ .top-toolbar{
+   --background: #48C9B0;
+     --color: black;
+     text-align: center;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+padding: 10px !important;
+}
+.card
+{
+ height: 165px;
+ width: 95%;
+ font-size: 16px;
+ padding-left: 10px;
+ padding-top: 10px;
+ border-radius: 10px;
+}
+button
+{
+ width: 70px;
+ height: 40px;
+ background-color: #48C9B0;
+ margin-left: 36px;
+ 
+}
+.Card
+{
+ height:140;
+ width: 95%;
+ font-size: 16px;
+  margin-left: 3px;
+ padding-left: 10px;
+ padding-top: 10px;
+ margin-top: 10px;
+ border-radius: 10px;
+ 
+}
+.divcard{
+   
+  border-radius: 18px;
+  width: 100%;
+  padding-left: 18px;
+  padding-bottom: 50px;
+  margin-top: 37px;
+  padding-top: -96px !important;
+}
+.Card1
+{
+  height:140;
+  width: 95%;
+  font-size: 16px;
+  border: 1px solid;
+  margin-left: 3px;
+  padding-left: 10px;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: lightgrey;
+ }
+
+ ion-card{
+  box-shadow:   rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px !important;
+}
+.Imp
+{
+   color: red;
+}

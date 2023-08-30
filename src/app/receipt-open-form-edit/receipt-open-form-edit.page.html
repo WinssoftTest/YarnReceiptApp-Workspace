@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar class="top-toolbar">
+    <ion-title> View Details </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="back()" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-card 
+  *ngFor="let GRI of selectArray; let optionindex = index"
+ 
+>     <div class="divcard"> 
+       <p>Date :  <span class="Imp">{{GRI.Y_Rec_Date }}</span></p>
+       <p style="color: red;font-weight: bold;">Count : {{GRI.Count}} | {{GRI.Color}}</p>
+      <p>Supplier : <span class="Imp">{{GRI.Supplier_Name}}</span></p>
+    <p>Wo : <span class="Imp">{{GRI.WorkOrderNo}}</span></p>
+    <p>Po  : <span class="Imp">{{GRI.Y_PO_No}}</span></p> 
+    <p>Record No : {{ GRI.Y_Rec_No}}   </p> 
+    <p>Order : {{GRI.Ordered}} | Already Rec : {{GRI.Received }} </p>
+    <p>Qty : <span class="Imp">{{GRI.Now_Received_Qty  }}</span></p>
+    <p style="color: red;font-weight: bold;">  Bal : {{ GRI.bal | number : '1.0-2'}} | {{GRI.uom}} </p>
+    <p >Ex % : {{GRI.Ex_Per}} | CardNo : {{GRI.CardNo}}</p>
+    <p>Pakes : {{GRI.Bags}} | Sub Pack : {{GRI.subpack }}</p>
+    <p>Lot No: {{GRI.lot_no }} | WareHouse: {{GRI.WareHouse }}</p>
+    <p>Mill : {{GRI.MillName}}</p>
+    <p>Remarks : {{GRI.Remarks}}</p>  
+  </div>
+ 
+  
+    </ion-card>

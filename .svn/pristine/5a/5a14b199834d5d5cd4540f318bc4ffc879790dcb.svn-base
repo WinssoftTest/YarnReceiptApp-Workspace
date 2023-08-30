@@ -1,0 +1,47 @@
+import { NgModule } from '@angular/core';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/authguard.guard';
+
+const routes: Routes = [
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
+    canActivate:[AuthGuard]
+  },
+ 
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+   {
+     path: 'ipsettings',
+    loadChildren: () => import('./ipsettings/ipsettings.module').then( m => m.IpsettingsPageModule)
+   },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+ 
+  {
+    path: 'yarnrecipt',
+    loadChildren: () => import('./yarnrecipt/yarnrecipt.module').then( m => m.YarnreciptPageModule)
+  },
+  {
+    path: 'bagdetails',
+    loadChildren: () => import('./bagdetails/bagdetails.module').then( m => m.BagdetailsPageModule)
+  },
+  {
+    path: 'returnreceipt',
+    loadChildren: () => import('./returnreceipt/returnreceipt.module').then( m => m.ReturnreceiptPageModule)
+  },
+  
+];
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>IP Setting</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [formGroup]="ipform">
+    <div class="divImg">
+      <img
+      class="company-img"
+      text-center
+      src="../../assets/icon/ws3.png"
+    />
+    </div>
+    <div class="box">
+<input
+type="text"
+formControlName="ipaddress"
+placeholder="Enter IP Address"
+[(ngModel)]="ip"
+autocorrect="on"
+autocapitalize="none"
+autocomplete=“true”
+spellcheck=“true”
+/>
+</div>
+<div class="box">
+<!-- <input
+type="text"
+placeholder="Enter IP Address"> -->
+ <button (click)="Click()">Submit</button>
+</div>
+</div>
+</ion-content>

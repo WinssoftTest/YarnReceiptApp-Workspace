@@ -1,0 +1,178 @@
+import { Component, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CommonService } from '../abi/common.service';
+import { LoginService } from '../abi/login.service';
+import { FormBuilder  } from "@angular/forms";
+import { appsettings } from '../appsettings';
+ 
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
+  providers: [CommonService, LoginService],
+})
+export class LoginPage implements OnInit {
+ 
+  companyArr: any;
+  loginForm:  any;
+  CompanyName
+  BranchName: any;
+  Usernamearr1 :any;
+  CompanyName1="yhjh";
+  Finyear: any;
+  UserName1:any
+  BranchNameArr: any;
+  year: any;
+  UserName:any
+ count = localStorage.getItem('count')
+  Companyid: any;
+  userArrList: any;
+
+  constructor(
+    public router:Router,
+    public commonprovider:CommonService,
+    private _lo: FormBuilder
+  ) { 
+    this.loginForm = this._lo.group({
+      CompanyName: ["", [Validators.required]],
+      BranchName:["",[Validators.required]],
+      UserName1:["",[Validators.required]],
+      year:["",[Validators.required]],
+      Password:["",[Validators.required]]
+      });
+     this.CompanyNameLoad()
+  }
+  ionViewWillEnter() {
+    this.CompanyNameLoad()
+  }
+  // ionViewWillLeave() {
+  //   this.CompanyNameLoad()
+     
+  // }
+  ngOnInit() {
+    console.log('jg')
+    }
+  ngAfterViewInit(): void {
+    console.log('jg')
+    this.CompanyNameLoad();
+   }
+  CompanyNameLoad()
+  
+  {
+    console.log("Work")
+    var req = {
+    };
+    this.commonprovider.GetCompanyNameLoad(req).then((result) => {
+      this.companyArr = result;
+      console.log("CompanyName", this.companyArr)
+         for (var i = 0; i< this.companyArr.length ; i++)
+         {
+          console.log('655555',this.companyArr[i].CompanyId)
+          this.Companyid = this.companyArr[i].CompanyId
+         }
+      return true;
+    });
+  }
+ 
+  onchangeUserName(event)
+   {
+ 
+  console.log('UserNCODE',this.loginForm.value.UserName1.split('#')[1])
+ }
+  onchangeBranch(event)
+    {
+      console.log('UserName',this.UserName1)
+   this.UserNameLoad();
+     }
+  onchangeCompany(event)
+  {
+  this.BranchNameLoad();
+  this.FinYearLoad();
+  }
+ 
+  BranchNameLoad()
+  {
+    console.log(this.loginForm.value.CompanyName.split('#')[0])
+   var req = {
+    Company_Name:this.loginForm.value.CompanyName.split('#')[1]
+    };
+    this.commonprovider.GetBranchNameLoad(req).then((result) => {
+      this.BranchNameArr = result;
+      console.log("BranchName", this.BranchName)
+      return true;
+    });
+  }
+  
+  UserNameLoad()
+  {
+     var req = {
+      Company:this.loginForm.value.CompanyName.split('#')[1],
+      BranchName:this.BranchName.Branch_Name
+      };
+    this.commonprovider.GetUserName(req).then((data) => {
+     console.log("result",data)
+    this.Usernamearr1 = data;
+     return true;
+    });
+    console.log('Year',this.year)
+  }
+  FinYearLoad()
+  {
+   var req = {
+    Company:this.loginForm.value.CompanyName.split('#')[1]
+    };
+    this.commonprovider.GetFinalYearLoad(req).then((result) => {
+      this.Finyear = result;
+      console.log("Finyear", this.Finyear)
+      return true;
+    });
+  }
+  Login()
+  {
+     if(this.loginForm.value.Password == null || this.loginForm.value.Password == undefined || this.loginForm.value.Password == '0')
+     {
+      this.commonprovider.FailedToast('Enter Correct Password')
+     }
+     console.log('UserNCODE',this.loginForm.value.UserName1.split('#')[0])
+       var req = {
+        username: this.loginForm.value.UserName1.split('#')[2],
+        userid: this.loginForm.value.UserName1.split('#')[0],
+        usercode:this.loginForm.value.UserName1.split('#')[1],
+        password: this.loginForm.value.Password,
+        company:this.loginForm.value.CompanyName.split('#')[1]
+      };
+      // console.log(req);
+  
+      this.commonprovider.PasswordLoad(req).then((result) => {
+        var res: any;
+        res = result;
+        this.userArrList = result;
+        console.log('useraeeeeeeeeeee',this.userArrList);
+        if (res.Valid == true) 
+        {
+          localStorage.setItem("Company",this.loginForm.value.CompanyName.split('#')[1]);
+          localStorage.setItem("Branch",this.BranchName.Branch_Name);
+          localStorage.setItem("User",this.loginForm.value.UserName1.split('#')[2]);
+          localStorage.setItem("CopanyId",this.loginForm.value.CompanyName.split('#')[1])
+          console.log('uSER',this.loginForm.value.UserName1.split('#')[2])
+          localStorage.setItem("Year",this.year.Year);
+          console.log('Year',this.year.Year);
+          localStorage.setItem('CompanyId',this.Companyid)
+          console.log('id',this.Companyid)
+           this.commonprovider.presentToast("Login Succesfully")
+          this.router.navigate(["./home"])
+        }  
+        else{
+          this.commonprovider.FailedToast('Login Failed')
+        }
+      });
+    }
+        
+  Settings()
+  {
+    console.log('it work')
+
+    this.router.navigate(["./ipsettings"])
+  }
+}

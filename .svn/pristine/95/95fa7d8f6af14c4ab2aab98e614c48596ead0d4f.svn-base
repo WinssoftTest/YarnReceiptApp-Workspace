@@ -1,0 +1,137 @@
+import { Component, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CommonService } from '../abi/common.service';
+import { LoginService } from '../abi/login.service';
+import { FormBuilder  } from "@angular/forms";
+ 
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
+  providers: [CommonService, LoginService],
+})
+export class LoginPage implements OnInit {
+ 
+  companyArr: any;
+  loginForm:  any;
+  CompanyName
+  BranchName: any;
+  Usernamearr1 :any;
+  CompanyName1="yhjh";
+  Finyear: any;
+  UserName1:any
+  BranchNameArr: any;
+  year: any;
+  UserName:any
+ count = localStorage.getItem('count')
+
+  constructor(
+    public router:Router,
+    public commonprovider:CommonService,
+    private _lo: FormBuilder
+  ) { 
+    this.loginForm = this._lo.group({
+      CompanyName: ["", [Validators.required]],
+      BranchName:["",[Validators.required]],
+      UserName1:["",[Validators.required]],
+      year:["",[Validators.required]]
+      });
+     this.CompanyNameLoad()
+  }
+  ionViewWillEnter() {
+    this.CompanyNameLoad()
+  }
+  // ionViewWillLeave() {
+  //   this.CompanyNameLoad()
+     
+  // }
+  ngOnInit() {
+    console.log('jg')
+    }
+  ngAfterViewInit(): void {
+    console.log('jg')
+    this.CompanyNameLoad();
+   }
+  CompanyNameLoad()
+  
+  {
+    console.log("Work")
+    var req = {
+    };
+    this.commonprovider.GetCompanyNameLoad(req).then((result) => {
+      this.companyArr = result;
+      console.log("CompanyName", this.companyArr)
+      return true;
+    });
+  }
+ 
+  onchangeUserName(event)
+   {
+  console.log('UserName',this.UserName1.UserName)
+ }
+  onchangeBranch(event)
+    {
+      console.log('UserName',this.UserName1)
+   this.UserNameLoad();
+     }
+  onchangeCompany(event)
+  {
+  this.BranchNameLoad();
+  this.FinYearLoad();
+  }
+ 
+  BranchNameLoad()
+  {
+   var req = {
+    Company_Name:this.CompanyName.Company_Name
+    };
+    this.commonprovider.GetBranchNameLoad(req).then((result) => {
+      this.BranchNameArr = result;
+      console.log("BranchName", this.BranchName)
+      return true;
+    });
+  }
+  
+  UserNameLoad()
+  {
+     var req = {
+      Company:this.CompanyName.Company_Name,
+      BranchName:this.BranchName.Branch_Name
+      };
+    this.commonprovider.GetUserName(req).then((data) => {
+     console.log("result",data)
+    this.Usernamearr1 = data;
+     return true;
+    });
+    console.log('Year',this.year)
+  }
+  FinYearLoad()
+  {
+   var req = {
+    Company:this.CompanyName.Company_Name
+    };
+    this.commonprovider.GetFinalYearLoad(req).then((result) => {
+      this.Finyear = result;
+      console.log("Finyear", this.Finyear)
+      return true;
+    });
+  }
+  Login()
+  {
+    localStorage.setItem("Company",this.CompanyName.Company_Name);
+    localStorage.setItem("Branch",this.BranchName.Branch_Name);
+    localStorage.setItem("User",this.UserName1.UserName);
+    console.log('uSER',this.UserName1.UserName)
+    localStorage.setItem("Year",this.year.Year);
+    console.log('Year',this.year.Year)
+     this.commonprovider.presentToast("Login Succesfully")
+    this.router.navigate(["./home"])
+  }
+  Settings()
+  {
+    console.log('it work')
+
+    this.router.navigate(["./ipsettings"])
+  }
+}

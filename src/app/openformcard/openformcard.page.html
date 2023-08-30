@@ -1,0 +1,128 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>BagDetails Edit</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="receipt-open-form"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="BagDetailsForm">
+  <ion-row>
+    <ion-col size="6">
+  <ion-item class="label-font" style="margin-top: 7px">
+    <ion-label style="color: black"> Qty : </ion-label>
+    <ion-input
+       type="number"
+       formControlName="NowQty"
+       [(ngModel)]="NowQty"
+         (ionChange) ="QtyChange($event)"
+    >
+    </ion-input>
+  </ion-item>
+</ion-col>
+<ion-col size="6">
+  <ion-item class="label-font" style="margin-top: 7px">
+    <ion-label style="color: black"> Lot No : </ion-label>
+    <ion-input
+       type="text"
+       formControlName="LotNo"
+       (ionChange)="onchangeDate($event)"
+       [(ngModel)]="LotNo"
+    >
+    </ion-input>
+  </ion-item>
+  </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+  <ion-item class="label-font" style="margin-top: 7px">
+    <ion-label style="color: black"> Wt/pack : </ion-label>
+    <ion-input
+       type="text"
+       formControlName="wt"
+       [(ngModel)]="wt"
+       (ionChange)="onchangewt($event)"
+    >
+    </ion-input>
+  </ion-item>
+  </ion-col>
+  <ion-col size="6">
+  <ion-item class="label-font" style="margin-top: 7px">
+    <ion-label style="color: black">  Cones : </ion-label>
+    <ion-input
+       type="text"
+       formControlName="Cones"
+       [(ngModel)]="Cones"
+       (ionChange)="onchangewt($event)"
+    >
+    </ion-input>
+  </ion-item>
+  </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+  <ion-item class="label-font" style="margin-top: 7px">
+    <ion-label style="color: black">Single C.Wt: </ion-label>
+    <ion-input
+       type="text"
+       formControlName="Single"
+      [(ngModel)]="Single"
+      (ionChange)="onchangewt($event)"
+      disabled
+    >
+    </ion-input>
+  </ion-item>
+  </ion-col>
+  <ion-col size="6">
+  <ion-item class="label-font" style="margin-top: 7px">
+    <ion-label style="color: black">No Of Pack: </ion-label>
+      <ion-input
+       type="text"
+       formControlName="Pack"
+       [(ngModel)]="this.PacktypeINT"
+       disabled
+    >
+    </ion-input>
+  </ion-item>
+  </ion-col>
+  </ion-row>
+  <ion-card class="card">
+    <ion-row>
+      <ion-col size="3"
+      >
+<Label>Orderd :</Label> <p style="color:red ;"> {{ Ordered | number:'1.2-2' }}</p> </ion-col>  <ion-col size="3"> <Label> Already Rec:</Label> <p style="color:red ;">{{ NRCQty }}</p> </ion-col>  <ion-col size="3">  <Label>Balance :</Label><p style="color:red ;">  {{ bal  }} </p></ion-col> <ion-col size="3">  <Label>Ex Rec Qty Bal  :</Label><p style="color:red ;">  {{ Maximum | number:'1.2-2' }} </p></ion-col>
+</ion-row>
+ 
+<ion-row>
+
+ <ion-col size="4"> <Label>Ex Rec % : </Label> {{ Exper }}</ion-col> <ion-col size="4"><Label>Ex Rec Bal :</Label> {{   orderEXbal1 | number:'1.2-2'  }}  </ion-col>  <ion-col size="4">  <Label>Bal with Ex:  {{orderEXbal1  - Ordered | number:'1.2-2'}}</Label> </ion-col></ion-row>
+  </ion-card>
+
+</form>
+<ion-row><ion-col size="6">
+  <button (click)="calculate()">Add</button></ion-col></ion-row>
+  <div *ngIf = "this.PackType == 'Bag' ">
+  <div *ngFor="let a of Totalpacklist">
+    <ion-row>
+   <ion-col size="6" style="color:red ">Pack Type: BAG </ion-col>
+   <ion-col size="6">LotNo :  {{  LotNo}} </ion-col> </ion-row>
+   <ion-row><ion-col size="6">No of Packs : {{ PacktypeINT }}</ion-col></ion-row><ion-row><ion-col size="12">  No.Of Cones/Pack : {{  this.Cones }} </ion-col></ion-row>
+    <ion-row><ion-col size="6">Single Cone : {{ a.SingleCone | number }} </ion-col><ion-col size="6">Single Pack Wt: {{ a.wt }} </ion-col></ion-row>
+   <ion-row><ion-col style="color:red ;" size="12">Total Pack Weight :   {{ a.TotalPack  | number }} </ion-col></ion-row>
+   </div>
+   </div>
+   <div *ngIf = "this.PackType == 'Cone' ">
+   <div *ngFor="let a of TotalConelist">
+    <ion-row>
+    <ion-col size="6" style="color:red ">Pack Type: Cone </ion-col>
+   <ion-col size="6">LotNo :  {{  LotNo}} </ion-col> </ion-row>
+   <ion-row><ion-col size="6">No of Packs : {{ PacktypeINT }}</ion-col></ion-row><ion-row><ion-col size="12">  No.Of Cones/Pack : {{  this.Cones }} </ion-col></ion-row>
+    <ion-row><ion-col size="6">Single Cone : {{ this.Single | number }} </ion-col><ion-col size="6">Single Pack Wt: {{ a.wt }} </ion-col></ion-row>
+   <ion-row><ion-col style="color:red ;" size="12">Total Pack Weight :   {{ this.NowQty  | number }} </ion-col></ion-row>
+   </div>
+  </div>
+   <ion-row><ion-col size="6">
+    <button (click)="Back()">Back</button></ion-col></ion-row>
+</ion-content>

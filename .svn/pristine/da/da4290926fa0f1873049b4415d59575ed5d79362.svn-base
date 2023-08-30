@@ -1,0 +1,7 @@
+{
+  "name": "YARNRECEIPTAPP",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

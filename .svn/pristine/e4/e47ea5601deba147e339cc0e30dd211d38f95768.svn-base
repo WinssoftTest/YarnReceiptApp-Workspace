@@ -1,0 +1,92 @@
+ion-header ion-toolbar,
+ion-buttons {
+   --background: #48C9B0;
+   --color:black;
+   text-align: center;
+  
+}
+.top-toolbar {
+   --background: #48C9B0;
+   --color: black;
+   text-align: center;
+   border-bottom-left-radius: 10px;
+   border-bottom-right-radius: 10px;
+   --border-width: 0px !important;
+   padding: 2px 0px;
+}
+.btncard{
+   width: 100%;
+   padding: 15px;
+}
+.divcard{
+   border: 2px solid black;
+      border-radius: 18px;
+      text-align: center;
+      margin-bottom: 20px;
+}
+.card
+{
+   height: 100%;
+   font-size: 16px;
+   color: black;
+   padding-left: 19px;
+   text-align: left;
+   border-radius: 15px;
+   margin: 0;
+   box-shadow: none;
+}
+.Cardbox
+{
+width: 50px;
+height: 50px;
+border: 2px solid ;
+}
+.smallheader{
+display: grid;
+   grid-template-columns: auto auto;
+   align-items: center;
+   justify-content: space-between;
+}
+.para_extra{
+      text-align: right;
+         padding-right: 25px;
+}
+.green {
+   background-color: green;
+}
+
+.red {
+   background-color: red;
+}
+.Imp
+{
+   color: red;
+}
+.label-font-value
+{
+   max-width: 100%;
+   min-width: 70%;
+}
+.Button
+{
+   // width: 60px;
+   // height: 30px;
+   border-radius: 8px;
+   text-transform: capitalize;
+   letter-spacing: 1px;
+   padding: 10px 15px;
+   background-color: #48C9B0;
+}
+.customToast {
+   text-align: center !important;
+   --button-color: #ffffff;
+   --max-height: 70px;
+   --background: gray;
+   --border-style: solid;
+   --border-width: 1px;
+   --border-color: gray;
+   --color: #ffffff !important;
+   color: #ffffff !important;
+   font-size: 18px !important;
+}
+ 

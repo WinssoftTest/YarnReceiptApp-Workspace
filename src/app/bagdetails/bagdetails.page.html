@@ -1,0 +1,146 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Receipt Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="yarnrecipt"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="BagDetailsForm">
+  <ion-row>
+    <ion-col size="12">
+  <ion-item class="label-font" style="margin-top: 7px">
+    <ion-label style="color: black"> Qty (Kgs) : </ion-label>
+    <ion-input
+       type="number"
+       formControlName="NowQty"
+       [(ngModel)]="NowQty"
+         (ionChange) ="QtyChange($event)"
+    >
+    </ion-input>
+  </ion-item>
+</ion-col>
+<ion-col size="12">
+  <ion-item class="label-font" style="margin-top: 7px">
+    <ion-label style="color: black"> Lot No : </ion-label>
+    <ion-input
+       type="text"
+       formControlName="LotNo"
+       (ionChange)="onchangeDate($event)"
+       [(ngModel)]="LotNo"
+    >
+    </ion-input>
+  </ion-item>
+  </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+  <ion-item class="label-font" style="margin-top: 7px">
+    <ion-label style="color: black"> Wt/Pack : </ion-label>
+    <ion-input
+       type="text"
+       formControlName="wt"
+       [(ngModel)]="wt"
+       (ionChange)="onchangewt($event)"
+    >
+    </ion-input>
+  </ion-item>
+  </ion-col>
+  <ion-col size="12">
+  <ion-item class="label-font" style="margin-top: 7px">
+    <ion-label style="color: black">  Cone/Pack: </ion-label>
+    <ion-input
+       type="text"
+       formControlName="Cones"
+       [(ngModel)]="Cones"
+       (ionChange)="onchangewt($event)"
+    >
+    </ion-input>
+  </ion-item>
+  </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+  <ion-item class="label-font" style="margin-top: 7px"> 
+    <ion-label style="color: black">Single Cone Weight : </ion-label>
+    <ion-input
+       type="text"
+       formControlName="Single"
+      [(ngModel)]="Single"
+      (ionChange)="onchangewt($event)"
+      disabled
+    >
+    </ion-input>
+  </ion-item>
+  </ion-col>
+   </ion-row>
+  <div class="Cardd">
+  <ion-card class="card">
+  <ion-row>   <ion-col size="6"
+    >
+    Count : {{ Count1 }} </ion-col><ion-col size="6"
+    >
+    Color : {{ Color }} </ion-col></ion-row>
+    <ion-row> 
+      <ion-col size="4" >
+<Label>Orderd </Label> <b style="color:red ;"> {{ Ordered | number:'1.2-2' }}</b> </ion-col>  <ion-col size="4"> <Label>  Received </Label> <b style="color:red ;">{{ NRCQty  | number:'1.2-2' }}</b> </ion-col>  <ion-col size="3">  <Label>Bal </Label><b style="color:red ;">  {{ bal  | number:'1.2-2' }} </b></ion-col></ion-row>  
+ 
+<ion-row>
+
+ <ion-col size="4"> <Label>Ex Rec % : </Label> {{ Exper }}</ion-col> <ion-col size="4"><Label>Ex Rec Bal :</Label> {{   orderEXbal1 | number:'1.2-2'  }}  </ion-col>  <ion-col size="4">  <Label>Bal with Ex:  {{orderEXbal1  - Ordered | number:'1.2-2'}}</Label> </ion-col></ion-row>
+  </ion-card>
+ 
+
+ 
+  <ion-row>
+    <ion-col size="6">
+  <button (click)="Add()">Add</button></ion-col>
+  <ion-col size="6">
+    <button (click)="Clear()">Clear</button></ion-col>
+  </ion-row>
+  
+ <div  *ngIf ="this.add == '1' ">
+  <ion-row style="text-align: center;">  
+  <ion-col *ngIf="this.TotalConeWt !=0">   Toatl :  <b style="color:rgb(253, 7, 7);font-size: 22px;text-align: center;">{{PacktypeINT}}</b>  PACK  & <b style="color:rgb(253, 7, 7);font-size: 22px;"> {{ this.Conesweight }} </b>Cones  </ion-col>
+ </ion-row>
+<ion-row style="text-align: center;" >  <ion-col  size="12"> 
+ Total Weight (Kgs) :  <b style="color:rgb(253, 7, 7);font-size: 22px;text-align: center;"> {{ this.totalOverallweight  | number }}</b>   </ion-col></ion-row>
+</div>
+  <card style="width: 100px;height:200px"> 
+ <div *ngFor="let a of Totalpacklist" class="Card" (click)="Save(a)">
+  <ion-row>
+    <ion-col size="5" style="color:red "> Type : PACK </ion-col>
+    <ion-col size="7" style="color:red ">No of Packs : <span style="color:red ;font-weight: bold;font-size: 22px;  "> {{ PacktypeINT }}</span> </ion-col></ion-row>
+    <ion-row>  <ion-col size="12">Single Cone Wt <b> : </b>  <span style="color:red ;font-weight: bold;  ">{{ this.Single }} </span> </ion-col> </ion-row>
+     <ion-row>  <ion-col size="12">Cones/Pack <b style="margin-left: 32px;"> : </b>  <span style="color:red ;font-weight: bold;  ">{{  this.Cones }}</span> </ion-col>
+    <ion-col size="8">Single Pack Wt <b style="margin-left: 5px;"> : </b> <span style="color:red ;font-weight: bold;  ">{{ a.wt }}</span>  </ion-col>
+    <ion-col size="4">LotNo <b style="margin-left: 1px;"> :</b>  {{  LotNo}} </ion-col> </ion-row>
+    <ion-row><ion-col size="12">Pack No <b style="margin-left: 55px;"> <b style="margin-left: 1px;"> : </b></b> {{  CurrentPackNO }}</ion-col></ion-row>
+    <ion-row></ion-row>
+    <ion-row><ion-col style="color:red ;" size="12">Total Pack Weight (Kgs) : <span style="color:red ;font-weight: bold;  ">{{ a.TotalPack  | number }}</span>   </ion-col></ion-row>
+    </div>
+ 
+ 
+ 
+ <div  *ngIf ="this.TotalConeWt !=0 && this.Single  < this.TotalConeWt ">
+ <div *ngFor="let  b of TotalConelist" class="Card" (click)="Save(a)">
+    <ion-row>
+    <ion-col style="color:red " size="5"> Type :  CONES </ion-col>
+    <ion-col size="7" style="color:red">No of Packs :  <span style="color:red ;font-weight: bold;  ">  1  </span> </ion-col></ion-row>
+    <ion-row><ion-col size="12">Single Cone Wt <b> : </b>  <span style="color:red ;font-weight: bold;  ">{{ this.Single }}</span>  </ion-col> </ion-row>
+    <ion-row> <ion-col size="12"> Cones/Pack <b style="margin-left: 32px;"> : </b>   <span style="color:red ;font-weight: bold;font-size: 22px;  ">  {{ this.Conesweight }} </span></ion-col></ion-row>
+    <ion-row><ion-col size="8">Single Pack Wt <b style="margin-left: 5px;"> : </b>  <span style="color:red ;font-weight: bold;  ">  {{  this.SinglePackConeWeight | number }} </span> </ion-col>
+    <ion-col size="4">LotNo <b style="margin-left: 1px;"> :</b>  {{  LotNo}} </ion-col> </ion-row>
+    <ion-row><ion-col size="12">Pack No <b style="margin-left: 60px;"> :</b> {{ b.CurrentPackNO }}</ion-col></ion-row>
+ <!-- <ion-row><ion-col size="6">No of Pack : {{  this.PacktypeINT }}</ion-col></ion-row> -->
+
+ <ion-row><ion-col style="color:red" size="12">Total Cone Weight (Kgs) :   <span style="color:red ;font-weight: bold;  "> {{  this.SinglePackConeWeight | number  }} </span> </ion-col></ion-row>
+ </div>
+ </div>
+</card>
+
+</div>
+</form>
+</ion-content>

@@ -1,0 +1,286 @@
+<ion-header style="background-color:aliceblue  ">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon style="height: 25px;width: 25px;margin-left: 5px; " name="arrow-back-outline" (click)="BACK()"></ion-icon> 
+    <ion-title style="margin-left: 50px;" >WEAVING - RECEIPT</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>   
+  <form [formGroup]="WeavingReceipt"> 
+    
+    <ion-item> 
+      <label  class="label-font">Production :</label>
+      <input  style="margin-left: 10px;background-color: white !important" class="Radio" [(ngModel)]="Production" (change)="Resupplys()" formControlName="Production"   type="radio"   value="YES">
+      <label style="margin-left: 10px" for="YES">Yes</label><br>
+      <input style="margin-left: 20px;background-color: white !important;"   class="Radio"  type="radio"  [(ngModel)]="Production" (change)="Resupplys()"   formControlName="Production" id="NO" name="Production" value="NO">
+      <label  style="margin-left: 10px" class="Radioval" for="NO">No</label><br>
+ 
+   </ion-item>
+   <ion-item> 
+      <label  class="label-font" >Unit :</label>
+      <input style="margin-left: 10px" class="Radio" [(ngModel)]="Own" (change)="UnitType()" formControlName="Own"   type="radio" name ="Own" id="YES"  value="1">
+      <label style="margin-left: 10px; background-color: white !important " class="Radioval" for="YES">Own</label><br>
+      
+      <input class="Radio" style="margin-left: 20px;"   type="radio"  [(ngModel)]="Own"  (change)="UnitType()" formControlName="Own" id="NO" name="Own" value="0">
+      <label style="margin-left: 10px" class="Radioval" for="NO">Outside</label><br>
+   </ion-item> 
+  <ion-item>
+    <ion-label class="label-font" style="padding-top: 13px;margin-left: 7px;"> WH <sup> * </sup>  </ion-label> 
+    <ion-select
+    formControlName="Warehouse"
+  [(ngModel)]="Warehouse"
+  interface="action-sheet"
+
+  style="margin-left: 20px; font-family: Manrope, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 550 !important; color: black;   max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;">
+          <ion-select-option
+          style="max-width: max-content"
+          *ngFor="let WAR of WH"
+          >{{WAR.WarehouseName }}
+        </ion-select-option>
+</ion-select>
+</ion-item>
+<ion-item style="margin-top: 7px">
+  <ion-label class="label-font">Party <sup> * </sup></ion-label>
+    <ionic-selectable
+    [items]="PartyName"
+    itemValueField="id"
+    itemTextField="PartyName"
+    [canSearch]="true"
+    formControlName="PartyName"
+    [(ngModel)]="PartyNamel"
+    (onChange)="portChange($event)"
+  >
+  </ionic-selectable>
+</ion-item>
+<ion-item>
+  <ion-label class="label-font">Wo No <sup> * </sup></ion-label>
+    <ionic-selectable
+    [items]="Workordr"
+    itemValueField="id"
+    itemTextField="WorkOrder"
+    [canSearch]="true"
+    formControlName="WorkOrder"
+    [(ngModel)]="WorkOrder"
+    (onChange)="portChange1($event)"
+  >
+  </ionic-selectable>
+</ion-item>
+<ion-item>
+  <ion-label class="label-font">Order No <sup> * </sup></ion-label>
+   <ionic-selectable
+    [items]="Orde"
+    itemValueField="id"
+    itemTextField="Orde"
+    [canSearch]="true"
+    formControlName="OrderNumber"
+    [(ngModel)]="OrderNumber"
+    (onChange)="portChangeOrdNo ($event)"
+  >
+  </ionic-selectable>
+</ion-item>
+<ion-row>
+  <ion-col size="6">
+<ion-item>
+  <ion-label class="label-font">DC No <sup> * </sup> :</ion-label>
+   <ion-input type="text"
+   formControlName="DC"
+   [(ngModel)]="DC"></ion-input>
+</ion-item>
+</ion-col>
+<ion-col size="6">
+<ion-item>
+  <ion-label class="label-font">Veh.No <sup> *  </sup> :</ion-label>
+   <ion-input type="text"
+   formControlName="VehNo"
+   [(ngModel)]="VehNo"></ion-input>
+</ion-item>
+</ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size="6">
+<ion-item>
+  <ion-label class="label-font">Time <sup> * </sup> :</ion-label>
+   <ion-input type="Time"
+   formControlName="InTime"
+   [(ngModel)]="InTime"
+   (ionChange)="IntimeChange()"></ion-input>
+</ion-item>
+</ion-col>
+<ion-col size="6">
+<ion-item>
+  <ion-label class="label-font">GatePass <sup> *  </sup> :</ion-label>
+  <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
+  <ion-input
+    type="text"
+    class="label-font-value"
+    formControlName="GatePass"
+    [(ngModel)]="GatePass"
+  ></ion-input>
+  </ion-item>
+  </ion-col>
+  </ion-row>
+<ion-item>
+  <ion-label class="label-font">DriverName <sup> * </sup> :</ion-label>
+   <ion-input type="text"
+   formControlName="DriverName"
+   [(ngModel)]="DriverName">
+  </ion-input>
+</ion-item>
+ 
+ 
+<ion-row>
+  <ion-col size="6">
+   <button class="Button"  (click)="GridDetailLoad()" >ADD</button>
+   </ion-col>
+    <ion-col size="6">
+      <button class="Button" (click)="clear()">Clear</button>
+  </ion-col>
+  </ion-row>
+
+<ion-chip style="text-align: center;margin-top: 22px;margin-left: 25%;  font-family: 'Manrope', sans-serif;
+font-size: 16px !important;
+font-weight: 500;">PIECE COUNT : {{ this.count }}</ion-chip>
+<div *ngFor="let GRD of  GridDetailsLoad; let optionindex = index" 
+
+class="card">
+WorkOrder No - {{GRD.WorkOrderNo
+  }}<br>
+Order No -  {{GRD.Order_No
+  }}<br>
+
+{{GRD.F_Count
+  }}  <b style="color: red;"> | </b> {{GRD.Reed_Pick}}<b style="color: red;">| </b> {{GRD.F_Size}}<b style="color: red;"> | </b> {{GRD.Color}} <b style="color: red;"> | </b>  <b>{{GRD.Design_Name
+  }}</b>
+  <br>
+ <ion-row>
+  <ion-col size="6">
+    <label class="labe">Total Mtr : <br>
+      <b style="color: red;">    {{ GRD.OrderQty
+
+    }} </b></label> 
+  </ion-col>
+  <ion-col size="6">
+    <label class="labe">Received Mtr : <b  style="color: red;"> {{ GRD.Received
+    }} </b> </label> 
+    </ion-col>
+    <ion-col size="12"> 
+      <label class="labe"> Bal :  <b  style="color: red;"> {{ GRD.OrderQty - GRD.Received | number : '1.2-2'  }}  </b>  </label>
+     </ion-col>
+    </ion-row>
+ 
+  <ion-row> 
+    <ion-col size="12">
+    <ion-item style="margin-left: -10px;">
+      <ion-label class="label-font">Bale No :  <sup> * </sup> </ion-label> 
+      <ion-input type="number"
+      [(ngModel)]="BaleNo"
+      formControlName="BaleNo">
+      </ion-input>
+    </ion-item>
+    </ion-col>
+    </ion-row>
+  <ion-row> 
+  <ion-col size="6">
+  <ion-item style="background-color: gray;margin-left: -10px;">
+    <ion-label class="label-font">Rec Size : </ion-label> 
+    <ion-input type="number"
+    [(ngModel)]="GRD.F_Size"
+    formControlName="RecSize"
+    [disabled]="true">
+    </ion-input>
+  </ion-item>
+  </ion-col>
+
+  <ion-col size="6">
+    <ion-item >
+      <ion-label class="label-font">Mtr : <sup> * </sup> </ion-label> 
+      <ion-input type="number"
+      [(ngModel)]="Mtr"
+      formControlName="Mtr"
+   >
+        </ion-input>
+    </ion-item>
+    </ion-col>
+    </ion-row>
+    <ion-row> 
+    <ion-col size="6">
+      <ion-item style="margin-left: -17px;">
+        <ion-label class="label-font">Wgt :  </ion-label> 
+        <ion-input type="number"
+        [(ngModel)]="Wgt"
+        formControlName="Wgt">
+          </ion-input>
+      </ion-item>
+      </ion-col>
+    
+      <ion-col size="6">
+        <ion-item  >
+          <ion-label class="label-font">Beam No  : </ion-label> 
+          <ion-input type="number"
+          [(ngModel)]="Beam"
+          formControlName="Beam">
+            </ion-input>
+        </ion-item>
+        </ion-col>
+        </ion-row>
+        <ion-row>
+        <ion-col size="6">
+          <ion-item style="margin-left: -17px;">
+            <ion-label class="label-font">Set No : </ion-label> 
+            <ion-input type="number"
+            [(ngModel)]="Set"
+            formControlName="Set">
+              </ion-input>
+          </ion-item>
+          </ion-col>
+           <ion-col size="6">
+            <ion-item >
+              <ion-label class="label-font">Weft No : </ion-label> 
+              <ion-input type="number"
+              [(ngModel)]="Weft"
+              formControlName="Weft">
+                </ion-input>
+            </ion-item>
+            </ion-col> 
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-item style="margin-left: -17px;">
+                <ion-label class="label-font">Doffing Reason : </ion-label> 
+                <select 
+                [(ngModel)]="Reasonn"
+                formControlName="Reasonn">
+           
+                <option
+                  *ngFor="let c of Reason; let optionindex = index"
+                   > 
+                    {{c.val}}</option>  
+                  </select>
+              </ion-item>
+              </ion-col> 
+          </ion-row>
+          <ion-row> 
+            <ion-col size="6">        
+              <button class="Button2"    (click)="itemClick(GRD, optionindex)">Apply</button>
+              </ion-col>
+            <ion-col size="6">        
+             <button class="Button1" [disabled]="isButton" (click)="SaveLoad()">Save</button>
+             </ion-col>
+            </ion-row>
+         
+ </div>
+ 
+ <!-- </div> -->
+
+ 
+ 
+ 
+</form>
+
+</ion-content>

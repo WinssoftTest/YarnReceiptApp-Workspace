@@ -1,0 +1,146 @@
+ion-header ion-toolbar,
+ion-buttons {
+   --background: #3CBFCB;
+   --color:black;
+   text-align: center;
+  
+}
+.top-toolbar {
+   --background: #48C9B0;
+   --color: black;
+   text-align: center;
+   border-bottom-left-radius: 10px;
+   border-bottom-right-radius: 10px;
+   --border-width: 0px !important;
+   padding: 2px 0px;
+}
+.btncard{
+   width: 100%;
+   padding: 15px;
+}
+.divcard{
+   font-family: -apple-system, BlinkMacSystemFont, segoe ui,
+  Roboto, helvetica neue, Arial, noto sans, sans-serif,
+  apple color emoji, segoe ui emoji, segoe ui symbol,
+  noto color emoji;
+  font-size: 16px !important;
+  letter-spacing: 1px;
+   border-radius: 18px;
+   width: 100%;
+   padding-left: 10px;
+   
+   
+   
+}
+.card
+{
+   height: 100%;
+   font-size: 16px;
+   color: black;
+   padding-left: 19px;
+   text-align: left;
+   border-radius: 15px;
+   margin: 0;
+   box-shadow: none;
+}
+.Cardbox
+{
+width: 50px;
+height: 100px;
+border: 2px solid ;
+}
+.smallheader{
+display: grid;
+   grid-template-columns: auto auto;
+   align-items: center;
+   justify-content: space-between;
+}
+.para_extra{
+      text-align: right;
+         padding-right: 25px;
+}
+.green {
+   background-color: green;
+}
+
+.red {
+   background-color: red;
+}
+.Imp
+{
+   color: red;
+}
+sup{
+   font-size: 15px;
+   color: red;
+
+ }
+// .label-font-value
+// {
+//    max-width: 100%;
+//    min-width: 70%;
+// }
+.Button
+{
+   text-transform: capitalize;
+   letter-spacing: 1px;
+   background-color: #74d6c3;
+   padding: 8px 8px;
+   border-radius: 10px 10px;
+   margin-left: 40px;
+   color: black;
+   padding-bottom: 10px !important;
+   
+ }
+
+
+         
+         
+ .Button1 {
+    background-image: linear-gradient(to right, #af6e71 0%, #f10808 51%, #1fffac 100%);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    margin-left: 107px;
+    margin-top: -12px;
+    margin-bottom: -18px;
+  }
+
+  .Button1:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+ 
+
+
+
+// .Button1
+// {
+//    // width: 60px;
+//    // height: 30px;
+//    border-radius: 8px;
+//    text-transform: capitalize;
+//    letter-spacing: 1px;
+//    padding: 10px 15px;
+//    background-color: #74d6c3;
+//    margin-top: 9px;
+//    margin-left: 117px;
+//    margin-bottom: 9px;
+// }
+ionic-selectable {
+   display: block;
+   max-width:  max-content;
+}
+ 
+    
+    ion-card{
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+    }

@@ -1,0 +1,201 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>FG - RECEIPT</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="FGReceipt"> 
+    <ion-grid>
+      <ion-row>
+    <ion-col   size="12"    size-md="6" size-lg="3">
+      <ion-item>
+        <ion-label class="label-font" style="padding-top: 13px;"> WH <sup> * </sup>  </ion-label> 
+          <ion-select
+          class="label-font-value"
+          formControlName="Warehouse"
+          [(ngModel)]="Warehousename"
+          interface="action-sheet"
+            >
+        <ion-select-option
+        style="max-width: max-content"
+         *ngFor="let WAR of WH"
+        >{{WAR.WarehouseName }}
+      </ion-select-option>
+        </ion-select>
+      </ion-item>
+      </ion-col>  
+      <ion-col   size="12"    size-md="6" size-lg="3">
+        <ion-item>
+          <ion-label class="label-font" style="padding-top: 13px;"> Order Type <sup> * </sup>  </ion-label> 
+            <ion-select
+            class="label-font-value"
+            formControlName="OrderType"
+            [(ngModel)]="OrderType"
+            interface="action-sheet"
+              >
+             <ion-select-option
+          style="max-width: max-content"
+          class="ion-select-option"
+           *ngFor="let ty of type"
+          >{{ty.typ }}
+        </ion-select-option>
+          </ion-select>
+        </ion-item>
+        </ion-col>  
+        <ion-col   size="12"    size-md="6" size-lg="3">
+          <ion-item>
+            <ion-label class="label-font" style="padding-top: 13px;">Sample Bulk <sup> * </sup>  </ion-label> 
+              <ion-select
+              class="label-font-value"
+              formControlName="Sample"
+              [(ngModel)]="Sample"
+              interface="action-sheet"
+                >
+            <ion-select-option
+            style="max-width: max-content"
+            class="ion-select-option"
+             *ngFor="let sam of Sampleload"
+            >{{sam.sample }}
+          </ion-select-option>
+            </ion-select>
+          </ion-item>
+          </ion-col>  
+      </ion-row>
+      <ion-col   size="12"    size-md="6" size-lg="3">
+        <ion-item style="margin-top: 7px">
+          <ion-label class="label-font">Supplier <sup> * </sup></ion-label>
+        <ionic-selectable
+          [items]="PartyNameIns"
+          itemValueField="id"
+          itemTextField="PartyName"
+          [canSearch]="true"
+          formControlName="PartyName"
+          [(ngModel)]="PartyName"
+          (onChange)="portChanges($event)"
+          style="max-width: 100%;   font-family: 'Manrope', sans-serif;
+          font-size: 16px !important;
+          font-weight: 500;"
+  
+          
+           >
+          </ionic-selectable>
+          </ion-item>
+      </ion-col>  
+      <ion-col   size="12"    size-md="6" size-lg="3">
+        <ion-item>
+          <ion-label class="label-font"  > Po No <sup> * </sup>  </ion-label> 
+          <ionic-selectable
+          [items]="Workordr"
+          itemValueField="id"
+          itemTextField="WorkOrder"
+          [canSearch]="true"
+          formControlName="WorkOrder"
+          [(ngModel)]="WorkOrder"
+          (onChange)="WorkOrders($event)"
+          style="max-width: 100%;   font-family: 'Manrope', sans-serif;
+          font-size: 16px !important;
+          font-weight: 500;
+       "
+          >
+        </ionic-selectable>  
+        </ion-item>
+        </ion-col>
+        <ion-col   size="6"    size-md="6" size-lg="3">
+          <ion-item>
+            <ion-label class="label-font">DC <sup> * </sup>  </ion-label> 
+              <ion-input
+              class="label-font-value"
+              formControlName="Dc"
+              [(ngModel)]="DC"
+              interface="action-sheet"
+                ></ion-input>
+             </ion-item>
+          </ion-col>  
+          <ion-col   size="6"    size-md="6" size-lg="3">
+            <ion-item>
+              <ion-label class="label-font" style="padding-top: 13px;">Gatepass No <sup> * </sup>  </ion-label> 
+                <ion-input
+                class="label-font-value"
+                formControlName="Gatepass"
+                [(ngModel)]="Gatepass"
+                interface="action-sheet"
+                  ></ion-input>
+               </ion-item>
+            </ion-col>  
+        <ion-row> 
+          <ion-col  size="6">
+           <button  class="label-font" class="Button" (click)="AddButoon()">Add</button>
+         </ion-col>
+        
+         <ion-col size="6">
+          <button  class="label-font" class="Button"  (click)="Clear()" >Clear</button>
+        </ion-col>
+        </ion-row>
+        <div *ngFor="let GRD of  receiptgrid; let optionindex = index" class="card"> 
+        <ion-row>
+          <ion-col size="1">
+        <img
+        *ngIf="GRD.selected == true"
+        class="avt-prod"
+        src="../../assets/icon/checked.png"
+        style="margin-left: 10px;"
+      />  
+    </ion-col>
+    </ion-row>
+    <ion-col size="11">
+        WorkOrder No - {{GRD.workorderno
+          }}</ion-col>
+         <br>
+         Order No -  {{GRD.orderno
+          }}<br>
+          Ord - <b style="color: red;"> {{GRD.ordqty
+          }} <b style="color: red;"> | </b> {{GRD.RecQty
+          }}</b>
+          Bal : <b style="color: red;"> {{GRD.ordqty
+          - GRD.RecQty}} </b>
+          <br>
+         <b style="color: red;"> | </b> {{GRD.count
+          }}  <b style="color: red;"> | </b> {{GRD.Color
+          }}<b style="color: red;">| </b> {{GRD.size}}<b style="color: red;"> | </b> {{GRD.Specifications}} <b style="color: red;"> | </b>  <b>{{GRD.size
+          }}</b>
+          <br>
+          <ion-row>
+          <ion-col   size="6"    size-md="6" size-lg="3">
+            <ion-item>
+              <ion-label class="label-font" >Qty<sup> * </sup>  </ion-label> 
+                <ion-input
+                class="label-font-value"
+                formControlName="Qty"
+               
+                interface="action-sheet"
+                  ></ion-input>
+               </ion-item>
+            </ion-col>  
+            <ion-col   size="6"  size-md="6" size-lg="3">
+              <ion-item>
+                <ion-label class="label-font"  >Weight<sup> * </sup>  </ion-label> 
+                  <ion-input
+                  class="label-font-value"
+                  formControlName="Weight"
+                  
+                  interface="action-sheet"
+                    ></ion-input>
+                 </ion-item>
+              </ion-col>  
+              </ion-row>
+          <ion-row> 
+            <ion-col size="6">        
+              <button class="Button2"    (click)="itemClick(GRD, optionindex)">Apply</button>
+              </ion-col>
+              </ion-row>
+    
+            </div>
+            <div *ngIf="  this.selectedArr != ''">
+            <ion-col size="6">        
+              <button class="Button1"  (click)="Save()">Save</button>
+              </ion-col>
+              </div>
+      </ion-grid>
+      </form>
+</ion-content>

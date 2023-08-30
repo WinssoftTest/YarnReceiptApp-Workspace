@@ -1,0 +1,103 @@
+ion-header{
+  border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 0px !important;
+}
+.top-toolbar{
+    --background: #48C9B0;
+      --color: black;
+      text-align: center;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+padding: 10px !important;
+}
+.toolbar-container{
+  padding: 0;
+}
+ .icon {
+   background-color: #ffffff;
+   margin-top: 10px !important;
+   width: 70px;
+   height: 45px;
+ }
+.title-img-container {
+  width: 65%;
+  height: auto;
+  margin: 25px auto;
+  padding: -30px;
+  margin-top: -50px !important;
+  margin-bottom: 8px;
+//padding: 10px;
+}
+.company-img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.login-container{
+  margin: 0 auto;
+  width: 90%;
+  display: grid;
+  gap: 1rem;
+}
+.div-container{
+width: 100%;
+display: grid;
+gap: 0.5rem;
+}
+label{
+width: 100%;
+    font-family: 'Cairo', sans-serif;
+      font-weight: 500;
+          font-size: 15px;
+          letter-spacing: 1px;
+}
+sup{
+  font-size: 15px;
+  color: red;
+}
+select{
+    width: 100%;
+    padding: 8px 0;
+    font-weight: 600;
+    border-radius: 6px;
+      border: 1px solid gray;
+      background-color: white !important;
+ }
+ option{
+  padding: 5px 10px;
+ }
+ input{
+  font-size: 15px; color: navy; padding: 8px !important;
+  border-radius: 6px;
+  border: 1px solid gray;
+ }
+button
+{
+    width: 100%;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    color:black;
+    background-color: #48C9B0;
+}
+.loginbtn{
+padding-top: 20px;
+}
+.footer{
+  display: grid;
+  gap: 0.3rem;
+  align-items: center;
+  justify-content: center;
+}
+p{
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.alert 
+{
+color: red;
+}
