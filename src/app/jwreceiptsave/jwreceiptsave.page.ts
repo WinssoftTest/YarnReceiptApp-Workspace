@@ -203,7 +203,7 @@ jwreceiptsave()
      reccolor:itemsload.Color,
      reccompstatus:'0',
      recdesign:'0',
-     recdesignno:'',
+     recdesignno:'0',
      reclength:itemsload.F_Length,
      reclunit:itemsload.F_Length,
      recpcswgt:'',
