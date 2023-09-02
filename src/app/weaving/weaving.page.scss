@@ -6,6 +6,16 @@ ion-buttons {
    text-align: center;
   
 }
+.capitalize-first-letter::first-letter {
+  text-transform: capitalize;
+}
+ 
+
+
+
+
+
+
 .label-font
 {
     font-family: 'Manrope', sans-serif;

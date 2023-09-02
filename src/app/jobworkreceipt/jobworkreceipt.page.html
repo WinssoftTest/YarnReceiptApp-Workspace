@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon style="height: 25px;width: 25px;margin-left: 5px; " name="arrow-back-outline" (click)="BACK()"></ion-icon> 
     <ion-title>JOBWORK - RECEIPT</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -8,7 +11,7 @@
  
     <form [formGroup]="jwReceipt"> 
       <ion-item>
-        <ion-label class="label-font" style="padding-top: 13px;margin-left: 7px;"> WH <sup> * </sup>  </ion-label> 
+        <ion-label class="label-font" style="padding-top: 13px;margin-left: 7px;"> WH <sup> * </sup> : </ion-label> 
         <ion-select
         formControlName="Warehouse"
       [(ngModel)]="Warehouse"
@@ -29,7 +32,7 @@
 
     <ion-row>
       <ion-col size="12">
-      <label   style="padding-top: 13px;margin-left: 15px;"> Job Work <sup> * </sup>  </label> 
+      <label   style="padding-top: 13px;margin-left: 15px;"> Job Work <sup> * </sup> : </label> 
         <select
         
         formControlName="JobWork"
@@ -43,7 +46,7 @@
  
      </select> 
     </ion-col><ion-col size="12">
-      <label style="padding-top: 13px;margin-left: 15px;"> Process <sup> * </sup>  </label> 
+      <label style="padding-top: 13px;margin-left: 15px;"> Process <sup> * </sup> : </label> 
        <select
        formControlName="Process"
      [(ngModel)]="Process"
@@ -60,7 +63,7 @@
  
          
       <ion-item style="margin-top: 7px">
-        <ion-label class="label-font">Party <sup> * </sup></ion-label>
+        <ion-label class="label-font">Party <sup> * </sup> :</ion-label>
       <ionic-selectable
           [items]="PartyNameIns"
         itemValueField="id"
@@ -74,7 +77,7 @@
         </ionic-selectable>
         </ion-item>
         <ion-item> 
-          <ion-label  class="label-font"> Wo No <sup> * </sup>  </ion-label>
+          <ion-label  class="label-font"> WO No <sup> * </sup> : </ion-label>
         <ionic-selectable
           [items]="Workordr"
           itemValueField="id"
@@ -88,7 +91,7 @@
         </ionic-selectable>  
         </ion-item>
         <ion-item>
-          <ion-label class="label-font">Order No <sup> * </sup></ion-label>
+          <ion-label class="label-font">PO No <sup> * </sup>:</ion-label>
            <ionic-selectable
             [items]="Orde"
             itemValueField="id"
@@ -131,7 +134,7 @@
     </ion-col>
     </ion-row>
     <ion-item>
-      <ion-label class="label-font" style="padding-top: 13px;"> GatePass <sup> * </sup>  </ion-label> 
+      <ion-label class="label-font" style="padding-top: 13px;"> Gate Pass <sup> * </sup>  </ion-label> 
      
    <ion-input type="text"
    class="label-font-value"

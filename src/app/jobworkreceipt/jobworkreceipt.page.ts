@@ -114,6 +114,10 @@ export class JobworkreceiptPage implements OnInit {
      return true;
    });
   }
+  BACK()
+  {
+    this.router.navigate(['./home'])
+  }
   WareHouseNameLoad() {
     var req = {
       company: this.Company,

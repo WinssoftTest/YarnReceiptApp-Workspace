@@ -2,11 +2,11 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-icon style="height: 25px;width: 25px;margin-left: 5px; " name="arrow-back-outline" (click)="BACK()"></ion-icon> 
-    <ion-title>STORES RECEIPT SAVE</ion-title>
+    <ion-title>STORES RECEIPT <ion-chip style="background-color: lightgray;color: red;">BALANCE :  {{this.balance - this.totalQty}}</ion-chip>  </ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
+<!-- {{this.RecQty - }} -->
 <ion-content>
   <form [formGroup]="StoreReceiptsave"> 
   <ion-grid>
@@ -25,7 +25,7 @@
       </ion-col> 
     <ion-col    size="6"    size-md="6" size-lg="3">
       <ion-item>
-        <ion-label class="label-font" >Location<sup> * </sup>   </ion-label> 
+        <ion-label class="label-font" >Location   </ion-label> 
           <ion-select
           class="label-font-value"
           formControlName="RackLocation"
@@ -45,7 +45,7 @@
 
       <ion-col   size="6"    size-md="6" size-lg="3">
         <ion-item>
-          <ion-label class="label-font"  > Rack <sup> * </sup>  </ion-label> 
+          <ion-label class="label-font"  > Rack   </ion-label> 
             <ion-select
             class="label-font-value"
             formControlName="Rack"
@@ -64,7 +64,7 @@
         </ion-col> 
         <ion-col   size="6"    size-md="6" size-lg="3">
           <ion-item>
-            <ion-label class="label-font"  > Bin <sup> * </sup>  </ion-label> 
+            <ion-label class="label-font"  > Bin    </ion-label> 
               <ion-select
               class="label-font-value"
               formControlName="Bin"
@@ -82,7 +82,7 @@
           </ion-col> 
           <ion-col   size="6"    size-md="6" size-lg="3">
             <ion-item>
-              <ion-label class="label-font" > LotNo <sup> * </sup> :  </ion-label> 
+              <ion-label class="label-font" > Lot No <sup> * </sup> :  </ion-label> 
                 <ion-input
                 class="label-font-value"
                 formControlName="LotNo"
@@ -94,7 +94,7 @@
             </ion-col> 
             <ion-col   size="6"    size-md="6" size-lg="3">
               <ion-item>
-                <ion-label class="label-font"  > BaleNo <sup> * </sup> :  </ion-label> 
+                <ion-label class="label-font"  > Bale No   :  </ion-label> 
                   <ion-input
                   class="label-font-value"
                   formControlName="BaleNo"
@@ -128,6 +128,7 @@
                     <button  class="label-font" class="Button"  (click)="Clear()" >Clear</button>
                   </ion-col>
                   </ion-row>
+               
                   <div *ngFor="let card of openedCards ; let optionindex = index" class="card">
                     <ion-row>
                       <ion-col size="1">
@@ -206,10 +207,12 @@
                               <button  size-md="6" size-lg="1" size-xs="12" class="label-font" class="Button2"    (click)="itemClick(card, optionindex)">Apply</button>
                               </ion-row>
                          </div>   
-                  <div *ngIf="this.selectedArr !='' ">
+                  <div *ngIf="this.selectedArr !=''" >
+                    <div *ngIf="this.balance >=   this.totalQty ">
                   <ion-col size="6">        
                     <button class="Button1" [disabled]="isButton" (click)="Save()">Save</button>
                     </ion-col>
+                    </div>
                     </div>
                     </ion-row>
       </ion-grid>

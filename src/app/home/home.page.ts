@@ -108,6 +108,12 @@ this.OrderNumberLoad()
   {
     this.router.navigate(['fgpurchasereceipt']) 
   }
+  fabricpurchasereceipt()
+  {
+    
+    this.router.navigate(['fabricreceipt']) 
+
+  }
  OrderNumberLoad()
   {
    var req = {

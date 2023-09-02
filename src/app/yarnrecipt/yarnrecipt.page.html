@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar class="top-toolbar">
-    <ion-title>Yarn Receipt Entry</ion-title>
+  <ion-toolbar  >
+    <ion-title>YARN RECEIPT</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
@@ -10,6 +10,7 @@
 <ion-content>
   <form [formGroup]="YarnReceiptForm">
     <div>
+      
       <ion-item>
         <ion-label class="label-font"> WH <sup> * </sup> </ion-label>
         <!-- <ion-label class="label-font">
@@ -29,14 +30,18 @@
           
         >
           <ion-select-option
-            style="max-width: max-content"
+          class="label-font-value"
+            style="max-width: max-content;font-family: 'Manrope', sans-serif;
+            font-size: 16px !important;
+            font-weight: 550;
+            color: gray;"
             *ngFor="let WAR of WarehouseNameArr"
             >{{WAR.WarehouseName }}
           </ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item style="margin-top: 7px">
-        <ion-label class="label-font">Party <sup> * </sup></ion-label>
+        <ion-label class="label-font">Party   <sup> * </sup>:</ion-label>
         <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
 
         <ionic-selectable
@@ -51,7 +56,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label class="label-font">Wo No <sup> * </sup></ion-label>
+        <ion-label class="label-font">WO No <sup> * </sup>:</ion-label>
         <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
         <ionic-selectable
           [items]="Workordr"
@@ -64,7 +69,7 @@
         </ionic-selectable>
       </ion-item>
       <ion-item>
-        <ion-label class="label-font">Po No <sup> * </sup></ion-label>
+        <ion-label class="label-font">PO No <sup> * </sup>:</ion-label>
         <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
         <ionic-selectable
           [items]="Orde"
@@ -78,8 +83,9 @@
       </ion-item>
 
       <ion-item>
-        <ion-label class="label-font">GatePass <sup> * </sup></ion-label>
+        <ion-label class="label-font">Gate Pass <sup> * </sup></ion-label>
         <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
+         <div *ngIf="GatepassNumLoad.length == '' ">  
         <ion-input
           type="text"
           class="label-font-value"
@@ -88,6 +94,8 @@
           font-size: 16px !important;
           font-weight: 550;"
         ></ion-input>
+     </div> 
+     <div *ngIf="GatepassNumLoad.length != '' ">  
         <ion-select
           class="label-font-value"
           formControlName="GatePass"
@@ -101,9 +109,10 @@
             {{ GP.GatePass_No }}
           </ion-select-option>
         </ion-select>
+        </div>
       </ion-item>
       <ion-item>
-        <ion-label class="label-font"> Dc No <sup> * </sup></ion-label>
+        <ion-label class="label-font"> DC No <sup> * </sup></ion-label>
         <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
         <ion-input
           class="label-font-value"
@@ -153,7 +162,7 @@
           </button>
         </ion-col>
       </ion-row>
-      <ion-col size="9">
+       
         <div class="bg-card bg-light" *ngFor="let rec of WsYarnYRECNOLoad">
           <b
             style="
@@ -167,7 +176,7 @@
             >Rec No : {{rec.entry_no}}</b
           >
         </div>
-      </ion-col>
+   
 
       <ion-card
         class="label-font"
@@ -210,7 +219,7 @@
               </p>
               <p class="label-font" style="color: red; font-weight: bold">
                 <span class="sp">Bal</span> <b> :</b>{{ GRI.bal | number :
-                '1.0-2'}} | {{GRI.uom}} | <span class="sp">Now Rec Qty</span>
+                '1.0-2'}}   {{GRI.uom}} | <span class="sp">Now Rec Qty</span>
                 <b> :</b>
                 {{NowreQty}}
               </p>
@@ -233,7 +242,7 @@
               <ion-col size="5"> </ion-col>
               <ion-col size="6">
                 <button class="Button1" (click)="Save(); btn.disabled = true;">
-                  Save
+                  Apply
                 </button>
               </ion-col>
             </ion-row>

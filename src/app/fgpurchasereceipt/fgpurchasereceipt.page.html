@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>FG - RECEIPT</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon style="height: 25px;width: 25px;margin-left: 5px; " name="arrow-back-outline" (click)="BACK()"></ion-icon> 
+        <ion-title>PURCHASE FG - RECEIPT</ion-title>
+  </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -84,7 +87,7 @@
       </ion-col>  
       <ion-col   size="12"    size-md="6" size-lg="3">
         <ion-item>
-          <ion-label class="label-font"  > Po No <sup> * </sup>  </ion-label> 
+          <ion-label class="label-font"  > PO No <sup> * </sup>  </ion-label> 
           <ionic-selectable
           [items]="Workordr"
           itemValueField="id"
@@ -103,7 +106,7 @@
         </ion-col>
         <ion-col   size="6"    size-md="6" size-lg="3">
           <ion-item>
-            <ion-label class="label-font">DC <sup> * </sup>  </ion-label> 
+            <ion-label class="label-font">DC No <sup> * </sup>  </ion-label> 
               <ion-input
               class="label-font-value"
               formControlName="Dc"
@@ -114,7 +117,7 @@
           </ion-col>  
           <ion-col   size="6"    size-md="6" size-lg="3">
             <ion-item>
-              <ion-label class="label-font" style="padding-top: 13px;">Gatepass No <sup> * </sup>  </ion-label> 
+              <ion-label class="label-font" style="padding-top: 13px;">Gate Pass No <sup> * </sup>  </ion-label> 
                 <ion-input
                 class="label-font-value"
                 formControlName="Gatepass"
@@ -125,11 +128,11 @@
             </ion-col>  
         <ion-row> 
           <ion-col  size="6">
-           <button  class="label-font" class="Button" (click)="AddButoon()">Add</button>
+           <button  class="label-font" class="Button" (click)="AddButoon()">ADD</button>
          </ion-col>
         
          <ion-col size="6">
-          <button  class="label-font" class="Button"  (click)="Clear()" >Clear</button>
+          <button  class="label-font" class="Button"  (click)="Clear()" >CLEAR</button>
         </ion-col>
         </ion-row>
         <div *ngFor="let GRD of  receiptgrid; let optionindex = index" class="card"> 
@@ -151,9 +154,9 @@
           }}<br>
           Ord - <b style="color: red;"> {{GRD.ordqty
           }} <b style="color: red;"> | </b> {{GRD.RecQty
-          }}</b>
-          Bal : <b style="color: red;"> {{GRD.ordqty
-          - GRD.RecQty}} </b>
+           }} </b>
+          Bal With Ex : <b style="color: red;"> {{
+           ( (GRD.exper / 100)  * GRD.ordqty) }} {{GRD.uom}} </b>
           <br>
          <b style="color: red;"> | </b> {{GRD.count
           }}  <b style="color: red;"> | </b> {{GRD.Color
@@ -178,8 +181,8 @@
                   <ion-input
                   class="label-font-value"
                   formControlName="Weight"
-                  
                   interface="action-sheet"
+                [disabled]="true"
                     ></ion-input>
                  </ion-item>
               </ion-col>  

@@ -51,6 +51,7 @@ export class StorespurchasereceiptPage implements OnInit {
   Warehouse: any;
   Fpicheck:any=[];
   FPICHECK: any;
+  count: any;
   constructor(private commonprovider: CommonService, 
     private _rr: FormBuilder,   public httpClient: HttpClient,
     public router: Router) {
@@ -109,8 +110,27 @@ export class StorespurchasereceiptPage implements OnInit {
       
     console.log('tttttt:', event.value.WorkOrder);
     this.WrkOrderNumber = event.value.WorkOrder
-   
-    }
+    var req = {
+      Company: this.Company,
+      statement: 'CHECKFPIAPPROVAL',
+      Years: this.year,
+      PartyCode:this.PartyCode,
+      Supplier_Name:  this.supllier,
+      vendorid : this.BuyerId ,
+      ponum:this.WrkOrderNumber
+    };
+    this.commonprovider.GetOrderNumberLoad(req).then((result) => {
+      var res: any;
+      res = result;
+      this.count = res;
+      console.log('this.count',this.count[0].count)
+      if(this.count[0].count == 0)
+      {
+        alert('FPI is Pending' + ' - '+ this.WrkOrderNumber )
+      }
+    })
+
+  }
    AddButoon()
    {
     var reqQ = {
@@ -218,9 +238,7 @@ portChanges(event: { component: IonicSelectableComponent; value: any }) {
   ngOnInit() {
   }
   itemClick(d: any, index: any) {
-   
-    
-    this.Selectedlistarr = []
+      this.Selectedlistarr = []
  
        var item = d.selected;
        if (item == true) {

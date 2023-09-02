@@ -82,6 +82,7 @@ export class StoresreceiptsavePage implements OnInit {
   EntryNo: null;
   totalQty: any = 0;
   tt: any;
+  balancewtynow: any;
   
     constructor(private commonprovider: CommonService, 
     private _rr: FormBuilder,   public httpClient: HttpClient,
@@ -147,16 +148,17 @@ export class StoresreceiptsavePage implements OnInit {
   {
     console.log(this.RecQty )
     console.log(this.balance)
-   if((Number(this.balance)) < (Number(this.RecQty)))
+   if(Number(this.balance) < (Number(this.RecQty)))
     {
       this.RecQty =""
        alert('Qty Exceeds')
      }
+   //  this.balancewtynow = this.RecQty
   }
   QtyChanges()
   {
     console.log('676')
-   
+     this.balance = this.RecQty
     // if((Number(this.balance)) < (Number(this.RecQty)))
     // {
     //   this.RecQty =""
@@ -210,26 +212,26 @@ export class StoresreceiptsavePage implements OnInit {
     {
       this.commonprovider.FailedToast('Enter Now Rec Qty')
     } 
-   else if(this.RackLocation == null ||  this.RackLocation == undefined)
-    {
-      this.commonprovider.FailedToast('Select Location')
-    } 
-    else if(this.Rack == null ||  this.Rack == undefined)
-    {
-      this.commonprovider.FailedToast('Select Rack')
-    } 
-    else if(this.Bin == null ||  this.Bin == undefined)
-    {
-      this.commonprovider.FailedToast('Select Bin')
-    } 
+  //  else if(this.RackLocation == null ||  this.RackLocation == undefined)
+  //   {
+  //     this.commonprovider.FailedToast('Select Location')
+  //   } 
+  //   else if(this.Rack == null ||  this.Rack == undefined)
+  //   {
+  //     this.commonprovider.FailedToast('Select Rack')
+  //   } 
+  //   else if(this.Bin == null ||  this.Bin == undefined)
+  //   {
+  //     this.commonprovider.FailedToast('Select Bin')
+  //   } 
     else if(this.LotNo == null ||  this.LotNo == undefined)
     {
       this.commonprovider.FailedToast('Enter Lot No')
     } 
-    else if(this.BaleNo == null ||  this.BaleNo == undefined)
-    {
-      this.commonprovider.FailedToast('Enter Bale No')
-    } 
+    // else if(this.BaleNo == null ||  this.BaleNo == undefined)
+    // {
+    //   this.commonprovider.FailedToast('Enter Bale No')
+    // } 
     else if(this.NoofPcs == null ||  this.NoofPcs == undefined)
     {
       this.commonprovider.FailedToast('Enter Rec Pcs')
@@ -250,12 +252,14 @@ export class StoresreceiptsavePage implements OnInit {
      if (item == true) {
        jw["selected"] = false;
        this.selectedArr.splice(index, 1);
-    
+       this.openedCardsS.splice(index, 1);
        console.log(this.selectedArr);
      } else {
        jw["selected"] = true;
        this.selectedArr.push(jw);
        this.totalconversion = jw;
+       this.openedCardsS.push({ OK:  this.StoreReceiptsave.value.Ok,
+        Defect:this.StoreReceiptsave.value.Defect,  Reject:this.StoreReceiptsave.value.Reject ,Short:this.StoreReceiptsave.value.Shortage});
      }
      console.log('SELECT ARRARYYYYYY',this.selectedArr);
        this.newIndex = this.selectedArr.length -1;
@@ -266,13 +270,8 @@ export class StoresreceiptsavePage implements OnInit {
        for (const item of  this.selectedArr) {
  
        totalQtySELECT = parseFloat(item.Qty);
-      
-       }
-    //   for (let i = 0; i < 5; i++) {
-        // Logic to fetch and add card content to this.openedCards
-         this.openedCardsS.push({ OK:  this.StoreReceiptsave.value.Ok,
-           Defect:this.StoreReceiptsave.value.Defect,  Reject:this.StoreReceiptsave.value.Reject ,Short:this.StoreReceiptsave.value.Shortage});
-     //S }
+        }
+  
       console.log( 'OPENCARDS',this.openedCardsS)
       this.totalQty = 0;
       for (const item of this.openedCardsS) {
@@ -288,7 +287,14 @@ export class StoresreceiptsavePage implements OnInit {
        if( Number(this.balance) <  Number(this.totalQty))
        {
       alert('Qty Exceeds')
-   
+      this.newIndex = this.openedCardsS.length -1;
+     
+      jw["selected"] = false;
+      this.openedCardsS.splice(index, 1);
+     // this.openedCardsS[this.newIndex].OK = ""; 
+      console.log(this.openedCardsS);
+      console.log( 'CARDS',this.openedCardsS)
+      jw.selected = false
          }
         
    }

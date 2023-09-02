@@ -5,11 +5,12 @@ import { CommonService } from '../abi/common.service';
 //import * as $ from 'jquery';
 import { AlertController } from '@ionic/angular';
 import { IonicSelectableComponent} from "ionic-selectable";
-import { formatDate } from '@angular/common';
+ 
 import { HttpClient, HttpParams } from "@angular/common/http";
-import * as moment from 'moment';
+
 import _ from "lodash";
-import { CardSettingsModel } from '@syncfusion/ej2-angular-kanban';
+import * as moment from 'moment';
+ 
 
 
 class PartyName {
@@ -45,8 +46,8 @@ export class ReceiptOpenFormPage implements OnInit {
  // NOWREC= localStorage.getItem('NowQty');
   UserName = localStorage.getItem('User')
   Curdate1 = moment(new Date()).format('YYYY/MM/DD hh:mm:ss')
-  Date1 = moment(new Date()).format('YYYY/MM/DD');
-  Date2 = moment(new Date()).format('YYYY/MM/DD');
+ 
+ 
   WorkOrderNumberArr: unknown;
    WorkOrderNo: any;
   WorkOrder: any;
@@ -170,6 +171,8 @@ export class ReceiptOpenFormPage implements OnInit {
   SaveData: any;
   user: string;
   Y_Rec_NO: any;
+  Date=moment(new Date()).format('YYYY-MM-DD');
+  Date1 = moment(new Date()).format('YYYY-MM-DD');
   enableDisableRule(job) {}
   constructor(
     private commonprovider: CommonService,
@@ -182,6 +185,7 @@ export class ReceiptOpenFormPage implements OnInit {
   ) {
     this.YarnReceiptForm = this._ho.group({
       Date2: ['', [Validators.required]],
+      Date:['',[Validators.required]],
       WorkOrder: ['', [Validators.required]],
       Date1: ['', [Validators.required]],
       OrderNumber: ['', [Validators.required]],
@@ -191,6 +195,7 @@ export class ReceiptOpenFormPage implements OnInit {
       Number:['',Validators.required]
     });
     this.Count1 = localStorage.getItem('Count');
+    
     console.log('Count', this.Count1);
     this.WareHouseNameLoad();
     this.PartyNameLoad();
@@ -199,7 +204,8 @@ export class ReceiptOpenFormPage implements OnInit {
 
     this.count = 0;
     this.maxDate = moment(new Date()).format('YYYY-MM-DD')
-    console.log('Date',this.maxDate)
+
+    
   }
   // onchangeOrderNumber(event) {
   //   console.log('Order', this.OrderNumber);
@@ -226,6 +232,7 @@ export class ReceiptOpenFormPage implements OnInit {
     this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
       this.WarehouseNameArr = result;
       console.log('BranchName', this.WarehouseNameArr);
+     
       return true;
     });
   
@@ -380,7 +387,7 @@ async  ReceiptGridDetailsLoad() {
       Y_Rec_No:  this.ordr,
       WorkorderNo: this.wrkord,
       Date1:this.YarnReceiptForm.value.Date1,
-      Date2:this.YarnReceiptForm.value.Date2,
+      Date2:this.YarnReceiptForm.value.Date,
       Supplier : this.supllier,
     };
     this.commonprovider.WsYarnOpenFormGridLoad(req).then((result) => {

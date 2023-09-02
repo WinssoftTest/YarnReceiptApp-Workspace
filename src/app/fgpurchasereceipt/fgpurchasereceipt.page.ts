@@ -185,6 +185,10 @@ export class FgpurchasereceiptPage implements OnInit {
         this.OrderNumberLoad()
       
       }
+      BACK()
+      {
+        this.router.navigate(['./home'])
+      }
     WareHouseNameLoad() {
       var req = {
         company: this.Company,

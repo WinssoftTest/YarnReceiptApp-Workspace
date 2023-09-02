@@ -71,7 +71,7 @@ F_Width:any;
   DriverName:any;
   Mtr:any;
   Wgt:any;
-  Beam:any;
+  Beam:any='-';
   Set:any;
   Weft:any;
   BaleNo:any;
@@ -173,20 +173,20 @@ this.commonprovider.GetPartyNameLoad(req).then((result) => {
       PartyName: element.Name,
       PartyCode: element.party_Code,
       Buyer_id:element.Buyer_Id
-
       };
     this.PartyName.push(req_name);
   }
 console.log('RouteList',  this.PartyName);
 });
 }
+
 WarehouseName()
 {
 this. 
 PartyNameLoad() 
 }
 portChange(event: { component: IonicSelectableComponent; value: any }) {
-    
+  console.log('RouteList',  this.PartyName);
   console.log('port:', event.value.PartyName);
 
   this.supllier = event.value.PartyName
@@ -259,19 +259,21 @@ portChangeOrdNo(event: { component: IonicSelectableComponent; value: any }) {
   console.log('port:', event.value.WorkOrder);
   this.ordr = event.value.Orde
   }
-  ReceiptGridDetailsLoad() {
-   var req = {
-   Company: this.Company,
-   Years: this.year,
-   Y_Rec_No:  this.ordr,
-   Workorderno: this.wrkord
- };
- this.commonprovider.ReceiptGridDetailsLoad(req).then((result) => {
-   var res: any;
-   res = result;
-   this.GridDetailsLoad = res;
- })
-}
+//   ReceiptGridDetailsLoad() {
+//    var req = {
+//    Company: this.Company,
+//    Years: this.year,
+//    Y_Rec_No:  this.ordr,
+//    Workorderno: this.wrkord
+//  };
+//  this.commonprovider.ReceiptGridDetailsLoad(req).then((result) => {
+//    var res: any;
+//    res = result;
+//    this.GridDetailsLoad = res; 
+//    console.log('34',this.GridDetailsLoad)
+//  })
+//  console.log('RECEIPT',this.GridDetailsLoad[0].Beam_No)
+// }
 itemClick(d: any, index: any) {
   this.Selectedlistarr = []
   console.log('Grid',this.GridDetailsLoad)
@@ -373,7 +375,10 @@ itemClick(d: any, index: any) {
     var res: any;
     res = result;
     this.GridDetailsLoad = res;
+    console.log('griddddddd',this.GridDetailsLoad)
+    console.log('re',this.GridDetailsLoad[0].Beam_No)
   })
+ 
 }
   setTimeout (() => {
    this.PcsNoLoad();
@@ -442,7 +447,7 @@ this.commonprovider.WvgReceiptbarNo(req).then((result) => {
 
   // }
   SaveLoad() {
-  
+    console.log('RECWGT',)
     this.isButton = !this.isButton;
     for(var i = 0 ; i <  this.Selectedlistarr.length ;i++)
     {
@@ -490,8 +495,8 @@ this.commonprovider.WvgReceiptbarNo(req).then((result) => {
       barcode:this.barcode,
       leftno:'0',
       reason:this.Reasonn,
-      setno:this.Set,
-      beamno:this.Beam,
+      setno:this.WeavingReceipt.value.Set,
+      beamno:this.WeavingReceipt.value.Beam,
       conrecqty:this.Mtr,
       recwages:'0',
       branch:this.Branch,

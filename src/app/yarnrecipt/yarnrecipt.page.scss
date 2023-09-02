@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Roboto&display=swap');
 ion-header ion-toolbar,
 ion-buttons {
-   --background: #48C9B0;
+   --background: rgb(221, 103, 162);
    --color:rgb(255, 255, 255);
    text-align: center;
-  
+   font-family: 'Manrope', sans-serif;
+   font-size: 16px !important;
+ 
 }
 .top-toolbar {
    --background: #48C9B0;
@@ -63,6 +65,43 @@ ion-buttons {
 //    font-size: 14px;
 //    line-height: normal;
 // }
+.input-container {
+   display: flex;
+   align-items: center; /* Vertically center align items */
+   margin-bottom: 10px; /* Add some spacing between label-input pairs */
+ }
+ .cardpoint{
+   padding: 0px 20px;
+   font-weight: 600 !important;
+ }
+ .input-container {
+   display: flex;
+   align-items: flex-start;
+ }
+ 
+ .label-column {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   align-items: flex-end;
+   margin-right: 10px; /* Adjust as needed */
+   width: auto;
+ }
+ 
+ .label-font {
+   font-weight: bold;
+   //white-space: nowrap;
+   margin-bottom: 5px; /* Adjust as needed */
+   margin-left: 7px; /* Set left margin for the labels */
+ }
+ 
+ .input-column {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+ }
+ 
+ 
 .card
 {
    height: 100%;
@@ -132,7 +171,7 @@ ion-card{
          
          
  .Button1 {
-   background-color: cadetblue;
+   background-color:rgb(221, 103, 162);
    margin: 10px;
    padding: 15px 45px;
    text-align: center;
@@ -153,7 +192,7 @@ ion-card{
  }
 
  .Button {
-   background-color: cadetblue;
+   background-color:rgb(221, 103, 162);
    margin: 10px;
    padding: 15px 45px;
    text-align: center;

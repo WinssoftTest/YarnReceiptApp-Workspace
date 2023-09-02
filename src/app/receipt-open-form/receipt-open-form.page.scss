@@ -5,6 +5,13 @@ ion-buttons {
    text-align: center;
   
 }
+.label-font
+{
+   font-family: 'Manrope', sans-serif;
+   font-size: 16px !important;
+   font-weight: 550;
+   color: black;
+}
 .top-toolbar {
    --background: #48C9B0;
    --color: black;
@@ -97,7 +104,8 @@ sup{
          
          
  .Button1 {
-    background-image: linear-gradient(to right, #af6e71 0%, #f10808 51%, #1fffac 100%);
+ //   background-image: linear-gradient(to right, #af6e71 0%, #f10808 51%, #1fffac 100%);
+ background-color: #3CBFCB;
     margin: 10px;
     padding: 15px 45px;
     text-align: center;

@@ -50,7 +50,7 @@ export class YarnreciptPage implements OnInit {
    WorkOrderNo: any;
   WorkOrder: any;
   YarnReceiptForm: any;
-  GatepassNumLoad: any;
+  GatepassNumLoad: any=[];
   OrderNumber: any;
   save: any;
   CurDate =  moment(new Date()).format('YYYY-MM-DD')
@@ -387,14 +387,43 @@ console.log('RouteList',   this.Orde);
  
 AddButoon()
 {
-  if( this.PoAdminApproval == "True")
+  if(this.Warehouse == null ||  this.Warehouse == undefined)
+  {
+    this.commonprovider.FailedToast('Select Warehouse')
+  } 
+  else if( this.supllier == "" || this.supllier == undefined)
+  {
+    this.commonprovider.FailedToast('Select Supplier Name')
+  } 
+  else if(this.wrkord  == "" || this.wrkord  == undefined)
+  {
+    this.commonprovider.FailedToast('Select Work Order Number')
+  } 
+  else if( this.ordr == "" || this.ordr == undefined)
+  {
+    this.commonprovider.FailedToast('Select PO Number')
+  } 
+ 
+  else if(this.YarnReceiptForm.value.GatePass == "" || this.YarnReceiptForm.value.GatePass == undefined)
+  {
+    this.commonprovider.FailedToast('Gatepass No')
+  } 
+  else if( this.DcNo == "" || this.DcNo == undefined)
+  {
+    this.commonprovider.FailedToast('Type Dc No')
+  } 
+  else if( this.PoAdminApproval == "" || this.PoAdminApproval == undefined)
+  {
+    this.commonprovider.FailedToast('Get Order Approval')
+  } 
+  else 
   {
    this.ReceiptGridDetailsLoad() ;
   }
-  else
-  {
- alert('Get Order Approval')
-  } 
+//   else
+//   {
+//  alert('Get Order Approval')
+//   } 
 }
 
   onchangeDcNo()

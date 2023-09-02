@@ -117,15 +117,16 @@ class="card">
 WorkOrder No - {{GRD.workorderno
   }}<br>
   Cat Name -  {{GRD.Cat_Name
+  }}  | Ex Rec % : {{GRD.Excess_Receive
   }}<br>
-  Order- <b style="color: red;"> {{GRD.Qty
+  Order : <b style="color: red;"> {{GRD.Qty
   }} </b>
-  Rec- <b style="color: red;"> {{GRD.Received_Qty
+  Rec : <b style="color: red;"> {{GRD.Received_Qty
   }} </b>
   <br>
   
-  Bal: <b style="color: red;">{{GRD.Qty - GRD.Received_Qty
-  }} | {{GRD.Req_Unit}} </b><br>
+  Bal : <b style="color: red;">{{GRD.Qty - GRD.Received_Qty
+  }}  {{GRD.Req_Unit}} </b><br>
 {{GRD.Group_Name
   }}  <b style="color: red;"> | </b> {{GRD.Mat_Code}}<b style="color: red;">| </b> {{GRD.Mat_Name}}<b style="color: red;"> | </b> {{GRD.Specifications}} <b style="color: red;"> | </b>  <b>{{GRD.size
   }}</b>

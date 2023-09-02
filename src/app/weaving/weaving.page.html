@@ -27,7 +27,7 @@
       <label style="margin-left: 10px" class="Radioval" for="NO">Outside</label><br>
    </ion-item> 
   <ion-item>
-    <ion-label class="label-font" style="padding-top: 13px;margin-left: 7px;"> WH <sup> * </sup>  </ion-label> 
+    <ion-label class="label-font" style="padding-top: 13px; "> WH <sup> * </sup>  </ion-label> 
     <ion-select
     formControlName="Warehouse"
   [(ngModel)]="Warehouse"
@@ -47,19 +47,19 @@
 </ion-item>
 <ion-item style="margin-top: 7px">
   <ion-label class="label-font">Party <sup> * </sup></ion-label>
-    <ionic-selectable
-    [items]="PartyName"
-    itemValueField="id"
-    itemTextField="PartyName"
-    [canSearch]="true"
-    formControlName="PartyName"
-    [(ngModel)]="PartyNamel"
-    (onChange)="portChange($event)"
-  >
-  </ionic-selectable>
+  <ionic-selectable
+  [items]="PartyName"
+  itemValueField="id"
+  itemTextField="PartyName"
+  [canSearch]="true"
+  formControlName="PartyName"
+  [(ngModel)]="PartyNamel"
+  (onChange)="portChange($event)"
+>
+</ionic-selectable>
 </ion-item>
 <ion-item>
-  <ion-label class="label-font">Wo No <sup> * </sup></ion-label>
+  <ion-label class="label-font">WO No <sup> * </sup></ion-label>
     <ionic-selectable
     [items]="Workordr"
     itemValueField="id"
@@ -72,7 +72,7 @@
   </ionic-selectable>
 </ion-item>
 <ion-item>
-  <ion-label class="label-font">Order No <sup> * </sup></ion-label>
+  <ion-label class="label-font">Jw Order No <sup> * </sup></ion-label>
    <ionic-selectable
     [items]="Orde"
     itemValueField="id"
@@ -114,7 +114,7 @@
 </ion-col>
 <ion-col size="6">
 <ion-item>
-  <ion-label class="label-font">GatePass <sup> *  </sup> :</ion-label>
+  <ion-label class="label-font">Gate Pass <sup> *  </sup> :</ion-label>
   <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
   <ion-input
     type="text"
@@ -125,14 +125,21 @@
   </ion-item>
   </ion-col>
   </ion-row>
+  <ion-row>
+    <ion-col size="6"> 
 <ion-item>
-  <ion-label class="label-font">DriverName <sup> * </sup> :</ion-label>
+  <ion-label class="label-font">Driver Name <sup> * </sup> :</ion-label>
    <ion-input type="text"
    formControlName="DriverName"
-   [(ngModel)]="DriverName">
+   class="label-font-value"
+   class="capitalize-first-letter"
+   formControlName="GatePass"
+   [(ngModel)]="DriverName"
+   style=" text-transform: capitalize;">
   </ion-input>
 </ion-item>
- 
+ </ion-col>
+ </ion-row>
  
 <ion-row>
   <ion-col size="6">
@@ -156,23 +163,20 @@ Order No -  {{GRD.Order_No
 
 {{GRD.F_Count
   }}  <b style="color: red;"> | </b> {{GRD.Reed_Pick}}<b style="color: red;">| </b> {{GRD.F_Size}}<b style="color: red;"> | </b> {{GRD.Color}} <b style="color: red;"> | </b>  <b>{{GRD.Design_Name
-  }}</b>
+  }}</b> <b style="color: red;">| </b>Ex Rec % : {{GRD.Ex_Rec_Per}}
   <br>
- <ion-row>
-  <ion-col size="6">
-    <label class="labe">Total Mtr : <br>
+ 
+    <label class="labe">Total Mtr : 
       <b style="color: red;">    {{ GRD.OrderQty
-
-    }} </b></label> 
-  </ion-col>
-  <ion-col size="6">
+  }} </b></label> 
+  
     <label class="labe">Received Mtr : <b  style="color: red;"> {{ GRD.Received
     }} </b> </label> 
-    </ion-col>
+    <br>
     <ion-col size="12"> 
       <label class="labe"> Bal :  <b  style="color: red;"> {{ GRD.OrderQty - GRD.Received | number : '1.2-2'  }}  </b>  </label>
      </ion-col>
-    </ion-row>
+     
  
   <ion-row> 
     <ion-col size="12">
@@ -209,6 +213,7 @@ Order No -  {{GRD.Order_No
     </ion-col>
     </ion-row>
     <ion-row> 
+   
     <ion-col size="6">
       <ion-item style="margin-left: -17px;">
         <ion-label class="label-font">Wgt :  </ion-label> 
@@ -218,8 +223,8 @@ Order No -  {{GRD.Order_No
           </ion-input>
       </ion-item>
       </ion-col>
-    
-      <ion-col size="6">
+      
+      <ion-col size="6"  *ngIf="this.GridDetailsLoad[0].Beam_No == null " >
         <ion-item  >
           <ion-label class="label-font">Beam No  : </ion-label> 
           <ion-input type="number"
@@ -228,9 +233,30 @@ Order No -  {{GRD.Order_No
             </ion-input>
         </ion-item>
         </ion-col>
+  
+     
+        <ion-col size="6" *ngIf="this.GridDetailsLoad[0].Beam_No != null ">
+          <ion-item  >
+            <ion-label class="label-font">Beam No  : </ion-label> 
+            <ion-select
+        class="label-font-value"
+        formControlName="Beam"
+        [(ngModel)]="Beam"
+        interface="action-sheet"
+         >
+      <ion-select-option
+      style="max-width: max-content"
+ 
+      *ngFor="let WAR of GridDetailsLoad"
+      >{{WAR.Beam_No }}
+      </ion-select-option>
+      </ion-select>
+          </ion-item>
+          </ion-col>
+       
         </ion-row>
         <ion-row>
-        <ion-col size="6">
+        <ion-col size="6" *ngIf="this.GridDetailsLoad[0].PartySetNo == null ">
           <ion-item style="margin-left: -17px;">
             <ion-label class="label-font">Set No : </ion-label> 
             <ion-input type="number"
@@ -239,6 +265,24 @@ Order No -  {{GRD.Order_No
               </ion-input>
           </ion-item>
           </ion-col>
+          <ion-col size="6" *ngIf="this.GridDetailsLoad[0].PartySetNo != null ">
+            <ion-item style="margin-left: -17px;">
+              <ion-label class="label-font">Set No : </ion-label> 
+              <ion-select
+        class="label-font-value"
+        formControlName="Set"
+        [(ngModel)]="Set"
+        interface="action-sheet"
+         >
+      <ion-select-option
+      style="max-width: max-content"
+ 
+      *ngFor="let WAR of GridDetailsLoad"
+      >{{WAR.PartySetNo }}
+      </ion-select-option>
+      </ion-select>
+            </ion-item>
+            </ion-col>
            <ion-col size="6">
             <ion-item >
               <ion-label class="label-font">Weft No : </ion-label> 
