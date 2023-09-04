@@ -21,8 +21,8 @@ class PartyNameIns {
 })
 export class FgpurchasereceiptPage implements OnInit {
   FGReceipt: any;
-  OrderType:any="Bulk";
-  Sample:any;
+  OrderType:string="Export";
+  Sample:string="Bulk";
   PartyName:any;
   Workordr!: Workordr[];
   WorkOrder:any;
@@ -246,7 +246,8 @@ export class FgpurchasereceiptPage implements OnInit {
       else{
       var req = {
         partyname:  this.supllier,
-         ponumber:this.WrkOrderNumber
+         ponumber:this.WrkOrderNumber,
+         statement : "FABRICRECEIPT"
       };
       this.commonprovider.FGReceiptgridload(req).then((result) => {
         var res: any;

@@ -834,4 +834,15 @@ FGReceiptsave(reqLogin: any): Promise<any> {
     map(response => response)  
   ).toPromise();
 }
+
+FabricReceiptsave(reqLogin: any): Promise<any> {
+  const postData = JSON.stringify(reqLogin);
+   return this.httpClient.post<any>(
+    localStorage.getItem('ipaddress') + appsettings.FabricReceiptSave,
+    postData,
+    httpOptions
+  ).pipe(
+    map(response => response)  
+  ).toPromise();
+}
 }

@@ -155,18 +155,32 @@
     <div *ngFor="let GRD of   jwreceipt let optionindex = index" 
 
 class="card">
-WorkOrder No - {{GRD.WorkOrderNo
-  }}<br>
-Order No -  {{GRD.Order_No
-  }}<br>
-  <ion-card-title>Ord -  {{GRD.ordered
-  }} <b style="color: red;"> | </b>Del {{GRD.delivery}}<br>
-  Rec -  {{GRD.recqty 
-  }}  <b style="color: red;"> | </b>Bal {{GRD.delivery - GRD.recqty  }}
- <br>
-</ion-card-title>
+<table>
+  <tr>
+    <td class="label-font"><span>WorkOrder No    </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red"> {{GRD.WorkOrderNo
+    }}</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Ordered    </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red"> {{GRD.ordered
+    }}</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Recived    </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red"> {{GRD.recqty 
+    }}</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Balance    </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">   {{GRD.delivery - GRD.recqty  }}</td>
+  </tr>
+</table>
 
- 
 {{GRD.F_Count
   }}  <b style="color: red;"> | </b> {{GRD.Reed_Pick}}<b style="color: red;">| </b> {{GRD.F_Size}}<b style="color: red;"> | </b> {{GRD.Color}} <b style="color: red;"> | </b>  <b>{{GRD.Design_Name
   }}</b>

@@ -10,7 +10,7 @@
 <ion-content>
   <form [formGroup]="YarnReceiptForm">
     <div>
-      
+   
       <ion-item>
         <ion-label class="label-font"> WH <sup> * </sup> </ion-label>
         <!-- <ion-label class="label-font">
@@ -41,7 +41,7 @@
         </ion-select>
       </ion-item>
       <ion-item style="margin-top: 7px">
-        <ion-label class="label-font">Party   <sup> * </sup>:</ion-label>
+        <ion-label class="label-font">Party   <sup> * </sup></ion-label>
         <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
 
         <ionic-selectable
@@ -56,7 +56,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label class="label-font">WO No <sup> * </sup>:</ion-label>
+        <ion-label class="label-font">WO No <sup> * </sup></ion-label>
         <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
         <ionic-selectable
           [items]="Workordr"
@@ -69,7 +69,7 @@
         </ionic-selectable>
       </ion-item>
       <ion-item>
-        <ion-label class="label-font">PO No <sup> * </sup>:</ion-label>
+        <ion-label class="label-font">PO No <sup> * </sup></ion-label>
         <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
         <ionic-selectable
           [items]="Orde"
@@ -183,7 +183,7 @@
         *ngFor="let GRI of GridDetailsLoad; let optionindex = index"
         (click)="itemClick(GRI, optionindex)"
       >
-        <div class="divcard">
+        <!-- <div class="divcard">
           <ion-card-content>
             <ion-row style="display: grid">
               <ion-col style="display: block" size="1">
@@ -198,24 +198,25 @@
                   src="../../assets/icon/unchecked.png"
                 />
               </ion-col>
+              <div  style="display: grid; grid-template-columns: 1fr;">
               <p class="label-font">
-                <span class="sp">Wrk No</span> <b> : </b>
+                <span >Wrk No</span> <b> : </b>
                 <span class="Imp" style="color: red">{{GRI.WorkOrderNo}}</span>
               </p>
               <p class="label-font">
-                <span class="sp"> Po No</span>
+                <span  > Po No</span>
                 <b style="margin-left: 7px"> : </b>
                 <span class="Imp">{{GRI.Y_PO_No}}</span>
               </p>
               <p class="label-font" style="color: red; font-weight: bold">
-                <span class="sp">Count </span><b>: </b> {{GRI.Count}} |
+                <span  >Count </span><b>: </b> {{GRI.Count}} |
                 {{GRI.Color}} | <span>Rate</span> <b>:</b> {{GRI.Rec_Rate |
                 number : '1.0-2' }}
               </p>
 
               <p class="label-font">
-                <span class="sp">Ord </span><b>:</b> {{GRI.Ordered}} |
-                <span class="sp">Rec </span> <b>:</b>{{GRI.Received }}
+                <span  >Ord </span><b>:</b> {{GRI.Ordered}} |
+                <span  >Rec </span> <b>:</b>{{GRI.Received }}
               </p>
               <p class="label-font" style="color: red; font-weight: bold">
                 <span class="sp">Bal</span> <b> :</b>{{ GRI.bal | number :
@@ -236,6 +237,7 @@
                 <b> :</b>
                 {{GRI.Remarks}}
               </p>
+              </div>
             </ion-row>
 
             <ion-row style="margin-bottom: 10px">
@@ -247,7 +249,129 @@
               </ion-col>
             </ion-row>
           </ion-card-content>
+        </div> -->
+        <div class="divcard">
+          <ion-card-content>
+            
+              <ion-col size=""  >
+                <img
+                  *ngIf="GRI.selected == true"
+                  class="avt-prod"
+                  src="../../assets/icon/checked.png"
+                />
+                <img
+                  *ngIf="GRI.selected == false"
+                  class="avt-prod"
+                  src="../../assets/icon/unchecked.png"
+                />
+              </ion-col>
+            <table>
+              <tr>
+                <td class="label-font"><span>Work Order</span></td>
+                <td> : </td>
+                <td class="label-font Imp" style="color: red">{{GRI.WorkOrderNo}}</td>
+              </tr>
+              <tr>
+                <td class="label-font"><span>Po Num</span></td>
+                <td> : </td>
+                <td class="label-font Imp">{{GRI.Y_PO_No}}</td>
+              </tr>
+              <tr>
+                <td class="label-font"><span>Count</span></td>
+                <td> : </td>
+                <td class="label-font Imp">{{GRI.Count}} 
+                  <!-- {{GRI.Color}} | <span>Rate</span> <b>:</b> {{GRI.Rec_Rate |
+                  number : '1.0-2' }}-->
+                </td> 
+              </tr>
+              <tr>
+                <td class="label-font"><span>Orderd</span></td>
+                <td> : </td>
+                <td class="label-font Imp"> {{ GRI.Ordered }}  <span>Rate</span> <b>:</b> {{GRI.Rec_Rate |
+                  number : '1.0-2' }}
+                   </td>
+              </tr>
+              <tr>
+                <td class="label-font"><span>Received</span></td>
+                <td> : </td>
+                <td class="label-font Imp"> {{GRI.Received }} 
+                   </td>
+              </tr>
+              <tr>
+                <td class="label-font"><span>Balance</span></td>
+                <td> : </td>
+                <td class="label-font Imp"> {{ GRI.Bal | number : '1.0-2'}} | {{GRI.uom}}  
+                  
+                   </td>
+              </tr>
+              <tr>
+                <td class="label-font"><span>Now Received</span></td>
+                <td> : </td>
+                <td class="label-font Imp"> {{NowreQty}}
+                 </td>
+              </tr>
+              <tr>
+                <td class="label-font"><span>Ex %</span></td>
+                <td> : </td>
+                <td class="label-font Imp"> {{GRI.Ex_Per}}
+                 </td>
+              </tr>
+              <tr>
+                <td class="label-font"><span>Card No </span></td>
+                <td> : </td>
+                <td class="label-font Imp"> {{GRI.CardNo}}
+                 </td>
+              </tr>
+              <tr>
+                <td class="label-font"><span>Pakes </span></td>
+                <td> : </td>
+                <td class="label-font Imp"> {{GRI.Bags}}
+                 </td>
+              </tr>
+              <tr>
+                <td class="label-font"><span>Sub Pack </span></td>
+                <td> : </td>
+                <td class="label-font Imp"> {{GRI.subpack }}
+                 </td>
+              </tr>
+              <tr>
+                <td class="label-font"><span>Lot No </span></td>
+                <td> : </td>
+                <td class="label-font Imp">{{GRI.lot_no }} 
+                 </td>
+              </tr>
+              <tr>
+                <td class="label-font"><span>WareHouse:  </span></td>
+                <td> : </td>
+                <td class="label-font Imp">{{GRI.WareHouse }} 
+                 </td>
+              </tr>
+              <tr>
+                <td class="label-font"><span>Mill:  </span></td>
+                <td> : </td>
+                <td class="label-font Imp">{{GRI.MillName}} 
+                 </td>
+              </tr>
+              <tr>
+                <td class="label-font"><span><p>Remarks :  </span></td>
+                <td> : </td>
+                <td class="label-font Imp"> {{GRI.Remarks}}
+                 </td>
+              </tr>
+              <!-- Rest of your content -->
+            </table>
+        
+            <ion-row style="margin-bottom: 10px">
+              <ion-col size="5"> </ion-col>
+              <ion-col size="6">
+                <button class="Button1" (click)="Save(); btn.disabled = true;">
+                  Apply
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
         </div>
+        
       </ion-card>
 
       <!-- <button class="Button" (click)="Save()">Save</button> -->

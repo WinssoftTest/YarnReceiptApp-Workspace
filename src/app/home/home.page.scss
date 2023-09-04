@@ -29,13 +29,12 @@ transform: translateY(2%);
 }
 .title-container{
   display: flex;
- align-items: center;
+  
 }
 .title {
     align-self: end !important;
   text-transform: capitalize;
-  text-align: left;
-  padding-left: 78px;
+ 
   vertical-align: bottom !important;
 }
 .title-set2{
@@ -67,15 +66,15 @@ transform: translateY(2%);
   border-radius: 10px;
   margin-left: 33px;
   width: 120px;
+  height: 120px;
   padding: 10px 10px;
   display: grid;
   grid-template-rows: auto auto;
- 
   justify-content: center;
   align-items: center;
   font-family:  'Manrope', sans-serif;
-font-size: 14px !important;
-font-weight: 550;
+  font-size: 14px !important;
+  font-weight: 550;
  
 }
 .native-input[disabled] {

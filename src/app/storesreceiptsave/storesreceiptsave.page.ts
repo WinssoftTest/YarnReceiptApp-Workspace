@@ -206,39 +206,25 @@ export class StoresreceiptsavePage implements OnInit {
    }
    AddButoon()
    {
-    //this.openedCards = []; // Clear previously opened cards
+     
  
   if(this.RecQty == null ||  this.RecQty == undefined ||  this.RecQty == 0)
     {
       this.commonprovider.FailedToast('Enter Now Rec Qty')
     } 
-  //  else if(this.RackLocation == null ||  this.RackLocation == undefined)
-  //   {
-  //     this.commonprovider.FailedToast('Select Location')
-  //   } 
-  //   else if(this.Rack == null ||  this.Rack == undefined)
-  //   {
-  //     this.commonprovider.FailedToast('Select Rack')
-  //   } 
-  //   else if(this.Bin == null ||  this.Bin == undefined)
-  //   {
-  //     this.commonprovider.FailedToast('Select Bin')
-  //   } 
+ 
     else if(this.LotNo == null ||  this.LotNo == undefined)
     {
       this.commonprovider.FailedToast('Enter Lot No')
     } 
-    // else if(this.BaleNo == null ||  this.BaleNo == undefined)
-    // {
-    //   this.commonprovider.FailedToast('Enter Bale No')
-    // } 
+   
     else if(this.NoofPcs == null ||  this.NoofPcs == undefined)
     {
       this.commonprovider.FailedToast('Enter Rec Pcs')
     }
     else{
     for (let i = 0; i < this.NoofPcs; i++) {
-      // Logic to fetch and add card content to this.openedCards
+      
        this.openedCards.push({ OK:  this.StoreReceiptsave.value.Ok,
          Defect:this.StoreReceiptsave.value.Defect,  Reject:this.StoreReceiptsave.value.Reject ,Short:this.StoreReceiptsave.value.Shortage});
     }

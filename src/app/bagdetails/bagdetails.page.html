@@ -84,12 +84,10 @@
     >
     Color : {{ Color }} </ion-col></ion-row>
     <ion-row> 
-      <ion-col size="4" >
-<Label>Orderd </Label> <b style="color:red ;"> {{ Ordered | number:'1.2-2' }}</b> </ion-col>  <ion-col size="4"> <Label>  Received </Label> <b style="color:red ;">{{ NRCQty  | number:'1.2-2' }}</b> </ion-col>  <ion-col size="3">  <Label>Bal </Label><b style="color:red ;">  {{ bal  | number:'1.2-2' }} </b></ion-col></ion-row>  
+      <ion-col size="6" >
+<Label>Orderd :</Label> <b style="color:red ;"> {{ Ordered | number:'1.2-2' }}</b> </ion-col>  <ion-col size="6"> <Label>  Received :</Label> <b style="color:red ;">{{ NRCQty  | number:'1.2-2' }}</b> </ion-col> </ion-row> <ion-row> <ion-col size="6">  <Label>Balance :</Label><b style="color:red ;">  {{ bal  | number:'1.2-2' }} </b></ion-col>  
  
-<ion-row>
-
- <ion-col size="4"> <Label>Ex Rec % : </Label> {{ Exper }}</ion-col> <ion-col size="4"><Label>Ex Rec Bal :</Label> {{   orderEXbal1 | number:'1.2-2'  }}  </ion-col>  <ion-col size="4">  <Label>Bal with Ex:  {{orderEXbal1  - Ordered | number:'1.2-2'}}</Label> </ion-col></ion-row>
+ <ion-col size="6"> <Label>Ex Rec % : </Label> {{ Exper }}</ion-col></ion-row> <ion-row>  <ion-col size="6"><Label>Ex Rec Bal :</Label> {{   orderEXbal1 | number:'1.2-2'  }}  </ion-col>  <ion-col size="6">  <Label>Bal with Ex :  {{orderEXbal1  - Ordered | number:'1.2-2'}}</Label> </ion-col></ion-row>
   </ion-card>
  
 
@@ -110,33 +108,118 @@
 </div>
   <card style="width: 100px;height:200px"> 
  <div *ngFor="let a of Totalpacklist" class="Card" (click)="Save(a)">
-  <ion-row>
-    <ion-col size="5" style="color:red "> Type : PACK </ion-col>
-    <ion-col size="7" style="color:red ">No of Packs : <span style="color:red ;font-weight: bold;font-size: 22px;  "> {{ PacktypeINT }}</span> </ion-col></ion-row>
-    <ion-row>  <ion-col size="12">Single Cone Wgt <b> : </b>  <span style="color:red ;font-weight: bold;  ">{{ this.Single }} </span> </ion-col> </ion-row>
-     <ion-row>  <ion-col size="12">Cones/Pack <b style="margin-left: 32px;"> : </b>  <span style="color:red ;font-weight: bold;  ">{{  this.Cones }}</span> </ion-col>
-    <ion-col size="8">Single Pack Wgt <b style="margin-left: 5px;"> : </b> <span style="color:red ;font-weight: bold;  ">{{ a.wt }}</span>  </ion-col>
-    <ion-col size="4">LotNo <b style="margin-left: 1px;"> :</b>  {{  LotNo}} </ion-col> </ion-row>
-    <ion-row><ion-col size="12">Pack No <b style="margin-left: 55px;"> <b style="margin-left: 1px;"> : </b></b> {{  CurrentPackNO }}</ion-col></ion-row>
+  <table>
+    <tr>
+      <td class="label-font"><span>Type </span></td>
+      <td> : </td>
+      <td class="label-font Imp" style="color: red">PACK</td>
+    </tr>
+    <tr>
+      <td class="label-font"><span>No of Packs  </span></td>
+      <td> : </td>
+      <td class="label-font Imp" style="color: red">{{ PacktypeINT }}</td>
+    </tr>
+    <tr>
+      <td class="label-font"><span>Single Cone Wgt  </span></td>
+      <td> : </td>
+      <td class="label-font Imp" style="color: red">{{ this.Single }}</td>
+    </tr>
+    <tr>
+      <td class="label-font"><span>Cones/Pack  </span></td>
+      <td> : </td>
+      <td class="label-font Imp" style="color: red">{{  this.Cones }}</td>
+    </tr>
+    <tr>
+      <td class="label-font"><span>Single Pack Wgt  </span></td>
+      <td> : </td>
+      <td class="label-font Imp" style="color: red">{{ a.wt }}</td>
+    </tr>
+     <tr>
+      <td class="label-font"><span>Lot No  </span></td>
+      <td> : </td>
+      <td class="label-font Imp" style="color: red"> {{  LotNo}} </td>
+    </tr>
+    <tr>
+      <td class="label-font"><span>Pack No   </span></td>
+      <td> : </td>
+      <td class="label-font Imp" style="color: red"> {{  CurrentPackNO }}</td>
+    </tr>
+    <tr>
+      <td class="label-font"><span>Total Pack Wgt (Kgs)   </span></td>
+      <td> : </td>
+      <td class="label-font Imp" style="color: red">{{ a.TotalPack  | number }}</td>
+    </tr>
+    </table>
+    <!-- <ion-col size="5" style="color:red ">  </ion-col>
+    <ion-col size="7" style="color:red ">: <span style="color:red ;font-weight: bold;font-size: 22px;  "> </span> </ion-col></ion-row>
+    <ion-row>  <ion-col size="12"> <b> : </b>  <span style="color:red ;font-weight: bold;  "> </span> </ion-col> </ion-row>
+     <ion-row>  <ion-col size="12"> <b style="margin-left: 32px;"> : </b>  <span style="color:red ;font-weight: bold;  "></span> </ion-col>
+    <ion-col size="8"> <b style="margin-left: 5px;"> : </b> <span style="color:red ;font-weight: bold;  "></span>  </ion-col>
+    <ion-col size="4"> <b style="margin-left: 1px;"> :</b> </ion-col> </ion-row>
+    <ion-row><ion-col size="12"><b style="margin-left: 55px;"> <b style="margin-left: 1px;"> : </b></b> </ion-col></ion-row>
     <ion-row></ion-row>
-    <ion-row><ion-col style="color:red ;" size="12">Total Pack Wgt (Kgs) : <span style="color:red ;font-weight: bold;  ">{{ a.TotalPack  | number }}</span>   </ion-col></ion-row>
+    <ion-row><ion-col style="color:red ;" size="12"> : <span style="color:red ;font-weight: bold;  "></span>   </ion-col></ion-row> -->
     </div>
  
  
  
  <div  *ngIf ="this.TotalConeWt !=0 && this.Single  < this.TotalConeWt ">
  <div *ngFor="let  b of TotalConelist" class="Card" (click)="Save(a)">
-    <ion-row>
-    <ion-col style="color:red " size="5"> Type :  CONES </ion-col>
-    <ion-col size="7" style="color:red">No of Packs :  <span style="color:red ;font-weight: bold;  ">  1  </span> </ion-col></ion-row>
-    <ion-row><ion-col size="12">Single Cone Wgt <b> : </b>  <span style="color:red ;font-weight: bold;  ">{{ this.Single }}</span>  </ion-col> </ion-row>
-    <ion-row> <ion-col size="12"> Cones/Pack <b style="margin-left: 32px;"> : </b>   <span style="color:red ;font-weight: bold;font-size: 22px;  ">  {{ this.Conesweight }} </span></ion-col></ion-row>
-    <ion-row><ion-col size="8">Single Pack Wgt <b style="margin-left: 5px;"> : </b>  <span style="color:red ;font-weight: bold;  ">  {{  this.SinglePackConeWeight | number }} </span> </ion-col>
-    <ion-col size="4">LotNo <b style="margin-left: 1px;"> :</b>  {{  LotNo}} </ion-col> </ion-row>
-    <ion-row><ion-col size="12">Pack No <b style="margin-left: 60px;"> :</b> {{ b.CurrentPackNO }}</ion-col></ion-row>
+<table>
+  <tr>
+    <td class="label-font"><span>Type   </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">CONES</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>No of Packs   </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">1</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Single Cone Wgt   </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">{{ this.Single }}</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Cones/Pack    </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">{{ this.Conesweight }} </td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Single Pack Wgt    </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">{{  this.SinglePackConeWeight | number }}</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>LotNo    </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">{{  LotNo}} </td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Pack No    </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">   {{ b.CurrentPackNO }}  </td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Total Cone Wgt (Kgs)    </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">   {{  this.SinglePackConeWeight | number  }}  </td>
+  </tr>
+</table>
+
+
+    <!-- <ion-row>
+    <ion-col style="color:red " size="5">  :   </ion-col>
+    <ion-col size="7" style="color:red"> :  <span style="color:red ;font-weight: bold;  ">  1  </span> </ion-col></ion-row>
+    <ion-row><ion-col size="12"> <b> : </b>  <span style="color:red ;font-weight: bold;  "></span>  </ion-col> </ion-row>
+    <ion-row> <ion-col size="12"> <b style="margin-left: 32px;"> : </b>   <span style="color:red ;font-weight: bold;font-size: 22px;  ">  </span></ion-col></ion-row>
+    <ion-row><ion-col size="8"> <b style="margin-left: 5px;"> : </b>  <span style="color:red ;font-weight: bold;  ">   </span> </ion-col>
+    <ion-col size="4"> <b style="margin-left: 1px;"> :</b>  {{  LotNo}} </ion-col> </ion-row>
+    <ion-row><ion-col size="12"> <b style="margin-left: 60px;"> :</b> {{ b.CurrentPackNO }}</ion-col></ion-row>
  <!-- <ion-row><ion-col size="6">No of Pack : {{  this.PacktypeINT }}</ion-col></ion-row> -->
 
- <ion-row><ion-col style="color:red" size="12">Total Cone Wgt (Kgs) :   <span style="color:red ;font-weight: bold;  "> {{  this.SinglePackConeWeight | number  }} </span> </ion-col></ion-row>
+ <ion-row><ion-col style="color:red" size="12">Total Cone Wgt (Kgs) :   <span style="color:red ;font-weight: bold;  "> {{  this.SinglePackConeWeight | number  }} </span> </ion-col></ion-row>  
  </div>
  </div>
 </card>

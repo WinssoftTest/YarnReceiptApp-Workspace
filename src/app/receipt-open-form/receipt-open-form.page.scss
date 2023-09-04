@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Roboto&display=swap');
 ion-header ion-toolbar,
 ion-buttons {
    --background: #3CBFCB;
@@ -9,7 +10,7 @@ ion-buttons {
 {
    font-family: 'Manrope', sans-serif;
    font-size: 16px !important;
-   font-weight: 550;
+ 
    color: black;
 }
 .top-toolbar {
@@ -112,7 +113,7 @@ sup{
     text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;
-    color: white;            
+    color:black;            
     box-shadow: 0 0 20px #eee;
     border-radius: 10px;
     display: block;

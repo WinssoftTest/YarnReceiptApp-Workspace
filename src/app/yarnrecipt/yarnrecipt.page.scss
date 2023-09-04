@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Roboto&display=swap');
+
 ion-header ion-toolbar,
 ion-buttons {
-   --background: rgb(221, 103, 162);
+   --background:rgb(0 162 191);
    --color:rgb(255, 255, 255);
    text-align: center;
    font-family: 'Manrope', sans-serif;
@@ -28,13 +29,12 @@ ion-buttons {
  
    border-radius: 18px;
    width: 100%;
-   // padding-left: 10px;
-   // padding-bottom: 10px;
-   margin-top: -10px;
-   font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+  font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
    font-stretch: expanded;
    font-size: bold;
-   background-color: white;
+   background-color: #f8f9f9;
+   border: 1px solid black;
+   border-radius: 20px;
 
 }
 .label-font .sp{
@@ -89,7 +89,7 @@ ion-buttons {
  }
  
  .label-font {
-   font-weight: bold;
+   
    //white-space: nowrap;
    margin-bottom: 5px; /* Adjust as needed */
    margin-left: 7px; /* Set left margin for the labels */
@@ -142,12 +142,21 @@ ionic-selectable {
    font-size: 16px !important;
    font-weight: 550;
 }
+.select-icon {
+   width: 19px;
+   height: 19px;
+ 
+   margin-left: 190px !important; 
+}
 .label-font
 {
    font-family: 'Manrope', sans-serif;
    font-size: 16px !important;
-   font-weight: 550;
- 
+   font-weight: 500;
+   margin-left: 7px;
+}
+td{
+   margin-left: 2px;
 }
 card-content-ios {
    padding-left: 20px;
@@ -160,7 +169,7 @@ card-content-ios {
 .card-content-md {
    padding-left: 16px;
    padding-right: 16px;
-   padding-top: 28px;
+ //  padding-top: 28px;
    padding-bottom: 13px;
    font-size: 14px;
    line-height: 1.5;
@@ -168,10 +177,19 @@ card-content-ios {
 ion-card{
    box-shadow:  rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
  }
-         
+     
+     
+ .grid-container {
+   display: grid;
+   grid-template-columns: auto auto 1fr;
+   align-items: center;
+ }
+ 
+  
+     
          
  .Button1 {
-   background-color:rgb(221, 103, 162);
+   background-color:rgb(0 162 191);
    margin: 10px;
    padding: 15px 45px;
    text-align: center;
@@ -192,7 +210,7 @@ ion-card{
  }
 
  .Button {
-   background-color:rgb(221, 103, 162);
+   background-color:rgb(0 162 191);
    margin: 10px;
    padding: 15px 45px;
    text-align: center;

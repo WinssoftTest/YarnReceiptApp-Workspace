@@ -96,4 +96,6 @@ export class appsettings {
 		  "/Service1.svc/FGReceiptGridAdd";
 		  public static FGReceiptSave = 
 		  "/Service1.svc/FGReceiptSave";
+		  public static FabricReceiptSave = 
+		  "/Service1.svc/FabricReceiptSave";
 } 

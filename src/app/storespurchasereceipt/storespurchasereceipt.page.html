@@ -52,7 +52,7 @@
     </ion-col>  
       <ion-col   size="12"    size-md="6" size-lg="3">
         <ion-item>
-          <ion-label class="label-font"  > Po No <sup> * </sup>  </ion-label> 
+          <ion-label class="label-font"  > PO No <sup> * </sup>  </ion-label> 
           <ionic-selectable
           [items]="Workordr"
           itemValueField="id"
@@ -72,7 +72,7 @@
         </ion-col> 
       <ion-col   size="12"    size-md="6" size-lg="3">
         <ion-item>
-          <ion-label class="label-font"  > DC <sup> * </sup> :  </ion-label> 
+          <ion-label class="label-font"  > DC No<sup> * </sup> :  </ion-label> 
             <ion-input
             class="label-font-value"
             formControlName="DC"
@@ -85,7 +85,7 @@
         </ion-col>  
         <ion-col   size="12"    size-md="6" size-lg="3">
           <ion-item>
-            <ion-label class="label-font" > Gatepass <sup> *  </sup> :</ion-label> 
+            <ion-label class="label-font" > Gate Pass <sup> *  </sup> :</ion-label> 
               <ion-input
               class="label-font-value"
               formControlName="Gatepass"
@@ -114,19 +114,45 @@
     <div *ngFor="let GRD of  receiptgrid; let optionindex = index" 
 
 class="card">
-WorkOrder No - {{GRD.workorderno
-  }}<br>
-  Cat Name -  {{GRD.Cat_Name
-  }}  | Ex Rec % : {{GRD.Excess_Receive
-  }}<br>
-  Order : <b style="color: red;"> {{GRD.Qty
-  }} </b>
-  Rec : <b style="color: red;"> {{GRD.Received_Qty
-  }} </b>
-  <br>
+<table>
+  <tr>
+    <td class="label-font"><span>WorkOrder No  </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">{{GRD.workorderno
+    }}</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Cat Name  </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red"> {{GRD.Cat_Name
+    }}</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Ex Rec %   </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">{{GRD.Excess_Receive
+    }}</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Order    </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red"> {{GRD.Qty
+    }} </td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Received   </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">{{GRD.Received_Qty
+    }}</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Balance    </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">{{GRD.Qty - GRD.Received_Qty
+    }}  {{GRD.Req_Unit}}</td>
+  </tr>
+  </table>
   
-  Bal : <b style="color: red;">{{GRD.Qty - GRD.Received_Qty
-  }}  {{GRD.Req_Unit}} </b><br>
 {{GRD.Group_Name
   }}  <b style="color: red;"> | </b> {{GRD.Mat_Code}}<b style="color: red;">| </b> {{GRD.Mat_Name}}<b style="color: red;"> | </b> {{GRD.Specifications}} <b style="color: red;"> | </b>  <b>{{GRD.size
   }}</b>

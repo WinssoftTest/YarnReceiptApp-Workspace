@@ -19,7 +19,7 @@
  
    </ion-item>
    <ion-item> 
-      <label  class="label-font" >Unit :</label>
+      <label  class="label-font" >Unit Type :</label>
       <input style="margin-left: 10px" class="Radio" [(ngModel)]="Own" (change)="UnitType()" formControlName="Own"   type="radio" name ="Own" id="YES"  value="1">
       <label style="margin-left: 10px; background-color: white !important " class="Radioval" for="YES">Own</label><br>
       
@@ -126,7 +126,7 @@
   </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col size="6"> 
+    <ion-col size="12"> 
 <ion-item>
   <ion-label class="label-font">Driver Name <sup> * </sup> :</ion-label>
    <ion-input type="text"
@@ -153,30 +153,47 @@
 <ion-chip style="text-align: center;margin-top: 22px;margin-left: 25%;  font-family: 'Manrope', sans-serif;
 font-size: 16px !important;
 font-weight: 500;">PIECE COUNT : {{ this.count }}</ion-chip>
-<div *ngFor="let GRD of  GridDetailsLoad; let optionindex = index" 
-
-class="card">
-WorkOrder No - {{GRD.WorkOrderNo
-  }}<br>
-Order No -  {{GRD.Order_No
-  }}<br>
-
-{{GRD.F_Count
+<div *ngFor="let GRD of  GridDetailsLoad; let optionindex = index" class="card"> 
+<table>
+  <tr>
+    <td class="label-font"><span>WorkOrder No  </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">{{GRD.WorkOrderNo
+    }}</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Order No   </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red">{{GRD.Order_No
+    }}</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Total Mtr  </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red"> {{ GRD.OrderQty
+    }}</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Received Mtr  </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red"> {{ GRD.Received
+    }}</td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>Balance  </span></td>
+    <td> : </td>
+    <td class="label-font Imp" style="color: red"> {{ GRD.OrderQty - GRD.Received | number : '1.2-2'  }}</td>
+  </tr>
+  </table>
+  {{GRD.F_Count
   }}  <b style="color: red;"> | </b> {{GRD.Reed_Pick}}<b style="color: red;">| </b> {{GRD.F_Size}}<b style="color: red;"> | </b> {{GRD.Color}} <b style="color: red;"> | </b>  <b>{{GRD.Design_Name
   }}</b> <b style="color: red;">| </b>Ex Rec % : {{GRD.Ex_Rec_Per}}
   <br>
- 
-    <label class="labe">Total Mtr : 
-      <b style="color: red;">    {{ GRD.OrderQty
-  }} </b></label> 
-  
-    <label class="labe">Received Mtr : <b  style="color: red;"> {{ GRD.Received
-    }} </b> </label> 
-    <br>
+<!--   
     <ion-col size="12"> 
-      <label class="labe"> Bal :  <b  style="color: red;"> {{ GRD.OrderQty - GRD.Received | number : '1.2-2'  }}  </b>  </label>
+      <label class="labe"> Bal :  <b  style="color: red;">   </b>  </label>
      </ion-col>
-     
+      -->
  
   <ion-row> 
     <ion-col size="12">

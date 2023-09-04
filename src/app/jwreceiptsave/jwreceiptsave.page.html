@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>JW RECEIPT - SAVE</ion-title>
+    <ion-title>JW RECEIPT  <ion-chip style="background-color: white;">Balance {{this.delivery - this.recqty  }}</ion-chip></ion-title>
   </ion-toolbar>
 </ion-header>
- <div class="card1">
+ <!-- <div class="card1">
   <ion-row>
     <ion-col size="6"><b style="color: red;"> Order Qty : {{this.ordQty
 
@@ -20,10 +20,8 @@
        <b style="color: red;"> Ex Per % : {{ this.Exper
   }} </b></ion-col>
   </ion-row>
-  <!-- <ion-row>
-    <ion-col size="6"><b style="color: red;"> Bal : {{this.delivery - this.RecQty}} </b></ion-col>
-    </ion-row> -->
- </div>
+  
+ </div> -->
 <ion-content>
   <form [formGroup]="  this.jwreceiptsav "> 
   <div *ngFor="let JWR of  jwSpaceBarGrid" class="card">  

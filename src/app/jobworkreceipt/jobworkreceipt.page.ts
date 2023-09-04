@@ -88,7 +88,7 @@ export class JobworkreceiptPage implements OnInit {
   Clear()
   {
  
-      this.Warehouse="";
+    //  this.Warehouse="";
       this.supllier="";
       this.WorkOrder= "";
       this.OrderNumber = "";
