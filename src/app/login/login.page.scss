@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Roboto&display=swap');
+
 ion-header{
   border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -47,17 +50,30 @@ gap: 0.5rem;
 }
 label{
 width: 100%;
-font-family: -apple-system, BlinkMacSystemFont, segoe ui,
-Roboto, helvetica neue, Arial, noto sans, sans-serif,
-apple color emoji, segoe ui emoji, segoe ui symbol,
-noto color emoji;
+font-family:  'Manrope', sans-serif;
 font-size: 16px !important;
-font-weight: 500;
+ 
 letter-spacing: 1px;
 }
 sup{
   font-size: 15px;
   color: red;
+}
+.icon-inner, .ionicon, svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+  color: gray !important;
+}
+.icon
+{
+  color: gray;
+}
+h6
+{
+  font-family:  'Manrope', sans-serif;
+  font-size: 16px !important;
+  font-weight: 550;
 }
 select{
     width: 100%;
@@ -66,6 +82,12 @@ select{
     border-radius: 6px;
       border: 1px solid gray;
       background-color: white !important;
+      // background-image: url('../../assets/eye.jpg');
+      // background-size: 20px; /* Adjust the size as needed */
+      // background-position: right center;
+      // background-repeat: no-repeat;
+      // padding-right: 30px; /* Adjust the padding as needed to make space for the icon */
+    
  }
  option{
   padding: 5px 10px;

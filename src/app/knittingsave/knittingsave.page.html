@@ -1,0 +1,146 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon style="height: 25px;width: 25px;margin-left: 5px; " name="arrow-back-outline" (click)="BACK()"></ion-icon> 
+    <!-- <ion-title>STORES RECEIPT <ion-chip style="background-color: lightgray;color: red;">BALANCE :  {{this.balance - this.totalQty}}</ion-chip>  </ion-title> -->
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<!-- {{this.RecQty - }} -->
+<ion-content>
+  <form [formGroup]="knittingReceiptsave"> 
+  <ion-grid>
+    <ion-row>
+    <ion-col  size="6"  size-md="6" size-lg="3">
+      <ion-item>
+        <ion-label class="label-font" >Bale No<sup> * </sup> : </ion-label> 
+          <ion-input
+          class="label-font-value"
+          formControlName="Baleno"
+          [(ngModel)]="Baleno"
+         
+           >
+         </ion-input>
+      </ion-item>
+      </ion-col> 
+      <ion-col  size="6"  size-md="6" size-lg="3">
+        <ion-item>
+          <ion-label class="label-font" >No Of Pcs<sup> * </sup> : </ion-label> 
+            <ion-input
+            class="label-font-value"
+            formControlName="NoOfPcs"
+            [(ngModel)]="NoOfPcs"
+           
+             >
+           </ion-input>
+        </ion-item>
+        </ion-col> 
+      </ion-row>
+      <ion-row> 
+        <ion-col  size="6">
+         <button  class="label-font" class="Button" (click)="AddButoon()">Add</button>
+       </ion-col>
+      
+       <ion-col size="6">
+        <button  class="label-font" class="Button"  (click)="Clear()" >Clear</button>
+      </ion-col>
+      </ion-row>
+   
+      <div *ngFor="let card of openedCards ; let optionindex = index" class="card">
+        <ion-row>
+          <ion-col size="1">
+        <img
+        *ngIf="card.selected == true"
+        class="avt-prod"
+        src="../../assets/icon/checked.png"
+        style="margin-left: 10px;"
+      />  
+    </ion-col>
+     
+  </ion-row>
+     <ion-row>
+ 
+      <ion-col   size="6"  size-md="6" size-lg="3">
+        <ion-item>
+          <ion-label class="label-font" >  Loom No : </ion-label>
+         <ion-input
+        type="number"
+        class="label-font-value"
+         formControlName="LoomNo"
+         interface="action-sheet"
+        style="background-color: white;"
+         
+        >
+    </ion-input>
+      </ion-item>
+      </ion-col>
+      <ion-col   size-sm="6"    size-md="6" size-lg="3">
+        <ion-item>
+          <ion-label class="label-font"  > Weft No  :</ion-label> 
+          <ion-input
+          
+        type="number"
+          class="label-font-value"
+          formControlName="WeftNo"
+           interface="action-sheet"
+          style="background-color: white;"
+          
+          >
+            </ion-input>
+           </ion-item>
+        </ion-col>
+        <ion-col   size="6"    size-md="6" size-lg="3">
+          <ion-item>
+            <ion-label class="label-font"  > Qty :   </ion-label> 
+            <ion-input
+            
+        type="number"
+            class="label-font-value"
+            formControlName="Qty"
+             
+            interface="action-sheet"
+            style="background-color: white;"
+            
+            >
+              </ion-input>
+        </ion-item>
+        </ion-col>
+        <ion-col   size="6"    size-md="6" size-lg="3">
+          <ion-item>
+              <ion-label class="label-font"  > Weight :  </ion-label> 
+              <ion-input
+               type="number"
+              class="label-font-value"
+              formControlName="Weight"
+               interface="action-sheet"
+              style="background-color: white;"
+              
+              >
+                </ion-input>
+                </ion-item>
+                </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col   size="6"    size-md="6" size-lg="3">
+                    <ion-item>
+                        <ion-label class="label-font"  > Set No :  </ion-label> 
+                        <ion-input
+                         type="number"
+                        class="label-font-value"
+                        formControlName="SetNo"
+                         interface="action-sheet"
+                        style="background-color: white;"
+                        
+                        >
+                          </ion-input>
+                          </ion-item>
+                          </ion-col>
+                </ion-row>
+              <button  size-md="6" size-lg="1" size-xs="12" class="label-font" class="Button2"    (click)="itemClick(card, optionindex)">Apply</button> 
+                </div>  
+                <ion-col size="6">        
+                  <button class="Button1" [disabled]="isButton" (click)="Save()">Save</button>
+                  </ion-col> 
+      </ion-grid>
+      </form>
+      </ion-content>

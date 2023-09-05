@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>FABRIC RECEIPT SAVE</ion-title>
+    <ion-title>FABRIC RECEIPT SAVE <ion-chip style="background-color: white;">Balance : {{this.ordqty -  this.Pur_Received}}</ion-chip></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -39,7 +39,7 @@
                   <ion-input
                   class="label-font-value"
                   formControlName="PcsNo"
-                   
+                   [(ngModel)]="PcsNo"
                    >
                  </ion-input>
               </ion-item>
@@ -111,6 +111,7 @@
                   formControlName="Pcsnocount"
                  
                    >
+                 
                  </ion-input>
               </ion-item>
               </ion-col> 

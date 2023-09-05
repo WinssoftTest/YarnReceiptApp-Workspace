@@ -114,6 +114,10 @@ this.OrderNumberLoad()
     this.router.navigate(['fabricreceipt']) 
 
   }
+  knittingreceipt()
+  {
+    this.router.navigate(['knittingreceipt']) 
+  }
  OrderNumberLoad()
   {
    var req = {

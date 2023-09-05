@@ -17,7 +17,7 @@ export class FabricreceiptsavePage implements OnInit {
   LotNo:any;
   NoOfPcs:any;
   openedCards: any = [];
-  PcsNo:any;
+  
   selectedArr: any =[];
   openedCardsS: any =[];
   totalconversion: any;
@@ -78,6 +78,7 @@ export class FabricreceiptsavePage implements OnInit {
   width: any;
   workorderno: any;
   recamt: number;
+  PcsNo:number=1
   constructor(private commonprovider: CommonService, 
     private _yt: FormBuilder,   public httpClient: HttpClient,
     public router: Router
@@ -87,7 +88,8 @@ export class FabricreceiptsavePage implements OnInit {
       Baleno:["",[Validators.required]],
       LotNo:["",[Validators.required]],
       NoOfPcs:["",[Validators.required]],
-      PcsNo:["",[Validators.required]],
+    //  PcsNo:["",[Validators.required]],
+    PcsNo: ["",[Validators.required]],
       Qty:["",[Validators.required]],
       Wgt:["",[Validators.required]],
       Pcsnocount:["",[Validators.required]],
@@ -128,7 +130,8 @@ export class FabricreceiptsavePage implements OnInit {
    this.size = this.FabricselectGrid[i].size
    this.unit = this.FabricselectGrid[i].unit
    this.width = this.FabricselectGrid[i].width
-   this.workorderno = this.FabricselectGrid[i].workorderno
+   this.workorderno = this.FabricselectGrid[i].workorderno,
+   this.balance = Number(this.ordqty) -  Number(this.Pur_Received)
    }
   }
 
@@ -136,7 +139,7 @@ export class FabricreceiptsavePage implements OnInit {
   }
   AddButoon()
 {
- 
+ console.log( 'PCSNOOOOOOOOOOOOOOOOO' ,this.PcsNo)
      if(this.NoOfPcs == null ||  this.NoOfPcs == undefined)
     {
       this.commonprovider.FailedToast('Enter Rec Pcs')
@@ -145,10 +148,20 @@ export class FabricreceiptsavePage implements OnInit {
     for (let i = 0; i < this.NoOfPcs; i++) {
       
        this.openedCards.push({ LotNo:  this.PurchaseReceipt.value.LotNo,
-         PcsNo:this.PurchaseReceipt.value.PcsNo,  Qty:this.PurchaseReceipt.value.Reject});
+         PcsNo: "" ,  Qty:this.PurchaseReceipt.value.Reject});
     }
   }
    }
+   incrementPcsNo() {
+    // Get the current value of the PcsNo form control
+    let currentPcsNo = this.PurchaseReceipt.value.get('PcsNo').value;
+
+    // Increment the value by 1
+    currentPcsNo += 1;
+
+    // Update the PcsNo form control with the new value
+    this.PurchaseReceipt.value.get('PcsNo').setValue(currentPcsNo);
+  }
    itemClick(jw:any  , index:any)
    {
      console.log('MY INDEX POSSITION',index)
@@ -164,28 +177,23 @@ export class FabricreceiptsavePage implements OnInit {
        this.selectedArr.push(jw);
        this.totalconversion = jw;
        this.openedCardsS.push({  LotNo:  this.PurchaseReceipt.value.LotNo,
-        PcsNo:this.PurchaseReceipt.value.PcsNo,  Qty:this.PurchaseReceipt.value.Qty,Loomno:this.PurchaseReceipt.value.Loomno });
+        PcsNo:this.PurchaseReceipt.value.Pcsnocount,  Qty:this.PurchaseReceipt.value.Qty,Loomno:this.PurchaseReceipt.value.Loomno });
      }
      console.log('SELECT ARRARYYYYYY',this.selectedArr);
        this.newIndex = this.selectedArr.length -1;
  
- console.log('INDEX',this.newIndex);
+       console.log('INDEX',this.newIndex);
      this.nowselect = jw
      let totalQtySELECT:any = 0;
        for (const item of  this.selectedArr) {
- 
-       totalQtySELECT = parseFloat(item.Qty);
+          totalQtySELECT = parseFloat(item.Qty);
         }
   
       console.log( 'OPENCARDS',this.openedCardsS)
       this.totalQty = 0;
       for (const item of this.openedCardsS) {
-       
-        const ok = parseFloat(item.OK) || 0;
-        const short = parseFloat(item.Short) || 0;
-        const reject = parseFloat(item.Reject) || 0;
-        const defect = parseFloat(item.Defect) || 0;
-         const itemTotal = ok + short + reject + defect;
+          const ok = parseFloat(item.Qty) || 0;
+          const itemTotal = ok  
        
          this.totalQty += itemTotal;
       }
@@ -247,7 +255,7 @@ export class FabricreceiptsavePage implements OnInit {
         ordno:this.orderno,
         partycode:this.PartyCode,
         partyname:this.suppliername,
-        pcsno:itemsload.PcsNo,
+        pcsno:this.PcsNo || itemsload.PcsNo,
         productbarcode:this.Barcode_No,
         purchasename:this.purchasename,
         rateunit:this.rateunit,
@@ -263,11 +271,13 @@ export class FabricreceiptsavePage implements OnInit {
         workorderno:this.workorderno,
         wt:this.RecWgt,
         years:this.year,
+        entryno:this.EntryNo
       }
   
     const result = await  this.commonprovider.FabricReceiptsave(req)
     this.Save = result;
       console.log('SAVE',  this.Saveload );
+      this.PcsNo = Number(this.PcsNo) + 1
       if(this.EntryNo == null || this.EntryNo == undefined || this.EntryNo =="")
       {
      for(var i =  0 ; i < this.Save.length ; i++)

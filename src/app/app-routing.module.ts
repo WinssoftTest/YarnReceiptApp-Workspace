@@ -84,6 +84,14 @@ const routes: Routes = [
     path: 'fabricreceiptsave',
     loadChildren: () => import('./fabricreceiptsave/fabricreceiptsave.module').then( m => m.FabricreceiptsavePageModule)
   },
+  {
+    path: 'knittingreceipt',
+    loadChildren: () => import('./knittingreceipt/knittingreceipt.module').then( m => m.KnittingreceiptPageModule)
+  },
+  {
+    path: 'knittingsave',
+    loadChildren: () => import('./knittingsave/knittingsave.module').then( m => m.KnittingsavePageModule)
+  },
   
 ];
 

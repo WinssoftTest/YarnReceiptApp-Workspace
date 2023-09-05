@@ -1,16 +1,17 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar class="ion-no-padding ion-no-margin" class="top-toolbar">
     <ion-title class="title">LOGIN</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
    
   <ion-icon class="icon" name="settings" (click)="Settings()"></ion-icon>
   <!-- <button (click)="Settings()">Setting</button> -->
   <div class="title-img-container">
-    <img class="company-img" text-center src="../../assets/icon/ws3.png" />
+    <img class="company-img" text-center src="../../assets/icon/ustomer-operator-online-technical-support-247-web-page-male-hotline-operator-advises-client_566886-1834.avif" />
   </div>
+ <h6 style="margin-left: 10px;color: maroon;">Login</h6> 
   <div class="content-body">
     <form [formGroup]="loginForm">
       <div class="login-container form-group common-padding">
@@ -19,11 +20,12 @@
             >Company Name
             <sup>*</sup>
           </label>
+           
           <select
             formControlName="CompanyName"
-           
-            (change)="onchangeCompany($event)"
+             (change)="onchangeCompany($event)"
           >
+          
             <option value="" disabled selected></option>
             <option  value = "{{c.CompanyId}}#{{c.Company_Name}}#{{c.Company_code}}"
               *ngFor="let c of companyArr; 

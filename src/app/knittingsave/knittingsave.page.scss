@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Roboto&display=swap');
+ion-header ion-toolbar,
+ion-buttons {
+   --background:	#588157;
+   --color:rgb(255, 255, 255);
+   text-align: center;
+  
+}
+.capitalize-first-letter::first-letter {
+  text-transform: capitalize;
+}
+
+.Button1 {
+  background-color: #a3b18a;
+
+ padding: 15px 45px;
+ text-align: center;
+ text-transform: uppercase;
+ transition: 0.5s;
+ background-size: 200% auto;
+ color:black;            
+ box-shadow: 0 0 20px #eee;
+ border-radius: 10px;
+ display: block;
+ margin-top: 9px;
+ margin-bottom: 11px;
+ font-family: 'Manrope', sans-serif;
+ font-size: 16px !important;
+ font-weight: 500;
+ margin-left: 90px;
+}
+
+.Button {
+  background-color:#607D8B;
+  margin: 16px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  border-radius: 10px;
+  display: block;
+  margin-top: 9px;
+  margin-bottom: -11px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px !important;
+  font-weight: 500;
+
+}
+
+.Button2 {
+  background-color: #a3b18a;
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: black;            
+  border-radius: 10px;
+  display: block;
+  margin-top: 9px;
+  
+  font-family: 'Manrope', sans-serif;
+    font-size: 16px !important;
+    font-weight: 500;
+    margin-left: 80PX;
+}
+.card
+{
+   height: 100%;
+   font-size: 16px;
+   color: black;
+   text-align: left;
+   border-radius: 15px;
+   box-shadow: none; 
+   background-color:aliceblue;
+     margin-top: 20px !important;
+   font-family: 'Manrope', sans-serif;
+   font-size: 16px !important;
+   font-weight: 500;
+   width: 93%;
+   margin-left: 10px;
+    padding-top: 13px;
+    padding-bottom: 10px;
+    border: 1px solid black;
+}
+
+ 
