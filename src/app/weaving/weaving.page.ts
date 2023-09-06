@@ -89,6 +89,7 @@ F_Width:any;
   Current_No1: any;
   barno: any;
   count: any = "0";
+  isVehicleNumberValid: boolean =false;
   
   constructor(private commonprovider: CommonService, 
     private _rr: FormBuilder,   public httpClient: HttpClient,
@@ -118,8 +119,12 @@ F_Width:any;
     Reasonn:["",[Validators.required]]
   }); 
   this.WareHouseNameLoad();
-  this. 
-  PartyNameLoad() 
+  this.validateVehicleNumber() ;
+  this.PartyNameLoad() 
+}
+VehNoc()
+{
+this.validateVehicleNumber()
 }
 Resupplys()
 {
@@ -446,6 +451,14 @@ this.commonprovider.WvgReceiptbarNo(req).then((result) => {
    
 
   // }
+  validateVehicleNumber() {
+    // Define a regular expression pattern for a generic vehicle number format
+    const regexPattern = /^[A-Z]{2}\s[0-9]{2}\s[A-Z]{2}\s[0-9]{4}$/;
+
+    // Test if the input matches the pattern
+    this.isVehicleNumberValid = regexPattern.test(this.VehNo);
+    console.log( this.isVehicleNumberValid )
+  }
   SaveLoad() {
     console.log('RECWGT',)
     this.isButton = !this.isButton;

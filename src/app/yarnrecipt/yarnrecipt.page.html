@@ -9,14 +9,12 @@
 
 <ion-content>
   <form [formGroup]="YarnReceiptForm">
-    <div>
-   
-      <ion-item>
-        <ion-label class="label-font"> WH <sup> * </sup> </ion-label>
-        <!-- <ion-label class="label-font">
-          <b> : </b>
-        </ion-label> -->
-
+    <table style="margin-left: 10px;    width: 100%;"> 
+      <tr>
+        <td class="label-font"><span> WH  </span></td>
+        <td> : </td>
+      <td class="label-font Imp" style="color: red;width: 76%;"> 
+        <ion-item style="width:100%"> 
         <ion-select
           class="label-font-value"
           formControlName="Warehouse"
@@ -24,26 +22,32 @@
           interface="action-sheet"
           (ionChange)="Warehousechange($event)"
           style="font-family: 'Manrope', sans-serif;
-          font-size: 16px !important;
-          font-weight: 550;
+          font-size: 15px !important;
+          font-weight: 500;
           max-width: 100%;"
-          
-        >
+           > 
+           
           <ion-select-option
           class="label-font-value"
             style="max-width: max-content;font-family: 'Manrope', sans-serif;
-            font-size: 16px !important;
+            font-size: 15px !important;
             font-weight: 550;
             color: gray;"
             *ngFor="let WAR of WarehouseNameArr"
             >{{WAR.WarehouseName }}
           </ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item style="margin-top: 7px">
-        <ion-label class="label-font">Party   <sup> * </sup></ion-label>
-        <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
-
+   </ion-select>
+   <ion-icon class="field-icon" name="caret-down-outline" slot="end"></ion-icon>
+   </ion-item>
+      </td>
+      </tr>
+    
+      <tr>
+        <td class="label-font"><span> Party  </span></td>
+        <td> : </td>
+      <td class="label-font Imp" style="color: red"> 
+     
+        <ion-item>
         <ionic-selectable
           [items]="PartyName"
           itemValueField="id"
@@ -54,10 +58,14 @@
         >
         </ionic-selectable>
       </ion-item>
+</td>
+</tr>
+<tr>
+  <td class="label-font"><span> WO No  </span></td>
+  <td> : </td>
+<td class="label-font Imp" style="color: red"> 
 
-      <ion-item>
-        <ion-label class="label-font">WO No <sup> * </sup></ion-label>
-        <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
+  <ion-item>
         <ionic-selectable
           [items]="Workordr"
           itemValueField="id"
@@ -68,9 +76,14 @@
         >
         </ionic-selectable>
       </ion-item>
-      <ion-item>
-        <ion-label class="label-font">PO No <sup> * </sup></ion-label>
-        <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
+      </td>
+      </tr>
+       
+      <tr>
+        <td class="label-font"><span> PO No </span></td>
+        <td> : </td>
+      <td class="label-font Imp" style="color: red">
+         <ion-item> 
         <ionic-selectable
           [items]="Orde"
           itemValueField="id"
@@ -81,10 +94,13 @@
         >
         </ionic-selectable>
       </ion-item>
-
-      <ion-item>
-        <ion-label class="label-font">Gate Pass <sup> * </sup></ion-label>
-        <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
+</td>
+</tr>
+   <tr>
+  <td class="label-font"><span> Gate Pass </span></td>
+  <td> : </td>
+<td class="label-font Imp" style="color: red">
+       <ion-item> 
          <div *ngIf="GatepassNumLoad.length == '' ">  
         <ion-input
           type="text"
@@ -108,11 +124,17 @@
           >
             {{ GP.GatePass_No }}
           </ion-select-option>
-        </ion-select>
-        </div>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label-font"> DC No <sup> * </sup></ion-label>
+ </ion-select>
+ </div>
+ </ion-item>
+ </td>
+ </tr>
+ <tr>
+  <td class="label-font"><span> DC No </span></td>
+  <td> : </td>
+    <td class="label-font Imp" style="color: red">
+       <ion-item> 
+        <!-- <ion-label class="label-font">  <sup> * </sup></ion-label> -->
         <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
         <ion-input
           class="label-font-value"
@@ -127,7 +149,9 @@
         >
         </ion-input>
       </ion-item>
-    </div>
+  </td>
+  </tr>
+  </table>
     <!-- <ion-row>
   <ion-col size="8">
     <ion-item class="label-font" style="margin-top: 7px">
@@ -148,16 +172,17 @@
   </ion-col>
   </ion-row> -->
     <!-- <button (click)="button()">Button</button>  -->
+   
     <div class="Cardd">
       <ion-row>
         <ion-col size="6">
-          <button class="label-font" class="Button" (click)="AddButoon()">
-            Add
-          </button>
+          <button type="button"  class="btn btn-outline-warning"> Add</button>
+           <!-- <button class="label-font" class="Button" (click)="AddButoon()">  
+           </button> -->
         </ion-col>
 
         <ion-col size="6">
-          <button class="label-font" class="Button" (click)="Clear()">
+          <button  type="button" class="btn btn-outline-warning"(click)="Clear()">
             Clear
           </button>
         </ion-col>
@@ -434,6 +459,7 @@
           <button class="Button" (click)="presentAlert()">Delete</button>
         </ion-col>
       </ion-row> -->
-    </div>
+ </div>
+ 
   </form>
 </ion-content>

@@ -1,14 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Roboto&display=swap');
 
-ion-header ion-toolbar,
-ion-buttons {
-   --background:rgb(0 162 191);
-   --color:rgb(255, 255, 255);
-   text-align: center;
-   font-family: 'Manrope', sans-serif;
-   font-size: 16px !important;
- 
-}
+
 .top-toolbar {
    --background: #48C9B0;
    --color: black;
@@ -139,19 +131,22 @@ ionic-selectable {
    display: block;
    max-width:  max-content;
    font-family: 'Manrope', sans-serif;
-   font-size: 16px !important;
-   font-weight: 550;
+   font-size: 15px !important;
+   font-weight: 500;
 }
 .select-icon {
    width: 19px;
    height: 19px;
- 
-   margin-left: 190px !important; 
+  
+   transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s, -webkit-transform 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+   opacity: 0.55 !important;
+   margin-right: 6% !important
+  
 }
 .label-font
 {
    font-family: 'Manrope', sans-serif;
-   font-size: 16px !important;
+   font-size: 14px !important;
    font-weight: 500;
    margin-left: 7px;
 }
@@ -189,7 +184,7 @@ ion-card{
      
          
  .Button1 {
-   background-color:rgb(0 162 191);
+   background-color:#772f1a;
    margin: 10px;
    padding: 15px 45px;
    text-align: center;
@@ -208,9 +203,11 @@ ion-card{
    font-weight: 550;
 
  }
-
+ td, th {
+   padding: 2px !important;
+ }
  .Button {
-   background-color:rgb(0 162 191);
+   background-color:#f2a65a;
    margin: 10px;
    padding: 15px 45px;
    text-align: center;
@@ -236,4 +233,12 @@ ion-card{
  }
 .grid_set{
    color: black;
+}
+.btn
+{
+ 
+   margin-left: 15%;
+   width: 70%;
+   color: black;
+
 }

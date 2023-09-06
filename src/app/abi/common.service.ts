@@ -549,28 +549,28 @@ WvgReceiptGrid(reqLogin) {
       );
   });
 }
-WvgReceiptSave(reqLogin) {
-  console.log('Work')
+// WvgReceiptSave(reqLogin) {
+//   console.log('Work')
  
-  let postData = JSON.stringify(reqLogin);
-  console.log('Data', postData)
-  return new Promise((resolve, reject) => {
-    this.httpClient
-      .post(
-        localStorage.getItem("ipaddress") +  appsettings.WeavingReceiptSaveLoad,
-        postData,
-        httpOptions
-      )
-      .subscribe(
-        (data) => {
-          resolve(data);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
-  });
-}
+//   let postData = JSON.stringify(reqLogin);
+//   console.log('Data', postData)
+//   return new Promise((resolve, reject) => {
+//     this.httpClient
+//       .post(
+//         localStorage.getItem("ipaddress") +  appsettings.WeavingReceiptSaveLoad,
+//         postData,
+//         httpOptions
+//       )
+//       .subscribe(
+//         (data) => {
+//           resolve(data);
+//         },
+//         (error) => {
+//           reject(error);
+//         }
+//       );
+//   });
+// }
 WvgReceiptPcsNo(reqLogin) {
   console.log('Work')
  
@@ -839,6 +839,17 @@ FabricReceiptsave(reqLogin: any): Promise<any> {
   const postData = JSON.stringify(reqLogin);
    return this.httpClient.post<any>(
     localStorage.getItem('ipaddress') + appsettings.FabricReceiptSave,
+    postData,
+    httpOptions
+  ).pipe(
+    map(response => response)  
+  ).toPromise();
+}
+
+WvgReceiptSave(reqLogin: any): Promise<any> {
+  const postData = JSON.stringify(reqLogin);
+   return this.httpClient.post<any>(
+    localStorage.getItem('ipaddress') + appsettings.WeavingReceiptSaveLoad,
     postData,
     httpOptions
   ).pipe(

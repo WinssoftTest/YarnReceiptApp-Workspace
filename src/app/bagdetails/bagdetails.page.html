@@ -9,10 +9,15 @@
 
 <ion-content>
   <form [formGroup]="BagDetailsForm">
-  <ion-row>
-    <ion-col size="12">
-  <ion-item class="label-font" style="margin-top: 7px">
-    <ion-label style="color: black"> Qty (Kgs) : </ion-label>
+       <ion-row>
+        <table style="margin-left: 15px;">
+  
+    <tr>
+      <td class="label-font"><span> Qty (Kgs) </span></td>
+      <td> : </td>
+   
+    <td class="label-font Imp" style="color: red">
+      <ion-item>
     <ion-input
        type="number"
        formControlName="NowQty"
@@ -20,11 +25,18 @@
          (ionChange) ="QtyChange($event)"
     >
     </ion-input>
-  </ion-item>
-</ion-col>
-<ion-col size="12">
-  <ion-item class="label-font" style="margin-top: 7px">
-    <ion-label style="color: black"> Lot No : </ion-label>
+    </ion-item>
+    </td>
+    </tr>
+    
+ 
+  <tr>
+    <td class="label-font"><span> Lot No </span></td>
+    <td> : </td>
+   
+    <!-- <ion-label style="color: black"> Lot No : </ion-label> -->
+    <td> 
+      <ion-item>
     <ion-input
        type="text"
        formControlName="LotNo"
@@ -32,13 +44,17 @@
        [(ngModel)]="LotNo"
     >
     </ion-input>
-  </ion-item>
-  </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col size="12">
-  <ion-item class="label-font" style="margin-top: 7px">
-    <ion-label style="color: black"> Wgt/Pack : </ion-label>
+    </ion-item>
+    </td>
+   </tr>
+ 
+ 
+   <tr>
+    <td class="label-font"><span> Weight Per Pack </span></td>
+    <td> : </td>
+ 
+  <td class="label-font Imp" style="color: red">
+    <ion-item> 
     <ion-input
        type="text"
        formControlName="wt"
@@ -47,10 +63,15 @@
     >
     </ion-input>
   </ion-item>
-  </ion-col>
-  <ion-col size="12">
-  <ion-item class="label-font" style="margin-top: 7px">
-    <ion-label style="color: black">  Cone/Pack: </ion-label>
+ </td>
+ </tr>
+ 
+ <tr>
+  <td class="label-font"><span> Cones/Pack </span></td>
+  <td> : </td>
+
+<td class="label-font Imp" style="color: red">
+  <ion-item> 
     <ion-input
        type="text"
        formControlName="Cones"
@@ -59,12 +80,15 @@
     >
     </ion-input>
   </ion-item>
-  </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col size="12">
-  <ion-item class="label-font" style="margin-top: 7px"> 
-    <ion-label style="color: black">Single Cone Wgt : </ion-label>
+  </td>
+  </tr>
+
+  <tr>
+    <td class="label-font"><span> Single Cone Wgt</span></td>
+    <td> : </td>
+  
+  <td class="label-font Imp" style="color: red">
+    <ion-item> 
     <ion-input
        type="text"
        formControlName="Single"
@@ -74,21 +98,53 @@
     >
     </ion-input>
   </ion-item>
-  </ion-col>
-   </ion-row>
+ </td>
+ </tr>
+ </table>
   <div class="Cardd">
   <ion-card class="card">
-  <ion-row>   <ion-col size="6"
+    <table> 
+  <ion-row>   
+ 
+    <ion-col size="6"
     >
-    Count : {{ Count1 }} </ion-col><ion-col size="6"
+    <tr>
+      <td class="label-font"><span>Count </span></td>
+      <td> : </td>
+    <td class="label-font Imp" style="color: red"> 
+       {{ Count1 }} 
+      </td>
+      </tr>
+      </ion-col>
+      <ion-col size="6"
     >
-    Color : {{ Color }} </ion-col></ion-row>
+    <tr>
+      <td class="label-font"><span> Color  </span></td>
+      <td> : </td>
+    <td class="label-font Imp" style="color: red"> 
+    {{ Color }} 
+  </td>
+</tr>
+</ion-col>
+  
+  </ion-row>
     <ion-row> 
-      <ion-col size="6" >
-<Label>Orderd :</Label> <b style="color:red ;"> {{ Ordered | number:'1.2-2' }}</b> </ion-col>  <ion-col size="6"> <Label>  Received :</Label> <b style="color:red ;">{{ NRCQty  | number:'1.2-2' }}</b> </ion-col> </ion-row> <ion-row> <ion-col size="6">  <Label>Balance :</Label><b style="color:red ;">  {{ bal  | number:'1.2-2' }} </b></ion-col>  
+     
+       <ion-col size="6" >
+        <tr>
+          <td class="label-font"><span> Ordered  </span></td>
+          <td> : </td>
+        <td class="label-font Imp" style="color: red"> 
+ <b style="color:red ;"> {{ Ordered | number:'1.2-2' }}</b>
+</td>
+</tr>
+  </ion-col>  <ion-col size="6"> <Label>  Received : </Label> <b style="color:red ;">{{ NRCQty  | number:'1.2-2' }}</b> </ion-col> 
+ 
+</ion-row> <ion-row> <ion-col size="6">  <Label>Balance :</Label><b style="color:red ;">  {{ bal  | number:'1.2-2' }} </b></ion-col>  
  
  <ion-col size="6"> <Label>Ex Rec % : </Label> {{ Exper }}</ion-col></ion-row> <ion-row>  <ion-col size="6"><Label>Ex Rec Bal :</Label> {{   orderEXbal1 | number:'1.2-2'  }}  </ion-col>  <ion-col size="6">  <Label>Bal with Ex :  {{orderEXbal1  - Ordered | number:'1.2-2'}}</Label> </ion-col></ion-row>
-  </ion-card>
+  </table>
+</ion-card>
  
 
  
@@ -225,5 +281,6 @@
 </card>
 
 </div>
+</ion-row>
 </form>
 </ion-content>

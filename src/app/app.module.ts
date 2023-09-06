@@ -14,7 +14,7 @@ import { GridModule, PageService, ToolbarService, GridAllModule } from '@syncfus
  
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { EditService } from './edit.service';
-
+ 
  
 import {   KanbanModule } from "@syncfusion/ej2-angular-kanban";
 import { CommonModule } from "@angular/common";

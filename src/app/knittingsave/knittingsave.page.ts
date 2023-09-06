@@ -39,7 +39,7 @@ NoOfPcs:any;
   totalQty: number;
   balance: any;
 isButton: any;
- SelectArr =  JSON.parse(localStorage.getItem('SELECTARR') as string)   
+ SelectArr =  JSON.parse(localStorage.getItem('kNITTNGSELETARR') as string)   
   supllier: any;
   Rateunit: any;
   Allotfabid: any;
@@ -49,6 +49,9 @@ isButton: any;
   entryno: string;
   count: any;
   product: any;
+  Save: any;
+  OrderQty: any;
+  Received: any;
   constructor(private commonprovider: CommonService, 
     private _rr: FormBuilder,   public httpClient: HttpClient,
     public router: Router
@@ -62,6 +65,13 @@ isButton: any;
     Weight:["",[Validators.required]],
     Qty:["",[Validators.required]]
   })
+  for(var i = 0 ; i <  this.SelectArr.length ;i++)
+  {
+  
+   this.OrderQty = this.SelectArr[i].OrderQty  
+   this.Received = this.SelectArr[i].Received 
+   this.balance = Number(this.OrderQty) - Number(this.Received) 
+  }
 }
 BACK()
 {
@@ -142,7 +152,7 @@ console.log('INDEX',this.newIndex);
       }
      
 }
-SaveLoad() {
+async SaveLoad() {
   console.log('RECWGT',)
   this.isButton = !this.isButton;
   for(var i = 0 ; i <  this.SelectArr.length ;i++)
@@ -154,6 +164,7 @@ SaveLoad() {
    this.product = this.SelectArr[i].Product  
   }
   for(const item of this.openedCardsS)
+  {
   var req = {
     company: this.Company,
     date:moment(new Date()).format('YYYY-MM-DD'),
@@ -183,52 +194,55 @@ SaveLoad() {
     loomno:'1',
     recproduct:this.product,
     width:this.SelectArr[0].F_Width ,
-    length:this.SelectArr[i].F_Length,
-    size:this.SelectArr[i].F_Size  ,
-    reccolor:this.SelectArr[i].Color ,
-    recdesign:this.SelectArr[i].Design_Name ,
-    alias:this.SelectArr[i].Alias_name ,
-    reccount:this.SelectArr[i].F_Count,
-    reedpick:this.SelectArr[i].Reed_Pick ,
+    length:this.SelectArr[0].F_Length,
+    size:this.SelectArr[0].F_Size  ,
+    reccolor:this.SelectArr[0].Color ,
+    recdesign:this.SelectArr[0].Design_Name ,
+    alias:this.SelectArr[0].Alias_name ,
+    reccount:this.SelectArr[0].F_Count,
+    reedpick:this.SelectArr[0].Reed_Pick ,
     pcsno:'0',
-    rate:this.SelectArr[i].rate, 
-    rateunit:this.SelectArr[i].Rate_Unit,
-    totamt:Number(this.SelectArr[i].rate) * Number(item.Qty),
+    rate:this.SelectArr[0].rate, 
+    rateunit:this.SelectArr[0].Rate_Unit,
+    totamt:Number(this.SelectArr[0].rate) * Number(item.Qty),
     baleno:item.bale,
     barcode:'0',
     leftno:'0',
     reason:'',
-    setno:item.SetNo,
+    setno: this.PoNumber,
     beamno:'0',
     conrecqty:item.Qty,
     recwages:'0',
     branch:this.Branch,
     itemQty:'0',
-    items:'0',
+    items:item.Length,
     nos:'0',
     entryno: this.entryno,
-    count:this.count
+    count:this.count,
+    process:"KNITTING",
+    partyname:this.suppliername
 };
 
-this.commonprovider.WvgReceiptSave(req).then((result) => {
-  var res: any;
-  res = result;
-  this.save = res;
+// this.commonprovider.WvgReceiptSave(req).then((result) => {
+//   var res: any;
+//   res = result;
+const result = await  this.commonprovider.WvgReceiptSave(req)
+this.Save = result;
+ // this.save = res;
   if(this.entryno == "" || this.entryno == null || this.entryno == undefined)
  {
-  console.log('entryno',  this.save[0].entry_no)
-  this.entryno =  this.save[0].entry_no;
+  console.log('entryno',  this.Save[0].entry_no)
+  this.entryno =  this.Save[0].entry_no;
 }
+  }
 alert("Record Saved Sucessfully"  + '-'+  this.entryno)
-for(var i = 0 ; i < this.save.length; i++)
+for(var i = 0 ; i < this.Save.length; i++)
 {
-console.log('countttttttttt',this.save[i].count)
-this.count = this.save[i].count
+console.log('countttttttttt',this.Save[i].count)
+this.count = this.Save[i].count
 console.log('COUNTTT',this.count)
 }
 
-
-})
 
 }     
 Clear()

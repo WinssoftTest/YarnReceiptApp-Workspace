@@ -11,6 +11,7 @@ import * as moment from 'moment';
 import _ from "lodash";
  
 
+
 class PartyName {
   public id: number;
   public PartyName:string;
@@ -191,7 +192,8 @@ export class YarnreciptPage implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private alertController: AlertController,
-    public httpClient: HttpClient,
+    public httpClient: HttpClient
+ 
     
   ) {
     this.YarnReceiptForm = this._ho.group({
