@@ -11,10 +11,10 @@
   <form [formGroup]="YarnReceiptForm">
     <table style="margin-left: 10px;    width: 100%;"> 
       <tr>
-        <td class="label-font"><span> WH  </span></td>
+        <td class="label-font"><span> Warehouse  </span></td>
         <td> : </td>
       <td class="label-font Imp" style="color: red;width: 76%;"> 
-        <ion-item style="width:100%"> 
+        <ion-item   style="width:100%;" > 
         <ion-select
           class="label-font-value"
           formControlName="Warehouse"
@@ -24,7 +24,8 @@
           style="font-family: 'Manrope', sans-serif;
           font-size: 15px !important;
           font-weight: 500;
-          max-width: 100%;"
+          max-width: 100%;
+           "
            > 
            
           <ion-select-option
@@ -43,7 +44,7 @@
       </tr>
     
       <tr>
-        <td class="label-font"><span> Party  </span></td>
+        <td class="label-font"><span> Party Name </span></td>
         <td> : </td>
       <td class="label-font Imp" style="color: red"> 
      
@@ -61,7 +62,7 @@
 </td>
 </tr>
 <tr>
-  <td class="label-font"><span> WO No  </span></td>
+  <td class="label-font"><span> WO No</span></td>
   <td> : </td>
 <td class="label-font Imp" style="color: red"> 
 
@@ -176,7 +177,7 @@
     <div class="Cardd">
       <ion-row>
         <ion-col size="6">
-          <button type="button"  class="btn btn-outline-warning"> Add</button>
+          <button type="button"  class="btn btn-outline-warning"  (click)="AddButoon()"> Add</button>
            <!-- <button class="label-font" class="Button" (click)="AddButoon()">  
            </button> -->
         </ion-col>
@@ -275,11 +276,9 @@
             </ion-row>
           </ion-card-content>
         </div> -->
-        <div class="divcard">
+        <div class="card">
           <ion-card-content>
-            
-              <ion-col size=""  >
-                <img
+               <img
                   *ngIf="GRI.selected == true"
                   class="avt-prod"
                   src="../../assets/icon/checked.png"
@@ -289,15 +288,14 @@
                   class="avt-prod"
                   src="../../assets/icon/unchecked.png"
                 />
-              </ion-col>
-            <table>
+             <table>
               <tr>
-                <td class="label-font"><span>Work Order</span></td>
+                <td class="label-font"><span>Workorder No</span></td>
                 <td> : </td>
                 <td class="label-font Imp" style="color: red">{{GRI.WorkOrderNo}}</td>
               </tr>
               <tr>
-                <td class="label-font"><span>Po Num</span></td>
+                <td class="label-font"><span>PO No</span></td>
                 <td> : </td>
                 <td class="label-font Imp">{{GRI.Y_PO_No}}</td>
               </tr>
@@ -366,19 +364,19 @@
                  </td>
               </tr>
               <tr>
-                <td class="label-font"><span>WareHouse:  </span></td>
+                <td class="label-font"><span>Warehouse </span></td>
                 <td> : </td>
                 <td class="label-font Imp">{{GRI.WareHouse }} 
                  </td>
               </tr>
               <tr>
-                <td class="label-font"><span>Mill:  </span></td>
+                <td class="label-font"><span>Mill  </span></td>
                 <td> : </td>
                 <td class="label-font Imp">{{GRI.MillName}} 
                  </td>
               </tr>
               <tr>
-                <td class="label-font"><span><p>Remarks :  </span></td>
+                <td class="label-font"><span><p>Remarks   </span></td>
                 <td> : </td>
                 <td class="label-font Imp"> {{GRI.Remarks}}
                  </td>

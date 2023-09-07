@@ -1,38 +1,49 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-icon style="height: 25px;width: 25px;margin-left: 5px; " name="arrow-back-outline" (click)="BACK()"></ion-icon> 
+      <ion-icon style="height: 25px;width: 25px;margin-left: 5px; " name="arrow-back-outline" (click)="BACK()"></ion-icon>
     <ion-title style="margin-left: 50px;">STORES - RECEIPT</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="StoreReceipt"> 
+  <form [formGroup]="StoreReceipt">
   <ion-grid>
-  <ion-col   size="12"    size-md="6" size-lg="3">
+    <table style="margin-left: 10px;    width: 100%;">
+      <tr>
+        <td class="label-font"><span> WH  </span></td>
+        <td> : </td>
+      <td class="label-font Imp"  >
+
     <ion-item>
-      <ion-label class="label-font" style="padding-top: 13px;"> WH <sup> * </sup>  </ion-label> 
+      <!-- <ion-label class="label-font" style="padding-top: 13px;">  <sup> * </sup>  </ion-label>  -->
         <ion-select
         class="label-font-value"
         formControlName="Warehouse"
         [(ngModel)]="Warehousename"
         interface="action-sheet"
         (ionChange)="Whchange()"
-      
+
        >
       <ion-select-option
       style="max-width: max-content"
- 
+
       *ngFor="let WAR of WH"
       >{{WAR.WarehouseName }}
     </ion-select-option>
       </ion-select>
     </ion-item>
-    </ion-col>  
-    <ion-col   size="12"    size-md="6" size-lg="3">
+
+    </td>
+    </tr>
+
+      <tr>
+        <td class="label-font"><span> Supplier  </span></td>
+        <td> : </td>
+      <td   >
       <ion-item style="margin-top: 7px">
-        <ion-label class="label-font">Supplier <sup> * </sup></ion-label>
+        <!-- <ion-label class="label-font"> <sup> * </sup></ion-label> -->
       <ionic-selectable
         [items]="PartyNameIns"
         itemValueField="id"
@@ -45,14 +56,19 @@
         font-size: 16px !important;
         font-weight: 500;
      "
-        
+
          >
         </ionic-selectable>
         </ion-item>
-    </ion-col>  
-      <ion-col   size="12"    size-md="6" size-lg="3">
+        </td>
+        </tr>
+
+        <tr>
+          <td class="label-font"><span> PO No  </span></td>
+          <td> : </td>
+        <td   >
         <ion-item>
-          <ion-label class="label-font"  > PO No <sup> * </sup>  </ion-label> 
+          <!-- <ion-label class="label-font"  >  <sup> * </sup>  </ion-label> -->
           <ionic-selectable
           [items]="Workordr"
           itemValueField="id"
@@ -65,27 +81,37 @@
           font-size: 16px !important;
           font-weight: 500;
        "
-           
+
          >
-        </ionic-selectable>  
+        </ionic-selectable>
         </ion-item>
-        </ion-col> 
-      <ion-col   size="12"    size-md="6" size-lg="3">
+       </td>
+       </tr>
+     
+       <tr>
+        <td class="label-font"><span>DC No  </span></td>
+        <td> : </td>
+      <td   >
+     
         <ion-item>
-          <ion-label class="label-font"  > DC No<sup> * </sup> :  </ion-label> 
+          <!-- <ion-label class="label-font"  > <sup> * </sup> :  </ion-label> -->
             <ion-input
             class="label-font-value"
             formControlName="DC"
             [(ngModel)]="DC"
             interface="action-sheet"
            >
-          
+
           </ion-input>
         </ion-item>
-        </ion-col>  
-        <ion-col   size="12"    size-md="6" size-lg="3">
+     </td>
+     </tr>
+     <tr>
+      <td class="label-font"><span>Gate Pass  </span></td>
+      <td> : </td>
+    <td   >
           <ion-item>
-            <ion-label class="label-font" > Gate Pass <sup> *  </sup> :</ion-label> 
+            <!-- <ion-label class="label-font" >  <sup> *  </sup> :</ion-label> -->
               <ion-input
               class="label-font-value"
               formControlName="Gatepass"
@@ -94,24 +120,26 @@
              >
             <ion-select-option
             style="max-width: max-content"
-       
+
             *ngFor="let WAR of WH"
             >{{WAR.WarehouseName }}
           </ion-select-option>
             </ion-input>
           </ion-item>
-          </ion-col>  
+        </td>
+        </tr>
+        </table>
     </ion-grid>
-    <ion-row> 
+    <ion-row>
       <ion-col  size="6">
        <button  class="label-font" class="Button" (click)="AddButoon()">Add</button>
      </ion-col>
-    
+
      <ion-col size="6">
       <button  class="label-font" class="Button"  (click)="Clear()" >Clear</button>
     </ion-col>
     </ion-row>
-    <div *ngFor="let GRD of  receiptgrid; let optionindex = index" 
+    <div *ngFor="let GRD of  receiptgrid; let optionindex = index"
 
 class="card">
 <table>
@@ -152,24 +180,24 @@ class="card">
     }}  {{GRD.Req_Unit}}</td>
   </tr>
   </table>
-  
+
 {{GRD.Group_Name
   }}  <b style="color: red;"> | </b> {{GRD.Mat_Code}}<b style="color: red;">| </b> {{GRD.Mat_Name}}<b style="color: red;"> | </b> {{GRD.Specifications}} <b style="color: red;"> | </b>  <b>{{GRD.size
   }}</b>
   <br>
 
- 
- 
-   
-          <ion-row> 
-            <ion-col size="6">        
+
+
+
+          <ion-row>
+            <ion-col size="6">
               <button class="Button2"    (click)="itemClick(GRD, optionindex)">Apply</button>
               </ion-col>
-            <!-- <ion-col size="6">        
+            <!-- <ion-col size="6">
              <button class="Button1" [disabled]="isButton" (click)="SaveLoad()">Save</button>
              </ion-col> -->
             </ion-row>
-         
+
  </div>
     </form>
 </ion-content>

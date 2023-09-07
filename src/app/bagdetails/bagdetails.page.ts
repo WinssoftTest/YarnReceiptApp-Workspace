@@ -14,7 +14,8 @@ export class BagdetailsPage implements OnInit {
   Branch=localStorage.getItem("Branch");
   year = localStorage.getItem('Year');
   Exper = localStorage.getItem('Ex_Per');
-  NowQty = localStorage.getItem('Bal').toString().match(/^-?\d+(?:\.\d{0,1})?/)[0];
+  //NowQty = localStorage.getItem('Bal').toString().match(/^-?\d+(?:\.\d{0,1})?/)[0];
+  NowQty:any;
   bal = localStorage.getItem('Bal');
   CompanyId = localStorage.getItem('CompanyId');
   wt = localStorage.getItem('Bag_Wt').toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]; 
@@ -23,8 +24,8 @@ export class BagdetailsPage implements OnInit {
   Color = localStorage.getItem('Color') 
   //Single = localStorage.getItem('Single');
   Pack = localStorage.getItem('Pack');
-  NRCQty = localStorage.getItem('Received');
-  Ordered = localStorage.getItem('Order') ;
+  NRCQty:any = localStorage.getItem('Received');
+  Ordered:any = localStorage.getItem('Order') ;
   WorkOrder: any;
   BagDetailsForm: any;
   BagDetails: any;
@@ -106,6 +107,7 @@ export class BagdetailsPage implements OnInit {
   console.log ( this.OrderEX)
   console.log('ORDEREX', this.OrderEX )
   this.orderEXbal1 = (parseFloat (this.Ordered)) + (this.OrderEX)
+  this.NowQty = (parseFloat (this.orderEXbal1)) - (this.NRCQty)
 }
 
 calculate(){

@@ -17,12 +17,12 @@ padding: 10px !important;
 .toolbar-container{
   padding: 0;
 }
- .icon {
-   background-color: #ffffff;
-   margin-top: 10px !important;
-   width: 70px;
-   height: 45px;
- }
+//  .icon {
+//    background-color: #ffffff;
+//    margin-top: 10px !important;
+//    width: 70px;
+//    height: 45px;
+//  }
 .title-img-container {
   width: 65%;
   height: auto;
@@ -50,38 +50,35 @@ gap: 0.5rem;
 }
 label{
 width: 100%;
-font-family:  'Manrope', sans-serif;
-font-size: 16px !important;
- 
-letter-spacing: 1px;
+font-family:  'Manrope' ;
+font-size: 14px !important;
+ font-weight: 500px !important;
 }
 sup{
   font-size: 15px;
   color: red;
 }
-.icon-inner, .ionicon, svg {
-  display: block;
-  height: 100%;
-  width: 100%;
-  color: gray !important;
-}
-.icon
-{
-  color: gray;
-}
+ 
+// .icon
+// {
+//   color: navy;
+//   width: 60%;
+//   height: 60%;
+// }
 h6
 {
   font-family:  'Manrope', sans-serif;
   font-size: 16px !important;
-  font-weight: 550;
+ 
 }
 select{
     width: 100%;
-    padding: 8px 0;
-    font-weight: 600;
+    padding: 13px 0;
+  //  font-weight: 600;
     border-radius: 6px;
-      border: 1px solid gray;
-      background-color: white !important;
+    font-size: 15px;
+     // border: 1px solid gray;
+     // background-color: white !important;
       // background-image: url('../../assets/eye.jpg');
       // background-size: 20px; /* Adjust the size as needed */
       // background-position: right center;
@@ -92,11 +89,7 @@ select{
  option{
   padding: 5px 10px;
  }
- input{
-  font-size: 15px; color: navy; padding: 8px !important;
-  border-radius: 6px;
-  border: 1px solid gray;
- }
+ 
 button
 {
     width: 100%;
@@ -106,10 +99,11 @@ button
     letter-spacing: 2px;
     border-radius: 10px;
     color:black;
-    background-color: #FFBF00;
+  
 }
 .loginbtn{
-padding-top: 20px;
+  padding-top: 10px;
+  margin-bottom: 20px;
 }
 .footer{
   display: grid;
@@ -126,3 +120,22 @@ p{
 {
 color: red;
 }
+
+.footer {
+  // display: grid;
+  // gap: 0.3rem;
+  // align-items: center;
+  // justify-content: center;
+     background-color:		aliceblue;
+     border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      font-family:  'Manrope', sans-serif;
+      font-size: 16px !important;
+      box-shadow: -3px 0px 18px 0px rgba(0, 0, 0, 0.1);
+}
+// .icon-inner, .ionicon, svg {
+//   /* display: block; */
+//   height: 60% !important;
+//   width: 60% !important;
+//   text-align: end !important;
+// }

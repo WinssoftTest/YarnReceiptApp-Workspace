@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="top-toolbar">
-    <ion-title> YARN  RECEIPT ENTRYS </ion-title>
+    <ion-title>  VIEW ENTRY</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
@@ -9,9 +9,13 @@
 
 <ion-content>
   <form [formGroup]="YarnReceiptForm">
- 
+    <table style="margin-left: 10px;    width: 100%;"> 
+      <tr>
+        <td class="label-font"><span> Party  </span></td>
+        <td> : </td>
+      <td class="label-font Imp" style="color: red;width: 76%;"> 
     <ion-item style="margin-top: 7px">
-      <ion-label class="label-font">Party <b style="padding-left: 10px;">  </b> </ion-label>
+      <!-- <ion-label class="label-font">Party <b style="padding-left: 10px;">  </b> </ion-label> -->
      <ionic-selectable
         [items]="PartyName"
         itemValueField="id"
@@ -22,9 +26,14 @@
       >
       </ionic-selectable>
       </ion-item>
- 
+ </td>
+ </tr>
+ <tr>
+  <td class="label-font"><span>  WO No   </span></td>
+  <td> : </td>
+  <td> 
     <ion-item> 
-    <ion-label class="label-font"> Wo No  <b style="padding-left: 1px;">  </b> </ion-label>
+    <ion-label class="label-font"> <b style="padding-left: 1px;">  </b> </ion-label>
     <ionic-selectable
     [items]="Workordr"
     itemValueField="id"
@@ -35,8 +44,13 @@
   >
   </ionic-selectable>
   </ion-item>
+  </tr>
+  <tr>
+    <td class="label-font"><span> PO No   </span></td>
+    <td> : </td>
+    <td>
   <ion-item> 
-    <ion-label class="label-font"> Po No  <b style="padding-left: 2.5px;">  </b>  </ion-label>
+    <!-- <ion-label class="label-font">   <b style="padding-left: 2.5px;">  </b>  </ion-label> -->
     <ionic-selectable
     [items]="Orde"
     itemValueField="id"
@@ -47,15 +61,15 @@
   >
   </ionic-selectable>
   </ion-item>
+  </td>
+  </tr>
+  <tr>
+    <td class="label-font"><span> From   </span></td>
+    <td> : </td>
+    <td>
   <ion-item style="margin-top: 1px">
-    <ion-label class="label-font">From <b style="padding-left: 10px;">  </b></ion-label>
-    <!-- <ion-input
-    type="Date"
-    formControlName="Date1"
-    [(ngModel)]= "Date1"
-    (ionChange) ="DateChange($event)"
- >
- </ion-input> -->
+    <!-- <ion-label class="label-font"> <b style="padding-left: 10px;">  </b></ion-label> -->
+ 
  <ion-input
  type="Date"
  class="label-font-value"
@@ -67,10 +81,17 @@
 >
 
 </ion-input>
+ 
 </ion-item>
+</td>
+</tr>
+<tr>
+  <td class="label-font"><span> To   </span></td>
+  <td> : </td>
+  <td>
 <ion-item style="margin-top: 1px">
-   <ion-label class="label-font">To <b style="padding-left: 29px;">  </b></ion-label>
-   
+   <!-- <ion-label class="label-font">To <b style="padding-left: 29px;">  </b></ion-label>
+    -->
     <ion-input
     type="Date"
     class="label-font-value"
@@ -83,6 +104,9 @@
  
   </ion-input>
   </ion-item>
+  </td>
+  </tr>
+  </table>
   <ion-col size="3">
     <button class="Button1" (click)="Clear()">Clear</button>
    

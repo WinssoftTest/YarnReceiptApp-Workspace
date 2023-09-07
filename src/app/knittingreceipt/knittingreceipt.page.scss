@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Roboto&display=swap');
-ion-header ion-toolbar,
-ion-buttons {
-   --background:	#588157;
-   --color:rgb(255, 255, 255);
-   text-align: center;
-  
-}
+ 
 .capitalize-first-letter::first-letter {
   text-transform: capitalize;
 }
@@ -15,10 +9,7 @@ td, th {
   padding: 5px !important;
 }
 
-
-
-
-
+ 
 .label-font
 {
     font-family: 'Manrope', sans-serif;

@@ -11,8 +11,7 @@
   <form [formGroup]="BagDetailsForm">
        <ion-row>
         <table style="margin-left: 15px;">
-  
-    <tr>
+      <tr>
       <td class="label-font"><span> Qty (Kgs) </span></td>
       <td> : </td>
    
@@ -104,46 +103,64 @@
   <div class="Cardd">
   <ion-card class="card">
     <table> 
-  <ion-row>   
- 
-    <ion-col size="6"
-    >
-    <tr>
+     <tr>
       <td class="label-font"><span>Count </span></td>
       <td> : </td>
-    <td class="label-font Imp" style="color: red"> 
+       <td class="label-font Imp" style="color: red"> 
        {{ Count1 }} 
       </td>
       </tr>
-      </ion-col>
-      <ion-col size="6"
-    >
-    <tr>
+        <tr>
       <td class="label-font"><span> Color  </span></td>
       <td> : </td>
     <td class="label-font Imp" style="color: red"> 
     {{ Color }} 
   </td>
 </tr>
-</ion-col>
-  
-  </ion-row>
-    <ion-row> 
-     
-       <ion-col size="6" >
-        <tr>
-          <td class="label-font"><span> Ordered  </span></td>
+         <tr>
+          <td class="label-font" ><span> Ordered  </span></td>
           <td> : </td>
-        <td class="label-font Imp" style="color: red"> 
- <b style="color:red ;"> {{ Ordered | number:'1.2-2' }}</b>
-</td>
-</tr>
-  </ion-col>  <ion-col size="6"> <Label>  Received : </Label> <b style="color:red ;">{{ NRCQty  | number:'1.2-2' }}</b> </ion-col> 
+          <td class="label-font Imp" style="color: red">  {{ Ordered | number:'1.2-2' }} 
+            </td>
+  </tr>
+  <tr>
+    <td class="label-font"  ><span> Ex Rec %  </span></td>
+    <td> : </td>
+    <td>  
+        {{ Exper }} 
+      </td>
+      </tr>
+      <tr> 
+      <td class="label-font"  ><span> Ex Bal </span></td>
+    <td> : </td>
+    <td>  
+       {{   orderEXbal1 | number:'1.2-2'  }}   </td>
+       </tr>
+<tr>
+  <td class="label-font"  ><span> Received  </span></td>
+  <td  class="label-font Imp" style="color: red"> : </td>
+  {{ NRCQty  | number:'1.2-2' }}  
+  </tr>
  
-</ion-row> <ion-row> <ion-col size="6">  <Label>Balance :</Label><b style="color:red ;">  {{ bal  | number:'1.2-2' }} </b></ion-col>  
+   <tr>
+    <td class="label-font"  ><span> Balance  </span></td>
+    <td> : </td>
+    <td>  
+    {{  orderEXbal1 -   NRCQty }} 
+ </td>
+ </tr>
  
- <ion-col size="6"> <Label>Ex Rec % : </Label> {{ Exper }}</ion-col></ion-row> <ion-row>  <ion-col size="6"><Label>Ex Rec Bal :</Label> {{   orderEXbal1 | number:'1.2-2'  }}  </ion-col>  <ion-col size="6">  <Label>Bal with Ex :  {{orderEXbal1  - Ordered | number:'1.2-2'}}</Label> </ion-col></ion-row>
-  </table>
+ 
+     <tr> 
+     <td class="label-font"  ><span> Total Order With EX</span></td>
+     <td> : </td>
+     <td>  
+      <Label>  {{orderEXbal1  - Ordered | number:'1.2-2'}} 
+        </Label>
+        </td>
+        </tr>
+        </table>
+ 
 </ion-card>
  
 

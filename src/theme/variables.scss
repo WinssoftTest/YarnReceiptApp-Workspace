@@ -5,13 +5,29 @@
  :root {
     ion-header ion-toolbar,
 ion-buttons {
-   --background:#FFD580;
+   --background:#00afb9;
    --color:black;
    text-align: center;
  
    font-size: 15px !important;
  
 }
+.field-icon
+{
+  padding-top: 10px;
+  padding-right: 5px;
+  width: 12.5px;
+  color: #8f8f8f;
+}
+.label-font[_ngcontent-uyp-c176] {
+   font-family: "Manrope", sans-serif;
+   font-size: 14px !important;
+   /* font-weight: 500; */
+}
+
+ion-select::part(icon) {
+   display: none !important;
+ }
  }
 //   /** primary **/
 //   --ion-color-primary: #3880ff;

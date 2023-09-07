@@ -13,12 +13,13 @@
       <tr>
         <td class="label-font"><span> Production  </span></td>
         <td> : </td>
-      <td class="label-font Imp" style="color: red;"> 
-   
-      <input  style="margin-left: 10px;background-color: white !important" class="Radio" [(ngModel)]="Production" (change)="Resupplys()" formControlName="Production"   type="radio"   value="YES">
+      <td class="label-font Imp"  > 
+     <ion-item>
+      <input  style="background-color: white !important" class="Radio" [(ngModel)]="Production" (change)="Resupplys()" formControlName="Production"   type="radio"   value="YES">
       <label style="margin-left: 10px" for="YES">Yes</label> 
       <input style="margin-left: 20px;background-color: white !important;"   class="Radio"  type="radio"  [(ngModel)]="Production" (change)="Resupplys()"   formControlName="Production" id="NO" name="Production" value="NO">
       <label  style="margin-left: 10px" class="Radioval" for="NO">No</label><br>
+      </ion-item>
  </td>
  </tr>
  
@@ -26,11 +27,13 @@
     <td class="label-font"><span> Unit Type  </span></td>
     <td> : </td>
     <td> 
-      <input style="margin-left: 10px" class="Radio" [(ngModel)]="Own" (change)="UnitType()" formControlName="Own"   type="radio" name ="Own" id="YES"  value="1">
+      <ion-item>
+      <input  class="Radio" [(ngModel)]="Own" (change)="UnitType()" formControlName="Own"   type="radio" name ="Own" id="YES"  value="1">
       <label style="margin-left: 10px; background-color: white !important " class="Radioval" for="YES">Own</label> 
       
-      <input class="Radio" style="margin-left: 20px;"   type="radio"  [(ngModel)]="Own"  (change)="UnitType()" formControlName="Own" id="NO" name="Own" value="0">
+      <input class="Radio" style="margin-left: 12px;"   type="radio"  [(ngModel)]="Own"  (change)="UnitType()" formControlName="Own" id="NO" name="Own" value="0">
       <label style="margin-left: 10px" class="Radioval" for="NO">Outside</label><br>
+      </ion-item>
       </td>
    </tr>
  
@@ -39,22 +42,26 @@
     <td> : </td>
     <td> 
     <!-- <ion-label class="label-font" style="padding-top: 13px; ">  <sup> * </sup>  </ion-label>  -->
+  <ion-item>
     <ion-select
     formControlName="Warehouse"
   [(ngModel)]="Warehouse"
   interface="action-sheet"
 
-  style="margin-left: 20px; font-family: Manrope, sans-serif !important;
-  font-size: 16px !important;
-  font-weight: 550 !important; color: black;   max-width: -webkit-max-content;
+  style="  font-family: Manrope, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 500 !important; color: black;   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;">
+            <ion-icon class="field-icon" name="caret-down-outline" slot="end"></ion-icon>
           <ion-select-option
           style="max-width: max-content"
           *ngFor="let WAR of WH"
           >{{WAR.WarehouseName }}
         </ion-select-option>
 </ion-select>
+<ion-icon class="field-icon" name="caret-down-outline" slot="end"></ion-icon>
+</ion-item>
  </td>
  </tr>
  <tr>
@@ -206,41 +213,41 @@
 font-size: 16px !important;
 font-weight: 500;">PIECE COUNT : {{ this.count }}</ion-chip>
 <div *ngFor="let GRD of  GridDetailsLoad; let optionindex = index" class="card"> 
-<table>
+<table  >
   <tr>
     <td class="label-font"><span>WorkOrder No  </span></td>
     <td> : </td>
-    <td class="label-font Imp" style="color: red">{{GRD.WorkOrderNo
+    <td class="label-font Imp" style="color: red;padding: 5px;">{{GRD.WorkOrderNo
     }}</td>
   </tr>
   <tr>
     <td class="label-font"><span>Order No   </span></td>
     <td> : </td>
-    <td class="label-font Imp" style="color: red">{{GRD.Order_No
+    <td class="label-font Imp" style="color: red;padding: 5px;">{{GRD.Order_No
     }}</td>
   </tr>
   <tr>
     <td class="label-font"><span>Total Mtr  </span></td>
     <td> : </td>
-    <td class="label-font Imp" style="color: red"> {{ GRD.OrderQty
+    <td class="label-font Imp" style="color: red;padding: 5px;"> {{ GRD.OrderQty
     }}</td>
   </tr>
   <tr>
     <td class="label-font"><span>Received Mtr  </span></td>
     <td> : </td>
-    <td class="label-font Imp" style="color: red"> {{ GRD.Received
+    <td class="label-font Imp" style="color: red;padding: 5px;"> {{ GRD.Received
     }}</td>
   </tr>
   <tr>
     <td class="label-font"><span>Balance  </span></td>
     <td> : </td>
-    <td class="label-font Imp" style="color: red"> {{ GRD.OrderQty - GRD.Received | number : '1.2-2'  }}</td>
+    <td class="label-font Imp" style="color: red;padding: 5px;"> {{ GRD.OrderQty - GRD.Received | number : '1.2-2'  }}</td>
   </tr>
   </table>
   {{GRD.F_Count
-  }}  <b style="color: red;"> | </b> {{GRD.Reed_Pick}}<b style="color: red;">| </b> {{GRD.F_Size}}<b style="color: red;"> | </b> {{GRD.Color}} <b style="color: red;"> | </b>  <b>{{GRD.Design_Name
-  }}</b> <b style="color: red;">| </b>Ex Rec % : {{GRD.Ex_Rec_Per}}
-  <br>
+  }}    {{GRD.Reed_Pick}}    {{GRD.F_Size}} {{GRD.Color}}   {{GRD.Design_Name
+  }}   Ex Rec % : {{GRD.Ex_Rec_Per}}
+  
 <!--   
     <ion-col size="12"> 
       <label class="labe"> Bal :  <b  style="color: red;">   </b>  </label>
@@ -380,10 +387,10 @@ font-weight: 500;">PIECE COUNT : {{ this.count }}</ion-chip>
           </ion-row>
           <ion-row> 
             <ion-col size="6">        
-              <button class="Button2"    (click)="itemClick(GRD, optionindex)">Apply</button>
+              <button class="Button2"   (click)="itemClick(GRD, optionindex)">Apply</button>
               </ion-col>
             <ion-col size="6">        
-             <button class="Button1" [disabled]="isButton" (click)="SaveLoad()">Save</button>
+             <button  class="Button1" [disabled]="isButton" (click)="SaveLoad()">Save</button>
              </ion-col>
             </ion-row>
          

@@ -9,15 +9,17 @@
 
 
 
-
+ion-select::part(icon) {
+  display: none !important;
+}
 .label-font
 {
     font-family: 'Manrope', sans-serif;
-    font-size: 16px !important;
+    font-size: 15px !important;
     font-weight: 500;
 }
 .Button {
-    background-color: #a3b18a;
+    background-color: #76afbb;
     padding: 15px 45px;
     text-align: center;
     text-transform: uppercase;
@@ -34,7 +36,7 @@
       margin-left: 15%;
   }
   .Button2 {
-    background-color: #a3b18a;
+   background-color: #a3b18a;
     margin: 10px;
     padding: 15px 45px;
     text-align: center;
@@ -44,7 +46,6 @@
     color: black;            
     border-radius: 10px;
     display: block;
- 
     margin-top: 9px;
     margin-bottom: -11px;
     font-family: 'Manrope', sans-serif;
