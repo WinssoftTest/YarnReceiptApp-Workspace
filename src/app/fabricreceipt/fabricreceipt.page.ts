@@ -57,6 +57,9 @@ export class FabricreceiptPage implements OnInit {
   isButton:boolean=true;
 PurchaseReceipt:  any;
   po: any;
+  Featuresettings: unknown;
+  yarnseetings: any;
+  GatepassNumLoad: any=[];
   constructor(private commonprovider: CommonService, 
     private _rr: FormBuilder,   public httpClient: HttpClient,
     public router: Router) {
@@ -74,7 +77,19 @@ PurchaseReceipt:  any;
       this.supllier = event.value.PartyName
       this.BuyerId = event.value.Buyer_id 
       this.PartyCode = event.value.PartyCode 
-      this.OrderNumberLoad()
+      this.OrderNumberLoad();
+      this.GatePassNumberLoad()
+      var req = {
+        company: this.Company,
+        statement: 'FeaturSettings',
+       
+      };
+      this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
+        this.Featuresettings = result;
+        console.log('Featuresettings ',  this.Featuresettings[0].fabric );
+        this.yarnseetings  = this.Featuresettings[0].fabric 
+        return true;
+      });
     
     }
     WorkOrders(event: { component: IonicSelectableComponent; value: any }) {
@@ -83,6 +98,10 @@ PurchaseReceipt:  any;
       this.WrkOrderNumber = event.value.WorkOrder
       this.po = event.value.ponum
      console.log( this.po)
+      }
+      BACK()
+      {
+        this.router.navigate(['./home'])
       }
     OrderNumberLoad()  {
       var req = {
@@ -226,5 +245,24 @@ PurchaseReceipt:  any;
     }
   ngOnInit() {
   }
-
+  GatePassNumberLoad() {
+    var req = {
+      Company: this.Company,
+      Years: this.year,
+      Order_No:  this.WrkOrderNumber ,
+      Party_Name:   this.supllier,
+      statement : "Receipt"
+     
+      };
+    this.commonprovider.GetGatepassNo(req).then((result) => {
+      this.GatepassNumLoad = result;
+      console.log('GatepassNumLoad', this.GatepassNumLoad);
+        return true;
+    });
+   
+    if(this.yarnseetings == 'True' && this.GatepassNumLoad.length == '')
+    {
+      alert("Gate Pass Required")
+    }
+  }
 }

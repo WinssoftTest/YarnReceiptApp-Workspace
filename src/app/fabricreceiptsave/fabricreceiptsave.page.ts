@@ -52,7 +52,7 @@ export class FabricreceiptsavePage implements OnInit {
   Order_Id: any;
   Order_Main_Id: any;
   Order_Uom: any;
-  Orderd_Purchase_Rate: any;
+  Ordered_Purchase_Rate: any;
   ProductNo_Id: any;
   Product_Name: any;
   Pur_Received: any;
@@ -65,7 +65,7 @@ export class FabricreceiptsavePage implements OnInit {
   exper: any;
   funit: any;
   length: any;
-  orderdetailid: any;
+  Orderedetailid: any;
   ordqty: any;
   orderno: any;
   ordwgt: any;
@@ -106,7 +106,7 @@ export class FabricreceiptsavePage implements OnInit {
    this.Order_Id = this.FabricselectGrid[i].Order_Id
    this.Order_Main_Id = this.FabricselectGrid[i].Order_Main_Id
    this.Order_Uom = this.FabricselectGrid[i].Order_Uom
-   this.Orderd_Purchase_Rate = this.FabricselectGrid[i].Orderd_Purchase_Rate
+   this.Ordered_Purchase_Rate = this.FabricselectGrid[i].Ordered_Purchase_Rate
    this.ProductNo_Id = this.FabricselectGrid[i].ProductNo_Id
    this.Product_Name = this.FabricselectGrid[i].Product_Name
    this.Pur_Received = this.FabricselectGrid[i].Pur_Received
@@ -119,7 +119,7 @@ export class FabricreceiptsavePage implements OnInit {
    this.exper = this.FabricselectGrid[i].exper
    this.funit = this.FabricselectGrid[i].funit
    this.length = this.FabricselectGrid[i].length
-   this.orderdetailid = this.FabricselectGrid[i].orderdetailid
+   this.Orderedetailid = this.FabricselectGrid[i].Orderedetailid
    this.orderno = this.FabricselectGrid[i].orderno
    this.ordqty = this.FabricselectGrid[i].ordqty
    this.ordwgt = this.FabricselectGrid[i].ordwgt
@@ -217,7 +217,7 @@ export class FabricreceiptsavePage implements OnInit {
       {
  
        this.RecWgt = parseFloat(this.Weight_Per_UOM) * parseFloat(itemsload.Qty)
-       this.recamt = parseFloat(itemsload.Qty) * parseFloat(this.Orderd_Purchase_Rate)
+       this.recamt = parseFloat(itemsload.Qty) * parseFloat(this.Ordered_Purchase_Rate)
        console.log('RECWGT',this.RecWgt )
        console.log( 'RECAMT',this.recamt )
       
@@ -229,7 +229,7 @@ export class FabricreceiptsavePage implements OnInit {
         Designid:this.ProductNo_Id,
         Ordertype:this.fabricOrdertype,
         Ordmainid:this.Order_Main_Id,
-        Rate:this.Orderd_Purchase_Rate,
+        Rate:this.Ordered_Purchase_Rate,
         RecQty:itemsload.Qty,
         Size:this.size,
         Stkpur:this.Stk_Pur,
@@ -250,7 +250,7 @@ export class FabricreceiptsavePage implements OnInit {
         lotno:this.LotNo,
         noofpcs:this.NoOfPcs,
         nos:itemsload.length,
-        orddetid:this.orderdetailid,
+        orddetid:this.Orderedetailid,
         ordid:this.Order_Id,
         ordno:this.orderno,
         partycode:this.PartyCode,
@@ -259,7 +259,7 @@ export class FabricreceiptsavePage implements OnInit {
         productbarcode:this.Barcode_No,
         purchasename:this.purchasename,
         rateunit:this.rateunit,
-        recrate:this.Orderd_Purchase_Rate,
+        recrate:this.Ordered_Purchase_Rate,
         remarke:this.remark,
         samplebulk:this.fabricSamplebulk,
         saveuser:this.size,

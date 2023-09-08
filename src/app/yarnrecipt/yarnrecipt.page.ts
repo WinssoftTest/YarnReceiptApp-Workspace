@@ -184,6 +184,8 @@ export class YarnreciptPage implements OnInit {
   ConeNumbebr: string;
   WsYarnReceiptAdminApprovalload :any;
   PoAdminApproval: any;
+  Featuresettings: unknown;
+  yarnseetings: any;
  
   enableDisableRule(job) {}
   constructor(
@@ -227,6 +229,18 @@ export class YarnreciptPage implements OnInit {
   Warehousechange(event)
   {
 console.log('itwork',this.Warehouse) 
+var req = {
+  company: this.Company,
+  statement: 'FeaturSettings',
+ 
+};
+this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
+  this.Featuresettings = result;
+  console.log('Featuresettings ',  this.Featuresettings[0].yarn );
+  this.yarnseetings  = this.Featuresettings[0].yarn 
+  return true;
+});
+
   }
   WareHouseNameLoad() {
     var req = {
@@ -453,6 +467,10 @@ AddButoon()
         return true;
     });
     console.log('Warehouse', this.WareHouse);
+    if(this.yarnseetings == 'True' && this.GatepassNumLoad.length == '')
+    {
+      alert("Gate Pass Required")
+    }
   }
   GateRECNOLOAD() {
     var req = {
@@ -956,6 +974,7 @@ this.StockPur = 1
     console.log('port:', event.value.WorkOrder);
     this.ordr = event.value.Orde
     this.GatePassNumberLoad();
+   
   }
   Clear()
   {

@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>FABRIC RECEIPT SAVE <ion-chip style="background-color: white;">Balance : {{this.ordqty -  this.Pur_Received}}</ion-chip></ion-title>
+    <ion-title class="title" style="text-align: center !important;font-size: 15px;">FABRIC RECEIPT SAVE <ion-chip style="background-color: white;">Balance : {{this.ordqty -  this.Pur_Received}}</ion-chip></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="fabricreceipt"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

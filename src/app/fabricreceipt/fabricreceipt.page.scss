@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Roboto&display=swap');
-ion-header ion-toolbar,
-ion-buttons { 
-  --background:	#607D8B;
-   --color:rgb(255, 255, 255);
-   text-align: center;
-   margin-left: 5px;
-  
-}
+ 
 .Button {
   background-color:#556f7c;
   margin: 16px;
@@ -21,7 +14,13 @@ ion-buttons {
   margin-top: 9px;
   margin-bottom: -11px;
   font-family: 'Manrope', sans-serif;
-  font-size: 16px !important;
+  font-size: 15px !important;
+  font-weight: 500;
+
+}
+.label-font{
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px !important;
   font-weight: 500;
 
 }
@@ -39,7 +38,7 @@ ion-buttons {
     margin-bottom: 34px;
     margin-top: 20px !important;
     font-family: 'Manrope', sans-serif;
-    font-size: 16px !important;
+    font-size: 15px !important;
     font-weight: 500;
     width: 93%;
      margin-left: 15px;
@@ -62,19 +61,19 @@ ion-buttons {
   margin-top: 9px;
   margin-bottom: 3px;
   font-family: 'Manrope', sans-serif;
-    font-size: 16px !important;
+    font-size: 15px !important;
     font-weight: 500;
 }
 .label-font-value
 {
   font-family: 'Manrope', sans-serif;
-  font-size: 16px !important;
+  font-size: 15px !important;
   font-weight: 500;
   max-width: 100%;
 }
 .ion-select-option{
   font-family: 'Manrope', sans-serif;
-  font-size: 16px !important;
+  font-size: 15px !important;
   font-weight: 500;
   min-width: 100%;
 }
@@ -92,7 +91,7 @@ ion-buttons {
  margin-top: 9px;
  margin-bottom: 11px;
  font-family: 'Manrope', sans-serif;
- font-size: 16px !important;
+ font-size: 15px !important;
  font-weight: 500;
  margin-left: 100px;
 }

@@ -1,16 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>PURCHASE FABRIC - RECEIPT</ion-title>
+    
+    <ion-title class="title" style="text-align: start !important;font-size: 15px;">PURCHASE FABRIC - RECEIPT</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <form [formGroup]="PurchaseReceipt"> 
     <ion-grid>
-      <ion-row>
-    <ion-col   size="12"    size-md="6" size-lg="3">
+      <table style="margin-left: 10px;    width: 100%;">
+        <tr>
+          <td class="label-font"><span> WH  </span></td>
+          <td> : </td>
+        <td class="label-font Imp"  >
       <ion-item>
-        <ion-label class="label-font" style="padding-top: 13px;"> WH <sup> * </sup>  </ion-label> 
+        
           <ion-select
           class="label-font-value"
           formControlName="Warehouse"
@@ -24,10 +31,15 @@
       </ion-select-option>
         </ion-select>
       </ion-item>
-      </ion-col>  
-      <ion-col   size="12"    size-md="6" size-lg="3">
+      </td>
+      </tr>
+ 
+        <tr>
+          <td class="label-font"><span> Order Type  </span></td>
+          <td> : </td>
+        <td class="label-font Imp"  >
         <ion-item>
-          <ion-label class="label-font" style="padding-top: 13px;"> Order Type <sup> * </sup>  </ion-label> 
+          <!-- <ion-label class="label-font" style="padding-top: 13px;"> Order Type <sup> * </sup>  </ion-label>  -->
             <ion-select
             class="label-font-value"
             formControlName="OrderType"
@@ -43,11 +55,15 @@
         </ion-select-option>
           </ion-select>
         </ion-item>
-        </ion-col>  
-      
-        <ion-col   size="12"    size-md="6" size-lg="3">
+        </td>
+        </tr>
+        
+          <tr>
+            <td class="label-font"><span> Sample / Bulk  </span></td>
+            <td> : </td>
+          <td class="label-font Imp"  >
           <ion-item>
-            <ion-label class="label-font" style="padding-top: 13px;">Sample / Bulk <sup> * </sup>  </ion-label> 
+            <!-- <ion-label class="label-font" style="padding-top: 13px;">Sample / Bulk <sup> * </sup>  </ion-label>  -->
               <ion-select
               class="label-font-value"
               formControlName="Sample"
@@ -63,11 +79,15 @@
           </ion-select-option>
             </ion-select>
           </ion-item>
-          </ion-col>  
-      </ion-row>
-      <ion-col   size="12"    size-md="6" size-lg="3">
+ </td>
+ </tr>
+ 
+  <tr>
+    <td class="label-font"><span> Order  </span></td>
+    <td> : </td>
+  <td class="label-font Imp"  >
         <ion-item>
-          <ion-label class="label-font" style="padding-top: 13px;"> Order  <sup> * </sup>  </ion-label> 
+          <!-- <ion-label class="label-font" style="padding-top: 13px;"> Order  <sup> * </sup>  </ion-label>  -->
             <ion-select
             class="label-font-value"
             formControlName="Ord"
@@ -83,10 +103,15 @@
         </ion-select-option>
           </ion-select>
         </ion-item>
-        </ion-col>  
-      <ion-col   size="12"    size-md="6" size-lg="3">
+     </td>
+     </tr>
+ 
+      <tr>
+        <td class="label-font"><span> Supplier  </span></td>
+        <td> : </td>
+      <td class="label-font Imp"  >
         <ion-item style="margin-top: 7px">
-          <ion-label class="label-font">Supplier <sup> * </sup></ion-label>
+          
         <ionic-selectable
           [items]="PartyNameIns"
           itemValueField="id"
@@ -96,17 +121,20 @@
           [(ngModel)]="PartyName"
           (onChange)="portChanges($event)"
           style="max-width: 100%;   font-family: 'Manrope', sans-serif;
-          font-size: 16px !important;
+          font-size: 15px !important;
           font-weight: 500;"
-  
-          
-           >
+    >
           </ionic-selectable>
           </ion-item>
-      </ion-col>  
-      <ion-col   size="12"    size-md="6" size-lg="3">
+       </td>
+       </tr>
+      
+        <tr>
+          <td class="label-font"><span> PO No  </span></td>
+          <td> : </td>
+        <td class="label-font Imp"  >
         <ion-item>
-          <ion-label class="label-font"  > PO No <sup> * </sup>  </ion-label> 
+        
           <ionic-selectable
           [items]="Workordr"
           itemValueField="id"
@@ -116,16 +144,20 @@
           [(ngModel)]="PoNumber"
           (onChange)="WorkOrders($event)"
           style="max-width: 100%;   font-family: 'Manrope', sans-serif;
-          font-size: 16px !important;
+          font-size: 15px !important;
           font-weight: 500;
        "
           >
         </ionic-selectable>  
         </ion-item>
-        </ion-col>
-        <ion-col   size="12"    size-md="6" size-lg="3">
+    </td>
+    </tr>
+    <tr>
+      <td class="label-font"><span> WO No   </span></td>
+      <td> : </td>
+    <td class="label-font Imp"  >
           <ion-item>
-            <ion-label class="label-font"  > WO No <sup> * </sup>  </ion-label> 
+            
             <ionic-selectable
             [items]="Workordr"
             itemValueField="id"
@@ -135,16 +167,21 @@
             [(ngModel)]="WorkOrder"
             (onChange)="WorkOrders($event)"
             style="max-width: 100%;   font-family: 'Manrope', sans-serif;
-            font-size: 16px !important;
+            font-size: 15px !important;
             font-weight: 500;
          "
             >
           </ionic-selectable>  
           </ion-item>
-          </ion-col>
-        <ion-col   size="6"    size-md="6" size-lg="3">
+         </td>
+         </tr>
+     
+         <tr>
+          <td class="label-font"><span> DC No  </span></td>
+          <td> : </td>
+        <td class="label-font Imp"  >
           <ion-item>
-            <ion-label class="label-font">DC No<sup> * </sup>  </ion-label> 
+            <!-- <ion-label class="label-font"><sup> * </sup>  </ion-label>  -->
               <ion-input
               class="label-font-value"
               formControlName="Dc"
@@ -152,18 +189,42 @@
               interface="action-sheet"
                 ></ion-input>
              </ion-item>
-          </ion-col>  
-          <ion-col   size="6"    size-md="6" size-lg="3">
+     </td>
+     </tr>
+ 
+     <tr>
+      <td class="label-font"><span>Gate Pass  </span></td>
+      <td> : </td>
+    <td class="label-font Imp"  >
             <ion-item>
-              <ion-label class="label-font" style="padding-top: 13px;">Gate Pass <sup> * </sup>  </ion-label> 
-                <ion-input
+              <div *ngIf="this.yarnseetings== 'False' ">  
+                <ion-input type="text"
                 class="label-font-value"
                 formControlName="Gatepass"
                 [(ngModel)]="Gatepass"
-                interface="action-sheet"
-                  ></ion-input>
+                
+                ></ion-input>
+                </div>
+                <div *ngIf="GatepassNumLoad.length != '' "> 
+                  <!-- <ion-label class="label-font" >  <sup> *  </sup> :</ion-label> -->
+                    <ion-input
+                    class="label-font-value"
+                    formControlName="Gatepass"
+                    [(ngModel)]="Gatepass"
+                    interface="action-sheet"
+                   >
+                  <ion-select-option
+                  style="max-width: max-content"
+      
+                  *ngFor="let WAR of WH"
+                  >{{WAR.WarehouseName }}
+                </ion-select-option>
+                  </ion-input>
+                  </div>
                </ion-item>
-            </ion-col>  
+           </td>
+           </tr>
+           </table>
         <ion-row> 
           <ion-col  size="6">
            <button  class="label-font" class="Button" (click)="AddButoon()">Add</button>
@@ -186,7 +247,7 @@
       </ion-row>
       <table>
         <tr>
-          <td class="label-font"><span>WorkOrder No  </span></td>
+          <td class="label-font"><span>Work Order No  </span></td>
           <td> : </td>
           <td class="label-font Imp" style="color: red">{{GRD.workorderno
           }} </td>
@@ -212,7 +273,7 @@
         </tr>
         
         <tr>
-          <td class="label-font"><span>Orderd   </span></td>
+          <td class="label-font"><span>Ordered   </span></td>
           <td> : </td>
           <td class="label-font Imp" style="color: red">{{GRD.ordqty
           }}</td>
@@ -232,7 +293,7 @@
         <tr>
           <td class="label-font"><span>Rate   </span></td>
           <td> : </td>
-          <td class="label-font Imp" style="color: red">{{GRD.Orderd_Purchase_Rate
+          <td class="label-font Imp" style="color: red">{{GRD.Ordered_Purchase_Rate
           }} {{GRD.rateunit}}</td>
         </tr>
         <tr>

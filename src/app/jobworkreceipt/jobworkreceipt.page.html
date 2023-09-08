@@ -1,25 +1,32 @@
 <ion-header>
   <ion-toolbar>
+     
+    <ion-title class="title" style="text-align: center !important;font-size: 15px;">JOBWORK - RECEIPT</ion-title>
     <ion-buttons slot="start">
-      <ion-icon style="height: 25px;width: 25px;margin-left: 5px; " name="arrow-back-outline" (click)="BACK()"></ion-icon> 
-    <ion-title>JOBWORK - RECEIPT</ion-title>
+      <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
  
+
     <form [formGroup]="jwReceipt"> 
+      <table style="margin-left: 10px;    width: 100%;"> 
+        <tr>
+          <td class="label-font"><span> WH  </span></td>
+          <td> : </td>
+          <td > 
       <ion-item>
-        <ion-label class="label-font" style="padding-top: 13px;margin-left: 7px;"> WH <sup> * </sup> : </ion-label> 
+        
         <ion-select
         formControlName="Warehouse"
       [(ngModel)]="Warehouse"
       interface="action-sheet"
-    
-      style="margin-left: 20px; font-family: Manrope, sans-serif !important;
-      font-size: 16px !important;
-      font-weight: 550 !important; color: black;   max-width: -webkit-max-content;
+      (ionChange)="WhNameChange()"
+      style="font-family: Manrope, sans-serif !important;
+      font-size: 15px !important;
+      font-weight: 500 !important; color: black;   max-width: -webkit-max-content;
       max-width: -moz-max-content;
       max-width: max-content;">
               <ion-select-option
@@ -29,10 +36,13 @@
             </ion-select-option>
     </ion-select>
     </ion-item>
-
-    <ion-row>
-      <ion-col size="12">
-      <label   style="padding-top: 13px;margin-left: 15px;"> Job Work <sup> * </sup> : </label> 
+  </td>
+  </tr>
+  <tr>
+    <td class="label-font"><span>  Job Work  </span></td>
+    <td> : </td>
+    <td > 
+      <!-- <label   style="padding-top: 13px;margin-left: 15px;"> <sup> * </sup> : </label>  -->
         <select
         
         formControlName="JobWork"
@@ -45,8 +55,13 @@
     <option value="madeups">Madeups</option>
  
      </select> 
-    </ion-col><ion-col size="12">
-      <label style="padding-top: 13px;margin-left: 15px;"> Process <sup> * </sup> : </label> 
+     </td>
+     </tr>
+     <tr>
+      <td class="label-font"><span>  Process  </span></td>
+      <td> : </td>
+      <td > 
+      <!-- <label style="padding-top: 13px;margin-left: 15px;"> Process <sup> * </sup> : </label>  -->
        <select
        formControlName="Process"
      [(ngModel)]="Process"
@@ -58,12 +73,14 @@
        {{ PROS.process }}
      </option>
      </select>
-        </ion-col>
-      </ion-row>
- 
-         
-      <ion-item style="margin-top: 7px">
-        <ion-label class="label-font">Party <sup> * </sup> :</ion-label>
+   </td>
+   </tr>
+   <tr>
+    <td class="label-font"><span>  Party   </span></td>
+    <td> : </td>
+    <td > 
+     <ion-item style="margin-top: 7px">
+        <!-- <ion-label class="label-font">Party <sup> * </sup> :</ion-label> -->
       <ionic-selectable
           [items]="PartyNameIns"
         itemValueField="id"
@@ -76,8 +93,15 @@
          >
         </ionic-selectable>
         </ion-item>
+        </td>
+        </tr>
+     
+        <tr>
+          <td class="label-font"><span>   WO No   </span></td>
+          <td> : </td>
+          <td >
         <ion-item> 
-          <ion-label  class="label-font"> WO No <sup> * </sup> : </ion-label>
+          <!-- <ion-label  class="label-font"> <sup> * </sup> : </ion-label> -->
         <ionic-selectable
           [items]="Workordr"
           itemValueField="id"
@@ -90,8 +114,14 @@
          >
         </ionic-selectable>  
         </ion-item>
+        </td>
+        </tr>
+        <tr>
+          <td class="label-font"><span>  PO No   </span></td>
+          <td> : </td>
+          <td >
         <ion-item>
-          <ion-label class="label-font">PO No <sup> * </sup>:</ion-label>
+          <!-- <ion-label class="label-font"> <sup> * </sup>:</ion-label> -->
            <ionic-selectable
             [items]="Orde"
             itemValueField="id"
@@ -104,10 +134,14 @@
           >
           </ionic-selectable>
         </ion-item>
-        <ion-row>
-      <ion-col size="6">
+        </td>
+        </tr>
+        <tr>
+          <td class="label-font"><span>  Slip No    </span></td>
+          <td> : </td>
+          <td >
        <ion-item>
-        <ion-label class="label-font" style="padding-top: 13px;"> Slip No : <sup> * </sup>  </ion-label> 
+        <!-- <ion-label class="label-font" style="padding-top: 13px;">: <sup> * </sup>  </ion-label>  -->
         <ion-input
         type="text"
         formControlName="SlipNo"
@@ -116,8 +150,10 @@
         >
       </ion-input>
       </ion-item>
-      </ion-col>
-      <ion-col size="6">
+       </td>
+       </tr>
+      
+      <!-- <ion-col size="6">
       <ion-item>
   
          <ion-input
@@ -131,18 +167,41 @@
        
         </ion-input>
       </ion-item>
-    </ion-col>
-    </ion-row>
+    </ion-col> -->
+    <!-- </ion-row> -->
+    <tr>
+      <td class="label-font"><span>   Gate Pass     </span></td>
+      <td> : </td>
+      <td >
     <ion-item>
-      <ion-label class="label-font" style="padding-top: 13px;"> Gate Pass <sup> * </sup>  </ion-label> 
-     
+      <!-- <ion-label class="label-font" style="padding-top: 13px;"><sup> * </sup>  </ion-label>  -->
+      <div *ngIf="this.yarnseetings== 'False' ">  
    <ion-input type="text"
    class="label-font-value"
    formControlName="GatePass"
    [(ngModel)]="GatePass"
    
    ></ion-input>
+   </div>
+   <div *ngIf="GatepassNumLoad.length != '' ">  
+    <ion-select
+      class="label-font-value"
+      formControlName="GatePass"
+      interface="action-sheet"
+  
+    >
+      <ion-select-option
+        *ngFor="let GP of GatepassNumLoad ; let optionindex = index"
+        style="font-size: 13px"
+      >
+        {{ GP.GatePass_No }}
+      </ion-select-option>
+</ion-select>
+</div>
     </ion-item>
+    </td>
+    </tr>
+    </table>
     <ion-row> 
       <ion-col  size="6">
        <button  class="label-font" class="Button" (click)="AddButoon()">Add</button>
@@ -157,7 +216,7 @@
 class="card">
 <table>
   <tr>
-    <td class="label-font"><span>WorkOrder No    </span></td>
+    <td class="label-font"><span>Work Order No    </span></td>
     <td> : </td>
     <td class="label-font Imp" style="color: red"> {{GRD.WorkOrderNo
     }}</td>
@@ -180,11 +239,11 @@ class="card">
     <td class="label-font Imp" style="color: red">   {{GRD.delivery - GRD.recqty  }}</td>
   </tr>
 </table>
-
+<table> 
 {{GRD.F_Count
   }}  <b style="color: red;"> | </b> {{GRD.Reed_Pick}}<b style="color: red;">| </b> {{GRD.F_Size}}<b style="color: red;"> | </b> {{GRD.Color}} <b style="color: red;"> | </b>  <b>{{GRD.Design_Name
   }}</b>
-  <br>
+  </table>
  <!-- <ion-row>
   <ion-col size="6">
     <label class="labe">Total Mtr : <br>

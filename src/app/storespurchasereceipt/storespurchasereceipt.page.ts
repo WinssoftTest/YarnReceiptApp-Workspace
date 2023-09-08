@@ -52,6 +52,9 @@ export class StorespurchasereceiptPage implements OnInit {
   Fpicheck:any=[];
   FPICHECK: any;
   count: any;
+  GatepassNumLoad: any =[];
+  yarnseetings: string;
+  Featuresettings: unknown;
   constructor(private commonprovider: CommonService, 
     private _rr: FormBuilder,   public httpClient: HttpClient,
     public router: Router) {
@@ -63,8 +66,19 @@ export class StorespurchasereceiptPage implements OnInit {
     }
     Whchange()
     {
-      console.log(this.Warehousename)
-      this. PartyNameLoad()
+      console.log(this.Warehousename);
+      var req = {
+        company: this.Company,
+        statement: 'FeaturSettings',
+       
+      };
+      this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
+        this.Featuresettings = result;
+        console.log('Featuresettings ',  this.Featuresettings[0].stores );
+        this.yarnseetings  = this.Featuresettings[0].stores 
+        return true;
+      });
+      this. PartyNameLoad();
     }
   WareHouseNameLoad() {
     var req = {
@@ -129,7 +143,7 @@ export class StorespurchasereceiptPage implements OnInit {
         alert('FPI is Pending' + ' - '+ this.WrkOrderNumber )
       }
     })
-
+ this.GatePassNumberLoad();
   }
    AddButoon()
    {
@@ -267,5 +281,25 @@ portChanges(event: { component: IonicSelectableComponent; value: any }) {
   BACK()
 {
   this.router.navigate(['./home'])
+}
+GatePassNumberLoad() {
+  var req = {
+    Company: this.Company,
+    Years: this.year,
+    Order_No:  this.WrkOrderNumber ,
+    Party_Name:   this.supllier,
+    statement : "Receipt"
+   
+    };
+  this.commonprovider.GetGatepassNo(req).then((result) => {
+    this.GatepassNumLoad = result;
+    console.log('GatepassNumLoad', this.GatepassNumLoad);
+      return true;
+  });
+ 
+  if(this.yarnseetings == 'True' && this.GatepassNumLoad.length == '')
+  {
+    alert("Gate Pass Required")
+  }
 }
 }

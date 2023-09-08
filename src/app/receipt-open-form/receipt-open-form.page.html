@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="top-toolbar">
-    <ion-title>  VIEW ENTRY</ion-title>
+    <ion-title class="title" style="text-align: center !important;font-size: 15px;">  VIEW ENTRY</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
@@ -10,6 +10,28 @@
 <ion-content>
   <form [formGroup]="YarnReceiptForm">
     <table style="margin-left: 10px;    width: 100%;"> 
+      <tr>
+        <td class="label-font"><span> Receipt Type  </span></td>
+        <td> : </td>
+      <td class="label-font Imp" style="color: red;width: 76%;"> 
+    <ion-item style="margin-top: 7px">
+      <ion-select
+      class="label-font-value"
+      formControlName="Type"
+      [(ngModel)]="Type"
+      interface="action-sheet"
+        >
+       <ion-select-option
+    style="max-width: max-content"
+    class="ion-select-option"
+     *ngFor="let ty of type"
+     [value]="ty.typ"
+    >{{ty.typ }}
+  </ion-select-option>
+    </ion-select>
+      </ion-item>
+      </td>
+      </tr>
       <tr>
         <td class="label-font"><span> Party  </span></td>
         <td> : </td>
@@ -133,45 +155,47 @@
       width: 33px;
       height: 20px;">{{optionindex +  1 }}</ion-chip><br>
       <span style="margin-left: 10px;"  class="Imp">  <b> {{GRI.Supplier_Name}} </b></span> <br>
-      <span style="font-size: small;margin-left: 10px;" > <span>Rec No <b >  : </b> <b> {{ GRI.Y_Rec_No}}</b>   </span>  </span><br>
-      <span style="font-size: small;margin-left: 10px;">  <span>Wo <b style="margin-left:1px;">  : </b> <b>{{GRI.WorkOrderNo}}</b> </span> </span><br>
-    <span style="font-size: small;margin-left: 10px;">    <span>Po <b style="margin-left: 3px;">  : </b> <b>{{GRI.Y_PO_No}} </b></span>     </span><br>
-   
-    <!-- <span>Wo : <b>{{GRI.WorkOrderNo}}</b> </span><br> -->
- 
-    <!-- <p>Po  : <span class="Imp">{{GRI.Y_PO_No}}</span></p> -->
-    <!-- <span>Record No : <b> {{ GRI.Y_Rec_No}}</b>   </span>   <br> -->
-    <!-- <p>Order : {{GRI.Ordered}} | Already Rec : {{GRI.Received
-    }} </p>
-    <p>Now Received : <span class="Imp">{{GRI.Now_Received_Qty
-    }}</span></p>
-    <p style="color: red;font-weight: bold;">  Bal : {{ GRI.bal | number : '1.0-2'}} | {{GRI.uom}} </p>
-      
-    <p style="color: red;font-weight: bold;">Count : {{GRI.Count}} | {{GRI.Color}}</p>
- <p >Ex % : {{GRI.Ex_Per}} | CardNo : {{GRI.CardNo}}</p>
-   
-    <p>Pakes : {{GRI.Bags}} | Sub Pack : {{GRI.subpack }}</p>
-    <p>Lot No: {{GRI.lot_no }} | WareHouse: {{GRI.WareHouse }}</p>
-    <p>Mill : {{GRI.MillName}}</p>
-    <p>Remarks : {{GRI.Remarks}}</p> -->
+      <table style="margin-left: 10px;    width: 100%;">
+        <tr>
+          <td class="label-font"><span> Rec No  </span></td>
+          <td> : </td>
+        <td class="label-font Imp"  >
+      {{ GRI.Y_Rec_No}} 
+      </td>
+      </tr>
+      <tr>
+        <td class="label-font"><span> WO No  </span></td>
+        <td> : </td>
+      <td class="label-font Imp"  >  {{GRI.WorkOrderNo}} 
+        </td>
+        </tr>
+        <tr>
+          <td class="label-font"><span> PO No </span></td>
+          <td> : </td>
+        <td class="label-font Imp"  >
+   {{GRI.Y_PO_No}}  
+ </td>
+ </tr>
+ <tr>
+  <td class="label-font"><span> Qty </span></td>
+  <td> : </td>
+<td class="label-font Imp"  >
+  {{GRI.Now_Received_Qty
+  }} 
+  </td>
+  </tr>
+ </table>
   </div>
     </ion-row>
  
-    <ion-row style="margin-right: -177px;
+    <!-- <ion-row style="margin-right: -177px;
     margin-bottom: 0px;">
       <ion-col size="6">
         <span style="margin-left: 10px"> <span> Qty <b style="margin-left:4px; ">  : </b> <b>{{GRI.Now_Received_Qty
         }} </b></span>  </span><br>
       </ion-col>
-       <ion-col size="6">
-     <button style="font-size: 20px;    margin-bottom: 7px;
-     margin-left: 29px;" class="Button" (click)="presentAlert()"> <ion-icon style="" name="trash"> Delete </ion-icon></button>
-     </ion-col>
-     <!-- <ion-col size="6">
-       <button class="Button" (click)="View()">   <ion-icon style="font-size: 20px;" name="eye">View   </ion-icon></button>   
  
-  </ion-col> -->
-    </ion-row>
+    </ion-row> -->
 
 
     </ion-card>

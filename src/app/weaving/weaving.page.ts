@@ -90,6 +90,9 @@ F_Width:any;
   barno: any;
   count: any = "0";
   isVehicleNumberValid: boolean =false;
+  Featuresettings: unknown;
+  yarnseetings: any;
+  GatepassNumLoad: any =[];
   
   constructor(private commonprovider: CommonService, 
     private _rr: FormBuilder,   public httpClient: HttpClient,
@@ -187,8 +190,39 @@ console.log('RouteList',  this.PartyName);
 
 WarehouseName()
 {
+  console.log('itwork',this.Warehouse) 
+var req = {
+  company: this.Company,
+  statement: 'FeaturSettings',
+ 
+};
+this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
+  this.Featuresettings = result;
+  console.log('Featuresettings ',  this.Featuresettings[0].yarn );
+  this.yarnseetings  = this.Featuresettings[0].weaving 
+  return true;
+});
 this. 
 PartyNameLoad() 
+}
+GatePassNumberLoad() {
+  var req = {
+    Company: this.Company,
+    Years: this.year,
+    Order_No:   this.ordr,
+    Party_Name:   this.supllier,
+    Workorderno: this.WorkOrder,
+    };
+  this.commonprovider.GetGatepassNo(req).then((result) => {
+    this.GatepassNumLoad = result;
+    console.log('GatepassNumLoad', this.GatepassNumLoad);
+      return true;
+  });
+ 
+  if(this.yarnseetings == 'True' && this.GatepassNumLoad.length == '')
+  {
+    alert("Gate Pass Required")
+  }
 }
 portChange(event: { component: IonicSelectableComponent; value: any }) {
   console.log('RouteList',  this.PartyName);
@@ -199,7 +233,7 @@ portChange(event: { component: IonicSelectableComponent; value: any }) {
   console.log('pARTCODE',event.value.PartyCode)
   this.PartyCode = event.value.PartyCode 
   this.WorkOrderNumberLoad();
-
+  this.GatePassNumberLoad()
 }
 WorkOrderNumberLoad()  {
   var req = {
@@ -258,7 +292,19 @@ portChange1(event: { component: IonicSelectableComponent; value: any }) {
     
   console.log('port:', event.value.WorkOrder);
   this.wrkord = event.value.WorkOrder
- this. OrderNumberLoad() 
+ this. OrderNumberLoad() ;
+ var req = {
+  company: this.Company,
+  statement: 'FeaturSettings',
+ 
+};
+this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
+  this.Featuresettings = result;
+  console.log('Featuresettings ',  this.Featuresettings[0].yarn );
+  this.yarnseetings  = this.Featuresettings[0].weaving 
+  return true;
+});
+
 }
 portChangeOrdNo(event: { component: IonicSelectableComponent; value: any }) {
   console.log('port:', event.value.WorkOrder);

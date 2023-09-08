@@ -8,7 +8,6 @@ ion-buttons {
    --background:#00afb9;
    --color:black;
    text-align: center;
- 
    font-size: 15px !important;
  
 }
@@ -28,6 +27,13 @@ ion-buttons {
 ion-select::part(icon) {
    display: none !important;
  }
+ td, th {
+   padding: 5px !important;
+ }
+ td{
+   margin-left: 5px;
+}
+ 
  }
 //   /** primary **/
 //   --ion-color-primary: #3880ff;

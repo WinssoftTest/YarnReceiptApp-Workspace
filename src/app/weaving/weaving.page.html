@@ -1,8 +1,8 @@
 <ion-header style="background-color:aliceblue  ">
   <ion-toolbar>
+      <ion-title style="text-align: center !important;font-size: 15px;" >WEAVING - RECEIPT</ion-title>
     <ion-buttons slot="start">
-      <ion-icon style="height: 25px;width: 25px;margin-left: 5px; " name="arrow-back-outline" (click)="BACK()"></ion-icon> 
-    <ion-title style="margin-left: 50px;" >WEAVING - RECEIPT</ion-title>
+      <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -168,15 +168,31 @@
   <td class="label-font"><span>Gate Pass</span></td>
   <td> : </td>
   <td>
-  <!-- <ion-label class="label-font">Gate Pass <sup> *  </sup> :</ion-label> -->
-  <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
+ 
   <ion-item> 
+    <div *ngIf="this.yarnseetings== 'False' ">  
   <ion-input
     type="text"
     class="label-font-value"
     formControlName="GatePass"
     [(ngModel)]="GatePass"
   ></ion-input>
+  </div>
+  <div *ngIf="GatepassNumLoad.length != '' ">  
+    <ion-select
+      class="label-font-value"
+      formControlName="GatePass"
+      interface="action-sheet"
+      
+    >
+      <ion-select-option
+        *ngFor="let GP of GatepassNumLoad ; let optionindex = index"
+        style="font-size: 13px"
+      >
+        {{ GP.GatePass_No }}
+      </ion-select-option>
+</ion-select>
+</div>
  </ion-item>
  </td>
  </tr>
@@ -210,12 +226,12 @@
   </ion-row>
 
 <ion-chip style="text-align: center;margin-top: 22px;margin-left: 25%;  font-family: 'Manrope', sans-serif;
-font-size: 16px !important;
+font-size: 15px !important;
 font-weight: 500;">PIECE COUNT : {{ this.count }}</ion-chip>
 <div *ngFor="let GRD of  GridDetailsLoad; let optionindex = index" class="card"> 
 <table  >
   <tr>
-    <td class="label-font"><span>WorkOrder No  </span></td>
+    <td class="label-font"><span>Work Order No  </span></td>
     <td> : </td>
     <td class="label-font Imp" style="color: red;padding: 5px;">{{GRD.WorkOrderNo
     }}</td>
@@ -239,15 +255,16 @@ font-weight: 500;">PIECE COUNT : {{ this.count }}</ion-chip>
     }}</td>
   </tr>
   <tr>
-    <td class="label-font"><span>Balance  </span></td>
+    <td class="label-font"><span>Balance Mtr </span></td>
     <td> : </td>
     <td class="label-font Imp" style="color: red;padding: 5px;"> {{ GRD.OrderQty - GRD.Received | number : '1.2-2'  }}</td>
   </tr>
-  </table>
+</table>
+<table>
   {{GRD.F_Count
-  }}    {{GRD.Reed_Pick}}    {{GRD.F_Size}} {{GRD.Color}}   {{GRD.Design_Name
-  }}   Ex Rec % : {{GRD.Ex_Rec_Per}}
-  
+  }} <span style="color: red;">|</span>  {{GRD.Reed_Pick}} <span style="color: red;">|</span>   {{GRD.F_Size}} <span style="color: red;">|</span> {{GRD.Color}} <span style="color: red;">|</span>  {{GRD.Design_Name
+  }} <span style="color: red;">|</span>  Ex Rec % : {{GRD.Ex_Rec_Per}}
+</table>
 <!--   
     <ion-col size="12"> 
       <label class="labe"> Bal :  <b  style="color: red;">   </b>  </label>

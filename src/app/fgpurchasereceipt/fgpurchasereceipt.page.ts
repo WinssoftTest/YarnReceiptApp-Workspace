@@ -51,6 +51,9 @@ export class FgpurchasereceiptPage implements OnInit {
   newIndex: number;
   Saveload: any;
   isButton:boolean=true;
+  GatepassNumLoad: any=[];
+  yarnseetings: string;
+  Featuresettings: unknown;
   constructor(private commonprovider: CommonService, 
     private _rr: FormBuilder,   public httpClient: HttpClient,
     public router: Router) {
@@ -72,9 +75,9 @@ export class FgpurchasereceiptPage implements OnInit {
         LeeTime:itemsload.leetime,
         Ordertype:this.OrderType,
         Ordmainid:itemsload.Order_Main_Id,
-        RecAmt:parseFloat(itemsload.NowRec) * parseFloat(itemsload.Orderd_Purchase_Rate),
+        RecAmt:parseFloat(itemsload.NowRec) * parseFloat(itemsload.Ordered_Purchase_Rate),
         RecQty:itemsload.NowRec,
-        Rate:itemsload.Orderd_Purchase_Rate,
+        Rate:itemsload.Ordered_Purchase_Rate,
         Stkpur:itemsload.Stk_Pur,
         Warehouse:this.Warehousename,
         articleno:itemsload.articleno,
@@ -84,7 +87,7 @@ export class FgpurchasereceiptPage implements OnInit {
         entryno:this.EntryNo,
         gatepassno:this.Gatepass,
         nos:itemsload.length,
-        orddetid:itemsload.orderdetailid,
+        orddetid:itemsload.Orderedetailid,
         ordid:itemsload.Order_Id,
         ordno:this.WrkOrderNumber ,
         ordrate:moment(itemsload.Date).format('YYYY-MM-DD'),
@@ -95,7 +98,7 @@ export class FgpurchasereceiptPage implements OnInit {
         remarke:'-',
         samplebulk:this.Sample,
         saveuser:this.UserName,
-        totalrecamt:parseFloat(itemsload.NowRec) * parseFloat(itemsload.Orderd_Purchase_Rate),
+        totalrecamt:parseFloat(itemsload.NowRec) * parseFloat(itemsload.Ordered_Purchase_Rate),
         unit:itemsload.uom,
         workorderno:itemsload.workorderno,
         years:this.year
@@ -174,7 +177,17 @@ export class FgpurchasereceiptPage implements OnInit {
         
       console.log('tttttt:', event.value.WorkOrder);
       this.WrkOrderNumber = event.value.WorkOrder
-     
+      var req = {
+        company: this.Company,
+        statement: 'FeaturSettings',
+       
+      };
+      this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
+        this.Featuresettings = result;
+        console.log('Featuresettings ',  this.Featuresettings[0].madeups );
+        this.yarnseetings  = this.Featuresettings[0].madeups 
+        return true;
+      });
       }
       portChanges(event: { component: IonicSelectableComponent; value: any }) {
     
@@ -287,5 +300,24 @@ export class FgpurchasereceiptPage implements OnInit {
      }
   ngOnInit() {
   }
-
+  GatePassNumberLoad() {
+    var req = {
+      Company: this.Company,
+      Years: this.year,
+      Order_No:  this.WrkOrderNumber ,
+      Party_Name:   this.supllier,
+      statement : "Receipt"
+     
+      };
+    this.commonprovider.GetGatepassNo(req).then((result) => {
+      this.GatepassNumLoad = result;
+      console.log('GatepassNumLoad', this.GatepassNumLoad);
+        return true;
+    });
+   
+    if(this.yarnseetings == 'True' && this.GatepassNumLoad.length == '')
+    {
+      alert("Gate Pass Required")
+    }
+  }
 }

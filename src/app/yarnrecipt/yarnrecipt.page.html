@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar  >
-    <ion-title>YARN RECEIPT</ion-title>
+    <ion-title class="title" style="text-align: center !important;font-size: 15px;">YARN RECEIPT</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
@@ -102,13 +102,13 @@
   <td> : </td>
 <td class="label-font Imp" style="color: red">
        <ion-item> 
-         <div *ngIf="GatepassNumLoad.length == '' ">  
+         <div *ngIf="  this.yarnseetings   == 'False' ">  
         <ion-input
           type="text"
           class="label-font-value"
           formControlName="GatePass"
           style="font-family: 'Manrope', sans-serif;
-          font-size: 16px !important;
+          font-size: 15px !important;
           font-weight: 550;"
         ></ion-input>
      </div> 
@@ -145,7 +145,7 @@
           interface="action-sheet"
           (ionChange)="onchangeDcNo($event)"
           style="font-family: 'Manrope', sans-serif;
-          font-size: 16px !important;
+          font-size: 15px !important;
           font-weight: 550;"
         >
         </ion-input>
@@ -195,7 +195,7 @@
               margin-top: -15px;
               margin-bottom: -26px !important;
               margin-left: 50px;   font-family: 'Manrope', sans-serif;
-   font-size: 16px !important;
+   font-size: 15px !important;
    font-weight: 550;
    color: rgb(243, 43, 43);
             "
@@ -290,7 +290,7 @@
                 />
              <table>
               <tr>
-                <td class="label-font"><span>Workorder No</span></td>
+                <td class="label-font"><span>Work Order No</span></td>
                 <td> : </td>
                 <td class="label-font Imp" style="color: red">{{GRI.WorkOrderNo}}</td>
               </tr>
@@ -308,7 +308,7 @@
                 </td> 
               </tr>
               <tr>
-                <td class="label-font"><span>Orderd</span></td>
+                <td class="label-font"><span>Ordered</span></td>
                 <td> : </td>
                 <td class="label-font Imp"> {{ GRI.Ordered }}  <span>Rate</span> <b>:</b> {{GRI.Rec_Rate |
                   number : '1.0-2' }}

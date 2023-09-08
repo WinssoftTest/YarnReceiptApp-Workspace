@@ -16,6 +16,7 @@ export class HomePage {
  Company=localStorage.getItem("Company");
  Branch=localStorage.getItem("Branch");
  year = localStorage.getItem("Year")
+ user = localStorage.getItem("User")
   WorkOrderNumberArr: unknown;
   PartyNameArr: unknown;
   OrderNumberArr: unknown;
@@ -38,64 +39,64 @@ export class HomePage {
       Todate:["",[Validators.required]]
      });
      console.log('Its Work')
-     this.WareHouseNameLoad ();
-     this.PartyNameLoad ();
-     this.WorkOrderNumberLoad();
+    //  this.WareHouseNameLoad ();
+    //  this.PartyNameLoad ();
+    //  this.WorkOrderNumberLoad();
   }
- WareHouseNameLoad ()
-  {
-   var req = {
-    company:this.Company,
-    Branch_Name:this.Branch,
-    statement:"Receipt"
-    };
-    this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
-      this.WarehouseNameArr = result;
-      console.log("BranchName", this.WarehouseNameArr)
-      return true;
-    });
-  }
-  onchangeToDate(event)
-  {
-    this.OpenFormLoad();
-  }
-  onchangeDate(event)
-  {
-  console.log(this.FormDate)
-  }
-  onchangeWorkorder(event)
-  {
-    console.log("wrk",this.WorkOrder)
-this.OrderNumberLoad() 
-  }
-  PartyNameLoad ()
-  {
-   var req = {
-    Company:this.Company,
-    Branch_Name:this.Branch,
-    statement:"Receipt",
-    Years:this.year
-    };
-    this.commonprovider.GetPartyNameLoad(req).then((result) => {
-      this.PartyNameArr = result;
-      console.log("PartyNameArr", this.PartyNameArr)
-      return true;
-    });
-  }
-  WorkOrderNumberLoad ()
-  {
-   var req = {
-    Company:this.Company,
-    Years:"22-23",
-    statement:"Receipt",
+//  WareHouseNameLoad ()
+//   {
+//    var req = {
+//     company:this.Company,
+//     Branch_Name:this.Branch,
+//     statement:"Receipt"
+//     };
+//     this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
+//       this.WarehouseNameArr = result;
+//       console.log("BranchName", this.WarehouseNameArr)
+//       return true;
+//     });
+//   }
+//   onchangeToDate(event)
+//   {
+//     this.OpenFormLoad();
+//   }
+//   onchangeDate(event)
+//   {
+//   console.log(this.FormDate)
+//   }
+//   onchangeWorkorder(event)
+//   {
+//     console.log("wrk",this.WorkOrder)
+// this.OrderNumberLoad() 
+//   }
+//   PartyNameLoad ()
+//   {
+//    var req = {
+//     Company:this.Company,
+//     Branch_Name:this.Branch,
+//     statement:"Receipt",
+//     Years:this.year
+//     };
+//     this.commonprovider.GetPartyNameLoad(req).then((result) => {
+//       this.PartyNameArr = result;
+//       console.log("PartyNameArr", this.PartyNameArr)
+//       return true;
+//     });
+//   }
+//   WorkOrderNumberLoad ()
+//   {
+//    var req = {
+//     Company:this.Company,
+//     Years:"22-23",
+//     statement:"Receipt",
     
-    };
-    this.commonprovider.GetWorkOrderNumberLoad(req).then((result) => {
-      this.WorkOrderNumberArr = result;
-      console.log("WorkOrderNumber", this.WorkOrderNumberArr)
-      return true;
-    });
-  }
+//     };
+//     this.commonprovider.GetWorkOrderNumberLoad(req).then((result) => {
+//       this.WorkOrderNumberArr = result;
+//       console.log("WorkOrderNumber", this.WorkOrderNumberArr)
+//       return true;
+//     });
+//   }
   jobworkreceipt()
   {
     this.router.navigate(['jobworkreceipt'])
@@ -170,10 +171,10 @@ this.OrderNumberLoad()
   {
   localStorage.removeItem("User");
   localStorage.removeItem("Username")
-    console.log('1236',localStorage.removeItem("User"));
+ 
     localStorage.removeItem("Company")
     localStorage.removeItem("Branch");
-    localStorage.removeItem("User")
+    
      localStorage.clear();
    // window.location.reload();
      this.router.navigate(['/login']);

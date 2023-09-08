@@ -60,6 +60,9 @@ export class JobworkreceiptPage implements OnInit {
   jwreceiptgrid: any;
   RecQty: any;
   Gatepass: any;
+  GatepassNumLoad: any=[];
+  yarnseetings: string;
+  Featuresettings: unknown;
   constructor(private commonprovider: CommonService, 
     private _rr: FormBuilder,   public httpClient: HttpClient,
     public router: Router) {
@@ -82,7 +85,17 @@ export class JobworkreceiptPage implements OnInit {
   }
   WhNameChange()
   {
- 
+    var req = {
+      company: this.Company,
+      statement: 'FeaturSettings',
+     
+    };
+    this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
+      this.Featuresettings = result;
+      console.log('Featuresettings ',  this.Featuresettings[0].jw );
+      this.yarnseetings  = this.Featuresettings[0].jw 
+      return true;
+    });
   }
  
   Clear()
@@ -131,6 +144,25 @@ export class JobworkreceiptPage implements OnInit {
       return true;
     });
    }
+   GatePassNumberLoad() {
+    var req = {
+      Company: this.Company,
+      Years: this.year,
+      Order_No:   this.ordr,
+      Party_Name:   this.supllier,
+      Workorderno: this.WorkOrder,
+      };
+    this.commonprovider.GetGatepassNo(req).then((result) => {
+      this.GatepassNumLoad = result;
+      console.log('GatepassNumLoad', this.GatepassNumLoad);
+        return true;
+    });
+   
+    if(this.yarnseetings == 'True' && this.GatepassNumLoad.length == '')
+    {
+      alert("Gate Pass Required")
+    }
+  }
    WorkOrderNumberLoad()  {
     var req = {
     Company: this.Company,

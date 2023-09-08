@@ -1,8 +1,9 @@
 <ion-header>
   <ion-toolbar>
+     
+    <ion-title   style="text-align: center !important;font-size: 15px;">STORES - RECEIPT</ion-title>
     <ion-buttons slot="start">
-      <ion-icon style="height: 25px;width: 25px;margin-left: 5px; " name="arrow-back-outline" (click)="BACK()"></ion-icon>
-    <ion-title style="margin-left: 50px;">STORES - RECEIPT</ion-title>
+      <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -53,7 +54,7 @@
         [(ngModel)]="PartyName"
         (onChange)="portChanges($event)"
         style="max-width: 100%;   font-family: 'Manrope', sans-serif;
-        font-size: 16px !important;
+        font-size: 15px !important;
         font-weight: 500;
      "
 
@@ -78,7 +79,7 @@
           [(ngModel)]="WorkOrder"
           (onChange)="WorkOrders($event)"
           style="max-width: 100%;   font-family: 'Manrope', sans-serif;
-          font-size: 16px !important;
+          font-size: 15px !important;
           font-weight: 500;
        "
 
@@ -111,6 +112,15 @@
       <td> : </td>
     <td   >
           <ion-item>
+            <div *ngIf="this.yarnseetings== 'False' ">  
+              <ion-input type="text"
+              class="label-font-value"
+              formControlName="Gatepass"
+              [(ngModel)]="Gatepass"
+              
+              ></ion-input>
+              </div>
+              <div *ngIf="GatepassNumLoad.length != '' "> 
             <!-- <ion-label class="label-font" >  <sup> *  </sup> :</ion-label> -->
               <ion-input
               class="label-font-value"
@@ -125,6 +135,7 @@
             >{{WAR.WarehouseName }}
           </ion-select-option>
             </ion-input>
+            </div>
           </ion-item>
         </td>
         </tr>
@@ -144,7 +155,7 @@
 class="card">
 <table>
   <tr>
-    <td class="label-font"><span>WorkOrder No  </span></td>
+    <td class="label-font"><span>Work Order No  </span></td>
     <td> : </td>
     <td class="label-font Imp" style="color: red">{{GRD.workorderno
     }}</td>
@@ -180,11 +191,11 @@ class="card">
     }}  {{GRD.Req_Unit}}</td>
   </tr>
   </table>
-
+<table>
 {{GRD.Group_Name
   }}  <b style="color: red;"> | </b> {{GRD.Mat_Code}}<b style="color: red;">| </b> {{GRD.Mat_Name}}<b style="color: red;"> | </b> {{GRD.Specifications}} <b style="color: red;"> | </b>  <b>{{GRD.size
   }}</b>
-  <br>
+</table>
 
 
 
