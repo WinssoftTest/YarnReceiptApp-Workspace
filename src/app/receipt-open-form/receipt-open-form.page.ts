@@ -40,6 +40,7 @@ export class ReceiptOpenFormPage implements OnInit {
   username: any;
   HomeForm: any;
   WarehouseNameArr: unknown;
+  type:any=[{id:1,typ:"Yarn"},{id:2,typ:"Weaving"},{id:1,typ:"Knitting"},{id:1,typ:"JobWork"},{id:1,typ:"Stores"},{id:1,typ:"Fabric"},{id:1,typ:"FG"}]
   Company = localStorage.getItem('Company');
   Branch = localStorage.getItem('Branch');
   year = localStorage.getItem('Year');
@@ -171,6 +172,7 @@ export class ReceiptOpenFormPage implements OnInit {
   SaveData: any;
   user: string;
   Y_Rec_NO: any;
+  Type:any;
   Date=moment(new Date()).format('YYYY-MM-DD');
   Date1 = moment(new Date()).format('YYYY-MM-DD');
   enableDisableRule(job) {}
@@ -192,7 +194,8 @@ export class ReceiptOpenFormPage implements OnInit {
       CurDate: ['', [Validators.required]],
       DcNo: ['', [Validators.required]],
       PartyName: ['', [Validators.required]],
-      Number:['',Validators.required]
+      Number:['',Validators.required],
+      Type:['',Validators.required]
     });
     this.Count1 = localStorage.getItem('Count');
     
@@ -530,297 +533,297 @@ async  ReceiptGridDetailsLoad() {
 
  
 
-Edit() {
- this.user= "APP-USER"
-  for (var i = 0; i < this.TotalPackList.length; i++) {
-    this.TotalPackCurrentNo   =  this.TotalPackList[i].CurrentPackNO
-    this.SinglePackWeight   =  this.TotalPackList[i].SingleCone
-    this.PacktypeINT =  this.TotalPackList[i].PacktypeINT
-    this.ConePerPack =  this.TotalPackList[i].NoConePack 
-    this.TotalPack =  this.TotalPackList[i].TotalPack 
- console.log('PackListNO', this.TotalPackCurrentNo   )
+// Edit() {
+//  this.user= "APP-USER"
+//   for (var i = 0; i < this.TotalPackList.length; i++) {
+//     this.TotalPackCurrentNo   =  this.TotalPackList[i].CurrentPackNO
+//     this.SinglePackWeight   =  this.TotalPackList[i].SingleCone
+//     this.PacktypeINT =  this.TotalPackList[i].PacktypeINT
+//     this.ConePerPack =  this.TotalPackList[i].NoConePack 
+//     this.TotalPack =  this.TotalPackList[i].TotalPack 
+//  console.log('PackListNO', this.TotalPackCurrentNo   )
 
-  }
-    for (var i = 0; i < this.Selectedlistarr.length ; i++) {
-      console.log('RECEIVED',Number (this.Selectedlistarr[i].Received) - Number (this.Selectedlistarr[i].Now_Received_Qty) +   Number (this.NowreQty))
+//   }
+//     for (var i = 0; i < this.Selectedlistarr.length ; i++) {
+//       console.log('RECEIVED',Number (this.Selectedlistarr[i].Received) - Number (this.Selectedlistarr[i].Now_Received_Qty) +   Number (this.NowreQty))
 
     
-    this.PoNo = localStorage.getItem('PoNo');
-    this.Wrk = localStorage.getItem('WrK');
-    //  this.cone_wt = localStorage.getItem('Single')
-    this.Count = localStorage.getItem('Count');
-    this.CardNo = localStorage.getItem('CardNo');
-    this.Unit = localStorage.getItem('Unit');
-    this.Bags = localStorage.getItem('Bags');
-    this.Balance = localStorage.getItem('Balance');
-    this.NRCQty = localStorage.getItem('NRCQty');
-    this.LotNum = localStorage.getItem('lot_no');
-    this.WareHouse = localStorage.getItem('WareHouse');
-    this.MillName = localStorage.getItem('MillName');
-    this.Remark = localStorage.getItem('Remarks');
-    this.Qty = localStorage.getItem('Qty');
-    this.Lotno = localStorage.getItem('Lotno');
-    this.wtpack = localStorage.getItem('wtpack');
-    this.Cones = localStorage.getItem('Cones');
-    this.Single = localStorage.getItem('Single');
-    this.Pack = localStorage.getItem('Pack');
-    this.Ordered = localStorage.getItem('Ordered');
-    this.Conebag = localStorage.getItem('Conebag');
-    this.Received = localStorage.getItem('Received');
-    this.Cone_UOM = localStorage.getItem('Cone_UOM');
-    this.Stock_Pur = localStorage.getItem('Stock_Pur');
-    this.Y_REC_ID = localStorage.getItem('Y_Rec_ID');
-    this.Y_Color_Allot_Id = localStorage.getItem('Y_Color_Allot_Id');
-    this.Y_Color_Allot_Id_Pur = localStorage.getItem('Y_Color_Allot_Id_Pur');
-    this.Y_Kora_Allot_Id = localStorage.getItem('Y_Kora_Allot_Id');
-    this.Y_Kora_Allot_Id_Pur = localStorage.getItem('Y_Kora_Allot_Id_Pur');
-    this.Y_Ord_Det_Id = localStorage.getItem('Y_Ord_Det_Id');
-    this.Y_Ord_Id = localStorage.getItem('Y_Ord_Id');
-    this.Y_PO_No = localStorage.getItem('Y_PO_No');
-    this.Y_Rec_Det_Id = localStorage.getItem('Y_Rec_Det_Id');
-    this.Cone_wt = localStorage.getItem('cone_wt');
-    this.CardNo = localStorage.getItem('CardNo');
-    this.Color = localStorage.getItem('Color');
-    this.MillName = localStorage.getItem('MillName');
-    this.Bag_UOM = localStorage.getItem('Bag_UOM');
-    this.Ex_Per = localStorage.getItem('Ex_Per');
-    this.y_ret_id = localStorage.getItem('y_ret_id');
-    this.y_ret_det_id = localStorage.getItem('y_ret_det_id');
-    this.Rec_Rate = localStorage.getItem('Rec_Rate');
-    this.Rec_Amt = localStorage.getItem('Rec_Amt');
-    this.Inspected_Qty = localStorage.getItem('Inspected_Qty');
-    this.Insp_Comp_Status = localStorage.getItem('Insp_Comp_Status');
-    this.Rec_No = localStorage.getItem('Y_Rec_No');
-    var req = {
-      Company: this.Company,
-      years: this.year,
-      y_Rec_No: this.Selectedlistarr[i].Y_Rec_No,
-      Y_Rec_Date: this.CurDate,
-      Yarn_Count:this.Selectedlistarr[i].Count,
-      Nos: '5',
-      Yarn_Po_No:  this.Selectedlistarr[i].Y_PO_No,
-      Supplier_Name: this.supllier,
-      Supplier_Code:  this.PartyCode,
-      WorkOrderNo:this.Selectedlistarr[i].WorkOrderNo,
-      Y_Po_No:this.Selectedlistarr[i].Y_PO_No ,
-      Supplier_DC_No: this.DcNo,
-      branch: this.Branch,
-      Warehouse: "WS YARN WH",
-      Supplier_DC_Date: this.CurDate,
-      Color_Name:this.Selectedlistarr[i].Color,
-      Mill_Name: this.Selectedlistarr[i].MillName,
-      Ordered:this.Selectedlistarr[i].Ordered,
-      Bag_UOM: this.Bag_UOM,
-      Stock_Pur: this.Stock_Pur,
-      Received:Number (this.Selectedlistarr[i].Received) - Number (this.Selectedlistarr[i].Now_Received_Qty) +   Number (this.NowreQty),
-      NRCQty:this.NowreQty,
-      NowRecQty:this.Selectedlistarr[i].Now_Received_Qty,
-      Bags:  this.PacktypeINT,
-      UOM: this.uom,
-      GatePass_No:this.YarnReceiptForm.value.GatePass,
-      Cones: this.Cones,
-      Cone_UOM: this.Cone_UOM,
-      Cone_Wt:   this.SinglePackWeight   ,
-      Cones_Per_Bag:this.ConePerPack ,
-      Bag_Wt:this.TotalPack ,
-      Remarks: this.Remark,
-      Ex_Per: this.Ex_Per,
-      Y_Ord_Id: this.Y_Ord_Id,
-      Y_Ord_Det_Id: this.Y_Ord_Det_Id,
-      Y_Kora_Allot_Id: this.Y_Kora_Allot_Id,
-      Y_Kora_Allot_Id_Pur: this.Y_Kora_Allot_Id_Pur,
-      Y_Color_Allot_Id: this.Y_Color_Allot_Id,
-      Y_Color_Allot_Id_Pur: this.Y_Color_Allot_Id_Pur,
-      Y_Rec_Id: this.Selectedlistarr[i].Y_Rec_ID ,
-      lot_no:   this.LotnoLoad,
-      Rec_RetRec: '0',
-      Pack_Type: '',
-      Y_Ret_ID: this.Selectedlistarr[i].y_ret_id ,
-      Y_Ret_No: '',
-      Y_Ret_Det_ID: this.Selectedlistarr[i].y_ret_det_id
-      ,
-      Inspected_Qty: this.Inspected_Qty,
-      Insp_Comp_Status: this.Insp_Comp_Status,
-      Rec_Amt: this.Rec_Amt,
-      Rec_Rate: this.Rec_Rate,
-      Cone_wgt: '',
-      Cones_Per_Pack: this.Cones,
-      Pack_Wgt: this.wtpack,
-      Y_Rec_Det_Id:  this.Selectedlistarr[i].Y_Rec_Det_Id,
-    //  y_ret_id: this.PartyNameArr[0].y_ret_id,
-      No_of_Packs: this.Pack,
-      Single_Pack_Wt:   this.SinglePackWeight,
-      Card_No: this.CardNo,
-      Y_Rec_No: this.Selectedlistarr[i].Color ,
-      Pack_No: '',
+//     this.PoNo = localStorage.getItem('PoNo');
+//     this.Wrk = localStorage.getItem('WrK');
+//     //  this.cone_wt = localStorage.getItem('Single')
+//     this.Count = localStorage.getItem('Count');
+//     this.CardNo = localStorage.getItem('CardNo');
+//     this.Unit = localStorage.getItem('Unit');
+//     this.Bags = localStorage.getItem('Bags');
+//     this.Balance = localStorage.getItem('Balance');
+//     this.NRCQty = localStorage.getItem('NRCQty');
+//     this.LotNum = localStorage.getItem('lot_no');
+//     this.WareHouse = localStorage.getItem('WareHouse');
+//     this.MillName = localStorage.getItem('MillName');
+//     this.Remark = localStorage.getItem('Remarks');
+//     this.Qty = localStorage.getItem('Qty');
+//     this.Lotno = localStorage.getItem('Lotno');
+//     this.wtpack = localStorage.getItem('wtpack');
+//     this.Cones = localStorage.getItem('Cones');
+//     this.Single = localStorage.getItem('Single');
+//     this.Pack = localStorage.getItem('Pack');
+//     this.Ordered = localStorage.getItem('Ordered');
+//     this.Conebag = localStorage.getItem('Conebag');
+//     this.Received = localStorage.getItem('Received');
+//     this.Cone_UOM = localStorage.getItem('Cone_UOM');
+//     this.Stock_Pur = localStorage.getItem('Stock_Pur');
+//     this.Y_REC_ID = localStorage.getItem('Y_Rec_ID');
+//     this.Y_Color_Allot_Id = localStorage.getItem('Y_Color_Allot_Id');
+//     this.Y_Color_Allot_Id_Pur = localStorage.getItem('Y_Color_Allot_Id_Pur');
+//     this.Y_Kora_Allot_Id = localStorage.getItem('Y_Kora_Allot_Id');
+//     this.Y_Kora_Allot_Id_Pur = localStorage.getItem('Y_Kora_Allot_Id_Pur');
+//     this.Y_Ord_Det_Id = localStorage.getItem('Y_Ord_Det_Id');
+//     this.Y_Ord_Id = localStorage.getItem('Y_Ord_Id');
+//     this.Y_PO_No = localStorage.getItem('Y_PO_No');
+//     this.Y_Rec_Det_Id = localStorage.getItem('Y_Rec_Det_Id');
+//     this.Cone_wt = localStorage.getItem('cone_wt');
+//     this.CardNo = localStorage.getItem('CardNo');
+//     this.Color = localStorage.getItem('Color');
+//     this.MillName = localStorage.getItem('MillName');
+//     this.Bag_UOM = localStorage.getItem('Bag_UOM');
+//     this.Ex_Per = localStorage.getItem('Ex_Per');
+//     this.y_ret_id = localStorage.getItem('y_ret_id');
+//     this.y_ret_det_id = localStorage.getItem('y_ret_det_id');
+//     this.Rec_Rate = localStorage.getItem('Rec_Rate');
+//     this.Rec_Amt = localStorage.getItem('Rec_Amt');
+//     this.Inspected_Qty = localStorage.getItem('Inspected_Qty');
+//     this.Insp_Comp_Status = localStorage.getItem('Insp_Comp_Status');
+//     this.Rec_No = localStorage.getItem('Y_Rec_No');
+//     var req = {
+//       Company: this.Company,
+//       years: this.year,
+//       y_Rec_No: this.Selectedlistarr[i].Y_Rec_No,
+//       Y_Rec_Date: this.CurDate,
+//       Yarn_Count:this.Selectedlistarr[i].Count,
+//       Nos: '5',
+//       Yarn_Po_No:  this.Selectedlistarr[i].Y_PO_No,
+//       Supplier_Name: this.supllier,
+//       Supplier_Code:  this.PartyCode,
+//       WorkOrderNo:this.Selectedlistarr[i].WorkOrderNo,
+//       Y_Po_No:this.Selectedlistarr[i].Y_PO_No ,
+//       Supplier_DC_No: this.DcNo,
+//       branch: this.Branch,
+//       Warehouse: "WS YARN WH",
+//       Supplier_DC_Date: this.CurDate,
+//       Color_Name:this.Selectedlistarr[i].Color,
+//       Mill_Name: this.Selectedlistarr[i].MillName,
+//       Ordered:this.Selectedlistarr[i].Ordered,
+//       Bag_UOM: this.Bag_UOM,
+//       Stock_Pur: this.Stock_Pur,
+//       Received:Number (this.Selectedlistarr[i].Received) - Number (this.Selectedlistarr[i].Now_Received_Qty) +   Number (this.NowreQty),
+//       NRCQty:this.NowreQty,
+//       NowRecQty:this.Selectedlistarr[i].Now_Received_Qty,
+//       Bags:  this.PacktypeINT,
+//       UOM: this.uom,
+//       GatePass_No:this.YarnReceiptForm.value.GatePass,
+//       Cones: this.Cones,
+//       Cone_UOM: this.Cone_UOM,
+//       Cone_Wt:   this.SinglePackWeight   ,
+//       Cones_Per_Bag:this.ConePerPack ,
+//       Bag_Wt:this.TotalPack ,
+//       Remarks: this.Remark,
+//       Ex_Per: this.Ex_Per,
+//       Y_Ord_Id: this.Y_Ord_Id,
+//       Y_Ord_Det_Id: this.Y_Ord_Det_Id,
+//       Y_Kora_Allot_Id: this.Y_Kora_Allot_Id,
+//       Y_Kora_Allot_Id_Pur: this.Y_Kora_Allot_Id_Pur,
+//       Y_Color_Allot_Id: this.Y_Color_Allot_Id,
+//       Y_Color_Allot_Id_Pur: this.Y_Color_Allot_Id_Pur,
+//       Y_Rec_Id: this.Selectedlistarr[i].Y_Rec_ID ,
+//       lot_no:   this.LotnoLoad,
+//       Rec_RetRec: '0',
+//       Pack_Type: '',
+//       Y_Ret_ID: this.Selectedlistarr[i].y_ret_id ,
+//       Y_Ret_No: '',
+//       Y_Ret_Det_ID: this.Selectedlistarr[i].y_ret_det_id
+//       ,
+//       Inspected_Qty: this.Inspected_Qty,
+//       Insp_Comp_Status: this.Insp_Comp_Status,
+//       Rec_Amt: this.Rec_Amt,
+//       Rec_Rate: this.Rec_Rate,
+//       Cone_wgt: '',
+//       Cones_Per_Pack: this.Cones,
+//       Pack_Wgt: this.wtpack,
+//       Y_Rec_Det_Id:  this.Selectedlistarr[i].Y_Rec_Det_Id,
+//     //  y_ret_id: this.PartyNameArr[0].y_ret_id,
+//       No_of_Packs: this.Pack,
+//       Single_Pack_Wt:   this.SinglePackWeight,
+//       Card_No: this.CardNo,
+//       Y_Rec_No: this.Selectedlistarr[i].Color ,
+//       Pack_No: '',
      
-      Edit_User: this.UserName + "//" + this.user + "//" + this.Curdate1 ,
-      Tot_Rec_Amt: '0',
-    };
-  }
-    this.commonprovider.YarnReceiptEditLoad(req).then((result) => {
-      this.save = result;
-      console.log('Edit', this.save);
-      for ( var i = 0 ; i < this.save.length ; i++ )
-      {
-       console.log('Saveyarnbagggggggg',this.save[i].Valid)
-       this.SaveData = this.save[i].Valid
-      }
-      if( this.SaveData  == false)
-      {
-     this.commonprovider.presentToast('Edited Successfully');
-    }
-      else{
-        this.commonprovider.FailedToast('Record Shard Cannot Edit')
-       }
+//       Edit_User: this.UserName + "//" + this.user + "//" + this.Curdate1 ,
+//       Tot_Rec_Amt: '0',
+//     };
+//   }
+//     this.commonprovider.YarnReceiptEditLoad(req).then((result) => {
+//       this.save = result;
+//       console.log('Edit', this.save);
+//       for ( var i = 0 ; i < this.save.length ; i++ )
+//       {
+//        console.log('Saveyarnbagggggggg',this.save[i].Valid)
+//        this.SaveData = this.save[i].Valid
+//       }
+//       if( this.SaveData  == false)
+//       {
+//      this.commonprovider.presentToast('Edited Successfully');
+//     }
+//       else{
+//         this.commonprovider.FailedToast('Record Shard Cannot Edit')
+//        }
       
      
-      return true;
-    });
-    this.WorkOrderNumberLoad();
-  }
-  Delete() {
-    console.log('EDIT')
+//       return true;
+//     });
+//     this.WorkOrderNumberLoad();
+//   }
+  // Delete() {
+  //   console.log('EDIT')
 
-  //   for (var i = 0; i < this.TotalPackList.length; i++) {
-  //     this.TotalPackCurrentNo   =  this.TotalPackList[i].CurrentPackNO
-  //     this.SinglePackWeight   =  this.TotalPackList[i].SinglePackWt
-  //     this.PacktypeINT =  this.TotalPackList[i].PacktypeINT
-  //     this.ConePerPack =  this.TotalPackList[i].NoConePack 
-  //     this.TotalPack =  this.TotalPackList[i].TotalPack 
-  //  console.log('PackListNO', this.TotalPackCurrentNo   )
+  // //   for (var i = 0; i < this.TotalPackList.length; i++) {
+  // //     this.TotalPackCurrentNo   =  this.TotalPackList[i].CurrentPackNO
+  // //     this.SinglePackWeight   =  this.TotalPackList[i].SinglePackWt
+  // //     this.PacktypeINT =  this.TotalPackList[i].PacktypeINT
+  // //     this.ConePerPack =  this.TotalPackList[i].NoConePack 
+  // //     this.TotalPack =  this.TotalPackList[i].TotalPack 
+  // //  console.log('PackListNO', this.TotalPackCurrentNo   )
   
+  // //   }
+  //     for (var i = 0; i < this.Selectedlistarr.length ; i++) {
+  //      this.PoNo = localStorage.getItem('PoNo');
+  //     this.Wrk = localStorage.getItem('WrK');
+  //     this.Count = localStorage.getItem('Count');
+  //     this.CardNo = localStorage.getItem('CardNo');
+  //     this.Unit = localStorage.getItem('Unit');
+  //     this.Bags = localStorage.getItem('Bags');
+  //     this.Balance = localStorage.getItem('Balance');
+  //     this.NRCQty = localStorage.getItem('NRCQty');
+  //     this.LotNum = localStorage.getItem('lot_no');
+  //     this.WareHouse = localStorage.getItem('WareHouse');
+  //     this.MillName = localStorage.getItem('MillName');
+  //     this.Remark = localStorage.getItem('Remarks');
+  //     this.Qty = localStorage.getItem('Qty');
+  //     this.Lotno = localStorage.getItem('Lotno');
+  //     this.wtpack = localStorage.getItem('wtpack');
+  //     this.Cones = localStorage.getItem('Cones');
+  //     this.Single = localStorage.getItem('Single');
+  //     this.Pack = localStorage.getItem('Pack');
+  //     this.Ordered = localStorage.getItem('Ordered');
+  //     this.Conebag = localStorage.getItem('Conebag');
+  //     this.Received = localStorage.getItem('Received');
+  //     this.Cone_UOM = localStorage.getItem('Cone_UOM');
+  //     this.Stock_Pur = localStorage.getItem('Stock_Pur');
+  //     this.Y_REC_ID = localStorage.getItem('Y_Rec_ID');
+  //     this.Y_Color_Allot_Id = localStorage.getItem('Y_Color_Allot_Id');
+  //     this.Y_Color_Allot_Id_Pur = localStorage.getItem('Y_Color_Allot_Id_Pur');
+  //     this.Y_Kora_Allot_Id = localStorage.getItem('Y_Kora_Allot_Id');
+  //     this.Y_Kora_Allot_Id_Pur = localStorage.getItem('Y_Kora_Allot_Id_Pur');
+  //     this.Y_Ord_Det_Id = localStorage.getItem('Y_Ord_Det_Id');
+  //     this.Y_Ord_Id = localStorage.getItem('Y_Ord_Id');
+  //     this.Y_PO_No = localStorage.getItem('Y_PO_No');
+  //     this.Y_Rec_Det_Id = localStorage.getItem('Y_Rec_Det_Id');
+  //     this.Cone_wt = localStorage.getItem('cone_wt');
+  //     this.CardNo = localStorage.getItem('CardNo');
+  //     this.Color = localStorage.getItem('Color');
+  //     this.MillName = localStorage.getItem('MillName');
+  //     this.Bag_UOM = localStorage.getItem('Bag_UOM');
+  //     this.Ex_Per = localStorage.getItem('Ex_Per');
+  //     this.y_ret_id = localStorage.getItem('y_ret_id');
+  //     this.y_ret_det_id = localStorage.getItem('y_ret_det_id');
+  //     this.Rec_Rate = localStorage.getItem('Rec_Rate');
+  //     this.Rec_Amt = localStorage.getItem('Rec_Amt');
+  //     this.Inspected_Qty = localStorage.getItem('Inspected_Qty');
+  //     this.Insp_Comp_Status = localStorage.getItem('Insp_Comp_Status');
+  //     this.Rec_No = localStorage.getItem('Y_Rec_No');
+  //     var req = {
+  //       Company: this.Company,
+  //       years: this.year,
+  //       y_Rec_No:this.Selectedlistarr[i].Y_Rec_No ,
+  //       Y_Rec_Date: this.CurDate,
+  //       Yarn_Count:this.Selectedlistarr[i].Count,
+  //       Nos: '5',
+  //       Yarn_Po_No:  this.Selectedlistarr[i].Y_PO_No,
+  //       Supplier_Name: this.supllier,
+  //       Supplier_Code:  this.PartyCode,
+  //       WorkOrderNo:this.Selectedlistarr[i].WorkOrderNo,
+  //       Y_Po_No:this.Selectedlistarr[i].Y_PO_No ,
+  //       Supplier_DC_No: this.DcNo,
+  //       branch: this.Branch,
+  //       Warehouse: "WS YARN WH",
+  //       Supplier_DC_Date: this.CurDate,
+  //       Color_Name:this.Selectedlistarr[i].Color,
+  //       Mill_Name: this.Selectedlistarr[i].MillName,
+  //       Ordered:this.Selectedlistarr[i].Ordered,
+  //       Bag_UOM: this.Bag_UOM,
+  //       Stock_Pur: this.Stock_Pur,
+  //       Received:(Number(this.Selectedlistarr[i].Received ))+ Number (this.NowreQty),
+  //       NRCQty:this.NowreQty,
+  //       Bags:  this.PacktypeINT,
+  //       UOM: this.uom,
+  //       GatePass_No:this.YarnReceiptForm.value.GatePass,
+  //       Cones: this.Cones,
+  //       Cone_UOM: this.Cone_UOM,
+  //       Cone_Wt: this.SingleConeWeight ,
+  //       Cones_Per_Bag:this.ConePerPack ,
+  //       Bag_Wt:this.TotalPack ,
+  //       Remarks: this.Remark,
+  //       Ex_Per: this.Ex_Per,
+  //       Y_Ord_Id: this.Y_Ord_Id,
+  //       Y_Ord_Det_Id: this.Y_Ord_Det_Id,
+  //       Yarn_Kora_Allot_Id:this.Selectedlistarr[i].Y_Kora_Allot_Id  ,
+  //       Yarn_Kora_Allot_Id_Pur: this.Selectedlistarr[i].Y_Kora_Allot_Id_Pur,
+  //       Yarn_Color_Allot_Id: this.Selectedlistarr[i].Y_Color_Allot_Id  ,
+  //       Yarn_Color_Allot_Id_Pur: this.Selectedlistarr[i].Y_Color_Allot_Id_Pur  ,
+  //       Y_Rec_Id: this.Selectedlistarr[i].Y_Rec_ID ,
+  //       lot_no:   this.LotnoLoad,
+  //       Rec_RetRec: '0',
+  //       Pack_Type: '',
+  //       Y_Ret_ID: this.Selectedlistarr[i].y_ret_id ,
+  //       Y_Ret_No: '',
+  //       Y_Ret_Det_ID: this.Selectedlistarr[i].y_ret_det_id
+  //       ,
+  //       Inspected_Qty: this.Inspected_Qty,
+  //       Insp_Comp_Status: this.Insp_Comp_Status,
+  //       Rec_Amt: this.Rec_Amt,
+  //       Rec_Rate: this.Rec_Rate,
+  //       Cone_wgt: '',
+  //       Cones_Per_Pack: this.Cones,
+  //       Pack_Wgt: this.wtpack,
+  //       Y_Rec_Det_Id:  this.Selectedlistarr[i].Y_Rec_Det_Id,
+  //     //  y_ret_id: this.PartyNameArr[0].y_ret_id,
+  //       No_of_Packs: this.Pack,
+  //       Single_Pack_Wt:   this.SinglePackWeight,
+  //       Card_No: this.CardNo,
+  //       Y_Rec_No: this.Selectedlistarr[i].Y_Rec_No ,
+  //       Pack_No: '',
+    
+  //       Edit_User: '//0007E9436187 /APP USER/ ADMIN - ADMIN/ 11/11/2022 16:22:53',
+  //       Tot_Rec_Amt: '0',
+  //     };
   //   }
-      for (var i = 0; i < this.Selectedlistarr.length ; i++) {
-       this.PoNo = localStorage.getItem('PoNo');
-      this.Wrk = localStorage.getItem('WrK');
-      this.Count = localStorage.getItem('Count');
-      this.CardNo = localStorage.getItem('CardNo');
-      this.Unit = localStorage.getItem('Unit');
-      this.Bags = localStorage.getItem('Bags');
-      this.Balance = localStorage.getItem('Balance');
-      this.NRCQty = localStorage.getItem('NRCQty');
-      this.LotNum = localStorage.getItem('lot_no');
-      this.WareHouse = localStorage.getItem('WareHouse');
-      this.MillName = localStorage.getItem('MillName');
-      this.Remark = localStorage.getItem('Remarks');
-      this.Qty = localStorage.getItem('Qty');
-      this.Lotno = localStorage.getItem('Lotno');
-      this.wtpack = localStorage.getItem('wtpack');
-      this.Cones = localStorage.getItem('Cones');
-      this.Single = localStorage.getItem('Single');
-      this.Pack = localStorage.getItem('Pack');
-      this.Ordered = localStorage.getItem('Ordered');
-      this.Conebag = localStorage.getItem('Conebag');
-      this.Received = localStorage.getItem('Received');
-      this.Cone_UOM = localStorage.getItem('Cone_UOM');
-      this.Stock_Pur = localStorage.getItem('Stock_Pur');
-      this.Y_REC_ID = localStorage.getItem('Y_Rec_ID');
-      this.Y_Color_Allot_Id = localStorage.getItem('Y_Color_Allot_Id');
-      this.Y_Color_Allot_Id_Pur = localStorage.getItem('Y_Color_Allot_Id_Pur');
-      this.Y_Kora_Allot_Id = localStorage.getItem('Y_Kora_Allot_Id');
-      this.Y_Kora_Allot_Id_Pur = localStorage.getItem('Y_Kora_Allot_Id_Pur');
-      this.Y_Ord_Det_Id = localStorage.getItem('Y_Ord_Det_Id');
-      this.Y_Ord_Id = localStorage.getItem('Y_Ord_Id');
-      this.Y_PO_No = localStorage.getItem('Y_PO_No');
-      this.Y_Rec_Det_Id = localStorage.getItem('Y_Rec_Det_Id');
-      this.Cone_wt = localStorage.getItem('cone_wt');
-      this.CardNo = localStorage.getItem('CardNo');
-      this.Color = localStorage.getItem('Color');
-      this.MillName = localStorage.getItem('MillName');
-      this.Bag_UOM = localStorage.getItem('Bag_UOM');
-      this.Ex_Per = localStorage.getItem('Ex_Per');
-      this.y_ret_id = localStorage.getItem('y_ret_id');
-      this.y_ret_det_id = localStorage.getItem('y_ret_det_id');
-      this.Rec_Rate = localStorage.getItem('Rec_Rate');
-      this.Rec_Amt = localStorage.getItem('Rec_Amt');
-      this.Inspected_Qty = localStorage.getItem('Inspected_Qty');
-      this.Insp_Comp_Status = localStorage.getItem('Insp_Comp_Status');
-      this.Rec_No = localStorage.getItem('Y_Rec_No');
-      var req = {
-        Company: this.Company,
-        years: this.year,
-        y_Rec_No:this.Selectedlistarr[i].Y_Rec_No ,
-        Y_Rec_Date: this.CurDate,
-        Yarn_Count:this.Selectedlistarr[i].Count,
-        Nos: '5',
-        Yarn_Po_No:  this.Selectedlistarr[i].Y_PO_No,
-        Supplier_Name: this.supllier,
-        Supplier_Code:  this.PartyCode,
-        WorkOrderNo:this.Selectedlistarr[i].WorkOrderNo,
-        Y_Po_No:this.Selectedlistarr[i].Y_PO_No ,
-        Supplier_DC_No: this.DcNo,
-        branch: this.Branch,
-        Warehouse: "WS YARN WH",
-        Supplier_DC_Date: this.CurDate,
-        Color_Name:this.Selectedlistarr[i].Color,
-        Mill_Name: this.Selectedlistarr[i].MillName,
-        Ordered:this.Selectedlistarr[i].Ordered,
-        Bag_UOM: this.Bag_UOM,
-        Stock_Pur: this.Stock_Pur,
-        Received:(Number(this.Selectedlistarr[i].Received ))+ Number (this.NowreQty),
-        NRCQty:this.NowreQty,
-        Bags:  this.PacktypeINT,
-        UOM: this.uom,
-        GatePass_No:this.YarnReceiptForm.value.GatePass,
-        Cones: this.Cones,
-        Cone_UOM: this.Cone_UOM,
-        Cone_Wt: this.SingleConeWeight ,
-        Cones_Per_Bag:this.ConePerPack ,
-        Bag_Wt:this.TotalPack ,
-        Remarks: this.Remark,
-        Ex_Per: this.Ex_Per,
-        Y_Ord_Id: this.Y_Ord_Id,
-        Y_Ord_Det_Id: this.Y_Ord_Det_Id,
-        Yarn_Kora_Allot_Id:this.Selectedlistarr[i].Y_Kora_Allot_Id  ,
-        Yarn_Kora_Allot_Id_Pur: this.Selectedlistarr[i].Y_Kora_Allot_Id_Pur,
-        Yarn_Color_Allot_Id: this.Selectedlistarr[i].Y_Color_Allot_Id  ,
-        Yarn_Color_Allot_Id_Pur: this.Selectedlistarr[i].Y_Color_Allot_Id_Pur  ,
-        Y_Rec_Id: this.Selectedlistarr[i].Y_Rec_ID ,
-        lot_no:   this.LotnoLoad,
-        Rec_RetRec: '0',
-        Pack_Type: '',
-        Y_Ret_ID: this.Selectedlistarr[i].y_ret_id ,
-        Y_Ret_No: '',
-        Y_Ret_Det_ID: this.Selectedlistarr[i].y_ret_det_id
-        ,
-        Inspected_Qty: this.Inspected_Qty,
-        Insp_Comp_Status: this.Insp_Comp_Status,
-        Rec_Amt: this.Rec_Amt,
-        Rec_Rate: this.Rec_Rate,
-        Cone_wgt: '',
-        Cones_Per_Pack: this.Cones,
-        Pack_Wgt: this.wtpack,
-        Y_Rec_Det_Id:  this.Selectedlistarr[i].Y_Rec_Det_Id,
-      //  y_ret_id: this.PartyNameArr[0].y_ret_id,
-        No_of_Packs: this.Pack,
-        Single_Pack_Wt:   this.SinglePackWeight,
-        Card_No: this.CardNo,
-        Y_Rec_No: this.Selectedlistarr[i].Y_Rec_No ,
-        Pack_No: '',
+  //     this.commonprovider.YarnReceiptDeleteLoad(req).then((result) => {
+  //      var   res : any;
+  //      res = result;
+  //      console.log(res)
+  //       if(res.Validd  ==  true)
+  //       {
+  //         this.commonprovider.presentToast("Deleted Successfully")
+  //       }
+  //        else{
+  //         this.commonprovider.FailedToast('Record Shard Cannot Delete');
+  //        }
+  //        this.WorkOrderNumberLoad();
+  //        this.ReceiptGridDetailsLoad();
+  //        this.Selectedlistarr = [];
+  //      return true;
+  //     });
     
-        Edit_User: '//0007E9436187 /APP USER/ ADMIN - ADMIN/ 11/11/2022 16:22:53',
-        Tot_Rec_Amt: '0',
-      };
-    }
-      this.commonprovider.YarnReceiptDeleteLoad(req).then((result) => {
-       var   res : any;
-       res = result;
-       console.log(res)
-        if(res.Validd  ==  true)
-        {
-          this.commonprovider.presentToast("Deleted Successfully")
-        }
-         else{
-          this.commonprovider.FailedToast('Record Shard Cannot Delete');
-         }
-         this.WorkOrderNumberLoad();
-         this.ReceiptGridDetailsLoad();
-         this.Selectedlistarr = [];
-       return true;
-      });
-    
-    }
+  //   }
   Add() {
     localStorage.setItem('BAL', this.Balancerec);
     console.log('Y_Rec_Det_Id',   this.Y_Rec_Det_Id)
@@ -853,7 +856,7 @@ Edit() {
           text: 'OK',
           role: 'confirm',
           handler: () => {
-            this.Delete();
+        //    this.Delete();
             console.log('alert', this.handlerMessage);
           },
         },
