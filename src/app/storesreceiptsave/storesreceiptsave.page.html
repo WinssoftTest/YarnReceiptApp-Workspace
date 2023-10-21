@@ -25,7 +25,7 @@
       </ion-col> 
     <ion-col    size="6"    size-md="6" size-lg="3">
       <ion-item>
-        <ion-label class="label-font" >Location   </ion-label> 
+        <ion-label class="label-font" >Location :   </ion-label> 
           <ion-select
           class="label-font-value"
           formControlName="RackLocation"
@@ -45,7 +45,7 @@
 
       <ion-col   size="6"    size-md="6" size-lg="3">
         <ion-item>
-          <ion-label class="label-font"  > Rack   </ion-label> 
+          <ion-label class="label-font"  > Rack :   </ion-label> 
             <ion-select
             class="label-font-value"
             formControlName="Rack"
@@ -64,7 +64,7 @@
         </ion-col> 
         <ion-col   size="6"    size-md="6" size-lg="3">
           <ion-item>
-            <ion-label class="label-font"  > Bin    </ion-label> 
+            <ion-label class="label-font"  > Bin :    </ion-label> 
               <ion-select
               class="label-font-value"
               formControlName="Bin"
@@ -82,7 +82,7 @@
           </ion-col> 
           <ion-col   size="6"    size-md="6" size-lg="3">
             <ion-item>
-              <ion-label class="label-font" > Lot No <sup> * </sup> :  </ion-label> 
+              <ion-label class="label-font" > Lot No. <sup> * </sup> :  </ion-label> 
                 <ion-input
                 class="label-font-value"
                 formControlName="LotNo"
@@ -140,7 +140,7 @@
                   />  
                 </ion-col>
                 <ion-col size="11">
-                <ion-card-title style="text-align: center;color: red;"> {{this.RackLocation}} | {{this.Rack}} | {{this.Bin}}</ion-card-title>   
+                <ion-card-title style="text-align: center;color: red;"> {{this.RackLocation}} <span style="color: black;"> - </span>  {{this.Rack}}  <span style="color: black;"> - </span>  {{this.Bin}}</ion-card-title>   
              </ion-col>
               </ion-row>
                  <ion-row>

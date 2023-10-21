@@ -18,6 +18,7 @@ import { EditService } from './edit.service';
  
 import {   KanbanModule } from "@syncfusion/ej2-angular-kanban";
 import { CommonModule } from "@angular/common";
+ 
 @NgModule({
   declarations: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA ],

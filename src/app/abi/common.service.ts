@@ -794,6 +794,28 @@ FGReceiptgridload(reqLogin) {
       );
   });
 } 
+FeatursSettingsload(reqLogin:any) {
+  let postData = JSON.stringify(reqLogin);
+ console.log('Data', postData)
+ return new Promise((resolve, reject) => {
+  
+   this.httpClient
+     .post(
+       localStorage.getItem("ipaddress") +  appsettings.WsFeatursSeetingLoad,
+       postData,
+       httpOptions
+     )
+     .subscribe(
+       (data) => {
+         resolve(data);
+         console.log('Commonssssss',data)
+       },
+       (error) => {
+         reject(error);
+       }
+     );
+ });
+}
 storesReceiptsave(reqLogin: any): Promise<any> {
   const postData = JSON.stringify(reqLogin);
    return this.httpClient.post<any>(

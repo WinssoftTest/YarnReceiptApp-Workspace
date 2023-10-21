@@ -131,11 +131,11 @@ this.validateVehicleNumber()
 }
 Resupplys()
 {
-
+this.GridDetailsLoad=[];
 }
 UnitType()
 {
-
+  this.GridDetailsLoad=[];
 }
 IntimeChange()
 {
@@ -149,7 +149,7 @@ WareHouseNameLoad() {
   var req = {
     company: this.Company,
     Branch_Name: this.Branch,
-    statement: 'Receipt',
+    statement: 'WeavingFirstPices',
     UserName:this.UserName
   };
   this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
@@ -211,7 +211,8 @@ GatePassNumberLoad() {
     Years: this.year,
     Order_No:   this.ordr,
     Party_Name:   this.supllier,
-    Workorderno: this.WorkOrder,
+    Workorderno: this.wrkord,
+    statement:'Receipt'
     };
   this.commonprovider.GetGatepassNo(req).then((result) => {
     this.GatepassNumLoad = result;
@@ -221,7 +222,7 @@ GatePassNumberLoad() {
  
   if(this.yarnseetings == 'True' && this.GatepassNumLoad.length == '')
   {
-    alert("Gate Pass Required")
+    alert("Gate Pass No. Required")
   }
 }
 portChange(event: { component: IonicSelectableComponent; value: any }) {
@@ -233,7 +234,7 @@ portChange(event: { component: IonicSelectableComponent; value: any }) {
   console.log('pARTCODE',event.value.PartyCode)
   this.PartyCode = event.value.PartyCode 
   this.WorkOrderNumberLoad();
-  this.GatePassNumberLoad()
+   this.GridDetailsLoad = [];
 }
 WorkOrderNumberLoad()  {
   var req = {
@@ -304,11 +305,13 @@ this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
   this.yarnseetings  = this.Featuresettings[0].weaving 
   return true;
 });
-
+this.GridDetailsLoad = [];
 }
 portChangeOrdNo(event: { component: IonicSelectableComponent; value: any }) {
   console.log('port:', event.value.WorkOrder);
   this.ordr = event.value.Orde
+  this.GatePassNumberLoad();
+  this.GridDetailsLoad = [];
   }
 //   ReceiptGridDetailsLoad() {
 //    var req = {
@@ -395,7 +398,7 @@ itemClick(d: any, index: any) {
     }
     else if( this.DC== "" ||  this.DC == undefined ||  this.DC == null )
     {
-      this.commonprovider.FailedToast('Type DC No')
+      this.commonprovider.FailedToast('Type DC No.')
     }
     else if( this.VehNo== "" ||  this.VehNo == undefined ||  this.VehNo == null )
     {
@@ -405,10 +408,10 @@ itemClick(d: any, index: any) {
     {
       this.commonprovider.FailedToast('select Time')
     }
-    else if( this.GatePass== "" ||  this.GatePass == undefined ||  this.GatePass == null )
-    {
-      this.commonprovider.FailedToast('select Gatepass No')
-    }
+    // else if( this.GatePass== "" ||  this.GatePass == undefined ||  this.GatePass == null )
+    // {
+    //   this.commonprovider.FailedToast('select Gatepass No')
+    // }
     else if( this.DriverName== "" ||  this.DriverName == undefined ||  this.DriverName == null )
     {
       this.commonprovider.FailedToast('select DriverName')
@@ -485,7 +488,7 @@ this.commonprovider.WvgReceiptbarNo(req).then((result) => {
   this.VehNo="";
   this.DriverName = "";
   this.GatePass = "";
-  this.InTime = "";
+ // this.InTime = "";
   this.GridDetailsLoad=[];
   this.entryno ='';
   this.count = '0';

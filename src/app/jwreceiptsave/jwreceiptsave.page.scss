@@ -47,6 +47,23 @@ font-family: 'Manrope', sans-serif;
 font-size: 15px !important;
 font-weight: 500;
 }
+.Button1 {
+   background-color:#00afb9;
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: black;            
+   border-radius: 10px;
+   display: block;
+   margin-top: 9px;
+   margin-bottom: -11px;
+   font-family: 'Manrope', sans-serif;
+   font-size: 15px !important;
+   font-weight: 500;
+ }
 .Button2 {
    background-color:#00afb9;
    margin: 10px;
@@ -64,3 +81,11 @@ font-weight: 500;
    font-size: 15px !important;
    font-weight: 500;
  }
+
+ 
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: gray;
+  color: #666666;
+}

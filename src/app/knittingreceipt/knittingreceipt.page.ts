@@ -140,8 +140,8 @@ BACK()
 WareHouseNameLoad() {
   var req = {
     company: this.Company,
-    Branch_Name: this.Branch,
-    statement: 'Receipt',
+    Branch_Name:this.Branch,
+    statement: 'WeavingFirstPices',
     UserName:this.UserName
   };
   this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
@@ -337,7 +337,7 @@ itemClick(d: any, index: any) {
     }
     else if( this.DC== "" ||  this.DC == undefined ||  this.DC == null )
     {
-      this.commonprovider.FailedToast('Type DC No')
+      this.commonprovider.FailedToast('Type DC No.')
     }
     else if( this.VehNo== "" ||  this.VehNo == undefined ||  this.VehNo == null )
     {
@@ -419,7 +419,7 @@ this.commonprovider.WvgReceiptbarNo(req).then((result) => {
 }
  clear()
  { 
-  this.Warehouse="";
+ 
   this.PartyNamel="";
   this.WorkOrder= "";
   this.OrderNumber = "";
@@ -427,7 +427,7 @@ this.commonprovider.WvgReceiptbarNo(req).then((result) => {
   this.VehNo="";
   this.DriverName = "";
   this.GatePass = "";
-  this.InTime = "";
+ 
   this.GridDetailsLoad=[];
   this.entryno ='';
   this.count = '0';
@@ -521,5 +521,6 @@ console.log('COUNTTT',this.count)
   })
 
  }     
+ 
 }
 

@@ -228,6 +228,8 @@ export class YarnreciptPage implements OnInit {
   }
   Warehousechange(event)
   {
+    this.GridDetailsLoad = [];
+    this.SingleConeWeight = "";
 console.log('itwork',this.Warehouse) 
 var req = {
   company: this.Company,
@@ -426,7 +428,7 @@ AddButoon()
   } 
   else if( this.DcNo == "" || this.DcNo == undefined)
   {
-    this.commonprovider.FailedToast('Type Dc No')
+    this.commonprovider.FailedToast('Type DC No.')
   } 
   else if( this.PoAdminApproval == "" || this.PoAdminApproval == undefined)
   {
@@ -469,7 +471,7 @@ AddButoon()
     console.log('Warehouse', this.WareHouse);
     if(this.yarnseetings == 'True' && this.GatepassNumLoad.length == '')
     {
-      alert("Gate Pass Required")
+      alert("Gate Pass No. Required")
     }
   }
   GateRECNOLOAD() {
@@ -670,7 +672,7 @@ async  ReceiptGridDetailsLoad() {
   {
     console.log('IT',this.GatePass)
     console.log('Gatepassno',this.YarnReceiptForm.value.GatePass )
- 
+    this.GridDetailsLoad = [];
   }
 async yarnReciptBagDetailSave()
  {
@@ -961,20 +963,21 @@ this.StockPur = 1
     console.log('pARTCODE',event.value.PartyCode)
     this.PartyCode = event.value.PartyCode 
     this.WorkOrderNumberLoad();
- 
+    this.GridDetailsLoad = [];
   }
   portChange1(event: { component: IonicSelectableComponent; value: any }) {
     
     console.log('port:', event.value.WorkOrder);
     this.wrkord = event.value.WorkOrder
    this. OrderNumberLoad() 
+   this.GridDetailsLoad = [];
   }
   portChangeOrdNo(event: { component: IonicSelectableComponent; value: any }) {
     
     console.log('port:', event.value.WorkOrder);
     this.ordr = event.value.Orde
     this.GatePassNumberLoad();
-   
+    this.GridDetailsLoad = [];
   }
   Clear()
   {

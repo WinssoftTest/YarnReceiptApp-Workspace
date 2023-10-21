@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&family=Roboto&display=swap');
-ion-header ion-toolbar,
-ion-buttons { 
-  --background:	#607D8B;
-   --color:rgb(255, 255, 255);
-   text-align: center;
-   margin-left: 5px;
+// ion-header ion-toolbar,
+// ion-buttons { 
+//   --background:	#607D8B;
+//    --color:rgb(255, 255, 255);
+//    text-align: center;
+//    margin-left: 5px;
   
-}
+// }
 .label-font-value
 {
   font-family: 'Manrope', sans-serif;
@@ -29,7 +29,7 @@ ion-buttons {
    font-weight: 500;
    width: 93%;
    margin-left: 10px;
-    padding-top: 13px;
+ 
     padding-bottom: 10px;
     border: 1px solid black;
 }
@@ -54,7 +54,7 @@ ion-buttons {
 }
 .Button2 {
   background-color: #a3b18a;
-  margin: 10px;
+ 
   padding: 15px 45px;
   text-align: center;
   text-transform: uppercase;
@@ -63,7 +63,7 @@ ion-buttons {
   color: black;            
   border-radius: 10px;
   display: block;
-  margin-top: 9px;
+ 
   
   font-family: 'Manrope', sans-serif;
     font-size: 15px !important;
@@ -89,4 +89,10 @@ ion-buttons {
  font-size: 15px !important;
  font-weight: 500;
  margin-left: 90px;
+}
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: gray;
+  color: #666666;
 }

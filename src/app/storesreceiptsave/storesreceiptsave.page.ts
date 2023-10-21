@@ -83,6 +83,7 @@ export class StoresreceiptsavePage implements OnInit {
   totalQty: any = 0;
   tt: any;
   balancewtynow: any;
+  Message: any;
   
     constructor(private commonprovider: CommonService, 
     private _rr: FormBuilder,   public httpClient: HttpClient,
@@ -215,7 +216,7 @@ export class StoresreceiptsavePage implements OnInit {
  
     else if(this.LotNo == null ||  this.LotNo == undefined)
     {
-      this.commonprovider.FailedToast('Enter Lot No')
+      this.commonprovider.FailedToast('Enter Lot No.')
     } 
    
     else if(this.NoofPcs == null ||  this.NoofPcs == undefined)
@@ -333,7 +334,7 @@ export class StoresreceiptsavePage implements OnInit {
       SUnit_Qty:itemsload.OK,
       Shortage:itemsload.Short,
       Stock_In_Hand:'0.00',
-      Stock_Unit_Wt:this.Weight_Per_Qty * itemsload.OK,
+      Stock_Unit_Wt:this.RecWgt,
       StoreOrdMainId:this.store_Ord_Main_id,
       StoreordDetaildId:"",
       Sunit:this.SUnit,
@@ -341,7 +342,7 @@ export class StoresreceiptsavePage implements OnInit {
       TareWt:0.00,
       Vendorid:this.BuyerId,
       Warehouse:this.warehouse,
-      acutaltarewt:this.Weight_Per_Qty * itemsload.OK,
+      acutaltarewt:this.RecWgt,
       allotno:this.workorderno,
       branch:this.Branch,
       categoryname:this.Category_Name,
@@ -369,7 +370,7 @@ export class StoresreceiptsavePage implements OnInit {
       rackName:this.Rack,
       receiptid:"",
       RecQty: parseFloat(itemsload.OK)  + parseFloat(itemsload.Reject) +  parseFloat (itemsload.Short) + (itemsload.Defect) ,
-      recwgt:itemsload.Weight_Per_Qty * itemsload.OK,
+      recwgt:this.RecWgt,
       rejectqty:itemsload.Reject,
       remarke:"-",
       saveuser:this.UserName,
@@ -398,15 +399,15 @@ export class StoresreceiptsavePage implements OnInit {
      for(var i =  0 ; i < this.Save.length ; i++)
      {
       this.EntryNo = this.Save[i].entry_no;
+      this.Message = this.Save[i].Message;
      }
   }
-}  if( this.EntryNo != '')
-      {
-        alert("Record Saved Sucessfully" + '-' +  this.EntryNo)
+}      alert(this.Message)
+        this.router.navigate(['./storespurchasereceipt'])
       }
-      return true;
+   
      
-   }
+  
   
   
   BACK()

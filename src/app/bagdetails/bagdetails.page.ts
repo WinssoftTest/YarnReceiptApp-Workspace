@@ -24,7 +24,7 @@ export class BagdetailsPage implements OnInit {
   Color = localStorage.getItem('Color') 
   //Single = localStorage.getItem('Single');
   Pack = localStorage.getItem('Pack');
-  NRCQty:any = localStorage.getItem('Received');
+  NRCQty =  Number(localStorage.getItem('Received'));
   Ordered:any = localStorage.getItem('Order') ;
   WorkOrder: any;
   BagDetailsForm: any;
@@ -107,7 +107,7 @@ export class BagdetailsPage implements OnInit {
   console.log ( this.OrderEX)
   console.log('ORDEREX', this.OrderEX )
   this.orderEXbal1 = (parseFloat (this.Ordered)) + (this.OrderEX)
-  this.NowQty = (parseFloat (this.orderEXbal1)) - (this.NRCQty)
+  this.NowQty = (parseFloat(this.orderEXbal1) - this.NRCQty).toFixed(3) ; 
 }
 
 calculate(){

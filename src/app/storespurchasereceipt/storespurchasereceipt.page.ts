@@ -84,7 +84,7 @@ export class StorespurchasereceiptPage implements OnInit {
     var req = {
       company: this.Company,
       Branch_Name: this.Branch,
-      statement: 'WeavingFirstPices',
+      statement: 'STORES',
       UserName:this.UserName
     };
     this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
@@ -144,6 +144,7 @@ export class StorespurchasereceiptPage implements OnInit {
       }
     })
  this.GatePassNumberLoad();
+ this.receiptgrid = [];
   }
    AddButoon()
    {
@@ -180,7 +181,7 @@ export class StorespurchasereceiptPage implements OnInit {
     } 
     else if( this.DC == "" || this.DC == undefined)
     {
-      this.commonprovider.FailedToast('Type Dc No')
+      this.commonprovider.FailedToast('Type DC No.')
     } 
     else if( this.Gatepass == "" || this.Gatepass == undefined)
     {
@@ -247,7 +248,7 @@ portChanges(event: { component: IonicSelectableComponent; value: any }) {
   this.BuyerId = event.value.Buyer_id 
   this.PartyCode = event.value.PartyCode 
   this.OrderNumberLoad()
-
+  this.receiptgrid = [];
 }
   ngOnInit() {
   }
@@ -299,7 +300,7 @@ GatePassNumberLoad() {
  
   if(this.yarnseetings == 'True' && this.GatepassNumLoad.length == '')
   {
-    alert("Gate Pass Required")
+    alert("Gate Pass No. Required")
   }
 }
 }

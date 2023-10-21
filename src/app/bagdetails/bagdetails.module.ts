@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { BagdetailsPageRoutingModule } from './bagdetails-routing.module';
 
 import { BagdetailsPage } from './bagdetails.page';
+import { NumberReplacePipe } from '../number-replace.pipe';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { BagdetailsPage } from './bagdetails.page';
     ReactiveFormsModule,
     BagdetailsPageRoutingModule
   ],
-  declarations: [BagdetailsPage]
+  declarations: [BagdetailsPage,NumberReplacePipe]
 })
 export class BagdetailsPageModule {}

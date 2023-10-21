@@ -35,6 +35,7 @@ export class FgpurchasereceiptPage implements OnInit {
   UserName = localStorage.getItem('User');
   Warehousename:any;
   WH: any;
+
   type:any=[{id:1,typ:"Export"},{id:2,typ:"Local"},{id:1,typ:"Is"}]
   Sampleload:any=[{id:1,sample:"Sample"},{id:2,sample:"Bulk"}]
   WrkOrderNumber: any;
@@ -63,7 +64,7 @@ export class FgpurchasereceiptPage implements OnInit {
       Gatepass:["",[Validators.required]], WorkOrder:["",[Validators.required]],PartyName:["",[Validators.required]],Weight:["",[Validators.required]],Qty:["",[Validators.required]] })
       this.WareHouseNameLoad();
       this. PartyNameLoad()
- 
+   
     }
     async Save() {
        for(const itemsload of this.selectedArr)
@@ -75,9 +76,9 @@ export class FgpurchasereceiptPage implements OnInit {
         LeeTime:itemsload.leetime,
         Ordertype:this.OrderType,
         Ordmainid:itemsload.Order_Main_Id,
-        RecAmt:parseFloat(itemsload.NowRec) * parseFloat(itemsload.Ordered_Purchase_Rate),
+        RecAmt:(itemsload.NowRec) * (itemsload.Orderd_Purchase_Rate),
         RecQty:itemsload.NowRec,
-        Rate:itemsload.Ordered_Purchase_Rate,
+        Rate:itemsload.Orderd_Purchase_Rate,
         Stkpur:itemsload.Stk_Pur,
         Warehouse:this.Warehousename,
         articleno:itemsload.articleno,
@@ -87,7 +88,7 @@ export class FgpurchasereceiptPage implements OnInit {
         entryno:this.EntryNo,
         gatepassno:this.Gatepass,
         nos:itemsload.length,
-        orddetid:itemsload.Orderedetailid,
+        orddetid:itemsload.orderdetailid,
         ordid:itemsload.Order_Id,
         ordno:this.WrkOrderNumber ,
         ordrate:moment(itemsload.Date).format('YYYY-MM-DD'),
@@ -206,7 +207,7 @@ export class FgpurchasereceiptPage implements OnInit {
       var req = {
         company: this.Company,
         Branch_Name: this.Branch,
-        statement: 'WeavingFirstPices',
+        statement: 'FG',
         UserName:this.UserName
       };
       this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
@@ -215,6 +216,7 @@ export class FgpurchasereceiptPage implements OnInit {
         return true;
       });
      }
+   
      AddButoon()
      {
       // var reqQ = {
@@ -250,7 +252,7 @@ export class FgpurchasereceiptPage implements OnInit {
       } 
       else if( this.DC == "" || this.DC == undefined)
       {
-        this.commonprovider.FailedToast('Type Dc No')
+        this.commonprovider.FailedToast('Type DC No.')
       } 
       else if( this.Gatepass == "" || this.Gatepass == undefined)
       {
@@ -260,7 +262,9 @@ export class FgpurchasereceiptPage implements OnInit {
       var req = {
         partyname:  this.supllier,
          ponumber:this.WrkOrderNumber,
-         statement : "FABRICRECEIPT"
+         statement : "FGRECEIPT"
+
+          
       };
       this.commonprovider.FGReceiptgridload(req).then((result) => {
         var res: any;
@@ -300,6 +304,7 @@ export class FgpurchasereceiptPage implements OnInit {
      }
   ngOnInit() {
   }
+  
   GatePassNumberLoad() {
     var req = {
       Company: this.Company,
@@ -317,7 +322,7 @@ export class FgpurchasereceiptPage implements OnInit {
    
     if(this.yarnseetings == 'True' && this.GatepassNumLoad.length == '')
     {
-      alert("Gate Pass Required")
+      alert("Gate Pass No. Required")
     }
   }
 }

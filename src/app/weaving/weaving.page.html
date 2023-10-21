@@ -13,7 +13,7 @@
       <tr>
         <td class="label-font"><span> Production  </span></td>
         <td> : </td>
-      <td class="label-font Imp"  > 
+      <td > 
      <ion-item>
       <input  style="background-color: white !important" class="Radio" [(ngModel)]="Production" (change)="Resupplys()" formControlName="Production"   type="radio"   value="YES">
       <label style="margin-left: 10px" for="YES">Yes</label> 
@@ -83,7 +83,7 @@
 </td>
 </tr>
 <tr>
-  <td class="label-font"><span> WO No  </span></td>
+  <td class="label-font"><span> WO No.  </span></td>
   <td> : </td>
   <td> 
 <ion-item>
@@ -102,7 +102,7 @@
 </td>
 </tr>
 <tr>
-  <td class="label-font"><span> Jw Order No </span></td>
+  <td class="label-font"><span> Jw Order No. </span></td>
   <td> : </td>
   <td> 
 <ion-item>
@@ -121,7 +121,7 @@
 </td>
 </tr>
 <tr>
-  <td class="label-font"><span> DC No</span></td>
+  <td class="label-font"><span> DC No.</span></td>
   <td> : </td>
   <td>
  
@@ -135,7 +135,7 @@
 </td>
 </tr>
 <tr>
-  <td class="label-font"><span>Vehicle No</span></td>
+  <td class="label-font"><span>Vehicle No.</span></td>
   <td> : </td>
   <td>
  
@@ -165,7 +165,7 @@
 </td>
 </tr>
 <tr>
-  <td class="label-font"><span>Gate Pass</span></td>
+  <td class="label-font"><span>Gate Pass No.</span></td>
   <td> : </td>
   <td>
  
@@ -182,8 +182,9 @@
     <ion-select
       class="label-font-value"
       formControlName="GatePass"
+      [(ngModel)]="GatePass"
       interface="action-sheet"
-      
+      style="max-width: 100%;"
     >
       <ion-select-option
         *ngFor="let GP of GatepassNumLoad ; let optionindex = index"
@@ -231,13 +232,13 @@ font-weight: 500;">PIECE COUNT : {{ this.count }}</ion-chip>
 <div *ngFor="let GRD of  GridDetailsLoad; let optionindex = index" class="card"> 
 <table  >
   <tr>
-    <td class="label-font"><span>Work Order No  </span></td>
+    <td class="label-font"><span>WO No.  </span></td>
     <td> : </td>
     <td class="label-font Imp" style="color: red;padding: 5px;">{{GRD.WorkOrderNo
     }}</td>
   </tr>
   <tr>
-    <td class="label-font"><span>Order No   </span></td>
+    <td class="label-font"><span>Order No.   </span></td>
     <td> : </td>
     <td class="label-font Imp" style="color: red;padding: 5px;">{{GRD.Order_No
     }}</td>
@@ -274,7 +275,7 @@ font-weight: 500;">PIECE COUNT : {{ this.count }}</ion-chip>
   <ion-row> 
     <ion-col size="12">
     <ion-item style="margin-left: -10px;">
-      <ion-label class="label-font">Bale No :  <sup> * </sup> </ion-label> 
+      <ion-label class="label-font">Bale No. :  <sup> * </sup> </ion-label> 
       <ion-input type="number"
       [(ngModel)]="BaleNo"
       formControlName="BaleNo">
@@ -319,7 +320,7 @@ font-weight: 500;">PIECE COUNT : {{ this.count }}</ion-chip>
       
       <ion-col size="6"  *ngIf="this.GridDetailsLoad[0].Beam_No == null " >
         <ion-item  >
-          <ion-label class="label-font">Beam No  : </ion-label> 
+          <ion-label class="label-font">Beam No.  : </ion-label> 
           <ion-input type="number"
           [(ngModel)]="Beam"
           formControlName="Beam">
@@ -330,7 +331,7 @@ font-weight: 500;">PIECE COUNT : {{ this.count }}</ion-chip>
      
         <ion-col size="6" *ngIf="this.GridDetailsLoad[0].Beam_No != null ">
           <ion-item  >
-            <ion-label class="label-font">Beam No  : </ion-label> 
+            <ion-label class="label-font">Beam No.  : </ion-label> 
             <ion-select
         class="label-font-value"
         formControlName="Beam"
@@ -351,7 +352,7 @@ font-weight: 500;">PIECE COUNT : {{ this.count }}</ion-chip>
         <ion-row>
         <ion-col size="6" *ngIf="this.GridDetailsLoad[0].PartySetNo == null ">
           <ion-item style="margin-left: -17px;">
-            <ion-label class="label-font">Set No : </ion-label> 
+            <ion-label class="label-font">Set No.. : </ion-label> 
             <ion-input type="number"
             [(ngModel)]="Set"
             formControlName="Set">
@@ -360,7 +361,7 @@ font-weight: 500;">PIECE COUNT : {{ this.count }}</ion-chip>
           </ion-col>
           <ion-col size="6" *ngIf="this.GridDetailsLoad[0].PartySetNo != null ">
             <ion-item style="margin-left: -17px;">
-              <ion-label class="label-font">Set No : </ion-label> 
+              <ion-label class="label-font">Set No. : </ion-label> 
               <ion-select
         class="label-font-value"
         formControlName="Set"
@@ -378,7 +379,7 @@ font-weight: 500;">PIECE COUNT : {{ this.count }}</ion-chip>
             </ion-col>
            <ion-col size="6">
             <ion-item >
-              <ion-label class="label-font">Weft No : </ion-label> 
+              <ion-label class="label-font">Weft No. : </ion-label> 
               <ion-input type="number"
               [(ngModel)]="Weft"
               formControlName="Weft">

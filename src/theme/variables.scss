@@ -4,11 +4,12 @@
 // /** Ionic CSS Variables **/
  :root {
     ion-header ion-toolbar,
-ion-buttons {
+    ion-buttons {
    --background:#00afb9;
    --color:black;
    text-align: center;
    font-size: 15px !important;
+   font-weight: 600px !important;
  
 }
 .field-icon

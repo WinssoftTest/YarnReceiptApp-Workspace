@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="title" style="text-align: center !important;font-size: 15px;"> YARN RECEIPT SAVE</ion-title>
+    <ion-title class="title" style="text-align: center !important;font-size: 15px;">  PURCHASE OF YARN RECEIPT SAVE</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="yarnrecipt"></ion-back-button>
     </ion-buttons>
@@ -30,10 +30,10 @@
     
  
   <tr>
-    <td class="label-font"><span> Lot No </span></td>
+    <td class="label-font"><span> Lot No. </span></td>
     <td> : </td>
    
-    <!-- <ion-label style="color: black"> Lot No : </ion-label> -->
+    <!-- <ion-label style="color: black"> Lot No. : </ion-label> -->
     <td> 
       <ion-item>
     <ion-input
@@ -120,7 +120,7 @@
          <tr>
           <td class="label-font" > Ordered   </td>
           <td> : </td>
-          <td class="label-font Imp" style="color: red">  {{ Ordered | number:'1.2-2' }} 
+          <td class="label-font Imp" style="color: red">  {{ Ordered  | number: '1.3-3' | numberReplace }} 
             </td>
   </tr>
   <tr>
@@ -131,22 +131,22 @@
       </td>
       </tr>
       <tr> 
-      <td class="label-font"  > Ex Bal  </td>
+      <td class="label-font"  > Ex Balance  </td>
     <td> : </td>
     <td>  
-       {{   orderEXbal1 | number:'1.2-2'  }}   </td>
+       {{   orderEXbal1 |  number: '1.3-3' | numberReplace  }}   </td>
        </tr>
 <tr>
   <td class="label-font"  >  Received   </td>
   <td  class="label-font Imp" style="color: red"> : </td>
-  {{ NRCQty  | number:'1.2-2' }}  
+  {{ NRCQty  |  number: '1.3-3' | numberReplace }}  
   </tr>
  
    <tr>
     <td class="label-font"  >  Balance  </td>
     <td> : </td>
     <td>  
-    {{  orderEXbal1 -   NRCQty }} 
+    {{  orderEXbal1 -   NRCQty  |  number: '1.3-3' | numberReplace }} 
  </td>
  </tr>
  
@@ -155,7 +155,7 @@
      <td class="label-font"  >  Total Order With EX </td>
      <td> : </td>
      <td>  
-      <Label>  {{orderEXbal1  - Ordered | number:'1.2-2'}} 
+      <Label>  {{orderEXbal1  - Ordered |  number: '1.3-3' | numberReplace }} 
         </Label>
         </td>
         </tr>
@@ -188,7 +188,7 @@
       <td class="label-font Imp" style="color: red">PACK</td>
     </tr>
     <tr>
-      <td class="label-font"><span>No of Packs  </span></td>
+      <td class="label-font"><span>No of Packs.  </span></td>
       <td> : </td>
       <td class="label-font Imp" style="color: red">{{ PacktypeINT }}</td>
     </tr>
@@ -208,30 +208,22 @@
       <td class="label-font Imp" style="color: red">{{ a.wt }}</td>
     </tr>
      <tr>
-      <td class="label-font"><span>Lot No  </span></td>
+      <td class="label-font"><span>Lot No.  </span></td>
       <td> : </td>
       <td class="label-font Imp" style="color: red"> {{  LotNo}} </td>
     </tr>
     <tr>
-      <td class="label-font"><span>Pack No   </span></td>
+      <td class="label-font"><span>Pack No.   </span></td>
       <td> : </td>
       <td class="label-font Imp" style="color: red"> {{  CurrentPackNO }}</td>
     </tr>
     <tr>
       <td class="label-font"><span>Total Pack Wgt (Kgs)   </span></td>
       <td> : </td>
-      <td class="label-font Imp" style="color: red">{{ a.TotalPack  | number }}</td>
+      <td class="label-font Imp" style="color: red">{{ a.TotalPack  | number: '1.3-3' | numberReplace }}</td>
     </tr>
     </table>
-    <!-- <ion-col size="5" style="color:red ">  </ion-col>
-    <ion-col size="7" style="color:red ">: <span style="color:red ;font-weight: bold;font-size: 22px;  "> </span> </ion-col></ion-row>
-    <ion-row>  <ion-col size="12"> <b> : </b>  <span style="color:red ;font-weight: bold;  "> </span> </ion-col> </ion-row>
-     <ion-row>  <ion-col size="12"> <b style="margin-left: 32px;"> : </b>  <span style="color:red ;font-weight: bold;  "></span> </ion-col>
-    <ion-col size="8"> <b style="margin-left: 5px;"> : </b> <span style="color:red ;font-weight: bold;  "></span>  </ion-col>
-    <ion-col size="4"> <b style="margin-left: 1px;"> :</b> </ion-col> </ion-row>
-    <ion-row><ion-col size="12"><b style="margin-left: 55px;"> <b style="margin-left: 1px;"> : </b></b> </ion-col></ion-row>
-    <ion-row></ion-row>
-    <ion-row><ion-col style="color:red ;" size="12"> : <span style="color:red ;font-weight: bold;  "></span>   </ion-col></ion-row> -->
+     
     </div>
  
  
@@ -245,7 +237,7 @@
     <td class="label-font Imp" style="color: red">CONES</td>
   </tr>
   <tr>
-    <td class="label-font"><span>No of Packs   </span></td>
+    <td class="label-font"><span>No of Packs.   </span></td>
     <td> : </td>
     <td class="label-font Imp" style="color: red">1</td>
   </tr>
@@ -265,12 +257,12 @@
     <td class="label-font Imp" style="color: red">{{  this.SinglePackConeWeight | number }}</td>
   </tr>
   <tr>
-    <td class="label-font"><span>LotNo    </span></td>
+    <td class="label-font"><span>LotNo.    </span></td>
     <td> : </td>
     <td class="label-font Imp" style="color: red">{{  LotNo}} </td>
   </tr>
   <tr>
-    <td class="label-font"><span>Pack No    </span></td>
+    <td class="label-font"><span>Pack No.   </span></td>
     <td> : </td>
     <td class="label-font Imp" style="color: red">   {{ b.CurrentPackNO }}  </td>
   </tr>
@@ -281,18 +273,9 @@
   </tr>
 </table>
 
+ 
 
-    <!-- <ion-row>
-    <ion-col style="color:red " size="5">  :   </ion-col>
-    <ion-col size="7" style="color:red"> :  <span style="color:red ;font-weight: bold;  ">  1  </span> </ion-col></ion-row>
-    <ion-row><ion-col size="12"> <b> : </b>  <span style="color:red ;font-weight: bold;  "></span>  </ion-col> </ion-row>
-    <ion-row> <ion-col size="12"> <b style="margin-left: 32px;"> : </b>   <span style="color:red ;font-weight: bold;font-size: 22px;  ">  </span></ion-col></ion-row>
-    <ion-row><ion-col size="8"> <b style="margin-left: 5px;"> : </b>  <span style="color:red ;font-weight: bold;  ">   </span> </ion-col>
-    <ion-col size="4"> <b style="margin-left: 1px;"> :</b>  {{  LotNo}} </ion-col> </ion-row>
-    <ion-row><ion-col size="12"> <b style="margin-left: 60px;"> :</b> {{ b.CurrentPackNO }}</ion-col></ion-row>
- <!-- <ion-row><ion-col size="6">No of Pack : {{  this.PacktypeINT }}</ion-col></ion-row> -->
-
- <ion-row><ion-col style="color:red" size="12">Total Cone Wgt (Kgs) :   <span style="color:red ;font-weight: bold;  "> {{  this.SinglePackConeWeight | number  }} </span> </ion-col></ion-row>  
+ <ion-row><ion-col style="color:red" size="12">Total Cone Wgt (Kgs) :   <span style="color:red ;font-weight: bold;  "> {{  this.SinglePackConeWeight |  number: '1.3-3' | numberReplace  }} </span> </ion-col></ion-row>  
  </div>
  </div>
 </card>

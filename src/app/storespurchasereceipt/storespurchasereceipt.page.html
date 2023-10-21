@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
      
-    <ion-title   style="text-align: center !important;font-size: 15px;">STORES - RECEIPT</ion-title>
+    <ion-title   style="text-align: center !important;font-size: 15px;">PURCHASE STORES - RECEIPT</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
@@ -65,7 +65,7 @@
         </tr>
 
         <tr>
-          <td class="label-font"><span> PO No  </span></td>
+          <td class="label-font"><span> PO No.  </span></td>
           <td> : </td>
         <td   >
         <ion-item>
@@ -90,7 +90,7 @@
        </tr>
      
        <tr>
-        <td class="label-font"><span>DC No  </span></td>
+        <td class="label-font"><span>DC No.  </span></td>
         <td> : </td>
       <td   >
      
@@ -108,7 +108,7 @@
      </td>
      </tr>
      <tr>
-      <td class="label-font"><span>Gate Pass  </span></td>
+      <td class="label-font"><span>Gate Pass No.  </span></td>
       <td> : </td>
     <td   >
           <ion-item>
@@ -155,13 +155,13 @@
 class="card">
 <table>
   <tr>
-    <td class="label-font"><span>Work Order No  </span></td>
+    <td class="label-font"><span>WO No.  </span></td>
     <td> : </td>
     <td class="label-font Imp" style="color: red">{{GRD.workorderno
     }}</td>
   </tr>
   <tr>
-    <td class="label-font"><span>Cat Name  </span></td>
+    <td class="label-font"><span>Group Name  </span></td>
     <td> : </td>
     <td class="label-font Imp" style="color: red"> {{GRD.Cat_Name
     }}</td>
@@ -173,10 +173,10 @@ class="card">
     }}</td>
   </tr>
   <tr>
-    <td class="label-font"><span>Order    </span></td>
+    <td class="label-font"><span>Order Qty   </span></td>
     <td> : </td>
     <td class="label-font Imp" style="color: red"> {{GRD.Qty
-    }} </td>
+    }}   {{GRD.Req_Unit}}</td>
   </tr>
   <tr>
     <td class="label-font"><span>Received   </span></td>

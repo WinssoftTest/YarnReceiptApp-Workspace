@@ -1,11 +1,11 @@
 export class appsettings {
-//public static API_ENDPOINT = "http://localhost:7362";
+public static API_ENDPOINT = "http://localhost:7362";
 	//-------------------Atlas IP--------------------------
  // public static API_ENDPOINT = "http://45.123.1.108:17937/";
   // public static IMG_ENDPOINT = "http://45.123.1.108:17937/public/";
 	//------------------Atlas IP End---------------------------
- public static API_ENDPOINT = "http://103.207.14.57:8090/";
- public static IMG_ENDPOINT = "http://103.207.13.211:8091/public/";
+ //public static API_ENDPOINT = "http://103.207.14.57:8090/";
+  public static IMG_ENDPOINT = "http://103.207.13.211:8091/public/";
  
 	public static LoginAuthentication =
 		"/Service1.svc/WsYarnReceiptLoginAuthentication";
@@ -98,4 +98,6 @@ export class appsettings {
 		  "/Service1.svc/FGReceiptSave";
 		  public static FabricReceiptSave = 
 		  "/Service1.svc/FabricReceiptSave";
+		  public static WsFeatursSeetingLoad =
+		  "/Service1.svc/WsFeatursSettingsLoad";
 } 

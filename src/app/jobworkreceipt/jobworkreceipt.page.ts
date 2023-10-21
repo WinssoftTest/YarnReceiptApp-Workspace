@@ -118,8 +118,9 @@ export class JobworkreceiptPage implements OnInit {
    var req = {
      Company: this.Company,
      Process:this.JobWork,
-     jobwork:"Fabric"
-    
+     jobwork:"Fabric",
+     statement:"JWRECEIPT",
+     branch:this.Branch
    };
    this.commonprovider.WsJWProcessNameLoad(req).then((result) => {
      this.ProcessName = result;
@@ -135,7 +136,7 @@ export class JobworkreceiptPage implements OnInit {
     var req = {
       company: this.Company,
       Branch_Name: this.Branch,
-      statement: 'Receipt',
+      statement: 'JOBWORKRECEIPT',
       UserName:this.UserName
     };
     this.commonprovider.GetWareHouseNameLoad(req).then((result) => {
@@ -160,7 +161,7 @@ export class JobworkreceiptPage implements OnInit {
    
     if(this.yarnseetings == 'True' && this.GatepassNumLoad.length == '')
     {
-      alert("Gate Pass Required")
+      alert("Gate Pass No. Required")
     }
   }
    WorkOrderNumberLoad()  {
@@ -326,6 +327,7 @@ JqGatepassNo() {
   });
  }
  itemClick(d: any, index: any) {
+ 
   this.Selectedlistarr = []
  
      var item = d.selected;
@@ -343,12 +345,13 @@ JqGatepassNo() {
       localStorage.setItem('processname', this.Process.process)
       localStorage.setItem('wrkord',this.WrkOrderNumber)
       localStorage.setItem('PartyCode',this.PartyCode)
+      localStorage.setItem('PartyName',this.supllier)
       localStorage.setItem('process',this.Process.process)
       localStorage.setItem('ordr', this.ordr)
       localStorage.setItem('JobWork',this.JobWork)
       localStorage.setItem('SilpNo',this.SlipNo)
-      localStorage.setItem('Gatepass',this.Gatepass)
-      localStorage.setItem
+      localStorage.setItem('Gatepass',this.GatePass)
+      localStorage.setItem('jwWarehouse',this.Warehouse)
      this.router.navigate(['jwreceiptsave']) 
    
     }

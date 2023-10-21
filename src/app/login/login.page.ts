@@ -170,6 +170,7 @@ public CompanyNameLoad()
           localStorage.setItem("Company",this.loginForm.value.CompanyName.split('#')[1]);
           localStorage.setItem("Branch",this.BranchName.Branch_Name);
           localStorage.setItem("User",this.loginForm.value.UserName1.split('#')[2]);
+          localStorage.setItem("Userid",this.loginForm.value.UserName1.split('#')[0])
           localStorage.setItem("CopanyId",this.loginForm.value.CompanyName.split('#')[1])
           console.log('uSER',this.loginForm.value.UserName1.split('#')[2])
           localStorage.setItem("Year",this.year.Year);

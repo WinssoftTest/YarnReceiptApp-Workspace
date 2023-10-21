@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { YarnreciptPageRoutingModule } from './yarnrecipt-routing.module';
 import { YarnreciptPage } from './yarnrecipt.page';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { NumberReplacePipe } from '../number-replace.pipe';
  
 @NgModule({
   imports: [
@@ -15,8 +16,8 @@ import { IonicSelectableModule } from 'ionic-selectable';
     YarnreciptPageRoutingModule,
     ReactiveFormsModule,
     IonicSelectableModule,
-
+   
   ],
-  declarations: [YarnreciptPage]
+  declarations: [YarnreciptPage, NumberReplacePipe]
 })
 export class YarnreciptPageModule {}

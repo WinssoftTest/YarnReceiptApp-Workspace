@@ -17,6 +17,7 @@ export class HomePage {
  Branch=localStorage.getItem("Branch");
  year = localStorage.getItem("Year")
  user = localStorage.getItem("User")
+ Userid= localStorage.getItem('Userid');
   WorkOrderNumberArr: unknown;
   PartyNameArr: unknown;
   OrderNumberArr: unknown;
@@ -25,6 +26,8 @@ export class HomePage {
   FormDate:any;
   Todate:any;
   OpenFormArr: any;
+  FeatureSeeting: any;
+  Storesdata: any;
 
   constructor(
     private commonprovider: CommonService,
@@ -42,6 +45,7 @@ export class HomePage {
     //  this.WareHouseNameLoad ();
     //  this.PartyNameLoad ();
     //  this.WorkOrderNumberLoad();
+    this.FeatursSettingsload()
   }
 //  WareHouseNameLoad ()
 //   {
@@ -151,6 +155,22 @@ export class HomePage {
       return true;
     });
   }
+  FeatursSettingsload(){
+    var req = {
+      Company:this.Company,
+      userid:this.Userid,
+      Statement:"Receipt"
+      };
+      this.commonprovider.FeatursSettingsload(req).then((result: any) => {
+        this.FeatureSeeting = result;
+         for(var i = 0 ; i < this.FeatureSeeting.length; i++)
+         {
+          this.Storesdata = this.FeatureSeeting[i].Stores
+          
+         }
+        return true;
+      });
+    }
   yarnreceipt()
   {
    this.router.navigate(["yarnrecipt"])

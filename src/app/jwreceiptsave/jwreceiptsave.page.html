@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="title" style="text-align: center !important;font-size: 15px;">JW RECEIPT  - SAVE <ion-chip style="background-color: white;">Balance {{this.delivery - this.recqty  }}</ion-chip></ion-title>
+    <ion-title class="title" style="text-align: center !important;font-size: 15px;">JW RECEIPT  - SAVE <ion-chip style="background-color: #FFBF00;">Balance {{this.delivery - this.recqty  }}</ion-chip></ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="jobworkreceipt"></ion-back-button>
     </ion-buttons>
@@ -33,7 +33,7 @@
         <td class="label-font"><span>  Work Order No  </span></td>
         <td> : </td>
         <td > 
-   - {{JWR.WorkOrderNo
+   {{JWR.WorkOrderNo
     }} </td>
     </tr>
     <tr>
@@ -57,95 +57,104 @@
    {{JWR.Reed_Pick}}<b style="color: red;">| </b> {{JWR.F_Size}}<b style="color: red;"> | </b> {{JWR.Color}} <b style="color: red;"> | </b>  <b>{{JWR.Design_Name
     }}</b>
     </table>
- 
-<ion-row> 
-  <ion-col size="12">
-  <ion-item style="margin-left: -10px;">
-    <ion-label class="label-font">Order Wgt:  <sup> * </sup> </ion-label> 
-    <ion-input type="number"
+  
+    <table style="width: 98%;"> 
+    
+      <tr>
+        <td class="label-font"><span>Order Wgt  </span></td>
+        <td> : </td>
+        <ion-item >
+   <ion-input type="number"
     [(ngModel)]="OrderWgt"
     formControlName="OrderWgt"
  >
+   </ion-input>
+   </ion-item>
+  </tr>
  
-    </ion-input>
-  </ion-item>
-  </ion-col>
-  </ion-row>
-  <ion-row> 
-    <ion-col size="6">
-    <ion-item style="margin-left: -10px;">
-      <ion-label class="label-font">Width:  <sup> * </sup> </ion-label> 
+  <tr>
+    <td class="label-font"><span>Width  </span></td>
+    <td> : </td>
+    <ion-item  >
       <ion-input type="number"
-      [(ngModel)]="width"
+      [(ngModel)]="JWR.F_Width"
       formControlName="width"
    >
       </ion-input>
     </ion-item>
-    </ion-col>
-    <ion-col size="6">
-      <ion-item style="margin-left: -10px;">
-        <ion-label class="label-font">Length:  <sup> * </sup> </ion-label> 
+   </tr>
+   <!-- <tr>
+    <td class="label-font"><span>Length  </span></td>
+    <td> : </td>
+    <ion-item  >
         <ion-input type="number"
         [(ngModel)]="Length"
         formControlName="Length"
      >
         </ion-input>
-      </ion-item>
-      </ion-col>
-    </ion-row>
- 
-  <ion-row> 
-    <ion-col size="6">
-    <ion-item style="margin-left: -10px;">
-      <ion-label class="label-font">Now Rec:  <sup> * </sup> </ion-label> 
-      <ion-input type="number"
+        </ion-item>
+     </tr> -->
+   
+   
+<tr>
+    <td class="label-font"><span>Now Rec  </span></td>
+    <td> : </td>
+    <ion-item>
+     <ion-input type="number"
       [(ngModel)]="NowRec"
       formControlName="NowRec"
+      (ionChange)="NowRecWte()"
    >
       </ion-input>
     </ion-item>
-    </ion-col>
-    <ion-col size="6">
-      <ion-item style="margin-left: -10px;">
-        <ion-label class="label-font">Now Rec Wt:  <sup> * </sup> </ion-label> 
+   </tr>
+ 
+   <tr>
+    <td class="label-font"><span>Now Rec Wt </span></td>
+    <td> : </td>
+       <ion-item> 
         <ion-input type="number"
         [(ngModel)]="NowRecwt"
         formControlName="NowRecwt"
      >
         </ion-input>
-      </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row> 
-      <ion-col size="6">
-      <ion-item style="margin-left: -10px;">
-        <ion-label class="label-font">Pcs Bundle:  <sup> * </sup> </ion-label> 
+        </ion-item>
+   </tr>
+
+     <tr>
+    <td class="label-font"><span>Pcs Bundle </span></td>
+    <td> : </td>
+      <ion-item >
         <ion-input type="number"
         [(ngModel)]="PcsBundle"
-        formControlName="PcsBundle"
-     >
-        </ion-input>
-      </ion-item>
-      </ion-col>
-      <ion-col size="6">
-        <ion-item style="margin-left: -10px;">
-          <ion-label class="label-font">No Of Bundle:  <sup> * </sup> </ion-label> 
+        formControlName="PcsBundle">
+      </ion-input>
+     </ion-item>
+     </tr>
+ 
+    
+     <tr>
+      <td class="label-font"><span>No Of Bundle </span></td>
+      <td> : </td>
+        <ion-item>
+     
           <ion-input type="number"
           [(ngModel)]="NoOfBundle"
           formControlName="NoOfBundle"
        >
           </ion-input>
         </ion-item>
-        </ion-col>
-      </ion-row>
+     </tr>
+     </table>
+ 
       
       <ion-row> 
         <ion-col size="6">        
-          <button class="Button2"  (click)="itemClic(JWR, index)">Apply</button>
+          <button class="Button1"   [disabled]="isButton" (click)="itemClic(JWR, index)">Apply</button>
           </ion-col>
      
           <ion-col size="6">        
-            <button class="Button2" (click)="jwreceiptsave()"    >Save</button>
+            <button class="Button2"  [disabled]="isButton1" (click)="jwreceiptsave()"    >Save</button>
             </ion-col>
           
           </ion-row>

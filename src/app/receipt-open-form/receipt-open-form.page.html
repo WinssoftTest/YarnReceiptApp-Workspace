@@ -20,6 +20,7 @@
       formControlName="Type"
       [(ngModel)]="Type"
       interface="action-sheet"
+      (ionChange)="typechange()"
         >
        <ion-select-option
     style="max-width: max-content"
@@ -33,7 +34,7 @@
       </td>
       </tr>
       <tr>
-        <td class="label-font"><span> Party  </span></td>
+        <td class="label-font"><span> Party Name  </span></td>
         <td> : </td>
       <td class="label-font Imp" style="color: red;width: 76%;"> 
     <ion-item style="margin-top: 7px">
@@ -44,14 +45,15 @@
         itemTextField="PartyName"
         [canSearch]="true"
         formControlName="PartyName"
+        [(ngModel)]="PartyName1"
         (onChange)="portChange($event)"
       >
       </ionic-selectable>
       </ion-item>
  </td>
  </tr>
- <tr>
-  <td class="label-font"><span>  WO No   </span></td>
+ <!-- <tr>
+  <td class="label-font"><span>  WO No.   </span></td>
   <td> : </td>
   <td> 
     <ion-item> 
@@ -66,13 +68,13 @@
   >
   </ionic-selectable>
   </ion-item>
-  </tr>
-  <tr>
-    <td class="label-font"><span> PO No   </span></td>
+  </tr> -->
+  <!-- <tr>
+    <td class="label-font"><span> PO No.   </span></td>
     <td> : </td>
     <td>
   <ion-item> 
-    <!-- <ion-label class="label-font">   <b style="padding-left: 2.5px;">  </b>  </ion-label> -->
+     
     <ionic-selectable
     [items]="Orde"
     itemValueField="id"
@@ -84,7 +86,7 @@
   </ionic-selectable>
   </ion-item>
   </td>
-  </tr>
+  </tr> -->
   <tr>
     <td class="label-font"><span> From   </span></td>
     <td> : </td>
@@ -129,16 +131,20 @@
   </td>
   </tr>
   </table>
-  <ion-col size="3">
-    <button class="Button1" (click)="Clear()">Clear</button>
-   
-  </ion-col>
+  <ion-row>
+  <ion-col size="6">
+    <button class="Button"  class="btn btn-outline-warning" style="margin-left: 40px;" (click)="Clear()">Apply</button>
+     </ion-col>
+     <ion-col size="6">
+      <button class="Button"  class="btn btn-outline-warning" style="margin-left: 40px;" (click)="Clearbutton()">Clear</button>
+       </ion-col>
+      </ion-row>
   <div class="carddd" > 
+    <ion-chip style="margin-left: 32%;background-color: yellowgreen ;color: white;"> Total Records : {{ GridDetailsLoad?.length }}</ion-chip>
    <ion-card
   class="bg-card bg-light"
   *ngFor="let GRI of GridDetailsLoad; let optionindex = index"
-  (click)="itemClick(GRI, optionindex)"
->
+   > 
  
   <ion-row>
     <ion-col size="1">
@@ -149,33 +155,53 @@
       />
     </ion-col>
     <div class="divcard"> 
-      <span style="font-size: small;margin-left: 10px; " class="Imp">    <b>{{GRI.Y_Rec_Date}}</b> </span> 
-      <ion-chip style="    margin-left: 194px;
-      font-size: 13px !important;
-      width: 33px;
-      height: 20px;">{{optionindex +  1 }}</ion-chip><br>
-      <span style="margin-left: 10px;"  class="Imp">  <b> {{GRI.Supplier_Name}} </b></span> <br>
+    <ion-chip>{{optionindex +  1 }}</ion-chip>
+  <br>
+ 
       <table style="margin-left: 10px;    width: 100%;">
         <tr>
-          <td class="label-font"><span> Rec No  </span></td>
+          <td class="label-font"><span> Name  </span></td>
+          <td> : </td>
+        <td class="label-font Imp"  >
+          {{GRI.Supplier_Name}}
+      </td>
+      </tr>
+        <tr>
+          <td class="label-font"><span> Date  </span></td>
+          <td> : </td>
+        <td class="label-font Imp"  >
+      {{GRI.Y_Rec_Date}} 
+      </td>
+      </tr>
+        <tr>
+          <td class="label-font"><span> Rec No.  </span></td>
           <td> : </td>
         <td class="label-font Imp"  >
       {{ GRI.Y_Rec_No}} 
       </td>
       </tr>
       <tr>
-        <td class="label-font"><span> WO No  </span></td>
+        <td class="label-font"><span> WO No.  </span></td>
         <td> : </td>
       <td class="label-font Imp"  >  {{GRI.WorkOrderNo}} 
         </td>
         </tr>
-        <tr>
-          <td class="label-font"><span> PO No </span></td>
+        <tr *ngIf="this.YarnReceiptForm.value.Type != 'Weaving' && this.YarnReceiptForm.value.Type != 'JobWork'  && this.YarnReceiptForm.value.Type != 'Knitting'">
+          <td class="label-font"><span> PO No. </span></td>
           <td> : </td>
         <td class="label-font Imp"  >
    {{GRI.Y_PO_No}}  
  </td>
  </tr>
+        
+ <tr *ngIf="this.YarnReceiptForm.value.Type == 'JobWork'">
+  <td class="label-font"><span>Process </span></td>
+  <td> : </td>
+<td class="label-font Imp"  >
+  {{GRI.process
+  }} 
+  </td>
+  </tr>
  <tr>
   <td class="label-font"><span> Qty </span></td>
   <td> : </td>
@@ -184,82 +210,35 @@
   }} 
   </td>
   </tr>
+  
+  <tr  *ngIf="this.YarnReceiptForm.value.Type == 'Yarn'">
+    <td class="label-font"><span> Uom </span></td>
+    <td> : </td>
+  <td class="label-font Imp"  >
+    {{GRI.uom
+    }} 
+    </td>
+    </tr>
+   
+  <tr *ngIf="this.YarnReceiptForm.value.Type != 'Yarn'">
+    <td class="label-font"><span> Unit </span></td>
+    <td> : </td>
+  <td class="label-font Imp"  >
+    {{GRI.Unit
+    }} 
+    </td>
+    </tr>
+
  </table>
   </div>
     </ion-row>
  
-    <!-- <ion-row style="margin-right: -177px;
-    margin-bottom: 0px;">
-      <ion-col size="6">
-        <span style="margin-left: 10px"> <span> Qty <b style="margin-left:4px; ">  : </b> <b>{{GRI.Now_Received_Qty
-        }} </b></span>  </span><br>
-      </ion-col>
- 
-    </ion-row> -->
+
 
 
     </ion-card>
   </div>
-   <!-- <div class="divcard">
-      <ion-card class="card">
-        <div class="smallheader">
-          <input
-            id="actives"
-           class="bg-card bg-light"
-            *ngFor="let GRI of GridDetailsLoad; let optionindex = index"
-            (click)="itemClick(c, optionindex)"
-            name="card"
-            type="radio"
-            class="chb"
-            style="background-color: #e75151; width: 20px; height: 30px"
-          />
-          <ion-card-content>
-            <ion-row>
-              <ion-col size="1">
-                <img
-                  *ngIf="c.selected == true"
-                  class="avt-prod"
-                  src="../../assets/icon/checked.png"
-                />
-                <img
-                  *ngIf="c.selected == false"
-                  class="avt-prod"
-                  src="../../assets/icon/unchecked.png"
-                />
-                </ion-col>
-                </ion-row>
-                </ion-card-content>
-          <ion-chip style= "margin-right: 10px;color: #e75151;margin-top: 10px;"> {{ index + 1 }}  </ion-chip>  
-        </div>
-        <p>Po : <span class="Imp">{{GRI.WorkOrderNo}}</span></p>
-        <p>Ord : <span class="Imp">{{GRI.Y_PO_No}}</span></p>
-        <p>Order : {{GRI.Ordered}} | Already Rec : {{GRI.Received
-        }} </p>
-      
-        <p style="color: red;font-weight: bold;">  Bal : {{ GRI.Bal | number : '1.0-2'}} | {{GRI.uom}} </p>
-        <p>Now Rec : {{NowreQty}}</p> 
-        <p style="color: red;font-weight: bold;">Count : {{GRI.Count}} | {{GRI.Color}}</p>
-        <p >Ex % : {{GRI.Ex_Per}} | CardNo : {{GRI.CardNo}}</p>
-       
-        <p>Pakes : {{GRI.Bags}} | Sub Pack : {{GRI.subpack }}</p>
-        <p>Lot No: {{GRI.lot_no }} | WareHouse: {{GRI.WareHouse }}</p>
-        <p>Mill : {{GRI.MillName}}</p>
-        <p>Remarks : {{GRI.Remarks}}</p>
-       </ion-card> -->
 
-
-      <!-- <ion-row style="margin-bottom: 10px;">
-        <ion-col size="4">
-          <button class="Button" (click)="Save()">Save</button>
-         
-        </ion-col>
-        <ion-col size="4">
-          <button class="Button" (click)="Edit()">Edit</button>
-        </ion-col>
-        <ion-col size="4">
-          <button class="Button" (click)="presentAlert()">Delete</button>
-        </ion-col>
-      </ion-row> -->
     
   </form>
 </ion-content>

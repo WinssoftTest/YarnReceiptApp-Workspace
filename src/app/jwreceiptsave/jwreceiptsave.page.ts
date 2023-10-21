@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./jwreceiptsave.page.scss'],
 })
 export class JwreceiptsavePage implements OnInit {
+  isButton : boolean = false;
+  isButton1 : boolean = true;
   selectarrayjw: any;
   Company = localStorage.getItem('Company');
   Branch = localStorage.getItem('Branch');
@@ -25,16 +27,16 @@ export class JwreceiptsavePage implements OnInit {
   order=localStorage.getItem('ordr');
   jobwork= localStorage.getItem('JobWork');
   Warehouse= localStorage.getItem('jwWarehouse');
-  Gatepass= localStorage.getItem('JobWork');
-  partyname=localStorage.getItem('Partyname');
-  Slipno = localStorage.getItem('SlipNo')
+  Gatepass= localStorage.getItem('Gatepass');
+  partyname=localStorage.getItem('PartyName');
+  Slipno = localStorage.getItem('SilpNo')
   jwSpaceBarGrid: any;
   processName: string;
   jwreceiptgrid: any =[];
   ordQty: any;
   delivery: any;
   Exper: any;
-  savegrid: any;
+  savegrid: any =[];
   recqty: any;
   Selectedlistarr: any =[];
 d: any;
@@ -51,6 +53,12 @@ index: any;
   PcsBundle:any;
   NoOfBundle:any;
   jwreceiptsav: any;
+  shinkerper: any;
+  Rate: any;
+  Alias_Fabric: any;
+  Wact_Wect: any;
+  Ex_Rec_Per: any;
+  Order_Weight: any;
   
   constructor(private commonprovider: CommonService, 
     private _rr: FormBuilder,   public httpClient: HttpClient,
@@ -67,6 +75,14 @@ index: any;
       this.delivery = this.selectarrayjw[i].delivery,
       this.Exper = this.selectarrayjw[i].Ex_Rec_Per
       this.recqty = this.selectarrayjw[i].recqty
+      this.shinkerper = this.selectarrayjw[i].Shrinkage_Per
+      this.Rate = this.selectarrayjw[i].Rate,
+      this.Alias_Fabric =  this.selectarrayjw[i].Alias_Fabric,
+      this.Wact_Wect  = this.selectarrayjw[i].Wact_Wect,
+      this.Ex_Rec_Per  = this.selectarrayjw[i].Ex_Rec_Per,
+      this.OrderWgt = this.selectarrayjw[i].Order_Weight
+
+
     }
     console.log( this.ordQty)
   this.processName = localStorage.getItem('processname')
@@ -102,9 +118,15 @@ index: any;
 
     }
     itemClic(jw: any, index: any) {
+      if(Number(this.NowRec) > this.delivery - this.recqty )
+      {
+alert('Qty Exceeds')
+      }
+      else{
+      this.isButton  = true;
+      this.isButton1  = false;
       console.log('MY INDEX POSSITION',index)
-      
-      var item = jw.selected;
+        var item = jw.selected;
       if (item == true) {
         jw["selected"] = false;
         this.selectedArr.splice(index, 1);
@@ -119,7 +141,7 @@ index: any;
         this.newIndex = this.selectedArr.length -1;
   
       }
-
+    }
 
   jwReceiptSpacebarGridLoad()
   {
@@ -144,8 +166,23 @@ this.commonprovider.jwReceiptSpacebarGridLoad(req).then((result) => {
  
 })
 }
-jwreceiptsave()
+NowRecWte()
+{
+  if(Number(this.NowRec) > this.delivery - this.recqty )
   {
+alert('Qty Exceeds')
+this.NowRec = "";
+this.NowRecwt =""
+  }
+  else{
+ console.log(Number(this.OrderWgt) * Number(this.NowRec));
+ this.NowRecwt  = Number(this.OrderWgt) * Number(this.NowRec)
+  }
+}
+jwreceiptsave()
+
+  {
+    this.isButton  = true;
     for(const itemsload of this.selectedArr)
     {
   var req = {
@@ -172,14 +209,14 @@ jwreceiptsave()
     endbit:'0.00',
     entryno:'',
     fsid:'0',
-    goodsrate:itemsload.Rate,
+    goodsrate:this.Rate ,
     invoicecompstatus:'0',
     invoiceno:'0',
-    itemgoodsamt:Number (itemsload.Rate) * Number(this.recqty),
+    itemgoodsamt:Number (this.Rate ) * Number(this.recqty),
     itemprocessamt:'0.00',
-    itemqty:'0',
+    itemqty:this.NowRec,
     jobwork:this.jobwork,
-    jw_Rec_id:itemsload.Rate,
+    jw_Rec_id:'0',
     jw_deli_id:'0',
     jwdeliveryno:'0',
     jworderno:this.order,
@@ -199,47 +236,52 @@ jwreceiptsave()
     process:this.process,
     qtyunit:itemsload.Qty_unit,
     recQty:this.NowRec,
-    rec_w_unit:'',
+     rec_w_unit:'',
      reccolor:itemsload.Color,
      reccompstatus:'0',
-     recdesign:'0',
-     recdesignno:'0',
-     reclength:itemsload.F_Length,
-     reclunit:itemsload.F_Length,
-     recpcswgt:'',
+     recdesign:this.Alias_Fabric,
+     recdesignno:this.Alias_Fabric,
+     reclength:itemsload.F_Width,
+     reclunit:itemsload.Exp_Unit,
+     recpcswgt:this.selectarrayjw[0] .Order_Weight,
      recproduct:itemsload.Product,
      recqtypcs:'',
-     recsize:itemsload.F_Size ,
-     recwgt:itemsload.Wact_Wect,
+     recsize:itemsload.F_Width ,
+     recwgt:this.selectarrayjw[0] .Order_Weight,
      reedpick:itemsload.Wact_Wect,
      retid:'0',
      runit:itemsload.JW_ORD_Unit,
-    rwidth:this.width,
+    rwidth:itemsload.F_Width,
     saveuser:this.UserName,
     sconqty:'0',
-    shrinkper:itemsload.Shrinkage_Per,
+    shrinkper:    this.shinkerper ,
     sizeconversion:'',
     slipdate:moment(new Date()).format('YYYY-MM-DD'),
     slipno:this.Slipno,
     sno:'',
     stockid:'',
     suppliercode:this.partycode,
-    suppliername:this.partyname,
-    wactwept:itemsload.Wact_Wect  ,
+    supplier:this.partyname,
+    wactwept:this.Wact_Wect ,
     warehouse:this.Warehouse,
     wgt:itemsload.Order_Weight,
     workorderno:this.wrkord,
-    yr:this.year
-    
+    yr:this.year,
+    jwdelidelid:'',
+    calwt:this.selectarrayjw[0] .Order_Weight,
+    Ex_Rec_Per:this.Ex_Rec_Per,
+    recwidth:itemsload.F_Width   
 };
 this.commonprovider.JwReceiptSave(req).then((result) => {
   var res: any;
   res = result;
   this.savegrid = res;
- 
- 
-})
+  alert(this.savegrid[0].Message)
+  this.isButton = true;
+ })
+
     }
+    
 }
 ngOnInit() {
 }

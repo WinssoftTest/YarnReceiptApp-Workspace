@@ -11,13 +11,13 @@ import * as moment from 'moment';
   styleUrls: ['./fabricreceiptsave.page.scss'],
 })
 export class FabricreceiptsavePage implements OnInit {
- 
+  value :any;
   PurchaseReceipt: any;
   Baleno:any;
   LotNo:any;
   NoOfPcs:any;
   openedCards: any = [];
-  
+  Loomno = 1;
   selectedArr: any =[];
   openedCardsS: any =[];
   totalconversion: any;
@@ -26,7 +26,7 @@ export class FabricreceiptsavePage implements OnInit {
   totalQty: number;
   balance: any;
   Qty:any;
-  isButton: boolean;
+  isButton: boolean = false;
   EntryNo: string;
   Saveload: any;
   RecWgt: number;
@@ -34,7 +34,7 @@ export class FabricreceiptsavePage implements OnInit {
   Branch = localStorage.getItem('Branch');
   year = localStorage.getItem('Year'); 
   UserName = localStorage.getItem('User');
-  warehouse=localStorage.getItem('fabricWarehousen');
+  warehouse=localStorage.getItem('Fabricwarehouse');
   DCno = localStorage.getItem('fabricDCno');
   suppliername =localStorage.getItem('fabricsuppliername')
   PartyCode=localStorage.getItem('fabricPartyCode')
@@ -43,6 +43,7 @@ export class FabricreceiptsavePage implements OnInit {
   PoNum = localStorage.getItem('fabricPoNumSTORE');
   fabricOrdertype = localStorage.getItem('fabricOrdertype' )
   fabricSamplebulk = localStorage.getItem('fabricSamplebulk')
+  ordertype = localStorage.getItem('ordertype')
   FabricselectGrid: any;
   Articlename: any;
   Barcode_No: any;
@@ -78,7 +79,12 @@ export class FabricreceiptsavePage implements OnInit {
   width: any;
   workorderno: any;
   recamt: number;
-  PcsNo:number=1
+  PcsNo:number;
+  
+ 
+  results: number[] = [];
+  PcsNoautogen: any;
+  Pcsnocount: any;
   constructor(private commonprovider: CommonService, 
     private _yt: FormBuilder,   public httpClient: HttpClient,
     public router: Router
@@ -106,7 +112,7 @@ export class FabricreceiptsavePage implements OnInit {
    this.Order_Id = this.FabricselectGrid[i].Order_Id
    this.Order_Main_Id = this.FabricselectGrid[i].Order_Main_Id
    this.Order_Uom = this.FabricselectGrid[i].Order_Uom
-   this.Ordered_Purchase_Rate = this.FabricselectGrid[i].Ordered_Purchase_Rate
+   this.Ordered_Purchase_Rate = this.FabricselectGrid[i].Orderd_Purchase_Rate
    this.ProductNo_Id = this.FabricselectGrid[i].ProductNo_Id
    this.Product_Name = this.FabricselectGrid[i].Product_Name
    this.Pur_Received = this.FabricselectGrid[i].Pur_Received
@@ -119,7 +125,7 @@ export class FabricreceiptsavePage implements OnInit {
    this.exper = this.FabricselectGrid[i].exper
    this.funit = this.FabricselectGrid[i].funit
    this.length = this.FabricselectGrid[i].length
-   this.Orderedetailid = this.FabricselectGrid[i].Orderedetailid
+   this.Orderedetailid = this.FabricselectGrid[i].orderdetailid
    this.orderno = this.FabricselectGrid[i].orderno
    this.ordqty = this.FabricselectGrid[i].ordqty
    this.ordwgt = this.FabricselectGrid[i].ordwgt
@@ -132,11 +138,13 @@ export class FabricreceiptsavePage implements OnInit {
    this.width = this.FabricselectGrid[i].width
    this.workorderno = this.FabricselectGrid[i].workorderno,
    this.balance = Number(this.ordqty) -  Number(this.Pur_Received)
+   this.Pcsnocount =this.FabricselectGrid[i].PcsNo;
    }
   }
 
   ngOnInit() {
   }
+ 
   AddButoon()
 {
  console.log( 'PCSNOOOOOOOOOOOOOOOOO' ,this.PcsNo)
@@ -146,11 +154,18 @@ export class FabricreceiptsavePage implements OnInit {
     }
     else{
     for (let i = 0; i < this.NoOfPcs; i++) {
-      
-       this.openedCards.push({ LotNo:  this.PurchaseReceipt.value.LotNo,
-         PcsNo: "" ,  Qty:this.PurchaseReceipt.value.Reject});
+    
+       this.openedCards.push({ 
+         LotNo:  "",
+         PcsNo :  this.Pcsnocount  ,  
+         Qty:""
+        }
+         );
+         this.PcsNo =  this.Pcsnocount  
     }
+
   }
+ 
    }
    incrementPcsNo() {
     // Get the current value of the PcsNo form control
@@ -201,7 +216,7 @@ export class FabricreceiptsavePage implements OnInit {
        {
       alert('Qty Exceeds')
       this.newIndex = this.openedCardsS.length -1;
-     
+  
       jw["selected"] = false;
       this.openedCardsS.splice(index, 1);
      // this.openedCardsS[this.newIndex].OK = ""; 
@@ -225,11 +240,13 @@ export class FabricreceiptsavePage implements OnInit {
         ActRecWt: this.RecWgt,
         Company:this.Company,
         Dcno:this.DCno,
+        order:this.ordertype,
         DesignNo:this.articleno,
         Designid:this.ProductNo_Id,
         Ordertype:this.fabricOrdertype,
         Ordmainid:this.Order_Main_Id,
         Rate:this.Ordered_Purchase_Rate,
+        MainRecQty : this.totalQty,
         RecQty:itemsload.Qty,
         Size:this.size,
         Stkpur:this.Stk_Pur,
@@ -249,7 +266,7 @@ export class FabricreceiptsavePage implements OnInit {
         loomno:itemsload.loomno,
         lotno:this.LotNo,
         noofpcs:this.NoOfPcs,
-        nos:itemsload.length,
+        nos:0,
         orddetid:this.Orderedetailid,
         ordid:this.Order_Id,
         ordno:this.orderno,
@@ -277,7 +294,7 @@ export class FabricreceiptsavePage implements OnInit {
     const result = await  this.commonprovider.FabricReceiptsave(req)
     this.Save = result;
       console.log('SAVE',  this.Saveload );
-      this.PcsNo = Number(this.PcsNo) + 1
+  //    this.PcsNo = Number(this.PcsNo) + 1
       if(this.EntryNo == null || this.EntryNo == undefined || this.EntryNo =="")
       {
      for(var i =  0 ; i < this.Save.length ; i++)
@@ -285,9 +302,16 @@ export class FabricreceiptsavePage implements OnInit {
       this.EntryNo = this.Save[i].entry_no;
      }
     }
-  }
-} 
-    
+      }
+    if( this.EntryNo != '')
+    {
+      alert("Record Saved Sucessfully" + '-' +  this.EntryNo);
+      this.router.navigate(['fabricreceipt']) 
+    }
+    return true;
+   
+  
+  } 
   
   
 }

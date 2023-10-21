@@ -1,11 +1,11 @@
 <ion-menu contentId="main-content">
   <ion-header style="background-color: #FFBF00 !important;">
     <ion-toolbar>
-      <ion-title >Receipts</ion-title>
+    <b>  <ion-title >Goods Receipt</ion-title> </b>
     </ion-toolbar>
   </ion-header>
   <ion-content class="content"
-  style="background-image: url('../../assets/icon/portrait-abstract-liquid-design-background-multicolor-gradient_41901-2647.avif');" class="ion-padding"> {{this.Company}} <br>{{this.user}}<br> {{this.year}}
+  style="background-image: url('../../assets/icon/255-2557580_transparent-literacy-clipart-paper-and-pencil-icon-hd.png');" class="ion-padding"> {{this.Company}} <br>{{this.user}}<br> {{this.year}}
 
 <button (click)="Back()">LOGOUT</button>
 </ion-content>
@@ -17,38 +17,40 @@
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
       <ion-header [translucent]="true">
-      <span class="title" style="text-align: center !important;font-size: 15px;">GOODS RECEIPT CATEGORY</span>
+      <span class="title" style=" font-size: 15px;">GOODS RECEIPT CATEGORY</span>
  </ion-header>
     </ion-toolbar>
   </ion-header>
    </div>
 
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar  >
-    
-        <ion-title class="title" style="text-align: center !important;font-size: 15px;">GOODS RECEIPT CATEGORY</ion-title>
  
-   
-    
-    
-  </ion-toolbar>
-</ion-header> -->
 
-<ion-content [fullscreen]="true">
+<ion-content  >
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      
+      <span  >GOODS RECEIPT CATEGORY</span>
  
+    </ion-toolbar>
+  </ion-header>
       <ion-row>
-          <ion-col size = "6">
-      <div style="background-color: white;" class="item" (click)="yarnreceipt()">
-        <div class="img-container extras">
+        <div  *ngFor="let user of FeatureSeeting">
+          <ion-col size-sm="6" *ngIf="user.Stores === 'Yarn Receipt'">
+         <div style="background-color: white;" class="item" (click)="yarnreceipt()">
+          <div class="img-container extras">
           <img class="img" src="../../assets/icon/2564327.png" alt="" />
         </div>
         <p class="item-title">
           YARN  RECEIPT<br />
-         
-        </p>
+         </p>
       </div>
-    </ion-col>
-      <ion-col size = "6">
+      </ion-col>
+    </div>
+    <div  *ngFor="let user of FeatureSeeting">
+      <ion-col size="6"   size-md="6"  size-lg="6" *ngIf="user.Stores === 'madeups_receipt'">
       <div style="background-color:  white;" (click)="yarnreceiptOpenForm()" class="item">
         <div class="img-container">
           
@@ -57,46 +59,9 @@
         <p class="item-title">  RECEIPT  VIEW</p>
       </div>
       </ion-col> 
-      </ion-row> 
-      <ion-row>
-     <ion-col size = "6">
-      <div  style="background-color: white;"   (click)="weaving()" class="item"  >
-        <div class="img-container">
-          <img class="img" src="../../assets/icon/255-2557580_transparent-literacy-clipart-paper-and-pencil-icon-hd.png" alt="" />
-        </div>
-        <p class="item-title">WEAVING RECEIPT <br /></p>
       </div>
-      </ion-col>  
-      <ion-col size = "6">
-        <div style="background-color: white;" (click)="knittingreceipt()" class="item"  >
-          <div class="img-container">
-            <img class="img" src="../../assets/icon/225-2259396_computer-aided-design-icon-hd-png-download.png" alt="" />
-          </div>
-          <p class="item-title">KNITTING  RECEIPT </p>
-        </div>
-        </ion-col> 
-    </ion-row>
-    <ion-row>  
-      <ion-col size = "6">
-        <div style="background-color: white;" (click)="jobworkreceipt()" class="item"  >
-          <div class="img-container">
-            <img class="img" src="../../assets/icon/521-5213757_invoice-png-icon-transparent-png.png" alt="" />
-          </div>
-          <p class="item-title">JOBWORK  RECEIPT </p>
-        </div>
-        </ion-col> 
-      <ion-col size = "6">
-      <div style="background-color: white" (click)="storesreceipt()" class="item"  >
-        <div class="img-container">
-          <img class="img" src="../../assets/icon/download.png" alt="" />
-        </div>
-        <p class="item-title">STORES  RECEIPT </p>
-      </div>
-      </ion-col>
-      </ion-row>
-      
-          <ion-row> 
-            <ion-col size = "6">
+      <div  *ngFor="let user of FeatureSeeting">
+      <ion-col size="6"   size-md="6"  size-lg="6" *ngIf="user.Stores === 'madeups_receipt'">
         <div style="background-color:white"(click)="fgpurchasereceipt()" class="item"  >
           <div class="img-container">
             <img class="img" src="../../assets/icon/download (1).jpg" alt="" />
@@ -104,7 +69,9 @@
           <p class="item-title">FG RECEIPT </p>
         </div>
         </ion-col> 
-       <ion-col size = "6">
+        </div>
+        <div  *ngFor="let user of FeatureSeeting">
+          <ion-col size="6"   size-md="6"  size-lg="6" *ngIf="user.Stores === 'fabric_receipt'">
           <div  style="background-color:white"(click)="fabricpurchasereceipt()" class="item"  >
             <div class="img-container">
               <img class="img" src="../../assets/icon/nn.avif" alt="" />
@@ -112,124 +79,53 @@
             <p class="item-title">FABRIC RECEIPT </p>
           </div>
           </ion-col> 
-          </ion-row>
-      <!-- <div class="item" (click)="yarnreceiptOpenForm()">
-        <div class="img-container extras">
-          <img class="img" src="../../assets/icon/receipt2.png" alt="" />
+          </div>
+          <div  *ngFor="let user of FeatureSeeting">
+            <ion-col size="6"   size-md="6"  size-lg="6" *ngIf="user.Stores === 'fabric_receipt'">
+      <div  style="background-color: white;"   (click)="weaving()" class="item"  >
+        <div class="img-container">
+          <img class="img" src="../../assets/icon/255-2557580_transparent-literacy-clipart-paper-and-pencil-icon-hd.png" alt="" />
         </div>
-        <p class="item-title">
-          purchase<br />
-          receipt Open
-        </p>
-      </div> -->
-  
-  <!-- <form [formGroup]="HomeForm">
-<ion-item>
-  <ion-label>
-    Warehouse
-  </ion-label>
-  <ion-select
-  class="label-font-value"
-  class="formControl"
-  formControlName="Warehouse"
- (ionChange)="onchangeWarehouse($event)">
-   <ion-select-option
-    
-    *ngFor="let WAR of WarehouseNameArr"
-    >{{WAR.WarehouseName
-    }}
-  </ion-select-option> 
-</ion-select>
-</ion-item>
-<ion-item>
-  <ion-label>
-  PartyName
-  </ion-label>
-  <ion-select
-  class="label-font-value"
-  class="formControl"
-  formControlName="Warehouse"
-  interface="action-sheet"
-  
- >
-  <ion-select-option
-   *ngFor="let PAN of PartyNameArr"
-    >{{PAN.Name}}
-  </ion-select-option>    
-</ion-select>
-</ion-item>
-<ion-item>
-  <ion-label>
-   Work Order No
-  </ion-label>
-  <ion-select
-  class="label-font-value"
-  class="formControl"
-  formControlName="WorkOrder"
-  [(ngModel)]="WorkOrder"
-  (ionChange)="onchangeWorkorder($event)"
-  interface="action-sheet"
-  >
-  <ion-select-option
-    *ngFor="let WNO of WorkOrderNumberArr"
-    >{{WNO.WorkOrderNo}}
-  </ion-select-option>   
-</ion-select>
-</ion-item>
+        <p class="item-title">WEAVING RECEIPT <br /></p>
+      </div>
+      </ion-col>  
+      </div>
 
-<ion-item>
-  <ion-label>
-  OrderNumber
-  </ion-label>
-  <ion-select
-
-  class="label-font-value"
-  class="formControl"
-  formControlName="Warehouse"
- (ionChange)="onchangeWarehouse($event)"
- interface="popup" 
- interface="action-sheet" >
-  <ion-select-option
+ <div  *ngFor="let user of FeatureSeeting">
+          <ion-col size="6"   size-md="6"  size-lg="6" *ngIf="user.Stores === 'fabric_receipt'">
+        <div style="background-color: white;" (click)="knittingreceipt()" class="item"  >
+          <div class="img-container">
+            <img class="img" src="../../assets/icon/225-2259396_computer-aided-design-icon-hd-png-download.png" alt="" />
+          </div>
+          <p class="item-title">KNITTING  RECEIPT </p>
+        </div>
+    </ion-col>
+  </div>
+  <div  *ngFor="let user of FeatureSeeting">
+    <ion-col size="6"   size-md="6"  size-lg="6" *ngIf="user.Stores === 'fabric_receipt'">
+       <div style="background-color: white;" (click)="jobworkreceipt()" class="item"  >
+          <div class="img-container">
+            <img class="img" src="../../assets/icon/521-5213757_invoice-png-icon-transparent-png.png" alt="" />
+          </div>
+          <p class="item-title">JOBWORK  RECEIPT </p>
+        </div>
+        </ion-col> 
+  </div>
+  <div  *ngFor="let user of FeatureSeeting">
+    <ion-col size="6"   size-md="6"  size-lg="6" *ngIf="user.Stores === 'Purchase Receipt'">
+      <div style="background-color: white"  class="item"  >
+        <div class="img-container" (click)="storesreceipt()">
+          <img class="img" src="../../assets/icon/download.png" alt="" />
+        </div>
+        <p class="item-title">STORES  RECEIPT </p>
+      </div>
+      </ion-col>
+   </div>
+         
+       
+   
+  </ion-row>
  
-    *ngFor="let ONA of OrderNumberArr"
-    >{{ONA. Yarn_Po_No}}
-  </ion-select-option> 
-</ion-select>
-</ion-item>
-<ion-row>
-  <ion-col size="12">
-    <ion-item class="label-font" style="margin-top: 7px">
-      <ion-label style="color: black"> From : </ion-label>
-      <ion-input
-        slot=""
-        type="date"
-        placeholder="Select Date"
-        formControlName="FormDate"
-        [(ngModel)]="FormDate"
-        (ionChange)="onchangeDate($event)"
-      >
-      </ion-input>
-    </ion-item>
-  </ion-col>
-</ion-row>
-<ion-row>
-  <ion-col size="12">
-    <ion-item class="label-font" style="margin-top: 7px">
-      <ion-label style="color: black"> To : </ion-label>
-      <ion-input
-        slot=""
-        type="date"
-        placeholder="Select Date"
-        formControlName="Todate"
-        [(ngModel)]="Todate"
-        (ionChange)="onchangeToDate($event)"
-      >
-      </ion-input>
-    </ion-item>
-  </ion-col>
-</ion-row>
-</form> -->
-  <!-- <button ">Proceed</button> -->
 </ion-content>
 <ion-footer>
   <div class="footer">

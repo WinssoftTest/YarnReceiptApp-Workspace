@@ -59,7 +59,7 @@ PurchaseReceipt:  any;
   po: any;
   Featuresettings: unknown;
   yarnseetings: any;
-  GatepassNumLoad: any=[];
+  GatepassNumLoad: any ;
   constructor(private commonprovider: CommonService, 
     private _rr: FormBuilder,   public httpClient: HttpClient,
     public router: Router) {
@@ -78,7 +78,7 @@ PurchaseReceipt:  any;
       this.BuyerId = event.value.Buyer_id 
       this.PartyCode = event.value.PartyCode 
       this.OrderNumberLoad();
-      this.GatePassNumberLoad()
+    
       var req = {
         company: this.Company,
         statement: 'FeaturSettings',
@@ -97,7 +97,8 @@ PurchaseReceipt:  any;
       console.log('tttttt:', event.value.WorkOrder);
       this.WrkOrderNumber = event.value.WorkOrder
       this.po = event.value.ponum
-     console.log( this.po)
+      console.log( this.po)
+      this.GatePassNumberLoad();
       }
       BACK()
       {
@@ -189,7 +190,7 @@ PurchaseReceipt:  any;
       } 
       else if( this.DC == "" || this.DC == undefined)
       {
-        this.commonprovider.FailedToast('Type Dc No')
+        this.commonprovider.FailedToast('Type DC No.')
       } 
       else if( this.Gatepass == "" || this.Gatepass == undefined)
       {
@@ -200,7 +201,8 @@ PurchaseReceipt:  any;
          partyname:  this.supllier,
          company:this.Company,
          orderno: this.po,
-         statement : "FABRICRECEIPT"
+         statement : "FABRICRECEIPT",
+         year: this.year
       };
       this.commonprovider.FGReceiptgridload(req).then((result) => {
         var res: any;
@@ -237,11 +239,18 @@ PurchaseReceipt:  any;
        localStorage.setItem('fabricPoNumSTORE',this.PoNumber )
        localStorage.setItem('fabricOrdertype',this.Ord )
        localStorage.setItem('fabricSamplebulk',this.Sample )
+       localStorage.setItem('ordertype',this.OrderType )
+       localStorage.setItem('Fabricwarehouse',this.Warehousename )
        this.router.navigate(['fabricreceiptsave'])
     }
     Clear()
     {
-      
+      this.Gatepass = "";
+      this.DC = "";
+      this.WorkOrder  = "";
+      this.PartyName ="";
+       this.PoNumber = "";
+       this.receiptgrid  = []
     }
   ngOnInit() {
   }
@@ -249,9 +258,9 @@ PurchaseReceipt:  any;
     var req = {
       Company: this.Company,
       Years: this.year,
-      Order_No:  this.WrkOrderNumber ,
+      Order_No:  this.po ,
       Party_Name:   this.supllier,
-      statement : "Receipt"
+      statement : 'Receipt'
      
       };
     this.commonprovider.GetGatepassNo(req).then((result) => {
@@ -260,9 +269,9 @@ PurchaseReceipt:  any;
         return true;
     });
    
-    if(this.yarnseetings == 'True' && this.GatepassNumLoad.length == '')
-    {
-      alert("Gate Pass Required")
-    }
+    // if(this.yarnseetings == 'True' && this.GatepassNumLoad.length == '')
+    // {
+    //   alert("Gate Pass No. Required")
+    // }
   }
 }

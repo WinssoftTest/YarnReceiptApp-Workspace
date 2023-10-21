@@ -66,7 +66,7 @@
  </td>
  </tr>
  <tr>
-  <td class="label-font"><span> Party  </span></td>
+  <td class="label-font"><span> Party Name </span></td>
   <td> : </td>
   <td> 
 <ion-item> 
@@ -84,7 +84,7 @@
 </td>
 </tr>
 <tr>
-  <td class="label-font"><span> WO No  </span></td>
+  <td class="label-font"><span> WO No.  </span></td>
   <td> : </td>
   <td> 
 <ion-item>
@@ -103,7 +103,7 @@
 </td>
 </tr>
 <tr>
-  <td class="label-font"><span> Jw Order No </span></td>
+  <td class="label-font"><span> Jw Order No. </span></td>
   <td> : </td>
   <td> 
 <ion-item>
@@ -122,7 +122,7 @@
 </td>
 </tr>
 <tr>
-  <td class="label-font"><span> DC No</span></td>
+  <td class="label-font"><span> DC No.</span></td>
   <td> : </td>
   <td>
  
@@ -136,7 +136,7 @@
 </td>
 </tr>
 <tr>
-  <td class="label-font"><span>Vehicle No</span></td>
+  <td class="label-font"><span>Vehicle No.</span></td>
   <td> : </td>
   <td>
  
@@ -166,10 +166,10 @@
 </td>
 </tr>
 <tr>
-  <td class="label-font"><span>Gate Pass</span></td>
+  <td class="label-font"><span>Gate Pass No.</span></td>
   <td> : </td>
   <td>
-  <!-- <ion-label class="label-font">Gate Pass <sup> *  </sup> :</ion-label> -->
+  <!-- <ion-label class="label-font">Gate Pass No. <sup> *  </sup> :</ion-label> -->
   <!-- <ion-label class="label-font"> <b> : </b></ion-label> -->
   <ion-item> 
   <ion-input
@@ -200,6 +200,53 @@
 </tr>
 </table>
  
+  
+<ion-row>
+  <ion-col size="6">
+   <button class="Button"  (click)="GridDetailLoad()" >ADD</button>
+   </ion-col>
+    <ion-col size="6">
+      <button class="Button" (click)="clear()">Clear</button>
+  </ion-col>
+  </ion-row>
+  <div *ngFor="let GRD of  GridDetailsLoad; let optionindex = index" (click)="itemClick(GRD, optionindex)"class="card"> 
+    <table  >
+      <tr>
+        <td class="label-font"><span>WO No.  </span></td>
+        <td> : </td>
+        <td class="label-font Imp" style="color: red;padding: 5px;">{{GRD.WorkOrderNo
+        }}</td>
+      </tr>
+      <tr>
+        <td class="label-font"><span>Order No.   </span></td>
+        <td> : </td>
+        <td class="label-font Imp" style="color: red;padding: 5px;">{{GRD.Order_No
+        }}</td>
+      </tr>
+      <tr>
+        <td class="label-font"><span>Total    </span></td>
+        <td> : </td>
+        <td class="label-font Imp" style="color: red;padding: 5px;"> {{ GRD.OrderQty
+        }}</td>
+      </tr>
+      <tr>
+        <td class="label-font"><span>Received    </span></td>
+        <td> : </td>
+        <td class="label-font Imp" style="color: red;padding: 5px;"> {{ GRD.Received
+        }}</td>
+      </tr>
+      <tr>
+        <td class="label-font"><span>Balance   </span></td>
+        <td> : </td>
+        <td class="label-font Imp" style="color: red;padding: 5px;"> {{ GRD.OrderQty - GRD.Received | number : '1.2-2'  }}</td>
+      </tr>
+    </table>
+    <table>
+      {{GRD.F_Count
+      }} <span style="color: red;">|</span>  {{GRD.Reed_Pick}} <span style="color: red;">|</span>   {{GRD.F_Size}} <span style="color: red;">|</span> {{GRD.Color}} <span style="color: red;">|</span>  {{GRD.Design_Name
+      }} <span style="color: red;">|</span>  Ex Rec % : {{GRD.Ex_Rec_Per}}
+    </table>
+    </div>
  
 </form>
 
